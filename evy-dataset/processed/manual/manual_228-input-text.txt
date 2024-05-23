@@ -1,0 +1,1 @@
+How do I check if an array contains a specific element?

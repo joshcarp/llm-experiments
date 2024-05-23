@@ -1,0 +1,62 @@
+
+func ListNode:{}any
+    self:{}any
+    self.val = 0
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func getIntersectionNode self:{}any headA:{}any headB:{}any
+    if (headA == {}) or (headB == {})
+        return {}
+    end
+    a:{}any
+    b:{}any
+    a = headA
+    b = headB
+    ans:{}any
+    ans = {}
+    while (a != {}) or (b != {})
+        if a == {}
+            a = headB
+        end
+        if b == {}
+            b = headA
+        end
+        if (a == b) and (ans == {})
+            ans = a
+        end
+        a = a.next
+        b = b.next
+    end
+    return ans
+end
+
+func test
+    headA := (ListNode)
+    headA.val = 1
+    headA.next = (ListNode)
+    headA.next.val = 2
+    headA.next.next = (ListNode)
+    headA.next.next.val = 3
+    headA.next.next.next = (ListNode)
+    headA.next.next.next.val = 4
+    headA.next.next.next.next = (ListNode)
+    headA.next.next.next.next.val = 5
+
+    headB := (ListNode)
+    headB.val = 6
+    headB.next = (ListNode)
+    headB.next.val = 7
+    headB.next.next = headA.next.next.next // intersection
+
+    sol := (Solution)
+    intersection := sol.getIntersectionNode headA headB
+    assert 4 (intersection.val)
+end
+test

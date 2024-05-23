@@ -1,0 +1,41 @@
+
+func countAndSay:string n:num
+    if n == 1
+        return "1"
+    end
+    x := "1"
+    while n > 1
+        x = count x
+        n = n - 1
+    end
+    return x
+end
+
+func count:string x:string
+    m := split x ""
+    res := []
+    m = m + [""]
+    i := 0
+    j := 0
+    while i < (len m) - 1
+        j = j + 1
+        if m[j] != m[i]
+            res = res + [j - i] + [m[i]]
+            i = j
+        end
+    end
+    result := []string
+    for i := range res
+        result = result + [sprint res[i]]
+    end
+    return join result ""
+end
+
+func test
+    assert "1" (countAndSay 1)
+    assert "11" (countAndSay 2)
+    assert "21" (countAndSay 3)
+    assert "1211" (countAndSay 4)
+    assert "111221" (countAndSay 5)
+end
+test

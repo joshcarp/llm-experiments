@@ -1,0 +1,11 @@
+func remove_at_index:[]num arr:[]num idx:num
+    if idx < 0 or idx >= (len arr)
+        return arr
+    end
+    return arr[:idx] + arr[idx + 1:]
+end
+
+numbers := [1 2 3 4 5]
+numbers = remove_at_index numbers 2
+print numbers // Prints: [1 2 4 5]
+

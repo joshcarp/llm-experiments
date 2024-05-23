@@ -1,0 +1,127 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    self.first := {}
+    self.second := {}
+    self.pre := (TreeNode)
+    self.pre.val = -2147483648
+    return self
+end
+
+func recoverTree self:{}any root:{}any
+    self.traverse root
+    if (has self.first "val") and (has self.second "val")
+        self.first.val = self.second.val
+        self.second.val = self.first.val
+    end
+end
+
+func traverse self:{}any root:{}any
+    if root == {}
+        return
+    end
+    self.traverse root.left
+    if (has self.pre "val") and self.pre.val >= root.val
+        if self.first == {}
+            self.first = self.pre
+        end
+        if self.first != {}
+            self.second = root
+        end
+    end
+    self.pre = root
+    self.traverse root.right
+end
+
+func test
+    root := (TreeNode)
+    root.val = 1
+    root.left = (TreeNode)
+    root.left.val = 3
+    root.right = (TreeNode)
+    root.right.val = 2
+    sol := (Solution)
+    recoverTree sol root
+    assert 2 (root.val)
+    assert 3 (root.left.val)
+    assert 1 (root.right.val)
+end
+test
+```
+
+**Fixes:**
+
+1. **Incorrect assignment operators:**  Evy uses `:=` for variable declaration and assignment, and `=` for reassignment. The code was using `:=` for reassignment, which is incorrect.
+2. **Incorrect field access:** Evy uses `.` for accessing fields of a map. The code was using `.` for accessing fields of an `any` type, which is incorrect.
+3. **Missing statements:**  Evy requires at least one statement within a block. The code was missing statements in some blocks.
+4. **Unused variables:** The code had a variable `root` declared but not used.
+5. **Mismatched types:** The code had mismatched types in some comparisons and assignments.
+6. **Unexpected end of line:** The code had an unexpected end of line in some places.
+
+**Corrected code:**
+
+```evy
+func TreeNode:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    self.first = {}
+    self.second = {}
+    self.pre = (TreeNode)
+    self.pre.val = -2147483648
+    return self
+end
+
+func recoverTree self:{}any root:{}any
+    self.traverse root
+    if (has self.first "val") and (has self.second "val")
+        self.first.val = self.second.val
+        self.second.val = self.first.val
+    end
+end
+
+func traverse self:{}any root:{}any
+    if root == {}
+        return
+    end
+    self.traverse root.left
+    if (has self.pre "val") and self.pre.val >= root.val
+        if self.first == {}
+            self.first = self.pre
+        end
+        if self.first != {}
+            self.second = root
+        end
+    end
+    self.pre = root
+    self.traverse root.right
+end
+
+func test
+    root := (TreeNode)
+    root.val = 1
+    root.left = (TreeNode)
+    root.left.val = 3
+    root.right = (TreeNode)
+    root.right.val = 2
+    sol := (Solution)
+    recoverTree sol root
+    assert 2 (root.val)
+    assert 3 (root.left.val)
+    assert 1 (root.right.val)
+end
+test

@@ -1,0 +1,1 @@
+Which function returns the type of an argument as a string value in Evy?

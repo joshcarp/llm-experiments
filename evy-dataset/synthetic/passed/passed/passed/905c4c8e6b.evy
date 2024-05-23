@@ -1,0 +1,13 @@
+//Concatenate two strings without using built-in functions
+
+func concat:string str1:string str2:string
+    result := str1
+    for ch := range str2
+        result = result + ch
+    end
+    return result
+end
+
+func test
+    assert "HelloWorld" (concat "Hello" "World")
+end

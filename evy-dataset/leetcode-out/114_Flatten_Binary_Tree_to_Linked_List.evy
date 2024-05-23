@@ -1,0 +1,94 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func flatten self:{}any root:{}any
+    if root == {}
+        return
+    end
+    if root.left == {} and root.right == {}
+        return
+    end
+    current:{}any
+    current = root
+    stack := []
+    stack = stack + [root]
+    while (len stack) > 0
+        node:{}any
+        node = stack[0].({}any)
+        stack = stack[1:]
+        appendNode stack node.right
+        appendNode stack node.left
+        if current != node
+            current.right = node
+            current.left = {}
+            current = node
+        end
+    end
+end
+
+func appendNode self:{}any stack:[]any node:{}any
+    if node != {}
+        stack = stack + [node]
+    end
+end
+
+func test
+    root := (TreeNode)
+    root.val = 1
+    root.left = (TreeNode)
+    root.left.val = 2
+    root.right = (TreeNode)
+    root.right.val = 5
+    root.left.left = (TreeNode)
+    root.left.left.val = 3
+    root.left.right = (TreeNode)
+    root.left.right.val = 4
+    root.right.right = (TreeNode)
+    root.right.right.val = 6
+    flatten (Solution) root
+    print root.val
+    print root.right.val
+    print root.right.right.val
+    print root.right.right.right.val
+    print root.right.right.right.right.val
+    print root.right.right.right.right.right.val
+end
+test
+// output:
+//line 19 column 18: mismatched type for ==: any, {}
+//line 19 column 39: mismatched type for ==: any, {}
+//line 25 column 19: mismatched type for +: []any, []{}any
+//line 30 column 36: "appendNode" takes 3 arguments, found 2
+//line 31 column 35: "appendNode" takes 3 arguments, found 2
+//line 15 column 14: "self" declared but not used
+//line 42 column 23: mismatched type for +: []any, []{}any
+//line 40 column 17: "self" declared but not used
+//line 50 column 14: field access with "." expects map type, found any
+//line 52 column 15: field access with "." expects map type, found any
+//line 53 column 14: field access with "." expects map type, found any
+//line 54 column 14: field access with "." expects map type, found any
+//line 55 column 14: field access with "." expects map type, found any
+//line 56 column 14: field access with "." expects map type, found any
+//line 57 column 15: field access with "." expects map type, found any
+//line 58 column 15: field access with "." expects map type, found any
+//line 61 column 21: field access with "." expects map type, found any
+//line 61 column 22: expected end of line, found val
+//line 62 column 21: field access with "." expects map type, found any
+//line 62 column 22: expected end of line, found right
+//line 63 column 21: field access with "." expects map type, found any
+//line 63 column 22: expected end of line, found right
+//line 64 column 21: field access with "." expects map type, found any
+//line 64 column 22: expected end of line, found right
+//line 65 column 21: field access with "." expects map type, found any
+//line 65 column 22: expected end of line, found right

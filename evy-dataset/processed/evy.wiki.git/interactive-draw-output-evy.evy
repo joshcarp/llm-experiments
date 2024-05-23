@@ -1,0 +1,127 @@
+c := {x:50 y:50 radius:10 dx:0 dy:0}
+down := false
+state := "none" // "move", "resizex", "resizey"
+draw
+
+func draw
+    clear
+    draw_grid
+    draw_circle
+    if state == "move"
+        draw_cross
+    end
+    if state == "resizex" or state == "resizey"
+        draw_handles
+    end
+end
+
+on move x:num y:num
+    if !down
+        state = get_state x y
+        draw
+        return
+    end
+    if x == 0 or x == 100 or y == 0 or y == 100
+        release
+        return
+    end
+
+    if state == "move"
+        update x+c.dx y+c.dy c.radius
+    else if state == "resizex"
+        update c.x c.y (abs x-c.x)
+    else if state == "resizey"
+        update c.x c.y (abs y-c.y)
+    end
+    draw
+end
+
+func update x:num y:num radius:num
+    x = (round x/10) * 10
+    y = (round y/10) * 10
+    radius = (round radius/10) * 10
+    if x != c.x or y != c.y or radius != c.radius
+        c.x = x
+        c.y = y
+        c.radius = radius
+        print "x:" x "y:" y "radius:" radius
+    end
+end
+
+on down x:num y:num
+    state = get_state x y
+    if state == "none"
+        return
+    end
+    down = true
+    c.dx = c.x - x
+    c.dy = c.y - y
+end
+
+on up
+    release
+end
+
+func release
+    state = "none"
+    down = false
+    draw
+end
+
+func get_state:string x:num y:num
+    dist := sqrt (c.x - x)*(c.x - x)+(c.y - y)*(c.y - y)
+    if dist > c.radius + 3
+        return "none"
+    else if dist < c.radius - 3
+        return "move"
+    else if (abs c.x-x) >= (abs c.y-y)
+        return "resizex"
+    end
+    return "resizey"
+end
+
+func draw_grid
+    width 0.05
+    color "hsl(0deg 100% 0% / 50%)"
+    for i := range 0 101 10
+        move i 0
+        line i 100
+        move 0 i
+        line 100 i
+    end
+end
+
+func draw_circle
+    color "red"
+    move c.x c.y
+    circle c.radius
+end
+
+func draw_cross
+    color "black"
+    width 0.4
+    move c.x-1 c.y
+    line c.x+1 c.y
+    move c.x c.y-1
+    line c.x c.y+1
+end
+
+func draw_handles
+    color "black"
+    width 0.4
+    move c.x+c.radius c.y-1
+    line c.x+c.radius c.y+1
+    move c.x-c.radius c.y-1
+    line c.x-c.radius c.y+1
+    move c.x-1 c.y+c.radius
+    line c.x+1 c.y+c.radius
+    move c.x-1 c.y-c.radius
+    line c.x+1 c.y-c.radius
+end
+
+func abs:num n:num
+    if n < 0
+        return -n
+    end
+    return n
+end

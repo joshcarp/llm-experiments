@@ -1,0 +1,10 @@
+func print_array arr:[]num
+    if (len arr) > 0
+        print arr[0]
+        print_array arr[1:]
+    end
+end
+
+numbers := [1 2 3 4]
+print_array numbers // Prints: 1\n2\n3\n4\n
+

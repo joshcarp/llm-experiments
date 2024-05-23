@@ -1,0 +1,1 @@
+What function returns a random floating point number less than 1 in Evy?

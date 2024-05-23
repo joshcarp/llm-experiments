@@ -1,0 +1,1 @@
+down is called when the pointer is pressed down.

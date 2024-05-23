@@ -1,0 +1,167 @@
+
+func generateNeighbours:[]any path:string
+    dictOfNeighbours:{}any
+    dictOfNeighbours = {}
+    file := open path "r"
+    for line := range file
+        if !(has dictOfNeighbours line.split()[0])
+            _list := []
+            _list = _list + [[line.split()[1] line.split()[2]]]
+            dictOfNeighbours[line.split()[0]] = _list
+        else
+            dictOfNeighbours[line.split()[0]] = dictOfNeighbours[line.split()[0]] + [[line.split()[1] line.split()[2]]]
+        end
+        if !(has dictOfNeighbours line.split()[1])
+            _list := []
+            _list = _list + [[line.split()[0] line.split()[2]]]
+            dictOfNeighbours[line.split()[1]] = _list
+        else
+            dictOfNeighbours[line.split()[1]] = dictOfNeighbours[line.split()[1]] + [[line.split()[0] line.split()[2]]]
+        end
+    end
+    close file
+    return dictOfNeighbours
+end
+
+func generateFirstSolution:[]any path:string dictOfNeighbours:{}any
+    file := open path "r"
+    startNode := file.read(1)
+    close file
+    endNode := startNode
+    firstSolution := []
+    visiting := startNode
+    distanceOfFirstSolution := 0
+    while !(contains firstSolution visiting)
+        minim := 10000
+        for k := range dictOfNeighbours[visiting]
+            if (str2num k[1]) < (str2num minim) and !(contains firstSolution k[0])
+                minim = k[1]
+                bestNode := k[0]
+            end
+        end
+        firstSolution = firstSolution + [visiting]
+        distanceOfFirstSolution = distanceOfFirstSolution + (str2num minim)
+        visiting = bestNode
+    end
+    firstSolution = firstSolution + [endNode]
+    position := 0
+    for k := range dictOfNeighbours[firstSolution[-2]]
+        if k[0] == startNode
+            break
+        end
+        position = position + 1
+    end
+    distanceOfFirstSolution = distanceOfFirstSolution + (str2num dictOfNeighbours[firstSolution[-2]][position][1]) - 10000
+    return [firstSolution distanceOfFirstSolution]
+end
+
+func findNeighborhood:[]any solution:[]any dictOfNeighbours:{}any
+    neighborhoodOfSolution := []
+    for n := range solution[1:-1]
+        idx1 := index solution n
+        for kn := range solution[1:-1]
+            idx2 := index solution kn
+            if n == kn
+                continue
+            end
+            _tmp := solution[:]
+            _tmp[idx1] = kn
+            _tmp[idx2] = n
+            distance := 0
+            for k := range _tmp[:-1]
+                nextNode := _tmp[_tmp.index(k) + 1]
+                for i := range dictOfNeighbours[k]
+                    if i[0] == nextNode
+                        distance = distance + (str2num i[1])
+                    end
+                end
+            end
+            _tmp = _tmp + [distance]
+            if !(contains neighborhoodOfSolution _tmp)
+                neighborhoodOfSolution = neighborhoodOfSolution + [_tmp]
+            end
+        end
+    end
+    indexOfLastItemInTheList := (len neighborhoodOfSolution[0]) - 1
+    neighborhoodOfSolution.sort key:func x:[]any
+        return x[indexOfLastItemInTheList]
+    end
+    return neighborhoodOfSolution
+end
+
+func tabuSearch:[]any firstSolution:[]any distanceOfFirstSolution:num dictOfNeighbours:{}any iters:num size:num
+    count := 1
+    solution := firstSolution
+    tabuList := []
+    bestCost := distanceOfFirstSolution
+    bestSolutionEver := solution
+    while count <= iters
+        neighborhood := findNeighborhood solution dictOfNeighbours
+        indexOfBestSolution := 0
+        bestSolution := neighborhood[indexOfBestSolution]
+        bestCostIndex := (len bestSolution) - 1
+        found := false
+        while !(found)
+            i := 0
+            while i < (len bestSolution)
+                if bestSolution[i] != solution[i]
+                    firstExchangeNode := bestSolution[i]
+                    secondExchangeNode := solution[i]
+                    break
+                end
+                i = i + 1
+            end
+            if !(contains tabuList [firstExchangeNode secondExchangeNode]) and !(contains tabuList [secondExchangeNode firstExchangeNode])
+                tabuList = tabuList + [[firstExchangeNode secondExchangeNode]]
+                found = true
+                solution = bestSolution[:-1]
+                cost := neighborhood[indexOfBestSolution][bestCostIndex]
+                if cost < bestCost
+                    bestCost = cost
+                    bestSolutionEver = solution
+                end
+            else
+                indexOfBestSolution = indexOfBestSolution + 1
+                bestSolution = neighborhood[indexOfBestSolution]
+            end
+        end
+        if (len tabuList) >= size
+            tabuList = tabuList[1:]
+        end
+        count = count + 1
+    end
+    return [bestSolutionEver bestCost]
+end
+
+func contains:[]bool arr:[]any elem:any
+    for i := range arr
+        if arr[i] == elem
+            return [true]
+        end
+    end
+    return [false]
+end
+
+func main args:any
+    dictOfNeighbours := generateNeighbours args.File
+    firstSolution:[]any
+    distanceOfFirstSolution:num
+    [firstSolution distanceOfFirstSolution] = generateFirstSolution args.File dictOfNeighbours
+    bestSol:[]any
+    bestCost:num
+    [bestSol bestCost] = tabuSearch firstSolution distanceOfFirstSolution dictOfNeighbours args.Iterations args.Size
+    print (sprintf "Best solution: %v, with total distance: %v." bestSol bestCost)
+end
+
+func test
+    assert [["a" "c" "b" "d" "e" "a"] 102] (tabuSearch ["a" "c" "b" "d" "e" "a"] 102 {a:[["b" "20"] ["c" "18"] ["d" "22"] ["e" "26"]] c:[["a" "18"] ["b" "10"] ["d" "23"] ["e" "24"]] b:[["a" "20"] ["c" "10"] ["d" "11"] ["e" "12"]] e:[["a" "26"] ["b" "12"] ["c" "24"] ["d" "40"]] d:[["a" "22"] ["b" "11"] ["c" "23"] ["e" "40"]]} 1 1)
+end
+test
+
+if __name__ == "__main__"
+    parser := argparse.ArgumentParser description:"Tabu Search"
+    parser.add_argument "-f" "--File" type:string help:"Path to the file containing the data" required:true
+    parser.add_argument "-i" "--Iterations" type:num help:"How many iterations the algorithm should perform" required:true
+    parser.add_argument "-s" "--Size" type:num help:"Size of the tabu list" required:true
+    main parser.parse_args()
+end

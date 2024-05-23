@@ -1,0 +1,4 @@
+name := "Alice"
+age := 30
+printf "Name: %v, Age: %v\n" name age
+

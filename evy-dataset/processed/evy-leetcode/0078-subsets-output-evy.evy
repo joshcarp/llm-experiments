@@ -1,0 +1,71 @@
+func backtrack nums:[]num current:[]num ans:[][]num
+    if (len nums) == 0
+        ans = [current[:]] + ans
+        return
+    end
+    for range nums
+        backtrack nums[1:] current ans
+        current = current + [nums[0]]
+        if (len nums) > 1
+            backtrack nums[1:] current ans
+        else
+            backtrack [] current ans
+        end
+        current = current[:-1]
+    end
+end
+
+func subsets:[][]num nums:[]num
+    current:[]num
+    ans:[][]num
+    backtrack nums current ans
+    return ans
+end
+
+fails := 0
+total := 0
+
+func assertEqualsameelements want:[][]num got:[][]num
+    wantset := {}
+    extraelements:[]string
+    missingelements:[]string
+    failed := false
+    for elem := range want
+        wantset[sprintf "%v" elem] = true
+    end
+    gotset := {}
+    for elem := range got
+        gotset[sprintf "%v" elem] = true
+    end
+    for key := range wantset
+        if !(has gotset key)
+            printf "missing element int got %v\n" key
+            extraelements = extraelements + [key]
+            failed = true
+        end
+    end
+    for key := range gotset
+        if !(has wantset key)
+            printf "extra element int got %v\n" key
+            missingelements = missingelements + [key]
+            failed = true
+        end
+    end
+    if (len missingelements) > 0
+        printf "missing elements: %v\n" missingelements
+    end
+    if (len extraelements) > 0
+        printf "extra elements: %v\n" extraelements
+    end
+    if failed
+        fails = fails + 1
+    end
+    total = total + 1
+end
+
+func test
+    assertEqualsameelements [[1 2 3] [1 2] [1 3] [1] [2 3] [2] [3] []] (subsets [1 2 3])
+    assertEqualsameelements [[0] []] (subsets [0])
+    assertEqualsameelements [[]] (subsets [])
+end
+test

@@ -1,0 +1,1 @@
+How do I check the equality of two arrays in Evy?

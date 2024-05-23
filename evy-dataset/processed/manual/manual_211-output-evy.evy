@@ -1,0 +1,3 @@
+person := {name: "Alice" age: 30 city: "New York"}
+print person["name"] // Prints: Alice
+print person["age"] // Prints: 30

@@ -1,0 +1,5 @@
+Can you correct this code?
+
+name:string = "Alice"
+age:num = 30
+printf "Name: %v, Age: %v\n" name age 

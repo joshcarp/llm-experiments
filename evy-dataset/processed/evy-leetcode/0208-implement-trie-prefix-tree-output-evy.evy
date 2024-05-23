@@ -1,0 +1,62 @@
+func Node:{}any
+    self:{}any
+    self.next = {}
+    self.isend = false
+    return self
+end
+
+func Trie:{}any
+    self:{}any
+    self.data = (Node)
+    return self
+end
+
+func insert self:{}any word:string
+    node:{}any
+    node = self.data.({}any)
+    for ch := range word
+        next := node.next.({}any)
+        if !(has next ch)
+            next[ch] = (Node)
+        end
+        node = next[ch].({}any)
+    end
+    node.isend = true
+end
+
+func search:bool self:{}any word:string
+    node:{}any
+    node = self.data.({}any)
+    for ch := range word
+        next := node.next.({}any)
+        if !(has next ch)
+            return false
+        end
+        node = next[ch].({}any)
+    end
+    return node.isend.(bool)
+end
+
+func startsWith:bool self:{}any prefix:string
+    node:{}any
+    node = self.data.({}any)
+    for ch := range prefix
+        next := node.next.({}any)
+        if !(has next ch)
+            return false
+        end
+        node = next[ch].({}any)
+    end
+    return true
+end
+
+func test
+    trie := (Trie)
+    insert trie "apple"
+    assertEqual true (search trie "apple")
+    assertEqual false (search trie "app")
+    assertEqual true (startsWith trie "app")
+    insert trie "app"
+    assertEqual true (search trie "app")
+end
+test

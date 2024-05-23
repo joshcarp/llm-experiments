@@ -1,0 +1,32 @@
+
+func repeatedNTimes:num nums:[]num
+    counts := {}num
+    for n := range nums
+        if has counts (sprint n)
+            counts[sprint n] = counts[sprint n] + 1
+        else
+            counts[sprint n] = 1
+        end
+    end
+    maxCount := 0
+    maxNum := 0
+    for key := range counts
+        if counts[key] > maxCount
+            maxCount = counts[key]
+            maxNum = str2num key
+        end
+    end
+    return maxNum
+end
+
+func test
+    assert 3 (repeatedNTimes [1 2 3 3])
+    assert 2 (repeatedNTimes [2 1 2 5 3 2])
+    assert 5 (repeatedNTimes [5 1 5 2 5 3 5 4])
+end
+test
+// output:
+//line 3 column 17: expected end of line, found "num"
+//line 6 column 49: mismatched type for +: any, num
+//line 14 column 24: mismatched type for >: any, num
+//line 15 column 13: "maxCount" accepts values of type num, found any

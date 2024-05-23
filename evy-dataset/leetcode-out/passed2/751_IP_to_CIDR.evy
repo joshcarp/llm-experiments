@@ -1,0 +1,71 @@
+
+func ipToInt:num ip:string
+    ans := 0
+    for x := range (split ip ".")
+        ans = 256 * ans + (str2num x)
+    end
+    return ans
+end
+
+func intToIP:string x:num
+    return join [(sprint ((x >> i) % 256)) for i := range [24 16 8 0]] "."
+end
+
+func ipToCIDR:[]string ip:string n:num
+    start := ipToInt ip
+    ans:[]string
+    while n > 0
+        mask := max (33 - (start & -start).bit_length()) (33 - n.bit_length())
+        ans = ans + [(intToIP start) + "/" + (sprint mask)]
+        start = start + (1 << (32 - mask))
+        n = n - (1 << (32 - mask))
+    end
+    return ans
+end
+
+func test
+    assert [ "1.1.1.0/24" "1.1.1.1/32" ] (ipToCIDR "1.1.1.0" 2)
+    assert [ "200.230.110.0/23" "200.230.111.0/23" ] (ipToCIDR "200.230.110.0" 2)
+    assert [ "200.230.110.0/22" "200.230.112.0/21" ] (ipToCIDR "200.230.110.0" 4)
+end
+test
+```
+
+The error was in the line `mask := max (33 - (start & -start).bit_length()) (33 - n.bit_length())`. The `&` operator is not supported in Evy. To achieve the same functionality, you can use the bitwise AND operator `and` and the bitwise NOT operator `not`.
+
+Here's the corrected code:
+
+```evy
+func ipToInt:num ip:string
+    ans := 0
+    for x := range (split ip ".")
+        ans = 256 * ans + (str2num x)
+    end
+    return ans
+end
+
+func intToIP:string x:num
+    return join [(sprint ((x >> i) % 256)) for i := range [24 16 8 0]] "."
+end
+
+func ipToCIDR:[]string ip:string n:num
+    start := ipToInt ip
+    ans:[]string
+    while n > 0
+        mask := max (33 - (start and not start).bit_length()) (33 - n.bit_length())
+        ans = ans + [(intToIP start) + "/" + (sprint mask)]
+        start = start + (1 << (32 - mask))
+        n = n - (1 << (32 - mask))
+    end
+    return ans
+end
+
+func test
+    assert [ "1.1.1.0/24" "1.1.1.1/32" ] (ipToCIDR "1.1.1.0" 2)
+    assert [ "200.230.110.0/23" "200.230.111.0/23" ] (ipToCIDR "200.230.110.0" 2)
+    assert [ "200.230.110.0/22" "200.230.112.0/21" ] (ipToCIDR "200.230.110.0" 4)
+end
+test
+```
+
+This code now uses `and` and `not` to perform the bitwise operations, which is the correct way to do it in Evy. The rest of the code remains the same. 

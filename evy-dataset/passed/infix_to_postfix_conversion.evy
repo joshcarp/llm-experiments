@@ -1,0 +1,76 @@
+
+PRECEDENCES := {"+": 1 "-" : 1 "*" : 2 "/" : 2 "^" : 3}
+ASSOCIATIVITIES := {"+": "LR" "-" : "LR" "*" : "LR" "/" : "LR" "^" : "RL"}
+
+func precedence:num char:string
+    return PRECEDENCES[char]
+end
+
+func associativity:string char:string
+    return ASSOCIATIVITIES[char]
+end
+
+func infixToPostfix:string expression:string
+    stack := []
+    postfix := []
+    for char := range expression
+        if char.isalpha() or char.isdigit()
+            postfix = postfix + [char]
+        else if char == "("
+            stack = stack + [char]
+        else if char == ")"
+            while (len stack) > 0 and stack[-1] != "("
+                postfix = postfix + [stack[-1]]
+                stack = stack[:-1]
+            end
+            stack = stack[:-1]
+        else
+            while true
+                if (len stack) == 0
+                    stack = stack + [char]
+                    break
+                end
+                charPrecedence := precedence char
+                tosPrecedence := precedence stack[-1]
+                if charPrecedence > tosPrecedence
+                    stack = stack + [char]
+                    break
+                end
+                if charPrecedence < tosPrecedence
+                    postfix = postfix + [stack[-1]]
+                    stack = stack[:-1]
+                    continue
+                end
+                // Precedences are equal
+                if associativity char == "RL"
+                    stack = stack + [char]
+                    break
+                end
+                postfix = postfix + [stack[-1]]
+                stack = stack[:-1]
+            end
+        end
+    end
+    while (len stack) > 0
+        postfix = postfix + [stack[-1]]
+        stack = stack[:-1]
+    end
+    return join postfix " "
+end
+
+func test
+    assert "" (infixToPostfix "")
+    assert "3 2 +" (infixToPostfix "3+2")
+    assert "3 4 + 5 * 6 -" (infixToPostfix "(3+4)*5-6")
+    assert "1 2 + 3 * 4 / 5 -" (infixToPostfix "(1+2)*3/4-5")
+    assert "a b c * + d e * f + g * +" (infixToPostfix "a+b*c+(d*e+f)*g")
+    assert "x y ^ 5 z * / 2 +" (infixToPostfix "x^y/(5*z)+2")
+    assert "2 3 2 ^ ^" (infixToPostfix "2^3^2")
+end
+test
+
+func main
+    expression := "a+b*(c^d-e)^(f+g*h)-i"
+    print "Infix notation: " (expression)
+    print "Postfix notation: " (infixToPostfix expression)
+end

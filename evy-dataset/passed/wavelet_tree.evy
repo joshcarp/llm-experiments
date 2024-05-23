@@ -1,0 +1,114 @@
+
+func Node:{}any length:num
+    self:{}any
+    self.minn := -1
+    self.maxx := -1
+    self.mapLeft := [0] * length
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func buildTree:{}any arr:[]num
+    root := (Node (len arr))
+    root.minn = (min arr)
+    root.maxx = (max arr)
+    if root.minn == root.maxx
+        return root
+    end
+    pivot := (root.minn + root.maxx) / 2
+    leftArr:[]num
+    rightArr:[]num
+    for index := range arr
+        num := arr[index]
+        if num <= pivot
+            leftArr = leftArr + [num]
+        else
+            rightArr = rightArr + [num]
+        end
+        root.mapLeft[index] = (len leftArr)
+    end
+    root.left = (buildTree leftArr)
+    root.right = (buildTree rightArr)
+    return root
+end
+
+func rankTillIndex:num node:{}any num:num index:num
+    if index < 0 or node == {}
+        return 0
+    end
+    if node.minn == node.maxx
+        if node.minn == num
+            return index + 1
+        else
+            return 0
+        end
+    end
+    pivot := (node.minn + node.maxx) / 2
+    if num <= pivot
+        return (rankTillIndex node.left num (node.mapLeft[index] - 1))
+    else
+        return (rankTillIndex node.right num (index - node.mapLeft[index]))
+    end
+end
+
+func rank:num node:{}any num:num start:num end:num
+    if start > end
+        return 0
+    end
+    rankTillEnd := (rankTillIndex node num end)
+    rankBeforeStart := (rankTillIndex node num (start - 1))
+    return rankTillEnd - rankBeforeStart
+end
+
+func quantile:num node:{}any index:num start:num end:num
+    if index > (end - start) or start > end or node == {}
+        return -1
+    end
+    if node.minn == node.maxx
+        return node.minn
+    end
+    numElementsInLeftTree := node.mapLeft[end] - (node.mapLeft[start - 1] if start else 0)
+    if numElementsInLeftTree > index
+        return (quantile node.left index (node.mapLeft[start - 1] if start else 0) (node.mapLeft[end] - 1))
+    else
+        return (quantile node.right (index - numElementsInLeftTree) (start - (node.mapLeft[start - 1] if start else 0)) (end - node.mapLeft[end]))
+    end
+end
+
+func rangeCounting:num node:{}any start:num end:num startNum:num endNum:num
+    if start > end or node == {} or startNum > endNum or node.minn > endNum or node.maxx < startNum
+        return 0
+    end
+    if startNum <= node.minn and node.maxx <= endNum
+        return end - start + 1
+    end
+    left := (rangeCounting node.left (node.mapLeft[start - 1] if start else 0) (node.mapLeft[end] - 1) startNum endNum)
+    right := (rangeCounting node.right (start - (node.mapLeft[start - 1] if start else 0)) (end - node.mapLeft[end]) startNum endNum)
+    return left + right
+end
+
+func test
+    root := (buildTree testArray)
+    assert 1 (rankTillIndex root 6 6)
+    assert 1 (rankTillIndex root 2 0)
+    assert 2 (rankTillIndex root 1 10)
+    assert 0 (rankTillIndex root 17 7)
+    assert 1 (rankTillIndex root 0 9)
+    assert 2 (rank root 6 3 13)
+    assert 4 (rank root 2 0 19)
+    assert 0 (rank root 9 2 2)
+    assert 2 (rank root 0 5 10)
+    assert 5 (quantile root 2 2 5)
+    assert 4 (quantile root 5 2 13)
+    assert 8 (quantile root 0 6 6)
+    assert -1 (quantile root 4 2 5)
+    assert 3 (rangeCounting root 1 10 3 7)
+    assert 1 (rangeCounting root 2 2 1 4)
+    assert 20 (rangeCounting root 0 19 0 100)
+    assert 0 (rangeCounting root 1 0 1 100)
+    assert 0 (rangeCounting root 0 17 100 1)
+end
+test
+
+testArray := [2 1 4 5 6 0 8 9 1 2 0 6 4 2 0 6 5 3 2 7]

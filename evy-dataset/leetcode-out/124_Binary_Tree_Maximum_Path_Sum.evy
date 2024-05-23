@@ -1,0 +1,54 @@
+
+func Node:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    self.result = -2147483647
+    return self
+end
+
+func maxPathSum self:{}any root:{}any
+    self.getNodeMaxValue root
+    return self.result
+end
+
+func getNodeMaxValue self:{}any node:{}any
+    if node == {}
+        return 0
+    end
+    lresult := self.getNodeMaxValue node.left
+    rresult := self.getNodeMaxValue node.right
+    self.result = max (lresult + rresult + node.val) (self.result)
+    ret := node.val + max (lresult) (rresult)
+    if ret > 0
+        return ret
+    end
+    return 0
+end
+
+func max:num a:num b:num
+    if a > b
+        return a
+    end
+    return b
+end
+
+func test
+    root := (Node)
+    root.val = 1
+    root.left = (Node)
+    root.left.val = 2
+    root.right = (Node)
+    root.right.val = 3
+    sol := (Solution)
+    assert 6 (maxPathSum sol root)
+end
+test
+// output:
+//line 35 column 1: cannot override builtin function "max"

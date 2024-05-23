@@ -1,0 +1,41 @@
+
+func backspaceCompare:bool S:string T:string
+    if S == T
+        return true
+    end
+    sStack := []string
+    tStack := []string
+    for c := range S
+        if c != "#"
+            sStack = sStack + [c]
+        else if (len sStack) != 0
+            sStack = sStack[:-1]
+        end
+    end
+    for c := range T
+        if c != "#"
+            tStack = tStack + [c]
+        else if (len tStack) != 0
+            tStack = tStack[:-1]
+        end
+    end
+    return join sStack "" == join tStack ""
+end
+
+func test
+    assert true==(backspaceCompare "ab" "ab")
+    assert true==(backspaceCompare "ab#c" "ad#c")
+    assert true==(backspaceCompare "ab##" "c#d#")
+    assert true==(backspaceCompare "a##c" "#a#c")
+    assert true==(backspaceCompare "a#c" "b")
+    assert false==(backspaceCompare "a#c" "b#")
+    assert false==(backspaceCompare "ab#c" "ad#c#")
+    assert true==(backspaceCompare "a#c" "a#c")
+    assert true==(backspaceCompare "ab##" "c#d#")
+    assert true==(backspaceCompare "a##c" "#a#c")
+    assert true==(backspaceCompare "a#c" "b")
+    assert false==(backspaceCompare "a#c" "b#")
+    assert false==(backspaceCompare "ab#c" "ad#c#")
+    assert true==(backspaceCompare "a#c" "a#c")
+end
+test

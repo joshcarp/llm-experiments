@@ -1,0 +1,39 @@
+
+func isIsomorphic:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    ls := len s
+    mapStoT := [0] * 127
+    mapTtoS := [0] * 127
+    for i := range ls
+        sNum := ord s[i]
+        tNum := ord t[i]
+        if mapStoT[sNum] == 0 and mapTtoS[tNum] == 0
+            mapStoT[sNum] = tNum
+            mapTtoS[tNum] = sNum
+        else if mapTtoS[tNum] != sNum or mapStoT[sNum] != tNum
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true (isIsomorphic "egg" "add")
+    assert false (isIsomorphic "foo" "bar")
+    assert true (isIsomorphic "paper" "title")
+    assert false (isIsomorphic "badc" "baba")
+end
+test
+// output:
+//line 10 column 17: unknown variable name "ord"
+//line 10 column 21: invalid inferred declaration for "sNum"
+//line 11 column 17: unknown variable name "ord"
+//line 11 column 21: invalid inferred declaration for "tNum"
+//line 12 column 20: unknown variable name "sNum"
+//line 13 column 21: unknown variable name "sNum"
+//line 14 column 21: unknown variable name "tNum"
+//line 13 column 13: at least one statement is required here
+//line 15 column 25: unknown variable name "tNum"
+//line 9 column 9: "i" declared but not used

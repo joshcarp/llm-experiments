@@ -1,0 +1,4 @@
+person := {name: "Bob" age: 30 city: "New York"}
+print (person[(sprintf %v ("name"))])
+person[(sprintf %v ("age"))] = 31
+print (person)

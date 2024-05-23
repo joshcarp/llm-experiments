@@ -1,0 +1,74 @@
+
+func ListNode:{}any
+    self:{}any
+    self.val = 0
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func insertionSortList self:{}any head:{}any
+    if head == {}
+        return {}
+    end
+    helper := (ListNode)
+    helper.val = -1000
+    pre:{}any
+    curr:{}any
+    pre = helper
+    curr = head
+    while curr != {}
+        nextStep:{}any
+        nextStep = curr.next.({}any)
+        while (has pre.next "val") and pre.next.val.({}any) < curr.val.({}any)
+            pre = pre.next.({}any)
+        end
+        curr.next = pre.next.({}any)
+        pre.next = curr
+        pre = helper
+        curr = nextStep
+    end
+    return helper.next.({}any)
+end
+
+func test
+    head := (ListNode)
+    head.val = 4
+    head.next = (ListNode)
+    head.next.val = 2
+    head.next.next = (ListNode)
+    head.next.next.val = 1
+    head.next.next.next = (ListNode)
+    head.next.next.next.val = 3
+    sol := (Solution)
+    sortedHead := insertionSortList sol head
+    print sortedHead.val
+    print sortedHead.next.val
+    print sortedHead.next.next.val
+    print sortedHead.next.next.next.val
+end
+test
+// output:
+//line 16 column 16: expected no return value, found {}
+//line 27 column 23: "has" takes 1st argument of type {}, found any
+//line 27 column 48: field access with "." expects map type, found any
+//line 35 column 12: expected no return value, found {}any
+//line 14 column 24: "self" declared but not used
+//line 42 column 14: field access with "." expects map type, found any
+//line 43 column 14: field access with "." expects map type, found any
+//line 44 column 14: field access with "." expects map type, found any
+//line 45 column 14: field access with "." expects map type, found any
+//line 46 column 14: field access with "." expects map type, found any
+//line 48 column 45: invalid declaration, function "insertionSortList" has no return value
+//line 49 column 11: unknown variable name "sortedHead"
+//line 49 column 21: expected end of line, found "."
+//line 50 column 11: unknown variable name "sortedHead"
+//line 50 column 21: expected end of line, found "."
+//line 51 column 11: unknown variable name "sortedHead"
+//line 51 column 21: expected end of line, found "."
+//line 52 column 11: unknown variable name "sortedHead"
+//line 52 column 21: expected end of line, found "."

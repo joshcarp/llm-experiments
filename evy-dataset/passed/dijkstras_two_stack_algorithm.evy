@@ -1,0 +1,75 @@
+
+func opMul:num x:num y:num
+    return x * y
+end
+
+func opDiv:num x:num y:num
+    return x / y
+end
+
+func opAdd:num x:num y:num
+    return x + y
+end
+
+func opSub:num x:num y:num
+    return x - y
+end
+
+func Stack:{}any
+    self:{}any
+    self.items := []
+    return self
+end
+
+func push self:{}any item:any
+    self.items = self.items + [item]
+end
+
+func pop self:{}any
+    if (len self.items) == 0
+        return -1
+    end
+    result := self.items[-1]
+    self.items = self.items[:-1]
+    return result
+end
+
+func peek self:{}any
+    if (len self.items) == 0
+        return -1
+    end
+    return self.items[-1]
+end
+
+func dijkstrasTwoStackAlgorithm:num equation:string
+    operators := {"*":opMul "/" :opDiv "+" :opAdd "-" :opSub}
+    operandStack := (Stack)
+    operatorStack := (Stack)
+    for i := range equation
+        if (equation[i] >= "0" and equation[i] <= "9")
+            operandStack.push (str2num (sprint equation[i]))
+        else if (has operators equation[i])
+            operatorStack.push equation[i]
+        else if equation[i] == ")"
+            opr := operatorStack.peek()
+            operatorStack.pop()
+            num1 := operandStack.peek()
+            operandStack.pop()
+            num2 := operandStack.peek()
+            operandStack.pop()
+            total := operators[opr](num2 num1)
+            operandStack.push total
+        end
+    end
+    return operandStack.peek()
+end
+
+func test
+    assert 8 (dijkstrasTwoStackAlgorithm "(5 + 3)")
+    assert 5 (dijkstrasTwoStackAlgorithm "((9 - (2 + 9)) + (8 - 1))")
+    assert -3 (dijkstrasTwoStackAlgorithm "((((3 - 2) - (2 + 3)) + (2 - 4)) + 3)")
+end
+test
+
+equation := "(5 + ((4 * 2) * (2 + 3)))"
+print (sprintf "%v = %v\n" equation (dijkstrasTwoStackAlgorithm equation))

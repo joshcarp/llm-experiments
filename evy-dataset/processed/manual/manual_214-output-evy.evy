@@ -1,0 +1,6 @@
+func square:num x:num
+    y := x * x
+    return y
+end
+result := square 4
+print result // Prints: 16

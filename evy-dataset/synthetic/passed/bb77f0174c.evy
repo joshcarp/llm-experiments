@@ -1,0 +1,24 @@
+//Find the first non-repeating character in a string
+
+func firstNonRepeatingCharacter:string str:string
+    charCount := {}
+    for ch := range str
+        if has charCount ch
+            charCount[ch] = charCount[ch] + 1
+        else
+            charCount[ch] = 1
+        end
+    end
+    for ch := range str
+        if charCount[ch] == 1
+            return ch
+        end
+    end
+    return ""
+end
+
+    assert "b" (firstNonRepeatingCharacter "abcabcbb")
+    assert "l" (firstNonRepeatingCharacter "loveleetcode")
+    assert "b" (firstNonRepeatingCharacter "aabb")
+    assert "" (firstNonRepeatingCharacter "aaabbb")
+

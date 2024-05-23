@@ -1,0 +1,50 @@
+
+func solveNQueens:[]string n:num
+    if n == 0
+        return []
+    end
+    res:[]string
+    board := [[]] * n
+    for i := range n
+        board[i] = ["."] * n
+    end
+    doSolveNQueens res board n
+    return res
+end
+
+func doSolveNQueens res:[]string board:[][]string num:num
+    if num == 0
+        res = res + [[""] * (len board)]
+        return
+    end
+    ls := len board
+    pos := ls - num
+    check := [true] * ls
+    for i := range pos
+        for j := range ls
+            if board[i][j] == "Q"
+                check[j] = false
+                step := pos - i
+                if j + step < ls
+                    check[j + step] = false
+                end
+                if j - step >= 0
+                    check[j - step] = false
+                end
+                break
+            end
+        end
+    end
+    for j := range ls
+        if check[j]
+            board[pos][j] = "Q"
+            doSolveNQueens res board (num - 1)
+            board[pos][j] = "."
+        end
+    end
+end
+
+func test
+    print (solveNQueens 4)
+end
+test

@@ -1,0 +1,21 @@
+
+func canJump:bool nums:[]num
+    length := len nums
+    begin := length - 1
+    for i := range (length - 1) 0 -1
+        if i + nums[i] >= begin
+            begin = i
+        end
+    end
+    return begin == 0
+end
+
+func test
+    assert canJump [2 3 1 1 4]
+    assert canJump [3 2 1 0 4]
+end
+test// output:
+//line 14 column 12: function call must be parenthesized: (canJump ...)
+//line 14 column 20: expected end of line, found "["
+//line 15 column 12: function call must be parenthesized: (canJump ...)
+//line 15 column 20: expected end of line, found "["

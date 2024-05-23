@@ -1,0 +1,20 @@
+//Sort a stack using another stack
+
+func sortStack: []num stack: []num
+    tempStack := []
+    while (len stack) > 0
+        tmp := stack[0]
+        stack = stack[1:]
+        while (len tempStack) > 0 and tempStack[-1] > tmp
+            stack = stack + [tempStack[-1]]
+            tempStack = tempStack[:-1]
+        end
+        tempStack = tempStack + [tmp]
+    end
+    return tempStack
+end
+
+    stack := [1 5 2 4 3]
+    sortedStack := sortStack stack
+    assert [1 2 3 4 5] sortedStack
+

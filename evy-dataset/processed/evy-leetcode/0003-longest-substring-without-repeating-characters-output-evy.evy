@@ -1,0 +1,21 @@
+func lengthOfLongestSubstring:num s:string
+    seen:{}num
+    longestsubstring := 0
+    startIdx := 0
+    for i := range (len s)
+        elem := s[i]
+        if has seen elem
+            startIdx = max startIdx (seen[elem] + 1)
+        end
+        seen[elem] = i
+        longestsubstring = max longestsubstring (i - startIdx + 1)
+    end
+    return longestsubstring
+end
+
+func test
+    assertEqual 3 (lengthOfLongestSubstring "abcabcbb")
+    assertEqual 1 (lengthOfLongestSubstring "bbbbb")
+    assertEqual 3 (lengthOfLongestSubstring "pwwkew")
+end
+test

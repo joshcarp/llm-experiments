@@ -1,0 +1,74 @@
+
+func ListNode:{}any val:num next:{}any
+    self:{}any
+    self.val = val
+    self.next = next
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func mergeTwoLists self:{}any l1:{}any l2:{}any: {}any
+    pos:{}any
+    dummyHead:{}any
+    dummyHead = (ListNode -1 {})
+    pos = dummyHead
+    while (l1 != {}) and (l2 != {})
+        if l1.val <= l2.val
+            pos.next = l1
+            l1 = l1.next
+        else
+            pos.next = l2
+            l2 = l2.next
+        end
+        pos = pos.next
+    end
+    if l1 != {}
+        pos.next = l1
+    end
+    if l2 != {}
+        pos.next = l2
+    end
+    return dummyHead.next
+end
+
+func test
+    l1 := (ListNode 1 (ListNode 2 (ListNode 4 {})))
+    l2 := (ListNode 1 (ListNode 3 (ListNode 4 {})))
+    s := (Solution)
+    result := mergeTwoLists s l1 l2
+    assert 1 (result.val)
+    assert 1 (result.next.val)
+    assert 2 (result.next.next.val)
+    assert 3 (result.next.next.next.val)
+    assert 4 (result.next.next.next.next.val)
+end
+test
+// output:
+//line 14 column 48: expected identifier, got ":"
+//line 14 column 48: expected identifier, got ":"
+//line 14 column 48: invalid type declaration for ""
+//line 14 column 52: expected identifier, got "any"
+//line 14 column 52: expected identifier, got "any"
+//line 14 column 52: invalid type declaration for ""
+//line 15 column 8: expected identifier, got ":"
+//line 15 column 8: expected identifier, got ":"
+//line 15 column 8: invalid type declaration for ""
+//line 15 column 11: expected identifier, got "any"
+//line 15 column 11: expected identifier, got "any"
+//line 15 column 11: invalid type declaration for ""
+//line 16 column 14: expected identifier, got ":"
+//line 16 column 14: expected identifier, got ":"
+//line 16 column 14: invalid type declaration for ""
+//line 16 column 17: expected identifier, got "any"
+//line 16 column 17: expected identifier, got "any"
+//line 16 column 17: invalid type declaration for ""
+//line 17 column 15: expected identifier, got "="
+//line 17 column 15: expected identifier, got "="
+//line 17 column 15: invalid type declaration for ""
+//line 17 column 27: expected identifier, got "-"
+//line 17 column 27: expected identifier, got "-"
+//line 17 column 27: invalid type declaration for ""

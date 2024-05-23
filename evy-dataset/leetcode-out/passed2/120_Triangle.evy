@@ -1,0 +1,26 @@
+
+func minimumTotal:num triangle:[][]num
+    if triangle == []
+        return 0
+    end
+    ls := len triangle
+    dp := [0] * ls
+    dp[0] = triangle[0][0]
+    for i := range 1 ls
+        dp[i] = dp[i - 1] + triangle[i][i]
+        for j := range i-1 -1 -1
+            dp[j] = min (dp[j - 1] + triangle[i][j]) (dp[j] + triangle[i][j])
+        end
+        dp[0] = dp[0] + triangle[i][0]
+    end
+    minVal := dp[0]
+    for i := range 1 ls
+        minVal = min minVal dp[i]
+    end
+    return minVal
+end
+
+func test
+    assert 11 (minimumTotal [[2] [3 4] [6 5 7] [4 1 8 3]])
+end
+test

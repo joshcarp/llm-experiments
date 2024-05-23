@@ -1,0 +1,1 @@
+as returns whether a map has a given key or not.

@@ -1,0 +1,40 @@
+
+func floodFill:[][]num image:[][]num sr:num sc:num newColor:num
+    r_ls := len image
+    c_ls := len image[0]
+    origColor := image[sr][sc]
+    if origColor == newColor
+        return image
+    end
+    queue := [(sr sc)]
+    while (len queue) > 0
+        r := queue[0][0]
+        c := queue[0][1]
+        queue = queue[1:]
+        if image[r][c] == origColor
+            image[r][c] = newColor
+            if r - 1 >= 0
+                queue = queue + [(r - 1 c)]
+            end
+            if r + 1 < r_ls
+                queue = queue + [(r + 1 c)]
+            end
+            if c - 1 >= 0
+                queue = queue + [(r c - 1)]
+            end
+            if c + 1 < c_ls
+                queue = queue + [(r c + 1)]
+            end
+        end
+    end
+    return image
+end
+
+func test
+    image := [[1 1 1] [1 1 0] [1 0 1]]
+    sr := 1
+    sc := 1
+    newColor := 2
+    assert [[2 2 2] [2 2 0] [2 0 1]] (floodFill image sr sc newColor)
+end
+test

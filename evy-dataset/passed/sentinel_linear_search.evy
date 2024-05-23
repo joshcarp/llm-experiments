@@ -1,0 +1,39 @@
+
+// Pure implementation of sentinel linear search algorithm in Evy
+
+// :param sequence: some sequence with comparable items
+// :param target: item value to search
+// :return: index of found item or None if item is not found
+
+// Examples:
+// sentinelLinearSearch [0 5 7 10 15] 0 // 0
+// sentinelLinearSearch [0 5 7 10 15] 15 // 4
+// sentinelLinearSearch [0 5 7 10 15] 5 // 1
+// sentinelLinearSearch [0 5 7 10 15] 6 //
+func sentinelLinearSearch:num sequence:[]num target:num
+    sequence = sequence + [target]
+    index := 0
+    while sequence[index] != target
+        index = index + 1
+    end
+    sequence = sequence[:-1]
+    if index == (len sequence)
+        return -1
+    end
+    return index
+end
+
+func test
+    assert 0 (sentinelLinearSearch [0 5 7 10 15] 0)
+    assert 4 (sentinelLinearSearch [0 5 7 10 15] 15)
+    assert 1 (sentinelLinearSearch [0 5 7 10 15] 5)
+    assert -1 (sentinelLinearSearch [0 5 7 10 15] 6)
+end
+test
+
+func printResult
+    printf "%2.f of %2.f tests passed\n" (total - fails) total
+end
+
+test
+printResult

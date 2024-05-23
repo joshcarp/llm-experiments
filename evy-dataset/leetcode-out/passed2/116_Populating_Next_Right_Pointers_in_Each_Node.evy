@@ -1,0 +1,65 @@
+
+func TreeLinkNode:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func connect self:{}any root:{}any
+    if root == {}
+        return
+    end
+    nodes := [root]
+    while (len nodes) != 0
+        nextStep := []
+        last := {}
+        for i := range nodes
+            node := nodes[i]
+            if last != {}
+                last.next = node
+            end
+            if (has node "left") and node["left"].({}any) != {}
+                nextStep = nextStep + [node["left"]]
+            end
+            if (has node "right") and node["right"].({}any) != {}
+                nextStep = nextStep + [node["right"]]
+            end
+            last = node
+        end
+        nodes = nextStep
+    end
+end
+
+func test
+    root := (TreeLinkNode)
+    root.val = 1
+    root.left = (TreeLinkNode)
+    root.left.val = 2
+    root.right = (TreeLinkNode)
+    root.right.val = 3
+    root.left.left = (TreeLinkNode)
+    root.left.left.val = 4
+    root.left.right = (TreeLinkNode)
+    root.left.right.val = 5
+    root.right.left = (TreeLinkNode)
+    root.right.left.val = 6
+    root.right.right = (TreeLinkNode)
+    root.right.right.val = 7
+    sol := (Solution)
+    connect sol root
+    assert true==(sol.next.({}any) == root.left)
+    assert true==(root.left.next.({}any) == root.right)
+    assert true==(root.right.next.({}any) == root.left.left)
+    assert true==(root.left.left.next.({}any) == root.left.right)
+    assert true==(root.left.right.next.({}any) == root.right.left)
+    assert true==(root.right.left.next.({}any) == root.right.right)
+end
+test

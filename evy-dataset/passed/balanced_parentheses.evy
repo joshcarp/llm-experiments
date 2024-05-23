@@ -1,0 +1,62 @@
+
+func Stack:{}any
+    self:{}any
+    self.items = []
+    return self
+end
+
+func push self:{}any item:any
+    self.items = self.items + [item]
+end
+
+func pop self:{}any:any
+    if (len self.items) == 0
+        return nil
+    end
+    result := self.items[-1]
+    self.items = self.items[:-1]
+    return result
+end
+
+func isEmpty:bool self:{}any
+    return (len self.items) == 0
+end
+
+func balancedParentheses:bool parentheses:string
+    stack := (Stack)
+    bracketPairs := {"(":")" "[" :"]" "{" :"}" }
+    for bracket := range parentheses
+        if has bracketPairs bracket
+            push stack bracket
+        else if bracket == ")" or bracket == "]" or bracket == "}" and (isEmpty stack or bracketPairs[pop stack] != bracket)
+            return false
+        end
+    end
+    return isEmpty stack
+end
+
+func test
+    assert true==(balancedParentheses "([]{})")
+    assert true==(balancedParentheses "[()]{}{[()()]()}")
+    assert false==(balancedParentheses "[(])")
+    assert true==(balancedParentheses "1+2*3-4")
+    assert true==(balancedParentheses "")
+end
+test
+
+func printResult
+    printf "%2.f of %2.f tests passed\n" (total - fails) total
+end
+
+test
+printResult
+
+examples := ["((()))" "((())" "(()))"]
+print "Balanced parentheses demonstration:\n"
+for example := range examples
+    notStr := ""
+    if !(balancedParentheses example)
+        notStr = "not "
+    end
+    printf "%v is %sbalanced\n" example notStr
+end

@@ -1,0 +1,30 @@
+//Evaluate a postfix expression
+
+func evalPostfix:num exp:string
+    stack := []
+    for ch := range exp
+        if ch >= "0" and ch <= "9"
+            stack = stack + [str2num (sprint ch)]
+        else
+            op2 := stack[-1]
+            stack = stack[:-1]
+            op1 := stack[-1]
+            stack = stack[:-1]
+            if ch == "+"
+                stack = stack + [(op1 + op2)]
+            else if ch == "-"
+                stack = stack + [(op1 - op2)]
+            else if ch == "*"
+                stack = stack + [(op1 * op2)]
+            else if ch == "/"
+                stack = stack + [(op1 / op2)]
+            end
+        end
+    end
+    return stack[0]
+end
+
+    assert 9 (evalPostfix "231*+9-")
+    assert 6 (evalPostfix "42+3*")
+    assert 2 (evalPostfix "123*+4/")
+

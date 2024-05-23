@@ -1,0 +1,18 @@
+
+func isToeplitzMatrix:bool matrix:[][]num
+    for r := range (len matrix) - 1
+        for c := range (len matrix[0]) - 1
+            if r + 1 < (len matrix) and c + 1 < (len matrix[0])
+                if matrix[r][c] != matrix[r + 1][c + 1]
+                    return false
+                end
+            end
+        end
+    end
+    return true
+end
+
+func test
+    assert true (isToeplitzMatrix [[1 2 3 4] [5 1 2 3] [9 5 1 2]])
+    assert false (isToeplitzMatrix [[1 2 3 4] [5 1 2 3] [9 5 6 2]])
+end

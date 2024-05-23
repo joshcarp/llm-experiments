@@ -1,0 +1,28 @@
+//Find the second largest element in an array
+
+func secondLargest:num nums:[]num
+    if (len nums) < 2
+        return -1
+    end
+    max1 := nums[0]
+    max2 := -2147483648
+    for i := range 1 (len nums)
+        if nums[i] >= max1
+            max2 = max1
+            max1 = nums[i]
+        else if nums[i] > max2 and nums[i] != max1
+            max2 = nums[i]
+        end
+    end
+    if max2 == -2147483648
+        return -1
+    end
+    return max2
+end
+
+assert 3 (secondLargest [1 2 3 4])
+assert 3 (secondLargest [1 2 3 3])
+assert 2 (secondLargest [1 2 2 2])
+assert -1 (secondLargest [1])
+assert -1 (secondLargest [])
+

@@ -1,0 +1,56 @@
+"prompt","response"
+"Give me an example of a single-line comment in Evy.","// This is a single-line comment"
+"How do I write a multi-line comment in Evy?","/* 
+This is a 
+multi-line comment 
+*/"
+"Show me how to declare a variable of type number in Evy.","x: num"
+"How can I declare a variable and let Evy infer its type?","y := 1 // type inference (num)"
+"How do I declare and initialize a map variable in Evy?","person := {  
+    name: ""Alice"", 
+    age: 30
+}"
+"Give me an example of declaring and initializing an array of numbers in Evy.","numbers := [1, 2, 3]"
+"Show me an example of an arithmetic expression in Evy.","result := 5 * (3 + 3.1415) - 2 / 7.6"
+"How would I write a logical expression in Evy?","flag := true and false or not (5 > 3)"
+"How can I concatenate two strings in Evy?","message := ""Hello, "" + ""world!"""
+"Write an if-else statement in Evy that checks if a score is excellent, great, or needs practice.","score := 85
+if score >= 90 {
+    print ""Excellent!""
+} else if score >= 80 {
+    print ""Great job!""
+} else {
+    print ""Keep practicing.""
+}"
+"Give me an example of a while loop that counts from 0 to 4 in Evy.","count := 0
+while count < 5 {
+    print count
+    count = count + 1  // Or use the shorthand: count += 1
+}"
+"How do I write a for loop to iterate 10 times in Evy?","for i := range 10 {  // Loop 10 times
+    print i
+}"
+"Show me how to loop over the items in an array in Evy.","for item in [""apple"", ""banana"", ""orange""] {  // Iterate over an array
+    print item
+}"
+"How can I iterate over the key-value pairs in a map using a for loop in Evy?","for key, value in person {  // Iterate over a map
+    print key, "":"", value
+}"
+"Write a function named 'greet' in Evy that prints a greeting with a given name.","func greet(name: string) {  // No return type
+    print ""Hello, "" + name + ""!""
+}"
+"How do I create a function in Evy that multiplies two numbers and returns the result?","func multiply(a: num, b: num): num {  // With return type
+    return a * b
+}"
+"Write an Evy function to calculate the sum of numbers in an array.","func sum(numbers: []num): num {  // Function with an array parameter
+    total := 0
+    for num in numbers {
+        total += num
+    }
+    return total
+}"
+"How can I convert a number to a string in Evy?","x: num = 5
+y: string = x.(string)   // Converts x to a string"
+"Give an example of using typeof to check the type of a variable in Evy.","if typeof y == ""string"" {
+    print y
+}"

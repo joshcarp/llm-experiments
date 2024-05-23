@@ -1,0 +1,1 @@
+What function calculates the value of a number raised to the power of another number in Evy?

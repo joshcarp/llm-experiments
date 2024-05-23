@@ -1,0 +1,15 @@
+
+func wiggleSort nums:[]num
+    for i := range (len nums) - 1 0 -1
+        if (i % 2 == 0 and nums[i] > nums[i + 1]) or (i % 2 == 1 and nums[i] < nums[i + 1])
+            nums[i], nums[i + 1] = nums[i + 1], nums[i]
+        end
+    end
+end
+
+func test
+    nums := [1 5 1 1 6 4]
+    wiggleSort nums
+    assert [1 5 1 6 1 4] nums
+end
+test

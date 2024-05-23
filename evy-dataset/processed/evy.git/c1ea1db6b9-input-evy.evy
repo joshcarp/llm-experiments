@@ -1,0 +1,3 @@
+on key k:string
+    print "key:" k
+end

@@ -1,0 +1,19 @@
+
+func removeDuplicates:num nums:[]num
+    if (len nums) == 0
+        return 0
+    end
+    left := 0
+    for i := range 1 (len nums)
+        if nums[left] != nums[i]
+            left = left + 1
+            nums[left] = nums[i]
+        end
+    end
+    return left + 1
+end
+
+func test
+    assert 2 (removeDuplicates [1 1 2])
+    assert 5 (removeDuplicates [0 0 1 1 1 2 2 3 3 4])
+end

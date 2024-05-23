@@ -1,0 +1,7 @@
+func sum(numbers: []num): num {  // Function with an array parameter
+    total := 0
+    for num in numbers {
+        total += num
+    }
+    return total
+}

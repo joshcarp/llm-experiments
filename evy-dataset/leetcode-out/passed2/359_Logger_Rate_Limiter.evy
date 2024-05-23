@@ -1,0 +1,62 @@
+
+func Logger:{}any
+    self:{}any
+    self.heap := []
+    self.cache := {}
+    return self
+end
+
+func shouldPrintMessage:bool self:{}any timestamp:num message:string
+    while (len self.heap) > 0
+        if self.heap[0][0] <= timestamp
+            temp:any
+            temp = self.heap[0]
+            self.heap = self.heap[1:]
+            del self.cache temp[1]
+        else
+            break
+        end
+    end
+    if timestamp < self.cache[message]
+        return false
+    end
+    self.cache[message] = timestamp + 10
+    self.heap = self.heap + [[timestamp + 10 message]]
+    heapify self.heap
+    return true
+end
+
+func test
+    logger := (Logger)
+    assert true (shouldPrintMessage logger 1 "foo")
+    assert false (shouldPrintMessage logger 1 "bar")
+    assert true (shouldPrintMessage logger 1 "foo")
+    assert true (shouldPrintMessage logger 9 "foo")
+    assert false (shouldPrintMessage logger 10 "foo")
+end
+
+func heapify arr:[]any
+    n := (len arr)
+    for i := range (floor (n/2) - 1) -1 -1
+        heapify_down arr i n
+    end
+end
+
+func heapify_down arr:[]any i:num n:num
+    while (2 * i + 1) < n
+        j := 2 * i + 1
+        if (2 * i + 2) < n and arr[2 * i + 2][0] < arr[2 * i + 1][0]
+            j = 2 * i + 2
+        end
+        if arr[i][0] > arr[j][0]
+            tmp := arr[i]
+            arr[i] = arr[j]
+            arr[j] = tmp
+            i = j
+        else
+            break
+        end
+    end
+end
+
+test

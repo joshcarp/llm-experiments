@@ -1,0 +1,31 @@
+//Implement a graph (adjacency list or matrix)
+
+func Graph:{}any
+    self:{}any
+    self.nodes := {}
+    return self
+end
+
+func addNode self:{}any node:string
+    self.nodes[node] = []
+end
+
+func addEdge self:{}any node1:string node2:string
+    self.nodes[node1] = self.nodes[node1] + [node2]
+    self.nodes[node2] = self.nodes[node2] + [node1]
+end
+
+func printGraph self:{}any
+    for node := range self.nodes
+        print node ":" (join self.nodes[node] " ")
+    end
+end
+
+    graph := (Graph)
+    addNode graph "A"
+    addNode graph "B"
+    addNode graph "C"
+    addEdge graph "A" "B"
+    addEdge graph "A" "C"
+    printGraph graph
+

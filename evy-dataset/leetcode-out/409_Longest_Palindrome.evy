@@ -1,0 +1,39 @@
+
+func longestPalindrome:num s:string
+    ans := 0
+    charMap := {}
+    for c := range s
+        if !(has charMap c)
+            charMap[c] = 0
+        end
+        charMap[c] = charMap[c] + 1
+    end
+    for c := range charMap
+        if charMap[c] % 2 == 0
+            ans = ans + charMap[c]
+            del charMap c
+        else
+            ans = ans + (charMap[c] / 2) * 2
+        end
+    end
+    if (len charMap) != 0
+        ans = ans + 1
+    end
+    return ans
+end
+
+func test
+    assert 7 (longestPalindrome "abccccdd")
+    assert 3 (longestPalindrome "a")
+    assert 5 (longestPalindrome "ccc")
+    assert 7 (longestPalindrome "bananas")
+end
+test
+// output:
+//line 9 column 33: mismatched type for +: any, num
+//line 12 column 23: mismatched type for %: any, num
+//line 12 column 27: mismatched type for ==: any, num
+//line 13 column 23: mismatched type for +: num, any
+//line 16 column 37: mismatched type for /: any, num
+//line 16 column 42: mismatched type for *: any, num
+//line 16 column 23: mismatched type for +: num, any

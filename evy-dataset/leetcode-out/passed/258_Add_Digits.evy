@@ -1,0 +1,18 @@
+
+func addDigits:num n:num
+    if n < 10
+        return n
+    end
+    return n - (floor (n - 1)/9) * 9
+end
+
+func test
+    assert 2 (addDigits 38)
+    assert 0 (addDigits 0)
+    assert 1 (addDigits 10)
+    assert 1 (addDigits 1)
+    assert 9 (addDigits 9)
+    assert 1 (addDigits 100)
+    assert 2 (addDigits 101)
+end
+test

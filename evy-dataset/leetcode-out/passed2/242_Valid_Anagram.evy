@@ -1,0 +1,22 @@
+
+func isAnagram:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    counter := [0] * 26
+    for i := range s
+        counter[s[i] - 97] = counter[s[i] - 97] + 1
+        counter[t[i] - 97] = counter[t[i] - 97] - 1
+    end
+    for i := range counter
+        if counter[i] != 0
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isAnagram "anagram" "nagaram")
+    assert false==(isAnagram "rat" "car")
+end

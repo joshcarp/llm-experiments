@@ -1,0 +1,57 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.data := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func buildTree:{}any
+    root := (TreeNode)
+    root.data = 1
+    root.left = (TreeNode)
+    root.left.data = 2
+    root.right = (TreeNode)
+    root.right.data = 5
+    root.left.left = (TreeNode)
+    root.left.left.data = 3
+    root.left.right = (TreeNode)
+    root.left.right.data = 4
+    root.right.right = (TreeNode)
+    root.right.right.data = 6
+    return root
+end
+
+func flatten root:{}any
+    if root == {}
+        return
+    end
+    flatten root.left
+    rightSubtree := root.right
+    root.right = root.left
+    root.left = {}
+    current := root
+    while current.right != {}
+        current = current.right
+    end
+    current.right = rightSubtree
+    flatten rightSubtree
+end
+
+func displayLinkedList root:{}any
+    current := root
+    while current != {}
+        if current.right == {}
+            print current.data
+            break
+        end
+        print current.data " "
+        current = current.right
+    end
+end
+
+print "Flattened Linked List:"
+root := buildTree()
+flatten root
+displayLinkedList root

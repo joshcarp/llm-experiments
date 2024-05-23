@@ -1,0 +1,53 @@
+
+func ListNode:{}any
+    self:{}any
+    self.val = 0
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func insertionSortList self:{}any head:{}any
+    if head == {}
+        return
+    end
+    helper := (ListNode)
+    helper.val = -1000
+    pre:{}any
+    curr:{}any
+    pre = helper
+    curr = head
+    while curr != {}
+        nextStep:{}any
+        nextStep = curr.next.({}any)
+        while (has pre.next) and pre.next.val.({}any) < curr.val.({}any)
+            pre = pre.next.({}any)
+        end
+        curr.next = pre.next.({}any)
+        pre.next = curr
+        pre = helper
+        curr = nextStep
+    end
+end
+
+func test
+    head := (ListNode)
+    head.val = 4
+    head.next = (ListNode)
+    head.next.val = 2
+    head.next.next = (ListNode)
+    head.next.next.val = 1
+    head.next.next.next = (ListNode)
+    head.next.next.next.val = 3
+    sol := (Solution)
+    insertionSortList sol head
+    print head.val
+    print head.next.val
+    print head.next.next.val
+    print head.next.next.next.val
+end
+test

@@ -1,0 +1,75 @@
+
+func DisjointSet:{}any
+    self:{}any
+    self.setCounts := []num
+    self.maxSet := 0
+    self.ranks := []num
+    self.parents := []num
+    self.init := func setCounts:[]num
+        self.setCounts = setCounts
+        self.maxSet = max setCounts
+        numSets := len setCounts
+        self.ranks = [1] * numSets
+        self.parents = list(range numSets)
+    end
+    self.merge := func src:num dst:num:bool
+        srcParent := self.getParent src
+        dstParent := self.getParent dst
+        if srcParent == dstParent
+            return false
+        end
+        if self.ranks[dstParent] >= self.ranks[srcParent]
+            self.setCounts[dstParent] = self.setCounts[dstParent] + self.setCounts[srcParent]
+            self.setCounts[srcParent] = 0
+            self.parents[srcParent] = dstParent
+            if self.ranks[dstParent] == self.ranks[srcParent]
+                self.ranks[dstParent] = self.ranks[dstParent] + 1
+            end
+            joinedSetSize := self.setCounts[dstParent]
+        else
+            self.setCounts[srcParent] = self.setCounts[srcParent] + self.setCounts[dstParent]
+            self.setCounts[dstParent] = 0
+            self.parents[dstParent] = srcParent
+            joinedSetSize := self.setCounts[srcParent]
+        end
+        self.maxSet = max self.maxSet joinedSetSize
+        return true
+    end
+    self.getParent := func disjSet:num:num
+        if self.parents[disjSet] == disjSet
+            return disjSet
+        end
+        self.parents[disjSet] = self.getParent self.parents[disjSet]
+        return self.parents[disjSet]
+    end
+    return self
+end
+
+func test
+    A := (DisjointSet)
+    A.init [1 1 1]
+    assert true==(A.merge 1 2)
+    assert true==(A.merge 0 2)
+    assert false==(A.merge 0 1)
+    assert 0==(A.getParent 0)
+    assert 2==(A.getParent 1)
+end
+test
+
+func max:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        if result < n
+            result = n
+        end
+    end
+    return result
+end
+
+func list: []num range:num start:num step:num
+    result := []num
+    for i := range start range step
+        result = result + [i]
+    end
+    return result
+end

@@ -1,0 +1,3 @@
+str := "123"
+number := str2num str
+print number // Prints: 123

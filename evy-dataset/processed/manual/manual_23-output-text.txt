@@ -1,0 +1,1 @@
+sprint returns a string representation of arguments separated by a single space, while sprintf returns a formatted string representation according to a format string.

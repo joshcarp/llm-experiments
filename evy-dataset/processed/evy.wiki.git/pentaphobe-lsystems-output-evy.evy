@@ -1,0 +1,147 @@
+pi := 3.14159
+
+// --- starting position and size of the tree
+// trunk length
+startSize := 30
+// pointing upwards!
+startAngle := radians 90
+
+// --- specifies the tree colours
+rootColor := {hue:25 sat:64 light:20}
+tipColor := {hue:95 sat:89 light:36}
+
+// --- thickness of the branches
+rootWidth := 3
+tipWidth := 0.25
+
+// --- controls the shape of the tree
+// how much each branch turns from its parent
+angleChange := radians 45
+// how much smaller each branch is than its parent
+sizeChange := 0.63
+
+// --- controls the swaying of the tree
+// the current angle of sway
+angleOffset := 0
+// how fast we sway
+swaySpeed := 0.8
+// how far to sway
+swayAmount := 0.2
+// how much large branches sway
+largeSway := 0.05
+// how much small branches sway
+smallSway := 2
+
+// --- limits how many branches to draw
+// ⚠️ be careful changing this!
+maxIter := 5 // maximum "depth" of branches
+// to draw
+minSize := 0.5 // minimum length of a branch
+
+paused := false
+
+on animate t:num
+    if !paused
+        angleOffset = (sin (t / 1000 * swaySpeed)) * swayAmount
+    end
+
+    redraw
+end
+
+func redraw
+    clear "#e3f8f7"
+    width 0.5
+    color "red"
+    fill "none"
+
+    move 50 10
+    draw 50 10 startAngle startSize 0
+end
+
+// draws a branch and then draws its two children
+func draw x:num y:num angle:num size:num iter:num
+    if size < minSize or iter > maxIter
+        return
+    end
+
+    trunkWidth := remap size [minSize startSize] [tipWidth rootWidth]
+    width trunkWidth
+
+    sway := remap size [minSize startSize] [smallSway largeSway]
+
+    amount := remap iter [0 maxIter] [0 1]
+    color (colorMix rootColor tipColor amount)
+
+    newX := x + (cos angle) * size
+    newY := y + (sin angle) * size
+
+    // draw line for this branch
+    line newX newY
+
+    newAngle := angle + (angleOffset * sway)
+    newSize := size * sizeChange
+
+    // draw the left child branch
+    draw newX newY newAngle-angleChange newSize iter+1
+    // draw the right...
+    draw newX newY newAngle+angleChange newSize iter+1
+    // move back to the start
+    move x y
+end
+
+// converts from degrees to radians
+func radians:num degrees:num
+    return (degrees * pi) / 180
+end
+
+// interpolate from one number to another
+// amount is how far between a and b we get
+//
+// a ----------------------------- b
+// 0            0.5                1
+func interp:num a:num b:num amount:num
+    delta := b - a
+    return a + (delta * amount)
+end
+
+// colorMix is like interp but for colours
+// it blends between the two provided colours based on amount
+// and returns a string you can use with color()
+func colorMix:string a:{}num b:{}num amount:num
+    h := interp a.hue b.hue amount
+    s := interp a.sat b.sat amount
+    l := interp a.light b.light amount
+    return sprintf "hsl(%.fdeg %.f%% %.f%%)" h s l
+end
+
+// convert a number from one range to another
+// eg.
+//
+//   remap 5 [0 10] [50 100]
+//
+// would turn 5 into 75
+func remap:num in:num inRange:[]num outRange:[]num
+    result := in - inRange[0]
+    result = result / (inRange[1] - inRange[0])
+    result = result * (outRange[1] - outRange[0])
+    result = result + outRange[0]
+    return max outRange[0] (min outRange[1] result)
+end
+
+on key k:string
+    if k == " "
+        paused = !paused
+    end
+end
+
+on input id:string val:string
+    if id == "sliderx"
+        degreesValue := remap (str2num val) [0 100] [5 90]
+        angleChange = radians degreesValue
+    else
+        // sizeChange = remap (str2num val) [0 100] [0.458 0.9]
+
+        smallSway = remap (str2num val) [0 100] [0.5 5]
+    end
+end
+

@@ -1,0 +1,78 @@
+
+func Queue:{}any
+    self:{}any
+    self.stack1 := []
+    self.stack2 := []
+    return self
+end
+
+func push self:{}any x:num
+    self.stack1 = self.stack1 + [x]
+end
+
+func pop self:{}any
+    if (len self.stack2) == 0
+        while (len self.stack1) > 0
+            curr := self.stack1[-1]
+            self.stack1 = self.stack1[:-1]
+            self.stack2 = self.stack2 + [curr]
+        end
+    end
+    self.stack2 = self.stack2[:-1]
+end
+
+func peek self:{}any:num
+    if (len self.stack2) == 0
+        while (len self.stack1) > 0
+            curr := self.stack1[-1]
+            self.stack1 = self.stack1[:-1]
+            self.stack2 = self.stack2 + [curr]
+        end
+    end
+    return self.stack2[-1]
+end
+
+func empty self:{}any:bool
+    return (len self.stack1) + (len self.stack2) == 0
+end
+
+func test
+    q := (Queue)
+    push q 1
+    push q 2
+    push q 3
+    assert 1 (peek q)
+    pop q
+    assert 2 (peek q)
+    pop q
+    assert 3 (peek q)
+    pop q
+    assert true (empty q)
+end
+test
+// output:
+//line 24 column 21: expected identifier, got ":"
+//line 24 column 21: expected identifier, got ":"
+//line 24 column 21: invalid type declaration for ""
+//line 25 column 5: expected identifier, got "if"
+//line 25 column 5: expected identifier, got "if"
+//line 25 column 5: invalid type declaration for ""
+//line 25 column 13: invalid type declaration for "self"
+//line 25 column 24: expected identifier, got ")"
+//line 25 column 24: expected identifier, got ")"
+//line 25 column 24: invalid type declaration for ""
+//line 35 column 22: expected identifier, got ":"
+//line 35 column 22: expected identifier, got ":"
+//line 35 column 22: invalid type declaration for ""
+//line 36 column 5: expected identifier, got "return"
+//line 36 column 5: expected identifier, got "return"
+//line 36 column 5: invalid type declaration for ""
+//line 36 column 17: invalid type declaration for "self"
+//line 36 column 28: expected identifier, got ")"
+//line 36 column 28: expected identifier, got ")"
+//line 36 column 28: invalid type declaration for ""
+//line 36 column 33: invalid type declaration for "len"
+//line 36 column 42: invalid type declaration for "stack2"
+//line 36 column 53: expected identifier, got ""
+//line 36 column 53: expected identifier, got ""
+//line 36 column 53: invalid type declaration for "0"

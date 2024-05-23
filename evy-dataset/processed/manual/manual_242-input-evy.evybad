@@ -1,0 +1,48 @@
+func maximalRectangle:num matrix:[][]string
+    if matrix == [] or (len matrix) == 0
+        return 0
+    end
+    lsRow := len matrix
+    lsCol := len matrix[0]
+    left := [0] * lsCol
+    right := [lsCol] * lsCol
+    height := [0] * lsCol
+    maxA := 0
+    for i := range lsRow
+        currLeft := 0
+        currRight := lsCol
+        for j := range lsCol
+            if matrix[i][j] == "1"
+                height[j] = height[j] + 1
+            else
+                height[j] = 0
+            end
+        end
+        for j := range lsCol
+            if matrix[i][j] == "1"
+                left[j] = max left[j] currLeft
+            else
+                left[j] = 0
+                currLeft = j + 1
+            end
+        end
+        for j := range (lsCol - 1) -1 -1
+            if matrix[i][j] == "1"
+                right[j] = min right[j] currRight
+            else
+                right[j] = lsCol
+                currRight = j
+            end
+        end
+        for j := range lsCol
+            maxA = max maxA ((right[j] - left[j]) * height[j])
+        end
+    end
+    return maxA
+end
+
+func test
+    assert 6 (maximalRectangle [["1" "0" "1" "0" "0"] ["1" "0" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "0" "0" "1" "0"]])
+    assert 0 (maximalRectangle [["0" "0"] ["0" "0"]])
+    assert 1 (maximalRectangle [["1"]])
+    assert 4 (maximalRectangle [["1" "1" "1" "1"] ["1" "1" "1" "1"] ["1" "1" "1" "1"]])

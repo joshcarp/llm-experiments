@@ -1,0 +1,61 @@
+
+func numIslands:num grid:[][]string
+    if grid == [] or (len grid) == 0
+        return 0
+    end
+    islands := 0
+    for i := range (len grid)
+        for j := range (len grid[i])
+            if grid[i][j] == "1"
+                explore grid i j
+                islands = islands + 1
+            end
+        end
+    end
+    return islands
+end
+
+func explore grid:[][]string i:num j:num
+    grid[i][j] = "X"
+    if i - 1 >= 0 and grid[i - 1][j] == "1"
+        explore grid i - 1 j
+    end
+    if j - 1 >= 0 and grid[i][j - 1] == "1"
+        explore grid i j - 1
+    end
+    if i + 1 < (len grid) and grid[i + 1][j] == "1"
+        explore grid i + 1 j
+    end
+    if j + 1 < (len grid[i]) and grid[i][j + 1] == "1"
+        explore grid i j + 1
+    end
+end
+
+func test
+    assert 1 (numIslands [["1" "1" "1" "1" "0"] ["1" "1" "0" "1" "0"] ["1" "1" "0" "0" "0"] ["0" "0" "0" "0" "0"]])
+    assert 3 (numIslands [["1" "1" "0" "0" "0"] ["1" "1" "0" "0" "0"] ["0" "0" "1" "0" "0"] ["0" "0" "0" "1" "1"]])
+end
+test
+// output:
+//line 2 column 21: invalid declaration of "grid", already used as function name
+//line 3 column 13: unexpected whitespace before "=="
+//line 3 column 13: expected end of line, found "=="
+//line 3 column 8: expected condition of type bool, found none
+//line 9 column 27: unexpected whitespace before "=="
+//line 9 column 27: expected end of line, found "=="
+//line 9 column 16: expected condition of type bool, found none
+//line 18 column 14: invalid declaration of "grid", already used as function name
+//line 19 column 16: unexpected "="
+//line 19 column 16: expected end of line, found "="
+//line 21 column 24: unexpected whitespace after "-"
+//line 21 column 26: "explore" takes 3 arguments, found 0
+//line 21 column 26: expected end of line, found 1
+//line 24 column 26: unexpected whitespace after "-"
+//line 24 column 28: "explore" takes 3 arguments, found 0
+//line 24 column 28: expected end of line, found 1
+//line 27 column 24: unexpected whitespace before "+"
+//line 27 column 24: "explore" takes 3 arguments, found 0
+//line 27 column 24: expected end of line, found "+"
+//line 30 column 26: unexpected whitespace before "+"
+//line 30 column 26: "explore" takes 3 arguments, found 0
+//line 30 column 26: expected end of line, found "+"

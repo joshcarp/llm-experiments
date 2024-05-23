@@ -1,0 +1,110 @@
+
+func ListNode:{}any
+    self:{}any
+    self.val = 0
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func partition self:{}any head:{}any x:num
+    if head == {}
+        return {}
+    end
+    less := {}
+    lesshead := {}
+    last := head
+    pos := head
+    while pos != {}
+        if pos.val < x
+            if lesshead == {}
+                lesshead = pos
+            else
+                less.next = pos
+            end
+            less = pos
+            if head == pos
+                last = head
+                head = pos.next
+            else
+                last.next = pos.next
+            end
+        else
+            last = pos
+        end
+        pos = pos.next
+    end
+    if lesshead != {}
+        less.next = head
+    else
+        lesshead = head
+    end
+    return lesshead
+end
+
+func test
+    head := (ListNode)
+    head.val = 1
+    head.next = (ListNode)
+    head.next.val = 4
+    head.next.next = (ListNode)
+    head.next.next.val = 3
+    head.next.next.next = (ListNode)
+    head.next.next.next.val = 2
+    head.next.next.next.next = (ListNode)
+    head.next.next.next.next.val = 5
+    head.next.next.next.next.next = (ListNode)
+    head.next.next.next.next.next.val = 2
+    sol := (Solution)
+    newHead := partition sol head 3
+    assert 1 (newHead.val)
+    assert 2 (newHead.next.val)
+    assert 2 (newHead.next.next.val)
+    assert 1 (newHead.next.next.next.val)
+    assert 4 (newHead.next.next.next.next.val)
+    assert 3 (newHead.next.next.next.next.next.val)
+    assert 5 (newHead.next.next.next.next.next.next.val)
+end
+test
+// output:
+//line 16 column 16: expected no return value, found {}
+//line 23 column 20: mismatched type for <: any, num
+//line 32 column 17: "head" accepts values of type {}any, found any
+//line 39 column 9: "pos" accepts values of type {}any, found any
+//line 46 column 12: expected no return value, found {}any
+//line 14 column 16: "self" declared but not used
+//line 53 column 14: field access with "." expects map type, found any
+//line 54 column 14: field access with "." expects map type, found any
+//line 55 column 14: field access with "." expects map type, found any
+//line 56 column 14: field access with "." expects map type, found any
+//line 57 column 14: field access with "." expects map type, found any
+//line 58 column 14: field access with "." expects map type, found any
+//line 59 column 14: field access with "." expects map type, found any
+//line 60 column 14: field access with "." expects map type, found any
+//line 61 column 14: field access with "." expects map type, found any
+//line 63 column 36: invalid declaration, function "partition" has no return value
+//line 64 column 15: unknown variable name "newHead"
+//line 64 column 22: expected ")", got "."
+//line 64 column 22: expected end of line, found "."
+//line 65 column 15: unknown variable name "newHead"
+//line 65 column 22: expected ")", got "."
+//line 65 column 22: expected end of line, found "."
+//line 66 column 15: unknown variable name "newHead"
+//line 66 column 22: expected ")", got "."
+//line 66 column 22: expected end of line, found "."
+//line 67 column 15: unknown variable name "newHead"
+//line 67 column 22: expected ")", got "."
+//line 67 column 22: expected end of line, found "."
+//line 68 column 15: unknown variable name "newHead"
+//line 68 column 22: expected ")", got "."
+//line 68 column 22: expected end of line, found "."
+//line 69 column 15: unknown variable name "newHead"
+//line 69 column 22: expected ")", got "."
+//line 69 column 22: expected end of line, found "."
+//line 70 column 15: unknown variable name "newHead"
+//line 70 column 22: expected ")", got "."
+//line 70 column 22: expected end of line, found "."

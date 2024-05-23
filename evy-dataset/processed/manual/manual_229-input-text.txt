@@ -1,0 +1,1 @@
+How do I remove an element from an array at a specific index?

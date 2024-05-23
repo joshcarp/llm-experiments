@@ -1,0 +1,49 @@
+//Check if a linked list is a palindrome
+
+// Given a singly linked list, determine if it is a palindrome.
+//
+// Example 1:
+// Input: 1->2
+// Output: false
+// Example 2:
+// Input: 1->2->2->1
+// Output: true
+func isPalindrome:bool head:any
+    slow := head
+    fast := head
+    // Find the middle of the linked list
+    while fast != nil and fast.next != nil
+        slow = slow.next
+        fast = fast.next.next
+    end
+    // Reverse the second half of the linked list
+    secondHalf := reverse slow
+    // Compare the first half and the reversed second half
+    firstHalf := head
+    while secondHalf != nil
+        if firstHalf.val != secondHalf.val
+            return false
+        end
+        firstHalf = firstHalf.next
+        secondHalf = secondHalf.next
+    end
+    return true
+end
+
+func reverse:any head:any
+    prev := nil
+    curr := head
+    while curr != nil
+        next := curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    end
+    return prev
+end
+
+    head := {val:1 next:{val:2 next:nil}}
+    assert false (isPalindrome head)
+    head = {val:1 next:{val:2 next:{val:2 next:{val:1 next:nil}}}}
+    assert true (isPalindrome head)
+

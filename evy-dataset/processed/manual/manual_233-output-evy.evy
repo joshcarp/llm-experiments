@@ -1,0 +1,12 @@
+func product_array:num arr:[]num
+    product := 1
+    for n := range arr
+        product = product * n
+    end
+    return product
+end
+
+numbers := [1 2 3 4 5]
+product := product_array numbers
+print product // Prints: 120
+

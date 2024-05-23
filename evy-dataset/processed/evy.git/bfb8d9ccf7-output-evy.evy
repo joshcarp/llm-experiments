@@ -1,0 +1,5 @@
+arr:[]{}any
+arr = [{a:1} {b:[1 2 {}]} {}]
+print (typeof arr)
+print (typeof arr[0])
+print (typeof arr[0].a)

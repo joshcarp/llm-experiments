@@ -1,0 +1,78 @@
+
+func Node:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func binaryTreePaths:string self:{}any root:{}any
+    if root == {}
+        return []
+    end
+    paths := []
+    self.get_path paths [] root
+    res := []
+    for p := range paths
+        res = res + [join p "->"]
+    end
+    return res
+end
+
+func get_path self:{}any result:string path:[]string node:{}any
+    if node.left == {} and node.right == {}
+        result = result + [path + [sprint node.val]]
+        return
+    end
+    path = path + [sprint node.val]
+    if node.left != {}
+        self.get_path result path node.left
+    end
+    if node.right != {}
+        self.get_path result path node.right
+    end
+end
+
+func test
+    root := (Node)
+    root.val = 1
+    root.left = (Node)
+    root.left.val = 2
+    root.right = (Node)
+    root.right.val = 3
+    root.left.left = (Node)
+    root.left.left.val = 5
+    sol := (Solution)
+    assert ["1->2->5" "1->3"] (sol.binaryTreePaths root)
+end
+test
+// output:
+//line 17 column 16: expected return value of type string, found []
+//line 20 column 19: expected "=", got identifier
+//line 20 column 28: expected end of line, found root
+//line 23 column 22: function call must be parenthesized: (join ...)
+//line 23 column 9: at least one statement is required here
+//line 22 column 9: "p" declared but not used
+//line 25 column 12: expected return value of type string, found []any
+//line 29 column 18: mismatched type for ==: any, {}
+//line 29 column 39: mismatched type for ==: any, {}
+//line 30 column 33: unexpected whitespace before "+"
+//line 33 column 20: function call must be parenthesized: (sprint ...)
+//line 34 column 18: mismatched type for !=: any, {}
+//line 35 column 23: expected "=", got identifier
+//line 35 column 35: expected end of line, found node
+//line 37 column 19: mismatched type for !=: any, {}
+//line 38 column 23: expected "=", got identifier
+//line 38 column 35: expected end of line, found node
+//line 46 column 14: field access with "." expects map type, found any
+//line 48 column 15: field access with "." expects map type, found any
+//line 49 column 14: field access with "." expects map type, found any
+//line 50 column 14: field access with "." expects map type, found any
+//line 52 column 52: expected ")", got identifier
+//line 52 column 52: expected end of line, found root

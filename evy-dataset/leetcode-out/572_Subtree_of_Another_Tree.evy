@@ -1,0 +1,97 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func isSubtree self:{}any s:{}any t:{}any:bool
+    sRes := self.preorder s true
+    tRes := self.preorder t true
+    return (contains sRes tRes)
+end
+
+func preorder self:{}any root:{}any isLeft:bool:string
+    if root == {}
+        if isLeft
+            return "lnull"
+        else
+            return "rnull"
+        end
+    end
+    return "#" + (sprint root.val) + " " + (self.preorder root.left true) + " " + (self.preorder root.right false)
+end
+
+func contains:bool haystack:string needle:string
+    for i := range ((len haystack) - (len needle) + 1)
+        if haystack[i:i + (len needle)] == needle
+            return true
+        end
+    end
+    return false
+end
+
+func test
+    s := (TreeNode)
+    s.val = 3
+    s.left = (TreeNode)
+    s.left.val = 4
+    s.left.left = (TreeNode)
+    s.left.left.val = 1
+    s.left.right = (TreeNode)
+    s.left.right.val = 2
+    s.right = (TreeNode)
+    s.right.val = 5
+    t := (TreeNode)
+    t.val = 4
+    t.left = (TreeNode)
+    t.left.val = 1
+    t.right = (TreeNode)
+    t.right.val = 2
+    sol := (Solution)
+    assert true==(isSubtree sol s t)
+end
+test
+// output:
+//line 15 column 42: expected identifier, got ":"
+//line 15 column 42: expected identifier, got ":"
+//line 15 column 42: invalid type declaration for ""
+//line 16 column 5: invalid type declaration for "sRes"
+//line 16 column 17: expected identifier, got "."
+//line 16 column 17: expected identifier, got "."
+//line 16 column 17: invalid type declaration for ""
+//line 16 column 29: expected identifier, got "true"
+//line 16 column 29: expected identifier, got "true"
+//line 16 column 29: invalid type declaration for ""
+//line 17 column 10: expected identifier, got ":="
+//line 17 column 10: expected identifier, got ":="
+//line 17 column 10: invalid type declaration for ""
+//line 17 column 18: invalid type declaration for "preorder"
+//line 21 column 48: expected identifier, got ":"
+//line 21 column 48: expected identifier, got ":"
+//line 21 column 48: invalid type declaration for ""
+//line 22 column 5: expected identifier, got "if"
+//line 22 column 5: expected identifier, got "if"
+//line 22 column 5: invalid type declaration for ""
+//line 22 column 16: expected identifier, got "{"
+//line 22 column 16: expected identifier, got "{"
+//line 22 column 16: invalid type declaration for ""
+//line 23 column 9: expected identifier, got "if"
+//line 23 column 9: expected identifier, got "if"
+//line 23 column 9: invalid type declaration for ""
+//line 24 column 13: expected identifier, got "return"
+//line 24 column 13: expected identifier, got "return"
+//line 24 column 13: invalid type declaration for ""
+//line 25 column 9: expected identifier, got "else"
+//line 25 column 9: expected identifier, got "else"
+//line 25 column 9: invalid type declaration for ""
+//line 26 column 20: expected identifier, got ""
+//line 26 column 20: expected identifier, got ""
+//line 26 column 20: invalid type declaration for "rnull"

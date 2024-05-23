@@ -1,0 +1,40 @@
+
+func isPalindrome:bool s:string begin:num end:num
+    while begin < end
+        if s[begin] != s[end]
+            return false
+        end
+        begin = begin + 1
+        end = end - 1
+    end
+    return true
+end
+
+func recurPartition result:[][]string curr:[]string s:string start:num
+    if start == (len s)
+        result = result + [curr[:]]
+        return
+    end
+    for i := range start (len s)
+        if isPalindrome s start i
+            curr = curr + [s[start:i + 1]]
+            recurPartition result curr s (i + 1)
+            curr = curr[:-1]
+        end
+    end
+end
+
+func partition:[][]string s:string
+    result:[][]string
+    curr:[]string
+    recurPartition result curr s 0
+    return result
+end
+
+func test
+    assert [["a" "b" "b" "a"] ["a" "bb" "a"]] (partition "abba")
+    assert [["a" "a" "a" "a" "a" "a"] ["a" "a" "a" "a" "a" "a"] ["a" "a" "aa" "a" "a"] ["a" "a" "aa" "a" "a"] ["a" "aa" "a" "a" "a"] ["a" "aa" "a" "a" "a"] ["aa" "a" "a" "a" "a"] ["aa" "a" "a" "a" "a"] ["aa" "aa" "a" "a"] ["aa" "aa" "a" "a"] ["aaa" "a" "a" "a"] ["aaa" "a" "a" "a"] ["aaaa" "a" "a"] ["aaaa" "a" "a"] ["aaaaa" "a"] ["aaaaa" "a"]] (partition "aaaaaa")
+    assert [["a" "b" "b" "a"] ["a" "bb" "a"]] (partition "abba")
+    assert [["a" "a" "a" "a" "a" "a"] ["a" "a" "a" "a" "a" "a"] ["a" "a" "aa" "a" "a"] ["a" "a" "aa" "a" "a"] ["a" "aa" "a" "a" "a"] ["a" "aa" "a" "a" "a"] ["aa" "a" "a" "a" "a"] ["aa" "a" "a" "a" "a"] ["aa" "aa" "a" "a"] ["aa" "aa" "a" "a"] ["aaa" "a" "a" "a"] ["aaa" "a" "a" "a"] ["aaaa" "a" "a"] ["aaaa" "a" "a"] ["aaaaa" "a"] ["aaaaa" "a"]] (partition "aaaaaa")
+end
+test

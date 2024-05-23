@@ -1,0 +1,1 @@
+How can I declare a variable and let Evy infer its type?

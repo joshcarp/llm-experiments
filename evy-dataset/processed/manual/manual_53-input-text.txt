@@ -1,0 +1,1 @@
+How can I clear the canvas in Evy?

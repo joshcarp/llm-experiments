@@ -1,0 +1,22 @@
+
+func sortArrayByParityII:[]num A:[]num
+    odd := 1
+    for i := range 0 (len A) 2
+        if A[i] % 2 == 1
+            while A[odd] % 2 == 1
+                odd = odd + 2
+            end
+            A[i] = A[odd]
+            A[odd] = A[i]
+        end
+    end
+    return A
+end
+
+func test
+    assert [4 1 6 3 2 5] (sortArrayByParityII [4 2 5 1 6 3])
+end
+test// output:
+//❌ 1 failed assertion
+//✔️ 0 passed assertions
+//line 17 column 26: failed assertion: want != got: [4 1 6 3 2 5] != [4 2 2 1 6 3]

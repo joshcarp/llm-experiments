@@ -1,0 +1,45 @@
+//Implement a queue using an array
+
+func Queue:{}any
+    self:{}any
+    self.items := []
+    self.front := 0
+    self.rear := 0
+    return self
+end
+
+func enqueue self:{}any item:any
+    self.items = self.items + [item]
+    self.rear = self.rear + 1
+end
+
+func dequeue:any self:{}any
+    if self.front == self.rear
+        return -1
+    end
+    item := self.items[self.front]
+    self.front = self.front + 1
+    return item
+end
+
+func peek:any self:{}any
+    if self.front == self.rear
+        return -1
+    end
+    return self.items[self.front]
+end
+
+func isEmpty:bool self:{}any
+    return self.front == self.rear
+end
+
+    q := (Queue)
+    enqueue q 1
+    enqueue q 2
+    enqueue q 3
+    assert 1 (dequeue q)
+    assert 2 (dequeue q)
+    assert 3 (dequeue q)
+    assert -1 (dequeue q)
+    assert true (isEmpty q)
+

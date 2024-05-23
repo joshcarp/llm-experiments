@@ -1,0 +1,15 @@
+//Implement linear search
+
+func linear_search:num arr:[]num target:num
+    for i := range arr
+        if arr[i] == target
+            return i
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (linear_search [1 2 3 4 5] 3)
+    assert -1 (linear_search [1 2 3 4 5] 6)
+end

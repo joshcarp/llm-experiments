@@ -1,0 +1,38 @@
+
+func mostCommonWord:string paragraph:string banned:[]string
+    bannedSet := {}
+    for word := range banned
+        bannedSet[word] = true
+    end
+    words := split paragraph " "
+    for i := range (len words)
+        words[i] = lower words[i]
+    end
+    counts := {}
+    for word := range words
+        if has counts word
+            counts[word] = counts[word] + 1
+        else
+            counts[word] = 1
+        end
+    end
+    maxCount := 0
+    maxWord := ""
+    for word := range counts
+        if counts[word] > maxCount and !(has bannedSet word)
+            maxCount = counts[word]
+            maxWord = word
+        end
+    end
+    return maxWord
+end
+
+func test
+    assert "ball" (mostCommonWord "Bob hit a ball, the hit BALL flew far after it was hit." ["hit"])
+    assert "a" (mostCommonWord "a, a, a, a, b, b, b, c, c, c." ["a"])
+end
+test
+// output:
+//line 14 column 41: mismatched type for +: any, num
+//line 22 column 25: mismatched type for >: any, num
+//line 23 column 13: "maxCount" accepts values of type num, found any

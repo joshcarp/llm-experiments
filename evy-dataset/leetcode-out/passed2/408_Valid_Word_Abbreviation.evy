@@ -1,0 +1,43 @@
+
+func validWordAbbreviation:bool word:string abbr:string
+    pos := 0
+    curr := 0
+    for i := range (len abbr)
+        if abbr[i] >= "0" and abbr[i] <= "9"
+            if curr == 0 and abbr[i] == "0"
+                return false
+            end
+            curr = curr * 10 + (str2num abbr[i])
+        else
+            pos = pos + curr
+            curr = 0
+            if pos >= (len word)
+                return false
+            end
+            if word[pos] != abbr[i]
+                return false
+            end
+            pos = pos + 1
+        end
+    end
+    pos = pos + curr
+    return pos == (len word)
+end
+
+func test
+    assert true (validWordAbbreviation "internationalization" "i12iz4n")
+    assert false (validWordAbbreviation "apple" "a2e")
+    assert true (validWordAbbreviation "a" "2")
+    assert false (validWordAbbreviation "a" "01")
+    assert true (validWordAbbreviation "internationalization" "i5a11o")
+    assert true (validWordAbbreviation "internationalization" "i5a11o1")
+    assert false (validWordAbbreviation "internationalization" "i5a11o2")
+    assert true (validWordAbbreviation "internationalization" "i12iz4n")
+    assert false (validWordAbbreviation "apple" "a2e")
+    assert true (validWordAbbreviation "a" "2")
+    assert false (validWordAbbreviation "a" "01")
+    assert true (validWordAbbreviation "internationalization" "i5a11o")
+    assert true (validWordAbbreviation "internationalization" "i5a11o1")
+    assert false (validWordAbbreviation "internationalization" "i5a11o2")
+end
+test

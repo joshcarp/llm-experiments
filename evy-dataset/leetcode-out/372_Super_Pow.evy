@@ -1,0 +1,114 @@
+
+func Solution:{}any
+    self:{}any
+    self.base := 1337
+    return self
+end
+
+func superPow:num self:{}any a:num b:[]num
+    if b == []
+        return 1
+    end
+    lastDigit := b[-1]
+    b = b[:-1]
+    return (self.powmod (self.superPow a b) 10) * (self.powmod a lastDigit) % self.base
+end
+
+func powmod:num self:{}any a:num k:num
+    a = a % self.base
+    result := 1
+    for range k
+        result = (result * a) % self.base
+    end
+    return result
+end
+
+func test
+    sol := (Solution)
+    assert 1 (sol.superPow 2 [])
+    assert 1 (sol.superPow 2 [0])
+    assert 1024 (sol.superPow 2 [1 0])
+    assert 1 (sol.superPow 2 [1 0 0])
+    assert 1224 (sol.superPow 2 [1 0 1])
+    assert 1 (sol.superPow 2 [1 0 0 0])
+    assert 1024 (sol.superPow 2 [1 0 0 1])
+    assert 1224 (sol.superPow 2 [1 0 1 0])
+    assert 1 (sol.superPow 2 [1 0 0 0 0])
+    assert 1024 (sol.superPow 2 [1 0 0 0 1])
+    assert 1224 (sol.superPow 2 [1 0 0 1 0])
+    assert 1 (sol.superPow 2 [1 0 1 0 0])
+    assert 1024 (sol.superPow 2 [1 0 1 0 1])
+    assert 1224 (sol.superPow 2 [1 0 1 1 0])
+    assert 1 (sol.superPow 2 [1 0 0 0 0 0])
+    assert 1024 (sol.superPow 2 [1 0 0 0 0 1])
+    assert 1224 (sol.superPow 2 [1 0 0 0 1 0])
+    assert 1 (sol.superPow 2 [1 0 0 1 0 0])
+    assert 1024 (sol.superPow 2 [1 0 0 1 0 1])
+    assert 1224 (sol.superPow 2 [1 0 0 1 1 0])
+    assert 1 (sol.superPow 2 [1 0 1 0 0 0])
+    assert 1024 (sol.superPow 2 [1 0 1 0 0 1])
+    assert 1224 (sol.superPow 2 [1 0 1 0 1 0])
+    assert 1 (sol.superPow 2 [1 0 1 1 0 0])
+    assert 1024 (sol.superPow 2 [1 0 1 1 0 1])
+    assert 1224 (sol.superPow 2 [1 0 1 1 1 0])
+end
+// output:
+//line 4 column 15: expected "=", got ":="
+//line 14 column 25: expected ")", got "("
+//line 14 column 12: expected return value of type num, found ILLEGAL
+//line 8 column 30: "a" declared but not used
+//line 12 column 5: "lastDigit" declared but not used
+//line 18 column 11: mismatched type for %: num, any
+//line 21 column 31: mismatched type for %: num, any
+//line 28 column 28: expected ")", got ""
+//line 28 column 28: expected end of line, found 2
+//line 29 column 28: expected ")", got ""
+//line 29 column 28: expected end of line, found 2
+//line 30 column 31: expected ")", got ""
+//line 30 column 31: expected end of line, found 2
+//line 31 column 28: expected ")", got ""
+//line 31 column 28: expected end of line, found 2
+//line 32 column 31: expected ")", got ""
+//line 32 column 31: expected end of line, found 2
+//line 33 column 28: expected ")", got ""
+//line 33 column 28: expected end of line, found 2
+//line 34 column 31: expected ")", got ""
+//line 34 column 31: expected end of line, found 2
+//line 35 column 31: expected ")", got ""
+//line 35 column 31: expected end of line, found 2
+//line 36 column 28: expected ")", got ""
+//line 36 column 28: expected end of line, found 2
+//line 37 column 31: expected ")", got ""
+//line 37 column 31: expected end of line, found 2
+//line 38 column 31: expected ")", got ""
+//line 38 column 31: expected end of line, found 2
+//line 39 column 28: expected ")", got ""
+//line 39 column 28: expected end of line, found 2
+//line 40 column 31: expected ")", got ""
+//line 40 column 31: expected end of line, found 2
+//line 41 column 31: expected ")", got ""
+//line 41 column 31: expected end of line, found 2
+//line 42 column 28: expected ")", got ""
+//line 42 column 28: expected end of line, found 2
+//line 43 column 31: expected ")", got ""
+//line 43 column 31: expected end of line, found 2
+//line 44 column 31: expected ")", got ""
+//line 44 column 31: expected end of line, found 2
+//line 45 column 28: expected ")", got ""
+//line 45 column 28: expected end of line, found 2
+//line 46 column 31: expected ")", got ""
+//line 46 column 31: expected end of line, found 2
+//line 47 column 31: expected ")", got ""
+//line 47 column 31: expected end of line, found 2
+//line 48 column 28: expected ")", got ""
+//line 48 column 28: expected end of line, found 2
+//line 49 column 31: expected ")", got ""
+//line 49 column 31: expected end of line, found 2
+//line 50 column 31: expected ")", got ""
+//line 50 column 31: expected end of line, found 2
+//line 51 column 28: expected ")", got ""
+//line 51 column 28: expected end of line, found 2
+//line 52 column 31: expected ")", got ""
+//line 52 column 31: expected end of line, found 2
+//line 53 column 31: expected ")", got ""
+//line 53 column 31: expected end of line, found 2

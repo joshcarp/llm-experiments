@@ -1,0 +1,31 @@
+//Find the level order traversal of a binary tree
+
+func levelOrder:[]any root:{}any
+    if root == {}
+        return []
+    end
+    queue := [root]
+    result := []
+    while (len queue) > 0
+        size := len queue
+        level := []
+        for i := range 0 size
+            node:{}any
+            node = queue[0].({}any)
+            queue = queue[1:]
+            level = level + [node["val"]]
+            if (has node "left") and node["left"].({}any) != {}
+                queue = queue + [node["left"]]
+            end
+            if (has node "right") and node["right"].({}any) != {}
+                queue = queue + [node["right"]]
+            end
+        end
+        result = result + [level]
+    end
+    return result
+end
+
+    root := {val:3 left:{val:9 left:{val:15} right:{val:7}} right:{val:20 left:{val:15} right:{val:7}}}
+    assert [[3] [9 20] [15 7 15 7]] (levelOrder root)
+

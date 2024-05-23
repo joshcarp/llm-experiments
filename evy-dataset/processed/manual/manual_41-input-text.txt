@@ -1,0 +1,1 @@
+How can I calculate the natural logarithm of a number in Evy?

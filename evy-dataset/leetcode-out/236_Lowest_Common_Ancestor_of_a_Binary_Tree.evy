@@ -1,0 +1,110 @@
+
+func Node:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func lowestCommonAncestor self:{}any root:{}any p:{}any q:{}any
+    stack := [root]
+    parent := {root:null}
+    while !(has parent p) or !(has parent q)
+        node:{}any
+        node = stack[-1].({}any)
+        stack = stack[:-1]
+        if (has node "left") and node["left"].({}any) != {}
+            parent[node["left"]] = node
+            stack = stack + [node["left"]]
+        end
+        if (has node "right") and node["right"].({}any) != {}
+            parent[node["right"]] = node
+            stack = stack + [node["right"]]
+        end
+    end
+    ancestors := {}
+    while p != null
+        ancestors[p] = true
+        p = parent[p].({}any)
+    end
+    while !(has ancestors q)
+        q = parent[q].({}any)
+    end
+    return q
+end
+
+func test
+    root := (Node)
+    root.val = 3
+    root.left = (Node)
+    root.left.val = 5
+    root.left.left = (Node)
+    root.left.left.val = 6
+    root.left.right = (Node)
+    root.left.right.val = 2
+    root.left.right.left = (Node)
+    root.left.right.left.val = 7
+    root.left.right.right = (Node)
+    root.left.right.right.val = 4
+    root.right = (Node)
+    root.right.val = 1
+    root.right.left = (Node)
+    root.right.left.val = 0
+    root.right.right = (Node)
+    root.right.right.val = 8
+    p := root.left.right.left.({}any)
+    q := root.right.({}any)
+    sol := (Solution)
+    lca := lowestCommonAncestor sol root p q
+    assert 3 (lca.val)
+end
+test
+// output:
+//line 17 column 21: unknown variable name "null"
+//line 17 column 25: invalid inferred declaration for "parent"
+//line 18 column 17: unknown variable name "parent"
+//line 18 column 24: "has" takes 2 arguments, found 0
+//line 18 column 24: expected ")", got identifier
+//line 20 column 25: value of type assertion must be of type any, not {}any
+//line 23 column 13: unknown variable name "parent"
+//line 24 column 27: mismatched type for +: []{}any, []any
+//line 27 column 13: unknown variable name "parent"
+//line 28 column 27: mismatched type for +: []{}any, []any
+//line 32 column 16: unknown variable name "null"
+//line 33 column 18: map index expects string, found {}any
+//line 34 column 13: unknown variable name "parent"
+//line 33 column 9: at least one statement is required here
+//line 36 column 27: "has" takes 2nd argument of type string, found {}any
+//line 37 column 13: unknown variable name "parent"
+//line 37 column 9: at least one statement is required here
+//line 39 column 12: expected no return value, found {}any
+//line 15 column 27: "self" declared but not used
+//line 46 column 14: field access with "." expects map type, found any
+//line 47 column 14: field access with "." expects map type, found any
+//line 48 column 14: field access with "." expects map type, found any
+//line 49 column 14: field access with "." expects map type, found any
+//line 50 column 14: field access with "." expects map type, found any
+//line 51 column 14: field access with "." expects map type, found any
+//line 52 column 14: field access with "." expects map type, found any
+//line 53 column 14: field access with "." expects map type, found any
+//line 54 column 14: field access with "." expects map type, found any
+//line 56 column 15: field access with "." expects map type, found any
+//line 57 column 15: field access with "." expects map type, found any
+//line 58 column 15: field access with "." expects map type, found any
+//line 59 column 15: field access with "." expects map type, found any
+//line 60 column 15: field access with "." expects map type, found any
+//line 61 column 19: field access with "." expects map type, found any
+//line 61 column 20: invalid inferred declaration for "p"
+//line 64 column 42: unknown variable name "p"
+//line 64 column 44: "lowestCommonAncestor" takes 4 arguments, found 0
+//line 64 column 44: invalid declaration, function "lowestCommonAncestor" has no return value
+//line 65 column 15: unknown variable name "lca"
+//line 65 column 18: expected ")", got "."
+//line 65 column 18: expected end of line, found "."
+//line 62 column 5: "q" declared but not used

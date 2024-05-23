@@ -1,0 +1,38 @@
+
+func myPow:num x:num n:num
+    if n == 0
+        return 1
+    end
+    res := 1
+    curr := abs n
+    while curr > 0
+        if curr % 2 == 1
+            res = res * x
+        end
+        curr = floor curr/2
+        x = x * x
+    end
+    if n < 0
+        return 1 / res
+    end
+    return res
+end
+
+func abs:num x:num
+    if x < 0
+        return -x
+    end
+    return x
+end
+
+func test
+    assert 1 (myPow 2 0)
+    assert 8 (myPow 2 3)
+    assert 0.125 (myPow 2 -3)
+    assert 9 (myPow 3 2)
+    assert 27 (myPow 3 3)
+    assert 0.037037037037037035 (myPow 3 -3)
+end
+test
+// output:
+//line 21 column 1: cannot override builtin function "abs"

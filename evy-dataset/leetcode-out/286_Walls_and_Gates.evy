@@ -1,0 +1,55 @@
+
+func wallsAndGates rooms:[][]num
+    direction := [[0 1] [1 0] [0 -1] [-1 0]]
+    m := len rooms
+    if m == 0
+        return
+    end
+    n := len rooms[0]
+    q := []
+    for row := range m
+        for col := range n
+            if rooms[row][col] == 0
+                q = q + [[row col]]
+            end
+        end
+    end
+    while (len q) > 0
+        point := q[0]
+        q = q[1:]
+        row := point[0]
+        col := point[1]
+        for d := range direction
+            r := row + direction[d][0]
+            c := col + direction[d][1]
+            if r < 0 or c < 0 or r >= m or c >= n or rooms[r][c] != 2147483647
+                continue
+            end
+            rooms[r][c] = rooms[row][col] + 1
+            q = q + [[r c]]
+        end
+    end
+end
+
+func test
+    rooms := [[2147483647 2147483647 2147483647 -1] [2147483647 2147483647 2147483647 -1] [2147483647 -1 2147483647 -1] [0 -1 2147483647 -1]]
+    wallsAndGates rooms
+    assert [[3 2 1 -1] [2 2 0 -1] [1 -1 1 -1] [0 -1 2 -1]] rooms
+end
+test
+// output:
+//line 13 column 23: mismatched type for +: []any, [][]num
+//line 20 column 21: only array, string and map type can be indexed, found any
+//line 20 column 22: invalid inferred declaration for "row"
+//line 21 column 21: only array, string and map type can be indexed, found any
+//line 21 column 22: invalid inferred declaration for "col"
+//line 23 column 18: unknown variable name "row"
+//line 23 column 22: invalid inferred declaration for "r"
+//line 24 column 18: unknown variable name "col"
+//line 24 column 22: invalid inferred declaration for "c"
+//line 25 column 16: unknown variable name "r"
+//line 26 column 17: unknown function "continue"
+//line 26 column 17: at least one statement is required here
+//line 28 column 19: unknown variable name "r"
+//line 29 column 23: unknown variable name "r"
+//line 22 column 13: "d" declared but not used

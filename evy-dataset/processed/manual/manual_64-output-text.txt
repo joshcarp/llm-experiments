@@ -1,0 +1,1 @@
+key is called when a key on the keyboard is pressed.

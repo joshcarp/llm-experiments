@@ -1,0 +1,48 @@
+//Implement a hash table
+
+func HashTable:{}any
+    self:{}any
+    self.table := [{}] * 10
+    return self
+end
+
+func insert self:{}any key:string value:any
+    index := hash key 10
+    if !(has self.table[index] key)
+        self.table[index][key] = value
+    end
+end
+
+func get:any self:{}any key:string
+    index := hash key 10
+    if has self.table[index] key
+        return self.table[index][key]
+    end
+    return nil
+end
+
+func delete self:{}any key:string
+    index := hash key 10
+    if has self.table[index] key
+        del self.table[index] key
+    end
+end
+
+func hash:num key:string size:num
+    sum := 0
+    for i := range (len key)
+        sum = sum + (ord key[i])
+    end
+    return sum % size
+end
+
+    ht := (HashTable)
+    insert ht "apple" 1
+    insert ht "banana" 2
+    insert ht "cherry" 3
+    print (get ht "apple") // Prints: 1
+    print (get ht "banana") // Prints: 2
+    print (get ht "cherry") // Prints: 3
+    delete ht "banana"
+    print (get ht "banana") // Prints: nil
+

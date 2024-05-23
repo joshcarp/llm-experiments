@@ -1,0 +1,4 @@
+numbers := [1 2 3]
+print numbers // Prints: [1 2 3]
+numbers = numbers + [4 5]
+print numbers // Prints: [1 2 3 4 5]

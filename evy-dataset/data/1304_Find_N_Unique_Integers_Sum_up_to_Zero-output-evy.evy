@@ -1,0 +1,18 @@
+
+func sumZero:[]num n:num
+    prefixSum := 0
+    res:[]num
+    for i := range 1 n
+        res = res + [i]
+        prefixSum = prefixSum + i
+    end
+    res = res + [-prefixSum]
+    return res
+end
+
+func test
+    assert [1 -1] (sumZero 2)
+    assert [1 2 -3] (sumZero 3)
+    assert [1 2 3 -6] (sumZero 4)
+end
+test

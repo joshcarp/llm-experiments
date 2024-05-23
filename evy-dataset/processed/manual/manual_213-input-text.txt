@@ -1,0 +1,1 @@
+How do I define a global variable in Evy and access it inside a function?

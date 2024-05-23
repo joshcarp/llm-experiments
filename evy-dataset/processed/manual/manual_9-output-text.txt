@@ -1,0 +1,1 @@
+rintf stands for print formatted. It prints its arguments to the output area according to a format string, which contains specifiers that start with a percent sign '%' to indicate how and where to print the remaining arguments.

@@ -1,0 +1,29 @@
+grid
+
+move 0 50
+width 0.5
+
+pi := 3.14159265359
+p := 10 * pi
+p100 := 100 * p
+s := 2
+for x := range 0 100 0.1
+    x100 := 100 * x
+    h := x100 % p100 / 100
+    y := (abs h-p/2) * s + (50 - s * p / 4)
+    line x y
+end
+
+color "red"
+move 0 50
+for x := range 0 100 0.1
+    y := (cos x*0.2)
+    line x y*pi*5+50
+end
+
+func abs:num n:num
+    if n < 0
+        return -n
+    end
+    return n
+end

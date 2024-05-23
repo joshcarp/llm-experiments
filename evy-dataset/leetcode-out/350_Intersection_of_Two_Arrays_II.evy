@@ -1,0 +1,42 @@
+
+func intersect:[]num nums1:[]num nums2:[]num
+    sort nums1
+    sort nums2
+    res := []
+    pos1 := 0
+    pos2 := 0
+    while pos1 < (len nums1) and pos2 < (len nums2)
+        if nums1[pos1] == nums2[pos2]
+            res = res + [nums1[pos1]]
+            pos1 = pos1 + 1
+            pos2 = pos2 + 1
+        else if nums1[pos1] < nums2[pos2]
+            pos1 = pos1 + 1
+        else
+            pos2 = pos2 + 1
+        end
+    end
+    return res
+end
+
+func sort arr:[]num
+    // bubble sort
+    for endIdx := range (len arr)-1 0 -1
+        for i := range endIdx
+            if arr[i] > arr[i + 1]
+                tmp := arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            end
+        end
+    end
+end
+
+func test
+    assert [2 2] (intersect [1 2 2 1] [2 2])
+    assert [4 9] (intersect [4 9 5] [9 4 9 8 4])
+end
+test
+// output:
+//line 10 column 23: mismatched type for +: []any, []num
+//line 19 column 12: expected return value of type []num, found []any

@@ -1,0 +1,27 @@
+
+func canPermutePalindrome:bool s:string
+    dic:{}num
+    for c := range s
+        if !(has dic c)
+            dic[c] = 0
+        end
+        dic[c] = dic[c] + 1
+    end
+    odd := 0
+    for c := range dic
+        if dic[c] % 2 == 1
+            odd = odd + 1
+        end
+    end
+    return odd <= 1
+end
+
+func test
+    assert true==(canPermutePalindrome "code")
+    assert true==(canPermutePalindrome "aab")
+    assert false==(canPermutePalindrome "carerac")
+    assert true==(canPermutePalindrome "a")
+    assert true==(canPermutePalindrome "aa")
+    assert true==(canPermutePalindrome "civic")
+    assert false==(canPermutePalindrome "car")
+end

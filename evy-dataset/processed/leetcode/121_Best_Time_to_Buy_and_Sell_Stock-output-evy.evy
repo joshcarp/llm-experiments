@@ -1,0 +1,26 @@
+
+func maxProfit:num prices:[]num
+    length := len prices
+    if length == 0
+        return 0
+    end
+    max_profit := 0
+    low := prices[0]
+    for i := range 1 length
+        if low > prices[i]
+            low = prices[i]
+        else
+            temp := prices[i] - low
+            if temp > max_profit
+                max_profit = temp
+            end
+        end
+    end
+    return max_profit
+end
+
+func test
+    assert 5 (maxProfit [7 1 5 3 6 4])
+    assert 0 (maxProfit [7 6 4 3 1])
+end
+test

@@ -1,0 +1,25 @@
+in:num
+
+for total := range 1000000
+    x := rand1
+    y := rand1
+    d := sqrt x*x+y*y
+    if d <= 1
+        in = in + 1
+    end
+    pi := in / total * 4
+
+    //output
+    cls
+    print "π:" pi
+
+    // draw
+    if d <= 1
+        color "red"
+    else
+        color "black"
+    end
+    move x*100 y*100
+    circle 0.2
+end
+```

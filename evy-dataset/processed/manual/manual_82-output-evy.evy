@@ -1,0 +1,3 @@
+for item := range ["apple" "banana" "orange"]
+    print item
+end

@@ -1,0 +1,59 @@
+
+func numberOfPatterns:num m:num n:num
+    used := [false] * 9
+    res := 0
+    for l := range m (n + 1)
+        res = res + (calcPatterns used -1 l)
+        used = [false] * 9
+    end
+    return res
+end
+
+func isValid:bool used:[]bool last:num index:num
+    if used[index]
+        return false
+    end
+    if last == -1
+        return true
+    end
+    if (last + index) % 2 == 1
+        return true
+    end
+    mid := (last + index) / 2
+    if mid == 4
+        return used[mid]
+    end
+    if (index % 3 != last % 3) and (index / 3 != last / 3)
+        return true
+    end
+    return used[mid]
+end
+
+func calcPatterns:num used:[]bool last:num length:num
+    if length == 0
+        return 1
+    end
+    res := 0
+    for i := range 9
+        if isValid used last i
+            used[i] = true
+            res = res + (calcPatterns used i length - 1)
+            used[i] = false
+        end
+    end
+    return res
+end
+
+func test
+    assert 16 (numberOfPatterns 1 1)
+    assert 40 (numberOfPatterns 1 2)
+    assert 88 (numberOfPatterns 1 3)
+    assert 144 (numberOfPatterns 1 4)
+    assert 144 (numberOfPatterns 2 2)
+    assert 288 (numberOfPatterns 2 3)
+    assert 504 (numberOfPatterns 2 4)
+    assert 504 (numberOfPatterns 3 3)
+    assert 768 (numberOfPatterns 3 4)
+    assert 768 (numberOfPatterns 4 4)
+end
+test

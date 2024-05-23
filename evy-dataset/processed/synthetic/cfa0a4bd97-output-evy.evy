@@ -1,0 +1,11 @@
+func minElem:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        if result > n
+            result = n
+        end
+    end
+    return result
+end
+
+print (minElem [1 2 3 4])

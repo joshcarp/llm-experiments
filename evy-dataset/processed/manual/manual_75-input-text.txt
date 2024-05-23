@@ -1,0 +1,1 @@
+Give me an example of declaring and initializing an array of numbers in Evy.

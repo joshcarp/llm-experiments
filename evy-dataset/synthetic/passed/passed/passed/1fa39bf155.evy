@@ -1,0 +1,18 @@
+//Count the number of consonants in a string
+
+func countConsonants:num str:string
+    vowels := {a:true e:true i:true o:true u:true A:true E:true I:true O:true U:true}
+    count := 0
+    for ch := range str
+        if !(has vowels ch) and ("a" <= ch and ch <= "z" or "A" <= ch and ch <= "Z")
+            count = count + 1
+        end
+    end
+    return count
+end
+
+assert 3 (countConsonants "hello")
+assert 4 (countConsonants "world")
+assert 0 (countConsonants "aeiou")
+assert 0 (countConsonants "AEIOU")
+assert 0 (countConsonants "")

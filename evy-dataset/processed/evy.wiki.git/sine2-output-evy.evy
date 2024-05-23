@@ -1,0 +1,51 @@
+radius := 25
+deg := 0
+xr := radius
+
+on animate ms:num
+    deg = ms / 3
+    //    xr := xradius ms radius
+    draw xr radius deg
+end
+
+func xradius:num ms:num r:num
+    s := ms % 10000 / 1000 // repeat: 10s
+    if s < 2 or s > 10
+        // full circle; pause 2s
+        return 25
+    else if s > 5 and s < 7
+        // line; pause 2s
+        return 0.001
+    end
+    t := s - 2 // normalize for one pause: 2s
+    if s > 7
+        t = s - 4 // normalise for two pauses: 4s
+    end
+    xr := (cos t) + 1
+    return xr * r / 2 // scale by radius
+end
+
+func draw xr:num yr:num deg:num
+    clear
+    gridn 50 "lightgrey"
+
+    // black circle
+    color "black"
+    fill "none"
+    width 0.3
+    ellipse 50 50 xr yr
+
+    // red dot
+    color "red"
+    width 3
+    ellipse 50 50 xr yr 0 deg deg+0.05
+end
+
+on input id:string val:string
+    if id != "sliderx"
+        return
+    end
+    n := str2num val
+    xr = n / 100 * radius + 0.001
+    draw xr radius deg
+end

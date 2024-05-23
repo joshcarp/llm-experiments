@@ -1,0 +1,1 @@
+anic prints the given error message and terminates the program immediately. It is used to report unrecoverable errors.

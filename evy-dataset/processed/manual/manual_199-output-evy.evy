@@ -1,0 +1,5 @@
+func add:num x:num y:num
+    return x + y
+end
+
+print (add 1 2) // calling the function

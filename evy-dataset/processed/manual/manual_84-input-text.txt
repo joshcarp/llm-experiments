@@ -1,0 +1,1 @@
+Write a function named 'greet' in Evy that prints a greeting with a given name.

@@ -1,0 +1,4 @@
+a:string
+b := 2.4
+// --- missing line of code goes here ---
+print a b

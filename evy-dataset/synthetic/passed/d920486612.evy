@@ -1,0 +1,22 @@
+//Reverse a singly linked list
+
+func reverseList:any head:any
+    prev := {}
+    curr := head
+    while curr != {}
+        next := curr.next.({}any)
+        curr.next = prev
+        prev = curr
+        curr = next
+    end
+    return prev
+end
+
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:{}any}}}}}}
+    reversed := reverseList head
+    assert 5 (reversed.val)
+    assert 4 (reversed.next.val)
+    assert 3 (reversed.next.next.val)
+    assert 2 (reversed.next.next.next.val)
+    assert 1 (reversed.next.next.next.next.val)
+

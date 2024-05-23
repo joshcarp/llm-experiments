@@ -1,0 +1,32 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "input-text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "output-text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "input-evy": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "input-python": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "output-evy": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

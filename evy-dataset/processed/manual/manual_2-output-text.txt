@@ -1,0 +1,1 @@
+Functions are self-contained blocks of code that perform a specific task. Events are notifications that are sent to a program when something happens, such as when a user moves the mouse or presses a key.

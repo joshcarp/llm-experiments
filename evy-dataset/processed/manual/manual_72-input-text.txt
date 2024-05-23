@@ -1,0 +1,1 @@
+Show me how to declare a variable of type number in Evy.

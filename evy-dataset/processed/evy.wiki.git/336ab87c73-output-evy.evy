@@ -1,0 +1,4 @@
+s1 := read
+print s1 s1
+s2 := read
+print s1 s2

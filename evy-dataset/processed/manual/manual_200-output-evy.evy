@@ -1,0 +1,4 @@
+person := {name: "Alice" age: 30}
+print person // Prints: {name: "Alice" age: 30}
+person["city"] = "New York"
+print person // Prints: {name: "Alice" age: 30 city: "New York"}

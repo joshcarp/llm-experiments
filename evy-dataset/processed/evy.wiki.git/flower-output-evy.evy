@@ -1,0 +1,45 @@
+color "red"
+move 40 70
+circle 9
+
+color "pink"
+move 55 70
+circle 9
+
+color "blue"
+move 67 64
+circle 9
+
+color "pink"
+move 70 50
+circle 9
+
+move 70 40
+color "red"
+circle 9
+
+color "blue"
+move 60 30
+circle 9
+
+move 45 1
+color "brown"
+rect 10 60
+
+move 30 60
+color "blue"
+circle 9
+
+move 30 45
+color "pink"
+circle 9
+
+move 38 33
+color "red"
+circle 9
+
+move 50 50
+color "yellow"
+circle 17
+
+grid

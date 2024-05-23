@@ -1,0 +1,54 @@
+
+func jumpSearch:num arr:[]num item:num
+    arrSize := len arr
+    blockSize := floor (sqrt arrSize)
+    prev := 0
+    step := blockSize
+    while arr[min step arrSize]-1 < item
+        prev = step
+        step = step + blockSize
+        if prev >= arrSize
+            return -1
+        end
+    end
+    while arr[prev] < item
+        prev = prev + 1
+        if prev == min step arrSize
+            return -1
+        end
+    end
+    if arr[prev] == item
+        return prev
+    end
+    return -1
+end
+
+func test
+    assert 3 (jumpSearch [0 1 2 3 4 5] 3)
+    assert 2 (jumpSearch [-5 -2 -1] -1)
+    assert -1 (jumpSearch [0 5 10 20] 8)
+    assert 10 (jumpSearch [0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610] 55)
+end
+test
+
+func sqrt:num n:num
+    return pow n 0.5
+end
+
+func floor:num n:num
+    return (round n)
+end
+
+func min:num a:num b:num
+    if a < b
+        return a
+    end
+    return b
+end
+
+func printResult
+    printf "%2.f of %2.f tests passed\n" (total - fails) total
+end
+
+test
+printResult

@@ -1,0 +1,41 @@
+func checkInclusion:bool s1:string s2:string
+    if (len s1) > (len s2)
+        return false
+    end
+    s1count:{}num
+    s2count:{}num
+    for i := range (len s1)
+        if !(has s1count s1[i])
+            s1count[s1[i]] = 0
+            s2count[s2[i]] = 0
+        end
+        s1count[s1[i]] = s1count[s1[i]] + 1
+        s2count[s2[i]] = s2count[s2[i]] + 1
+    end
+    l := 0
+    while l + (len s1) < (len s2)
+        if s1count == s2count
+            return true
+        end
+        start := s2[l] // The character at the start of the current window. To be removed
+        finish := s2[l + (len s1)] // the character after the end of the current window. To be added
+        s2count[start] = s2count[start] - 1
+        if s2count[start] == 0
+            del s2count start
+        end
+        if !(has s2count finish)
+            s2count[finish] = 0
+        end
+        s2count[finish] = s2count[finish] + 1
+        l = l + 1
+    end
+    return s1count == s2count
+end
+
+func test
+    assertEqual true (checkInclusion "ab" "ab")
+    assertEqual true (checkInclusion "ab" "eidbaooo")
+    assertEqual false (checkInclusion "ab" "eidboaoo")
+    assertEqual false (checkInclusion "ab" "a")
+end
+test

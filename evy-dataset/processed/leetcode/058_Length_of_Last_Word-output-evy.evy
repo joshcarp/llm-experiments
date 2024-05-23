@@ -1,0 +1,28 @@
+
+func lengthOfLastWord:num s:string
+    if (len s) == 0
+        return 0
+    end
+    words := split s " "
+    words = words[:]
+    for i := range (len words)-1 -1 -1
+        if words[i] == ""
+            words = words[:i] + words[i+1:]
+        end
+    end
+    if (len words) == 0
+        return 0
+    else
+        return (len words[-1])
+    end
+end
+
+func test
+    assert 5 (lengthOfLastWord "Hello World")
+    assert 0 (lengthOfLastWord "")
+    assert 0 (lengthOfLastWord "   ")
+    assert 1 (lengthOfLastWord "a")
+    assert 1 (lengthOfLastWord "a ")
+    assert 1 (lengthOfLastWord " a")
+end
+test

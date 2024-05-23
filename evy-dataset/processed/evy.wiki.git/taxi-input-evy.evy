@@ -1,0 +1,185 @@
+grid
+
+move 50 60
+color "red"
+circle 10
+
+move 20 10
+color "yellow"
+rect 60 50
+
+move 5 20
+color "yellow"
+rect 25 20
+
+move 70 20
+color "yellow"
+rect 20 20
+
+move 25 15
+color "black"
+circle 10
+
+move 25 15
+color "white"
+circle 5
+
+move 75 15
+color "black"
+circle 10
+
+move 75 15
+color "white"
+circle 5
+
+move 32 10
+color "black"
+rect 35 2
+
+move 5 38
+color "black"
+rect 85 2
+
+move 20 55
+color "black"
+rect 60 3
+
+move 20 57
+color "brown"
+rect 60 3
+
+move 20 50
+color "brown"
+rect 10 10
+
+move 10 40
+color "brown"
+rect 10 10
+
+move 80 40
+color "brown"
+rect 10 10
+
+move 70 50
+color "brown"
+rect 10 10
+
+move 70 50
+color "black"
+rect 2 7
+
+move 30 50
+color "black"
+rect 2 7
+
+move 20 40
+color "black"
+rect 2 10
+
+move 78 40
+color "black"
+rect 2 10
+
+move 70 50
+color "black"
+rect 10 2
+
+move 20 50
+color "black"
+rect 10 2
+
+move 50 10
+color "black"
+rect 2 47
+
+move 3 20
+color "black"
+rect 2 20
+
+move 90 20
+color "black"
+rect 2 20
+
+move 76 20
+color "black"
+rect 14 2
+
+move 3 20
+color "black"
+rect 21 2
+
+move 5.1 23
+color "red"
+rect 3 8
+
+move 5 26
+color "white"
+rect 2 5
+
+move 5 26
+color "yellow"
+rect 2 2
+
+move 88 23
+color "red"
+rect 2 8
+
+move 88 23
+color "black"
+rect 3 2
+
+move 5 23
+color "black"
+rect 3 2
+
+move 88 30
+color "black"
+rect 3 2
+
+move 5 30
+color "black"
+rect 3 2
+
+move 68 30
+color "black"
+rect 5 2
+
+move 38 30
+color "black"
+rect 5 2
+
+move 10 71.5
+color "orange"
+rect 80 25
+
+move 30 75
+color "black"
+rect 2 17
+
+move 45 75
+color "black"
+rect 2 17
+
+move 55 75
+color "black"
+rect 2 15
+
+move 30 82
+color "black"
+rect 15 2
+
+move 50 90
+color "black"
+rect 12 2
+
+move 50 75
+color "black"
+rect 12 2
+
+move 70 80
+color "black"
+rect 2 12
+
+move 70 75
+color "black"
+rect 2 2

@@ -1,0 +1,20 @@
+//Remove duplicates from a sorted array
+
+func removeDuplicates:[]num nums:[]num
+    if (len nums) == 0
+        return nums
+    end
+    i := 0
+    for j := range 1 (len nums)
+        if nums[j] != nums[i]
+            i = i + 1
+            nums[i] = nums[j]
+        end
+    end
+    return nums[:i + 1]
+end
+
+assert [0 1 2 3 4] (removeDuplicates [0 0 1 1 1 2 2 3 3 4])
+assert [1 2] (removeDuplicates [1 1 2])
+assert [1] (removeDuplicates [1])
+assert [] (removeDuplicates [])

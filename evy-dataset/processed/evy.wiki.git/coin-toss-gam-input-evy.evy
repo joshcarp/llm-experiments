@@ -1,0 +1,95 @@
+streak := 0
+width 1
+font {baseline:"top" family:"arial"}
+drawCoins
+
+on down x:num _:num
+    guess:string
+    if x < 50
+        guess = "heads"
+    else
+        guess = "tails"
+    end
+    clear
+    drawHighlight guess
+    drawCoins
+    sleep 0.3
+    clear
+    drawCoins
+    win := play guess
+    drawScore win
+end
+
+func drawCoins
+    color "gold"
+    stroke "orange"
+    // heads
+    move 25 50
+    circle 20
+    move 25 63
+    font {align:"center" size:34}
+    text "🤪"
+
+    // tails
+    move 75 50
+    circle 20
+    move 75 62
+    text "🧜\u200d♀️"
+
+    // divider
+    color "black"
+    dash 5 5
+    move 50 0
+    line 50 90
+    dash
+
+    // labels
+    font {size:8}
+    move 25 27
+    text "heads"
+    move 75 27
+    text "tails"
+end
+
+func drawHighlight guess:string
+    if guess == "heads"
+        move 0 0
+    else
+        move 50 0
+    end
+    color "magenta"
+    rect 50 85
+
+end
+
+func drawScore win:bool
+    font {align:"left" size:4}
+    move 5 95
+    if !win
+        text "You lose."
+        return
+    end
+    emojis:string
+    for range streak
+        emojis = emojis + "🥳 "
+    end
+    msg := sprintf "You win! Streak %v %s" streak emojis
+    text msg
+end
+
+func play:bool guess:string
+    result:string
+    r := rand 2
+    if r == 0
+        result = "heads"
+    else
+        result = "tails"
+    end
+    win := guess == result
+    if win
+        streak = streak + 1
+    else
+        streak = 0
+    end
+    return win
+end

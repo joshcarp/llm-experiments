@@ -1,0 +1,40 @@
+
+func binarySearch:bool aList:[]any item:any
+    if (len aList) == 0
+        return false
+    end
+    midpoint := floor (len aList) / 2
+    if aList[midpoint] == item
+        return true
+    end
+    if item < aList[midpoint]
+        return binarySearch aList[:midpoint] item
+    else
+        return binarySearch aList[midpoint + 1:] item
+    end
+end
+
+func test
+    testList := [0 1 2 8 13 17 19 32 42]
+    assert false==(binarySearch testList 3)
+    assert true==(binarySearch testList 13)
+    assert true==(binarySearch [4 4 5 6 7] 4)
+    assert false==(binarySearch [4 4 5 6 7] -10)
+    assert true==(binarySearch [-18 2] -18)
+    assert true==(binarySearch [5] 5)
+    assert true==(binarySearch ["a" "c" "d"] "c")
+    assert false==(binarySearch ["a" "c" "d"] "f")
+    assert false==(binarySearch [] 1)
+    assert true==(binarySearch [-.1 .1 .8] .1)
+    assert true==(binarySearch (range -5000 5000 10) 80)
+    assert false==(binarySearch (range -5000 5000 10) 1255)
+    assert false==(binarySearch (range 0 10000 5) 2)
+end
+test
+
+func printResult
+    printf "%2.f of %2.f tests passed\n" (total - fails) total
+end
+
+test
+printResult

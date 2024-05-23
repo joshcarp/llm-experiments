@@ -1,0 +1,1 @@
+animate gets called periodically around 60 times per second.

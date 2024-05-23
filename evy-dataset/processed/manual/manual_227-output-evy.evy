@@ -1,0 +1,13 @@
+func find_index:num arr:[]num elem:num
+    for i := range arr
+        if arr[i] == elem
+            return i
+        end
+    end
+    return -1
+end
+
+numbers := [1 2 3 4 5]
+idx := find_index numbers 3
+print idx // Prints: 2
+

@@ -1,0 +1,15 @@
+
+func product_array:num arr:[]num
+    product := 1
+    for n := range arr
+        product = product * n
+    end
+    return product
+end
+
+numbers := [1 2 3 4 5]
+product := product_array numbers
+print product // Prints: 120
+```
+
+The code you provided is already correct. It defines a function `product_array` that takes an array of numbers as input and returns the product of all the numbers in the array. The code then creates an array `numbers` and calls the `product_array` function to calculate the product of the numbers in the array. Finally, it prints the result. 

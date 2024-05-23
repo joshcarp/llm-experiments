@@ -1,0 +1,1 @@
+cls clears the output area of all printed text.

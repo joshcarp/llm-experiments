@@ -1,0 +1,82 @@
+
+func fullJustify: []string words: []string maxWidth: num
+    res := []string
+    resList := [][]string
+    curr := []string
+    count := 0
+    pos := 0
+    while pos < (len words)
+        word := words[pos]
+        if (len word) > maxWidth
+            pos = pos + 1
+        end
+        if (len word) + count + (len curr) <= maxWidth
+            count = count + (len word)
+            curr = curr + [word]
+            pos = pos + 1
+        else
+            resList = resList + [curr]
+            curr = []string
+            count = 0
+        end
+    end
+    if (len curr) > 0
+        resList = resList + [curr]
+    end
+    for index := range resList
+        curr := resList[index]
+        text := ""
+        remain := sum [len t for t := range curr]
+        if (len curr) == 1
+            text = curr[0] + (repeat " " (maxWidth - remain))
+        else if index == (len resList) - 1
+            text = join curr " "
+            text = text + (repeat " " (maxWidth - remain - (len curr) + 1))
+        else
+            step := (maxWidth - remain) / ((len curr) - 1)
+            extra := (maxWidth - remain) % ((len curr) - 1)
+            for index2 := range (len curr) - 1
+                text = text + curr[index2] + (repeat " " step)
+                if extra > 0
+                    text = text + " "
+                    extra = extra - 1
+                end
+            end
+            text = text + curr[-1]
+        end
+        res = res + [text]
+    end
+    return res
+end
+
+func sum: num nums: []num
+    total := 0
+    for n := range nums
+        total = total + n
+    end
+    return total
+end
+
+func repeat: string str: string count: num
+    result := ""
+    for range count
+        result = result + str
+    end
+    return result
+end
+
+func join: string strs: []string sep: string
+    result := ""
+    for i := range (len strs)
+        if i > 0
+            result = result + sep
+        end
+        result = result + strs[i]
+    end
+    return result
+end
+
+words := ["Don't" "go" "around" "saying" "the" "world" "owes" "you" "a" "living" "the" "world" "owes" "you" "nothing" "it" "was" "here" "first."]
+print (fullJustify words 30)
+// output:
+//line 68 column 1: cannot override builtin function "join"

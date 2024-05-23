@@ -1,0 +1,28 @@
+
+func numWays:num n:num k:num
+    if n == 0
+        return 0
+    end
+    if n == 1
+        return k
+    end
+    dp := [0 0]
+    dp[0] = k
+    dp[1] = k * k
+    for i := range 2 n
+        temp := dp[1]
+        dp[1] = (dp[0] + dp[1]) * (k - 1)
+        dp[0] = temp
+    end
+    return dp[1]
+end
+
+func test
+    assert 0 (numWays 0 3)
+    assert 3 (numWays 1 3)
+    assert 6 (numWays 2 3)
+    assert 12 (numWays 3 3)
+    assert 21 (numWays 4 3)
+    assert 36 (numWays 5 3)
+end
+test

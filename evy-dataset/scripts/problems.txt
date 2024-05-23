@@ -1,0 +1,60 @@
+Write an evy function to calculate the factorial of a given number.
+Implement a function in evy to reverse a string without using built-in methods.
+Given an array of numbers in evy, find the maximum and minimum values.
+Create a evy program to check if a number is prime.
+Sort a list of strings alphabetically using evy.
+In evy, implement a binary search algorithm to find an element in a sorted array.
+Write an evy function to generate the Fibonacci sequence up to a specified limit.
+Given a string in evy, remove all duplicate characters.
+Implement a stack data structure in evy and demonstrate its operations (push, pop, peek).
+Create a evy function to calculate the greatest common divisor (GCD) of two numbers.
+Write a program in evy to check if a word is a palindrome.
+Implement a queue data structure in evy.
+In evy, write a function to convert a decimal number to binary.
+Given an array in evy, find the kth largest element.
+Create a function in evy to merge two sorted arrays.
+Write a evy program to find all permutations of a string.
+Implement a linked list data structure in evy.
+Given a binary tree in evy, write a function to traverse it in pre-order, in-order, and post-order.
+In evy, find the longest common subsequence of two strings.
+Implement a function in evy to calculate the power of a number.
+Write a evy program to solve the Tower of Hanoi problem.
+Given a graph in evy, implement depth-first search (DFS) and breadth-first search (BFS) algorithms.
+Create a function in evy to determine if a string has balanced parentheses.
+Find the shortest path between two nodes in a graph using Dijkstra's algorithm in evy.
+Implement a hash table data structure in evy.
+Write an evy program to solve the N-Queens problem.
+In evy, create a function to reverse the words in a sentence.
+Implement a trie (prefix tree) data structure in evy.
+Write a evy program to find the longest increasing subsequence in an array.
+Given a matrix in evy, rotate it by 90 degrees.
+Implement a function in evy to find the median of two sorted arrays of different sizes.
+Write a program in evy to solve the Sudoku puzzle.
+Given a set of points in evy, find the closest pair of points.
+Implement a function in evy to check if a binary tree is a binary search tree (BST).
+Write a evy program to find the minimum spanning tree (MST) of a graph using Prim's or Kruskal's algorithm.
+In evy, create a function to parse and evaluate arithmetic expressions.
+Implement a regular expression engine in evy.
+Write a program in evy to simulate a simple calculator.
+Given a string and a pattern in evy, implement the Knuth-Morris-Pratt (KMP) algorithm for string matching.
+Create a function in evy to convert a Roman numeral to an integer.
+Implement a spell checker in evy using a dictionary and edit distance calculations.
+Write a program in evy to generate a random maze.
+Given a set of integers in evy, find the largest subset where every pair of elements is mutually prime.
+Implement a function in evy to calculate the edit distance (Levenshtein distance) between two strings.
+Write a evy program to find the strongly connected components (SCCs) of a directed graph.
+In evy, create a function to solve the Knight's Tour problem on a chessboard.
+Implement a genetic algorithm in evy to solve an optimization problem (e.g., the Traveling Salesman Problem).
+Write a program in evy to simulate a simple game of life.
+Given a set of rectangles in evy, find the largest rectangle that can be formed by overlapping them.
+Implement a function in evy to solve the 0/1 Knapsack problem using dynamic programming.
+Write a evy program to find the maximum flow in a network using the Ford-Fulkerson algorithm.
+In evy, create a function to generate all possible valid IP addresses from a string of digits.
+Implement a B-tree data structure in evy.
+Write a program in evy to perform Huffman coding for data compression.
+Given a list of words and a crossword puzzle in evy, find all possible word placements.
+Implement a function in evy to solve the Eight Puzzle using A* search.
+Write a evy program to simulate a simple neural network for image recognition.
+In evy, create a function to find the longest palindromic substring in a string.
+Implement a Bloom filter data structure in evy.
+Write a program in evy to solve a complex mathematical problem (e.g., numerical integration, matrix operations).

@@ -1,0 +1,29 @@
+
+func singleNumber:num nums:[]num
+    ones := 0
+    twos := 0
+    threes := 0
+    for num := range nums
+        twos = twos | (ones & num)
+        ones = ones ^ num
+        threes = ones & twos
+        ones = ones & (~threes)
+        twos = twos & (~threes)
+    end
+    return ones
+end
+
+func test
+    assert 2 (singleNumber [2 2 3 2])
+    assert 3 (singleNumber [0 1 0 1 0 1 99])
+end
+test
+// output:
+//line 7 column 21: illegal character "|"
+//line 7 column 29: illegal character "&"
+//line 8 column 21: illegal character "^"
+//line 9 column 23: illegal character "&"
+//line 10 column 21: illegal character "&"
+//line 10 column 24: illegal character "~"
+//line 11 column 21: illegal character "&"
+//line 11 column 24: illegal character "~"

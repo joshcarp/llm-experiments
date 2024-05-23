@@ -1,0 +1,23 @@
+func find_index:num arr:[]num elem:num
+    for i := range arr
+        if arr[i] == elem
+            return i
+        end
+    end
+    return -1
+end
+
+numbers := [1 2 3 4 5]
+index := find_index numbers 3
+print index // Prints: 2prompt How do I check if an array contains a specific element?output func contains:bool arr:[]num elem:num
+    for i := range arr
+        if arr[i] == elem
+            return true
+        end
+    end
+    return false
+end
+
+numbers := [1 2 3 4 5]
+print (contains numbers 3) // Prints: true
+print (contains numbers 6) // Prints: false

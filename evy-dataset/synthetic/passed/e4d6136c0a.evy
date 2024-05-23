@@ -1,0 +1,53 @@
+//Merge two sorted linked lists into one sorted linked list
+
+func ListNode:{}any
+    self:{}any
+    self.val := 0
+    self.next := {}
+    return self
+end
+
+func mergeTwoLists:{}any l1:{}any l2:{}any
+    dummy := (ListNode)
+    tail := dummy
+    while l1 != {} and l2 != {}
+        if l1.val <= l2.val
+            tail.next = l1
+            l1 = l1.next
+        else
+            tail.next = l2
+            l2 = l2.next
+        end
+        tail = tail.next
+    end
+    if l1 != {}
+        tail.next = l1
+    end
+    if l2 != {}
+        tail.next = l2
+    end
+    return dummy.next
+end
+
+    l1 := (ListNode)
+    l1.val = 1
+    l1.next = (ListNode)
+    l1.next.val = 2
+    l1.next.next = (ListNode)
+    l1.next.next.val = 4
+
+    l2 := (ListNode)
+    l2.val = 1
+    l2.next = (ListNode)
+    l2.next.val = 3
+    l2.next.next = (ListNode)
+    l2.next.next.val = 4
+
+    merged := mergeTwoLists l1 l2
+    assert 1 (merged.val)
+    assert 1 (merged.next.val)
+    assert 2 (merged.next.next.val)
+    assert 3 (merged.next.next.next.val)
+    assert 4 (merged.next.next.next.next.val)
+    assert 4 (merged.next.next.next.next.next.val)
+

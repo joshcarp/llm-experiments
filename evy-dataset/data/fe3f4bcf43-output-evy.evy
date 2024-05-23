@@ -1,0 +1,16 @@
+func insertionSort:[]num arr:[]num
+    for i := range 1 (len arr)
+        key := arr[i]
+        j := i - 1
+        while j >= 0 and arr[j] > key
+            arr[j + 1] = arr[j]
+            j = j - 1
+        end
+        arr[j + 1] = key
+    end
+    return arr
+end
+
+assert [1 2 3 4 5] (insertionSort [5 2 4 1 3])
+assert [1 2 3 4 5] (insertionSort [1 2 3 4 5])
+assert [1 2 3 4 5] (insertionSort [5 4 3 2 1])

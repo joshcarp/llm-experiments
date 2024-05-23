@@ -1,0 +1,10 @@
+func string_length:num str:string
+    if (len str) == 0
+        return 0
+    else
+        return 1 + (string_length str[1:])
+    end
+end
+
+txt := "Evy"
+print (string_length txt) // Prints: 3

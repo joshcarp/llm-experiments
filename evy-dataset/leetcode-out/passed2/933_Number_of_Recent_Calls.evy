@@ -1,0 +1,25 @@
+
+func RecentCounter:{}any
+    self:{}any
+    self.queue := []num
+    return self
+end
+
+func ping:num self:{}any t:num
+    self.queue = self.queue + [t]
+    while (len self.queue) > 0 and self.queue[0] < (t - 3000)
+        self.queue = self.queue[1:]
+    end
+    return (len self.queue)
+end
+
+func test
+    obj := (RecentCounter)
+    assert 1 (ping obj 1)
+    assert 2 (ping obj 100)
+    assert 3 (ping obj 3001)
+    assert 3 (ping obj 3002)
+    assert 2 (ping obj 4000)
+    assert 1 (ping obj 7000)
+end
+test

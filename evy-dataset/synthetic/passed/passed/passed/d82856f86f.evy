@@ -1,0 +1,31 @@
+//Insert a node into a binary search tree
+
+func Node:{}any val:num
+    self:{}any
+    self.val = val
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func insert:any root:{}any val:num
+    if root == {}
+        return Node val
+    end
+    if val < root.val.(num)
+        root.left = insert root.left.({}any) val
+    else
+        root.right = insert root.right.({}any) val
+    end
+    return root
+end
+
+root := (Node 5)
+insert root 3
+insert root 7
+insert root 1
+insert root 4
+insert root 6
+insert root 8
+print root
+

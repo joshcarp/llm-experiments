@@ -1,0 +1,1 @@
+Evy uses a coordinate system similar to the Cartesian coordinate system, with the horizontal dimension called the x-axis and the vertical dimension called the y-axis.

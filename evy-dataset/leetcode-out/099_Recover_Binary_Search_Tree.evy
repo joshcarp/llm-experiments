@@ -1,0 +1,89 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    self.first := {}
+    self.second := {}
+    self.pre := (TreeNode)
+    self.pre.val = -2147483648
+    return self
+end
+
+func recoverTree self:{}any root:{}any
+    self.traverse root
+    if (has self.first "val") and (has self.second "val")
+        self.first.val = self.second.val
+        self.second.val = self.first.val
+    end
+end
+
+func traverse self:{}any root:{}any
+    if root == {}
+        return
+    end
+    self.traverse root.left
+    if (has self.pre "val") and self.pre.val >= root.val
+        if self.first == {}
+            self.first = self.pre
+        end
+        if self.first != {}
+            self.second = root
+        end
+    end
+    self.pre = root
+    self.traverse root.right
+end
+
+func test
+    root := (TreeNode)
+    root.val = 1
+    root.left = (TreeNode)
+    root.left.val = 3
+    root.right = (TreeNode)
+    root.right.val = 2
+    sol := (Solution)
+    recoverTree sol root
+    assert 2 (root.val)
+    assert 3 (root.left.val)
+    assert 1 (root.right.val)
+end
+test
+// output:
+//line 4 column 14: expected "=", got ":="
+//line 5 column 15: expected "=", got ":="
+//line 6 column 16: expected "=", got ":="
+//line 12 column 16: expected "=", got ":="
+//line 13 column 17: expected "=", got ":="
+//line 14 column 14: expected "=", got ":="
+//line 15 column 13: field access with "." expects map type, found any
+//line 20 column 19: expected "=", got identifier
+//line 20 column 23: unexpected end of line
+//line 21 column 17: "has" takes 1st argument of type {}, found any
+//line 21 column 44: "has" takes 1st argument of type {}, found any
+//line 22 column 19: field access with "." expects map type, found any
+//line 23 column 20: field access with "." expects map type, found any
+//line 22 column 9: at least one statement is required here
+//line 19 column 29: "root" declared but not used
+//line 31 column 19: expected "=", got identifier
+//line 31 column 23: unexpected "."
+//line 32 column 17: "has" takes 1st argument of type {}, found any
+//line 32 column 41: field access with "." expects map type, found any
+//line 33 column 23: mismatched type for ==: any, {}
+//line 36 column 23: mismatched type for !=: any, {}
+//line 41 column 19: expected "=", got identifier
+//line 41 column 23: unexpected "."
+//line 48 column 14: field access with "." expects map type, found any
+//line 50 column 15: field access with "." expects map type, found any
+//line 54 column 24: field access with "." expects map type, found any
+//line 54 column 25: expected ")", got identifier
+//line 54 column 25: expected end of line, found val
+//line 55 column 25: field access with "." expects map type, found any
+//line 55 column 26: expected ")", got identifier
+//line 55 column 26: expected end of line, found val

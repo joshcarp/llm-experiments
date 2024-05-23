@@ -1,0 +1,7 @@
+global_var := "Hello"
+
+func print_global
+    print global_var
+end
+
+print_global // Prints: Hello

@@ -1,0 +1,25 @@
+func vowelCount:num str:string
+    vowels := {a:0 e:0 i:0 o:0 u:0}
+    result := 0
+    str = lower str
+    for c := range str
+        if has vowels c
+            result = result + 1
+        end
+    end
+    if (len str) > 0 and str[-1] == "y"
+        result = result + 1
+    end
+    return result
+end
+
+func test
+    assert 0 (vowelCount "")
+    assert 2 (vowelCount "abcde")
+    assert 3 (vowelCount "Alone")
+    assert 2 (vowelCount "key")
+    assert 1 (vowelCount "bye")
+    assert 2 (vowelCount "keY")
+    assert 1 (vowelCount "bYe")
+    assert 3 (vowelCount "ACEDY")
+end

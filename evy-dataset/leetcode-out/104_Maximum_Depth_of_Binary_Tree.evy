@@ -1,0 +1,45 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func maxDepth:num root:{}any
+    if root == {}
+        return 0
+    end
+    ld := maxDepth root.left
+    rd := maxDepth root.right
+    return 1 + max ld rd
+end
+
+func test
+    root := (TreeNode)
+    root.val = 3
+    root.left = (TreeNode)
+    root.left.val = 9
+    root.right = (TreeNode)
+    root.right.val = 20
+    root.right.left = (TreeNode)
+    root.right.left.val = 15
+    root.right.right = (TreeNode)
+    root.right.right.val = 7
+    assert 3 (maxDepth root)
+end
+test
+// output:
+//line 14 column 24: "maxDepth" takes 1st argument of type {}any, found any
+//line 15 column 24: "maxDepth" takes 1st argument of type {}any, found any
+//line 16 column 16: function call must be parenthesized: (max ...)
+//line 16 column 12: expected return value of type num, found ILLEGAL
+//line 14 column 5: "ld" declared but not used
+//line 15 column 5: "rd" declared but not used
+//line 23 column 14: field access with "." expects map type, found any
+//line 25 column 15: field access with "." expects map type, found any
+//line 26 column 15: field access with "." expects map type, found any
+//line 27 column 15: field access with "." expects map type, found any
+//line 28 column 15: field access with "." expects map type, found any
+//line 29 column 15: field access with "." expects map type, found any

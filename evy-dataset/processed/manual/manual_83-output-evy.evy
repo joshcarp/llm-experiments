@@ -1,0 +1,5 @@
+m := {foo:"bar" blah:1}
+for key := range m
+    print key m[key]
+end
+

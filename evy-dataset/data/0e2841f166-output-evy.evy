@@ -1,0 +1,4 @@
+assert "HELLO" (upper "hello")
+assert "WORLD" (upper "world")
+assert "123" (upper "123")
+

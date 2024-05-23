@@ -1,0 +1,46 @@
+
+func RandomListNode:{}any x:num
+    self:{}any
+    self.label = x
+    self.next = {}
+    self.random = {}
+    return self
+end
+
+func copyRandomList:{}any head:{}any
+    oldToNew := {}
+    p := head
+    while p != {}
+        copy := (RandomListNode p.label.({}any))
+        oldToNew[p] = copy
+        p = p.next.({}any)
+    end
+    p = head
+    while p != {}
+        if p.next != {}
+            oldToNew[p].next = oldToNew[p.next.({}any)]
+        end
+        if p.random != {}
+            oldToNew[p].random = oldToNew[p.random.({}any)]
+        end
+        p = p.next.({}any)
+    end
+    return oldToNew[head]
+end
+
+func test
+    head := (RandomListNode 1)
+    head.next = (RandomListNode 2)
+    head.next.next = (RandomListNode 3)
+    head.random = head.next.next
+    head.next.random = head
+    head.next.next.random = head.next
+    copy := copyRandomList head
+    assert 1 (copy.label.({}any))
+    assert 2 (copy.next.({}any).label.({}any))
+    assert 3 (copy.next.({}any).next.({}any).label.({}any))
+    assert 3 (copy.random.({}any).label.({}any))
+    assert 1 (copy.next.({}any).random.({}any).label.({}any))
+    assert 2 (copy.next.({}any).next.({}any).random.({}any).label.({}any))
+end
+test

@@ -1,0 +1,19 @@
+
+func runningSum:[]num nums:[]num
+    if nums == []
+        return []
+    end
+    result := [nums[0]]
+    for i := range 1 (len nums)
+        result = result + [result[-1] + nums[i]]
+    end
+    return result
+end
+
+func test
+    assert [1 3 6 10] (runningSum [1 2 3 4])
+    assert [1 2 3 4 5] (runningSum [1 1 1 1 1])
+    assert [0 1 3 6 10] (runningSum [0 1 2 3 4])
+    assert [] (runningSum [])
+end
+test

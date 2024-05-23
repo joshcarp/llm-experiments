@@ -1,0 +1,67 @@
+
+graph := [
+    [0 16 13 0 0 0]
+    [0 0 10 12 0 0]
+    [0 4 0 0 14 0]
+    [0 0 9 0 0 20]
+    [0 0 0 7 0 4]
+    [0 0 0 0 0 0]
+]
+
+func breadthFirstSearch:bool graph:[][]num source:num sink:num parents:[]num
+    visited := [false] * (len graph)
+    queue := []
+    queue = queue + [source]
+    visited[source] = true
+    while (len queue) > 0
+        u := queue[0]
+        queue = queue[1:]
+        for ind := range (len graph[u])
+            node := graph[u][ind]
+            if visited[ind] == false and node > 0
+                queue = queue + [ind]
+                visited[ind] = true
+                parents[ind] = u
+            end
+        end
+    end
+    return visited[sink]
+end
+
+func fordFulkerson:num graph:[][]num source:num sink:num
+    parent := [-1] * (len graph)
+    maxFlow := 0
+    while breadthFirstSearch graph source sink parent
+        pathFlow := 1e9
+        s := sink
+        while s != source
+            pathFlow = min pathFlow graph[parent[s]][s]
+            s = parent[s]
+        end
+        maxFlow = maxFlow + pathFlow
+        v := sink
+        while v != source
+            u := parent[v]
+            graph[u][v] = graph[u][v] - pathFlow
+            graph[v][u] = graph[v][u] + pathFlow
+            v = parent[v]
+        end
+    end
+    return maxFlow
+end
+
+func test
+    testGraph := [
+        [0 16 13 0 0 0]
+        [0 0 10 12 0 0]
+        [0 4 0 0 14 0]
+        [0 0 9 0 0 20]
+        [0 0 0 7 0 4]
+        [0 0 0 0 0 0]
+    ]
+    assert 23 (fordFulkerson testGraph 0 5)
+end
+test
+
+test
+print (sprintf "fordFulkerson(graph, source=0, sink=5) = %v\n" (fordFulkerson graph 0 5))

@@ -1,0 +1,6 @@
+person := {name:"Alice" age:30 city:"New York"}
+for key := range person
+    value := person[key]
+    print key ":" value
+end
+

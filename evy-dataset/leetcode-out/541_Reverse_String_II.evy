@@ -1,0 +1,30 @@
+
+func reverseStr:string s:string k:num
+    N := len s
+    ans := ""
+    position := 0
+    while position < N
+        nx := s[position:min (position + k) N]
+        ans = ans + (reverse nx) + s[min (position + k) N:min (position + 2 * k) N]
+        position = position + (2 * k)
+    end
+    return ans
+end
+
+func reverse:string str:string
+    reversed := ""
+    for i := range (len str)
+        reversed = str[i] + reversed
+    end
+    return reversed
+end
+
+func test
+    s := "abcdefg"
+    k := 2
+    assert "bacdfeg" (reverseStr s k)
+end
+test
+// output:
+//line 8 column 58: unexpected ":"
+//line 8 column 58: "min" takes 2 arguments, found 0

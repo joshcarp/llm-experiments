@@ -1,0 +1,3 @@
+func multiply:num a:num b:num
+    return a * b
+end

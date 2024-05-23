@@ -1,0 +1,41 @@
+// buildBinaryTree takes a list of strings and returns a binary tree.
+
+func buildBinaryTree:{}any tree:[]any
+    root:{}any
+    rootany:any
+    rootany = root
+    queue := [rootany]
+    for i := range 0 (len tree)
+        if (len queue) == 0
+            break
+        end
+        node:{}any
+        node = queue[0].({}any)
+        queue = queue[1:]
+        anynull:any
+        anynull = "null"
+        if tree[i] != anynull
+            node["val"] = tree[i]
+            node["left"] = {}
+            node["right"] = {}
+            queue = queue + [node["left"]]
+            queue = queue + [node["right"]]
+        end
+    end
+    return root
+end
+
+
+
+func test
+    tree := buildBinaryTree ["a" "b" "c"]
+    assertEqual "a" tree["val"]
+    assertEqual "b" tree["left"].({}any)["val"]
+    assertEqual "c" tree["right"].({}any)["val"]
+    tree2 := buildBinaryTree [1 2 3]
+    assertEqual 1 tree2["val"]
+    assertEqual 2 tree2["left"].({}any)["val"]
+    assertEqual 3 tree2["right"].({}any)["val"]
+    tree3 := buildBinaryTree ["a"]
+    assertEqual "a" tree3["val"]
+end

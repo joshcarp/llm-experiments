@@ -1,0 +1,53 @@
+
+func getMoneyAmount:num n:num
+    dp:[][]num
+    dp = [[]] * (n + 1)
+    for i := range (n + 1)
+        dp[i] = [0] * (n + 1)
+    end
+    for j := range 2 (n + 1)
+        for i := range (j - 1) 0 -1
+            globalMin := 2147483647
+            for k := range (i + 1) j
+                localMax := k + max (dp[i][k - 1]) (dp[k + 1][j])
+                globalMin = min globalMin localMax
+            end
+            if (i + 1) == j
+                dp[i][j] = i
+            else
+                dp[i][j] = globalMin
+            end
+        end
+    end
+    return dp[1][n]
+end
+
+func max:num a:num b:num
+    if a > b
+        return a
+    end
+    return b
+end
+
+func min:num a:num b:num
+    if a < b
+        return a
+    end
+    return b
+end
+
+func test
+    assert 0 (getMoneyAmount 1)
+    assert 1 (getMoneyAmount 2)
+    assert 2 (getMoneyAmount 3)
+    assert 2 (getMoneyAmount 4)
+    assert 4 (getMoneyAmount 5)
+    assert 6 (getMoneyAmount 6)
+    assert 7 (getMoneyAmount 7)
+    assert 8 (getMoneyAmount 8)
+    assert 10 (getMoneyAmount 9)
+    assert 12 (getMoneyAmount 10)
+end
+// output:
+//line 25 column 1: cannot override builtin function "max"
+//line 32 column 1: cannot override builtin function "min"

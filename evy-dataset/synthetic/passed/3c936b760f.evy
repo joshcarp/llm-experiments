@@ -1,0 +1,16 @@
+//Find the middle element of a linked list
+
+func middleNode:{}any head:{}any
+    slow := head
+    fast := head
+    while fast != {} and fast.next.({}any) != {}
+        slow = slow.next.({}any)
+        fast = fast.next.({}any).next.({}any)
+    end
+    return slow
+end
+
+nil := {}
+head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:nil}}}}}
+assert {val:3 next:{val:4 next:{val:5 next:nil}}} (middleNode head)
+

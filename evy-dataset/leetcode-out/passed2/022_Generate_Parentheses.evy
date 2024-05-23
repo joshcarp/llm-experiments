@@ -1,0 +1,22 @@
+
+func generateParenthesis:[]string n:num
+    if n == 1
+        return ["()"]
+    end
+    lastList := generateParenthesis n-1
+    result := []
+    for t := range lastList
+        curr := t + ")"
+        for i := range (len curr)
+            if curr[i] == ")"
+                result = result + [curr[:i] + "(" + curr[i:]]
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert ["(())" "()()"] (generateParenthesis 2)
+    assert ["((()))" "(()())" "(())()" "()(())" "()()()"] (generateParenthesis 3)
+end

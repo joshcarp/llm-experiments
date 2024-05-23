@@ -1,0 +1,1 @@
+Write an if-else statement in Evy that checks if a score is excellent, great, or needs practice.

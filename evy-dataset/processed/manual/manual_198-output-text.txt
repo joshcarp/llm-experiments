@@ -1,0 +1,24 @@
+func fizzbuzz:[]string n:num
+    ans:[]string
+    for i := range 1 (n + 1)
+        s:string
+        if i % 3 == 0
+            s = s + "Fizz"
+        end
+        if i % 5 == 0
+            s = s + "Buzz"
+        end
+        if s == ""
+            s = sprintf "%v" i
+        end
+        ans = ans + [s]
+    end
+    return ans
+end
+
+func test
+    assert ["1" "2" "Fizz"]==(fizzbuzz 3)
+    assert ["1" "2" "Fizz" "4" "Buzz"]==(fizzbuzz 5)
+    assert ["1" "2" "Fizz" "4" "Buzz" "Fizz" "7" "8" "Fizz" "Buzz" "11" "Fizz" "13" "14" "FizzBuzz"]==(fizzbuzz 15)
+end
+

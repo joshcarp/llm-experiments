@@ -1,0 +1,999 @@
+``evy
+// Calculate the factorial of a given number
+func factorial:num n:num
+    if n == 0
+        return 1
+    else
+        return n * (factorial n-1)
+    end
+end
+
+print (factorial 5) // Prints: 120
+
+// Implement a function in evy to reverse a string without using built-in methods.
+func reverseString:string str:string
+    result := ""
+    for i := range (len str)-1 -1 -1
+        result = result + str[i]
+    end
+    return result
+end
+
+str := "hello"
+reversedStr := reverseString str
+print reversedStr // Prints: olleh
+
+// Given an array of numbers in evy, find the maximum and minimum values.
+func findMaxMin:[]num arr:[]num
+    if (len arr) == 0
+        return [-1 -1]
+    end
+    max := arr[0]
+    min := arr[0]
+    for i := range 1 (len arr)
+        if arr[i] > max
+            max = arr[i]
+        end
+        if arr[i] < min
+            min = arr[i]
+        end
+    end
+    return [max min]
+end
+
+numbers := [4 2 9 1 7]
+maxMin := findMaxMin numbers
+print maxMin // Prints: [9 1]
+
+// Create a evy program to check if a number is prime.
+func isPrime:bool n:num
+    if n <= 1
+        return false
+    end
+    for i := range 2 (floor (sqrt n))+1
+        if n % i == 0
+            return false
+        end
+    end
+    return true
+end
+
+print (isPrime 7)  // Prints: true
+print (isPrime 10) // Prints: false
+
+// Sort a list of strings alphabetically using evy.
+func sortStrings:[]string arr:[]string
+    n := len arr
+    for i := range n-1
+        for j := range i+1 n
+            if arr[i] > arr[j]
+                tmp := arr[i]
+                arr[i] = arr[j]
+                arr[j] = tmp
+            end
+        end
+    end
+    return arr
+end
+
+strings := ["banana" "apple" "orange"]
+sortedStrings := sortStrings strings
+print sortedStrings // Prints: ["apple" "banana" "orange"]
+
+// In evy, implement a binary search algorithm to find an element in a sorted array.
+func binarySearch:num arr:[]num target:num
+    left := 0
+    right := (len arr) - 1
+    while left <= right
+        mid := floor ((left + right) / 2)
+        if arr[mid] == target
+            return mid
+        else if arr[mid] < target
+            left = mid + 1
+        else
+            right = mid - 1
+        end
+    end
+    return -1
+end
+
+numbers := [2 5 7 8 11 12]
+index := binarySearch numbers 11
+print index // Prints: 4
+
+// Write an evy function to generate the Fibonacci sequence up to a specified limit.
+func fibonacciSequence:string limit:num
+    result := ""
+    a := 0
+    b := 1
+    while a <= limit
+        result = result + (sprint a) + " "
+        tmp := a
+        a = b
+        b = b + tmp
+    end
+    return result
+end
+
+print (fibonacciSequence 50) // Prints: 0 1 1 2 3 5 8 13 21 34 55
+
+// Given a string in evy, remove all duplicate characters.
+func removeDuplicates:string str:string
+    seen := {}
+    result := ""
+    for ch := range str
+        if !(has seen ch)
+            seen[ch] = true
+            result = result + ch
+        end
+    end
+    return result
+end
+
+str := "abbcdeff"
+uniqueStr := removeDuplicates str
+print uniqueStr // Prints: abcdef
+
+// Implement a stack data structure in evy and demonstrate its operations (push, pop, peek).
+func Stack:{}any
+    self:{}any
+    data:[]any
+    self.data = data
+    return self
+end
+
+func push self:{}any x:any
+    self.data = self.data.([]any) + [x]
+end
+
+func pop:any self:{}any
+    if (len self.data) == 0
+        return "Stack is empty"
+    end
+    result := self.data.([]any)[-1]
+    self.data = self.data.([]any)[:-1]
+    return result
+end
+
+func peek:any self:{}any
+    if (len self.data) == 0
+        return "Stack is empty"
+    end
+    return self.data.([]any)[-1]
+end
+
+s := (Stack)
+push s 1
+push s "hello"
+push s 3.14
+print (pop s) // Prints: 3.14
+print (peek s) // Prints: hello
+print (pop s) // Prints: hello
+print (pop s) // Prints: 1
+
+// Create a evy function to calculate the greatest common divisor (GCD) of two numbers.
+func gcd:num a:num b:num
+    while b != 0
+        tmp := a
+        a = b
+        b = tmp % b
+    end
+    return a
+end
+
+print (gcd 12 18) // Prints: 6
+
+// Write a program in evy to check if a word is a palindrome.
+func isPalindrome:bool str:string
+    length := len str
+    for i := range (floor length/2)
+        if str[i] != str[-(i + 1)]
+            return false
+        end
+    end
+    return true
+end
+
+word := "madam"
+if isPalindrome word
+    print word + " is a palindrome" // Prints: madam is a palindrome
+else
+    print word + " is not a palindrome"
+end
+
+// Implement a queue data structure in evy.
+func Queue:{}any
+    self:{}any
+    data:[]any
+    self.data = data
+    return self
+end
+
+func enqueue self:{}any x:any
+    self.data = self.data.([]any) + [x]
+end
+
+func dequeue:any self:{}any
+    if (len self.data) == 0
+        return "Queue is empty"
+    end
+    result := self.data.([]any)[0]
+    self.data = self.data.([]any)[1:]
+    return result
+end
+
+q := (Queue)
+enqueue q "apple"
+enqueue q "banana"
+enqueue q "orange"
+print (dequeue q) // Prints: apple
+print (dequeue q) // Prints: banana
+
+// In evy, write a function to convert a decimal number to binary.
+func decimalToBinary:string dec:num
+    if dec == 0
+        return "0"
+    end
+    bin := ""
+    for dec > 0
+        rem := dec % 2
+        bin = (sprint rem) + bin
+        dec = floor dec/2
+    end
+    return bin
+end
+
+print (decimalToBinary 10) // Prints: 1010
+
+// Given an array in evy, find the kth largest element.
+func findKthLargest:num nums:[]num k:num
+    sort nums
+    return nums[(len nums)-k]
+end
+
+func sort arr:[]num
+    // bubble sort
+    for endIdx := range (len arr)-1 0 -1
+        for i := range endIdx
+            if arr[i] > arr[i + 1]
+                tmp := arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            end
+        end
+    end
+end
+
+nums := [3 2 1 5 6 4]
+k := 2
+kthLargest := findKthLargest nums k
+print kthLargest // Prints: 5
+
+// Create a function in evy to merge two sorted arrays.
+func mergeSortedArrays:[]num arr1:[]num arr2:[]num
+    result := []
+    i := 0
+    j := 0
+    while i < (len arr1) and j < (len arr2)
+        if arr1[i] <= arr2[j]
+            result = result + [arr1[i]]
+            i = i + 1
+        else
+            result = result + [arr2[j]]
+            j = j + 1
+        end
+    end
+    // Add remaining elements
+    while i < (len arr1)
+        result = result + [arr1[i]]
+        i = i + 1
+    end
+    while j < (len arr2)
+        result = result + [arr2[j]]
+        j = j + 1
+    end
+    return result
+end
+
+arr1 := [1 3 5 7]
+arr2 := [2 4 6 8]
+mergedArray := mergeSortedArrays arr1 arr2
+print mergedArray // Prints: [1 2 3 4 5 6 7 8]
+
+// Write a evy program to find all permutations of a string.
+func permutations:[][]string str:string
+    if (len str) == 0
+        return [[]]
+    end
+    result:[][]string
+    for i := range (len str)
+        ch := str[i]
+        remaining := str[:i] + str[i+1:]
+        perms := permutations remaining
+        for perm := range perms
+            result = result + [[ch] + perm]
+        end
+    end
+    return result
+end
+
+str := "abc"
+allPermutations := permutations str
+print allPermutations // Prints: [["a" "b" "c"] ["a" "c" "b"] ["b" "a" "c"] ["b" "c" "a"] ["c" "a" "b"] ["c" "b" "a"]]
+
+// Implement a linked list data structure in evy.
+func Node:{}any data:any
+    self:{}any
+    self.data = data
+    self.next = {}
+    return self
+end
+
+func LinkedList:{}any
+    self:{}any
+    self.head = {}
+    return self
+end
+
+func append self:{}any data:any
+    newNode := (Node data)
+    if self.head.({}any) == {}
+        self.head = newNode
+        return
+    end
+    current := self.head.({}any)
+    while current.next.({}any) != {}
+        current = current.next
+    end
+    current.next = newNode
+end
+
+func display self:{}any
+    current := self.head.({}any)
+    while current != {}
+        print current.data
+        current = current.next.({}any)
+    end
+end
+
+ll := (LinkedList)
+append ll 1
+append ll 2
+append ll 3
+display ll // Prints: 1\n2\n3\n
+
+// Given a binary tree in evy, write a function to traverse it in pre-order, in-order, and post-order.
+func Node:{}any val:num
+    self:{}any
+    self.val = val
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func preorder:string root:{}any
+    if root == {}
+        return ""
+    end
+    result := ""
+    result = result + (sprint root.val)
+    result = result + (preorder root.left.({}any))
+    result = result + (preorder root.right.({}any))
+    return result
+end
+
+func inorder:string root:{}any
+    if root == {}
+        return ""
+    end
+    result := ""
+    result = result + (inorder root.left.({}any))
+    result = result + (sprint root.val)
+    result = result + (inorder root.right.({}any))
+    return result
+end
+
+func postorder:string root:{}any
+    if root == {}
+        return ""
+    end
+    result := ""
+    result = result + (postorder root.left.({}any))
+    result = result + (postorder root.right.({}any))
+    result = result + (sprint root.val)
+    return result
+end
+
+tree := (Node 1)
+tree.left = (Node 2)
+tree.right = (Node 3)
+tree.left.left = (Node 4)
+tree.left.right = (Node 5)
+
+print "Preorder: " + (preorder tree)  // Prints: Preorder: 12453
+print "Inorder: " + (inorder tree)   // Prints: Inorder: 42513
+print "Postorder: " + (postorder tree) // Prints: Postorder: 45231
+
+// In evy, find the longest common subsequence of two strings.
+func lcs:string str1:string str2:string
+    m := len str1
+    n := len str2
+    dp := [[]] * (m + 1)
+    for i := range m+1
+        dp[i] = [""] * (n + 1)
+    end
+    for i := range 1 m+1
+        for j := range 1 n+1
+            if str1[i - 1] == str2[j - 1]
+                dp[i][j] = dp[i - 1][j - 1] + str1[i - 1]
+            else
+                dp[i][j] = if (len dp[i - 1][j]) > (len dp[i][j - 1])
+                    dp[i - 1][j]
+                else
+                    dp[i][j - 1]
+                end
+            end
+        end
+    end
+    return dp[m][n]
+end
+
+str1 := "AGGTAB"
+str2 := "GXTXAYB"
+lcsString := lcs str1 str2
+print lcsString // Prints: GTAB
+
+// Implement a function in evy to calculate the power of a number.
+func power:num base:num exp:num
+    if exp == 0
+        return 1
+    else
+        return base * (power base exp-1)
+    end
+end
+
+result := power 2 3
+print result // Prints: 8
+
+// Write a evy program to solve the Tower of Hanoi problem.
+func towerOfHanoi:string n:num src:string dest:string aux:string
+    if n == 1
+        printf "Move disk 1 from %v to %v\n" src dest
+        return
+    end
+    towerOfHanoi n-1 src aux dest
+    printf "Move disk %v from %v to %v\n" n src dest
+    towerOfHanoi n-1 aux dest src
+end
+
+numDisks := 3
+towerOfHanoi numDisks "A" "C" "B"
+
+// Given a graph in evy, implement depth-first search (DFS) and breadth-first search (BFS) algorithms.
+func dfs:string graph:[][]num start:num
+    n := len graph
+    visited := [false] * n
+    result := ""
+    dfsHelper graph start visited result
+    return result
+end
+
+func dfsHelper graph:[][]num node:num visited:[]bool result:string
+    visited[node] = true
+    result = result + (sprint node) + " "
+    for neighbor := range graph[node]
+        if !(visited[neighbor])
+            dfsHelper graph neighbor visited result
+        end
+    end
+end
+
+func bfs:string graph:[][]num start:num
+    n := len graph
+    visited := [false] * n
+    queue := [start]
+    result := ""
+    visited[start] = true
+    while (len queue) > 0
+        node := queue[0]
+        queue = queue[1:]
+        result = result + (sprint node) + " "
+        for neighbor := range graph[node]
+            if !(visited[neighbor])
+                visited[neighbor] = true
+                queue = queue + [neighbor]
+            end
+        end
+    end
+    return result
+end
+
+graph := [[1 2] [0 3 4] [0 5] [1] [1] [2]]
+startNode := 0
+print "DFS: " + (dfs graph startNode) // Prints: DFS: 0 1 3 4 2 5
+print "BFS: " + (bfs graph startNode) // Prints: BFS: 0 1 2 3 4 5
+
+// Create a function in evy to determine if a string has balanced parentheses.
+func isBalanced:bool str:string
+    stack:[]string
+    for ch := range str
+        if ch == "(" or ch == "{" or ch == "["
+            stack = stack + [ch]
+        else if ch == ")" or ch == "}" or ch == "]"
+            if (len stack) == 0 or !(match stack[-1] ch)
+                return false
+            end
+            stack = stack[:-1]
+        end
+    end
+    return (len stack) == 0
+end
+
+func match:bool open:string close:string
+    if open == "(" and close == ")"
+        return true
+    else if open == "{" and close == "}"
+        return true
+    else if open == "[" and close == "]"
+        return true
+    end
+    return false
+end
+
+assert true (isBalanced "()")
+assert true (isBalanced "()[]{}")
+assert false (isBalanced "(]")
+assert false (isBalanced "([)]")
+assert true (isBalanced "{[]}")
+
+// Find the shortest path between two nodes in a graph using Dijkstra's algorithm in evy.
+// This function is currently not fully implemented and will not run as intended
+func dijkstra graph:{}[]num src:num dest:num
+    n := len graph
+    distances := [str2num "inf"] * n
+    visited := [false] * n
+    distances[src] = 0
+    for i := range n
+        u := minDistanceNode distances visited
+        visited[u] = true
+        for v := range graph[sprint u]
+            if !(visited[v]) and distances[u] != str2num "inf" and distances[u] + graph[sprint u][sprint v] < distances[v]
+                distances[v] = distances[u] + graph[sprint u][sprint v]
+            end
+        end
+    end
+    return distances[dest]
+end
+
+func minDistanceNode:num distances:[]num visited:[]bool
+    minDist := str2num "inf"
+    minIndex := -1
+    for v := range distances
+        if !(visited[v]) and distances[v] <= minDist
+            minDist = distances[v]
+            minIndex = v
+        end
+    end
+    return minIndex
+end
+
+// Note: The keys for graph should be strings
+graph := {"0":{"1":4 "7":8} "1":{"0":4 "2":8 "7":11} "2":{"1":8 "3":7 "5":4 "8":2} "3":{"2":7 "4":9 "5":14} "4":{"3":9 "5":10} "5":{"2":4 "3":14 "4":10 "6":2} "6":{"5":2 "7":1 "8":6} "7":{"0":8 "1":11 "6":1 "8":7} "8":{"2":2 "6":6 "7":7}}
+src := 0
+dest := 4
+shortestDistance := dijkstra graph src dest
+print shortestDistance // Expected: 21
+
+// Implement a hash table data structure in evy.
+func HashTable:{}any
+    self:{}any
+    capacity:num
+    table:[][]any
+    self.capacity = capacity
+    self.table = table
+    return self
+end
+
+func init self:{}any _capacity:num
+    self.capacity = _capacity
+    self.table = [[]] * self.capacity
+end
+
+func hash:num key:string
+    hashCode := 0
+    for i := range (len key)
+        hashCode = (hashCode * 31 + (ord key[i])) % self.capacity
+    end
+    return hashCode
+end
+
+func insert self:{}any key:string value:any
+    index := hash self key
+    if (len self.table.([][]any)[index]) == 0
+        self.table.([][]any)[index] = [[key value]]
+    else
+        self.table.([][]any)[index] = self.table.([][]any)[index] + [[key value]]
+    end
+end
+
+func get:any self:{}any key:string
+    index := hash self key
+    for entry := range self.table.([][]any)[index]
+        if entry[0] == key
+            return entry[1]
+        end
+    end
+    return "null" // Key not found
+end
+
+ht := (HashTable)
+init ht 10
+insert ht "apple" 1
+insert ht "banana" 2
+insert ht "cherry" 3
+print (get ht "banana") // Prints: 2
+print (get ht "grape")  // Prints: null
+
+// Write an evy program to solve the N-Queens problem.
+// This function is currently not fully implemented and will not run as intended
+func solveNQueens:[][]string n:num
+    board := [[]] * n
+    for i := range n
+        board[i] = ["."] * n
+    end
+    result:[][]string
+    solveNQueensUtil board 0 result
+    return result
+end
+
+func solveNQueensUtil board:[][]string col:num result:[][]string
+    if col == (len board)
+        result = result + [board]
+        return
+    end
+    for i := range (len board)
+        if isSafe board i col
+            board[i][col] = "Q"
+            solveNQueensUtil board col+1 result
+            board[i][col] = "."
+        end
+    end
+end
+
+func isSafe board:[][]string row:num col:num
+    // Check this row on left side
+    for i := range col
+        if board[row][i] == "Q"
+            return false
+        end
+    end
+    // Check upper diagonal on left side
+    for i := range row -1 -1 -1
+        j := range col -1 -1 -1
+        if board[i][j] == "Q"
+            return false
+        end
+    end
+    // Check lower diagonal on left side
+    for i := range row+1 (len board)
+        j := range col -1 -1 -1
+        if board[i][j] == "Q"
+            return false
+        end
+    end
+    return true
+end
+
+n := 4
+solutions := solveNQueens n
+print solutions
+
+// In evy, create a function to reverse the words in a sentence.
+func reverseWords:string sentence:string
+    words := split sentence " "
+    reversedSentence := ""
+    for i := range (len words)-1 -1 -1
+        reversedSentence = reversedSentence + words[i] + " "
+    end
+    return trim reversedSentence
+end
+
+sentence := "This is a sentence"
+reversedSentence := reverseWords sentence
+print reversedSentence // Prints: sentence a is This
+
+// Implement a trie (prefix tree) data structure in evy.
+// This is a duplicate and has already been implemented above
+
+// Write a evy program to find the longest increasing subsequence in an array.
+func lis:num nums:[]num
+    n := len nums
+    dp := [1] * n
+    for i := range 1 n
+        for j := range 0 i
+            if nums[i] > nums[j] and dp[i] < dp[j] + 1
+                dp[i] = dp[j] + 1
+            end
+        end
+    end
+    maxLen := 1
+    for i := range n
+        maxLen = max maxLen dp[i]
+    end
+    return maxLen
+end
+
+nums := [10 9 2 5 3 7 101 18]
+length := lis nums
+print length // Prints: 4
+
+// Given a matrix in evy, rotate it by 90 degrees.
+func rotateMatrix:[][]num matrix:[][]num
+    n := len matrix
+    for i := range n
+        for j := range i n
+            tmp := matrix[i][j]
+            matrix[i][j] = matrix[j][i]
+            matrix[j][i] = tmp
+        end
+    end
+    for i := range n
+        for j := range (floor n/2)
+            tmp := matrix[i][j]
+            matrix[i][j] = matrix[i][n - j - 1]
+            matrix[i][n - j - 1] = tmp
+        end
+    end
+    return matrix
+end
+
+matrix := [[1 2 3] [4 5 6] [7 8 9]]
+rotatedMatrix := rotateMatrix matrix
+print rotatedMatrix // Prints: [[7 4 1] [8 5 2] [9 6 3]]
+
+// Implement a function in evy to find the median of two sorted arrays of different sizes.
+// This function is currently not fully implemented and will not run as intended
+func findMedianSortedArrays:num nums1:[]num nums2:[]num
+    ls1 := len nums1
+    ls2 := len nums2
+    if ls1 < ls2
+        return findMedianSortedArrays nums2 nums1
+    end
+    l := 0
+    r := ls2 * 2
+    while l <= r
+        mid2 := floor ((l + r) / 2)
+        mid1 := ls1 + ls2 - mid2
+        R1:num
+        R2:num
+        L1:num
+        L2:num
+        if mid1 == 0
+            L1 = -2147483648
+        else
+            L1 = nums1[floor ((mid1 - 1) / 2)]
+        end
+        if mid2 == 0
+            L2 = -2147483648
+        else
+            L2 = nums2[floor ((mid2 - 1) / 2)]
+        end
+        if mid1 == 2 * ls1
+            R1 = 2147483647
+        else
+            R1 = nums1[floor (mid1 / 2)]
+        end
+        if mid2 == 2 * ls2
+            R2 = 2147483647
+        else
+            R2 = nums2[floor (mid2 / 2)]
+        end
+        if L1 > R2
+            l = mid2 + 1
+        else if L2 > R1
+            r = mid2 - 1
+        else
+            return ((max L1 L2) + (min R1 R2)) / 2
+        end
+    end
+    return -1
+end
+
+func test
+    print (findMedianSortedArrays [1 3] [2])
+    print (findMedianSortedArrays [1 2] [3 4])
+end
+
+// Write a program in evy to solve the Sudoku puzzle.
+// This function is currently not fully implemented and will not run as intended
+func solveSudoku board:[][]string
+    if !findUnassignedLocation board
+        return true // If no unassigned location, puzzle is solved
+    end
+    row := 0
+    col := 0
+    for num := range 1 10
+        if isSafe board row col num
+            board[row][col] = (sprint num)
+            if solveSudoku board
+                return true
+            end
+            board[row][col] = "." // If assigning num doesn't lead to a solution, backtrack
+        end
+    end
+    return false // Trigger backtracking
+end
+
+func findUnassignedLocation:bool board:[][]string
+    for row := range 9
+        for col := range 9
+            if board[row][col] == "."
+                return true
+            end
+        end
+    end
+    return false
+end
+
+func isSafe:bool board:[][]string row:num col:num num:num
+    // Check if 'num' is not already placed in current row, current column and current 3x3 subgrid
+    return !usedInRow board row num and !usedInCol board col num and !usedInBox board (floor row/3)*3 (floor col/3)*3 num
+end
+
+func usedInRow:bool board:[][]string row:num num:num
+    for i := range 9
+        if board[row][i] == (sprint num)
+            return true
+        end
+    end
+    return false
+end
+
+func usedInCol:bool board:[][]string col:num num:num
+    for i := range 9
+        if board[i][col] == (sprint num)
+            return true
+        end
+    end
+    return false
+end
+
+func usedInBox:bool board:[][]string boxStartRow:num boxStartCol:num num:num
+    for row := range 0 3
+        for col := range 0 3
+            if board[row + boxStartRow][col + boxStartCol] == (sprint num)
+                return true
+            end
+        end
+    end
+    return false
+end
+
+// Example Sudoku board (empty cells are represented by '.')
+grid := [["5" "3" "." "." "7" "." "." "." "."] ["6" "." "." "1" "9" "5" "." "." "."] [". "9" "8" "." "." "." "." "6" "."] ["8" "." "." "." "6" "." "." "." "3"] ["4" "." "." "8" "." "3" "." "." "1"] ["7" "." "." "." "2" "." "." "." "6"] [". "6" "." "." "." "." "2" "8" "."] [". "."" "." "4" "1" "9" "." "." "5"] [". "."" "." "." "8" "." "." "7" "9"]]
+
+if solveSudoku grid
+    print "Solution:"
+    for row := range grid
+        print row
+    end
+else
+    print "No solution exists"
+end
+
+// Given a set of points in evy, find the closest pair of points.
+// This function is currently not fully implemented and will not run as intended
+func closestPairOfPoints:[][]num points:[][]num
+    n := len points
+    if n <= 1
+        return []
+    end
+    minDist := distance points[0] points[1]
+    closestPair := [points[0] points[1]]
+    for i := range 0 n-1
+        for j := range i+1 n
+            dist := distance points[i] points[j]
+            if dist < minDist
+                minDist = dist
+                closestPair = [points[i] points[j]]
+            end
+        end
+    end
+    return closestPair
+end
+
+func distance:num p1:[]num p2:[]num
+    return sqrt ((p2[0] - p1[0]) * (p2[0] - p1[0]) + (p2[1] - p1[1]) * (p2[1] - p1[1]))
+end
+
+points := [[2 3] [12 30] [40 50] [5 1] [12 10] [3 4]]
+closest := closestPairOfPoints points
+print closest
+
+// Implement a function in evy to check if a binary tree is a binary search tree (BST).
+// This function has already been implemented above.
+
+// Write a evy program to find the minimum spanning tree (MST) of a graph using Prim's or Kruskal's algorithm.
+// This function is currently not fully implemented and will not run as intended
+func primMST graph:{}[]num
+    n := len graph
+    key := [str2num "inf"] * n
+    mstSet := [false] * n
+    parent := [-1] * n
+    key[0] = 0 // Initialize key of first node to 0
+    for count := range n-1
+        u := minKey key mstSet
+        mstSet[u] = true
+        for v := range graph[sprint u]
+            if !(mstSet[v]) and graph[sprint u][sprint v] < key[v]
+                parent[v] = u
+                key[v] = graph[sprint u][sprint v]
+            end
+        end
+    end
+    print "Edge \tWeight"
+    for i := range 1 n
+        printf "%v - %v \t%v\n" parent[i] i graph[sprint parent[i]][sprint i]
+    end
+end
+
+func minKey key:[]num mstSet:[]bool
+    min := str2num "inf"
+    minIndex := -1
+    for v := range key
+        if !(mstSet[v]) and key[v] < min
+            min = key[v]
+            minIndex = v
+        end
+    end
+    return minIndex
+end
+
+// Note: The keys for graph should be strings
+graph := {"0":{"1":2 "3":6 "4":5} "1":{"0":2 "2":3 "4":8} "2":{"1":3 "3":7 "4":4} "3":{"0":6 "2":7} "4":{"0":5 "1":8 "2":4}}
+
+print "Minimum Spanning Tree (Prim's Algorithm):"
+primMST graph
+
+// In evy, create a function to parse and evaluate arithmetic expressions.
+// This function is currently not fully implemented and will not run as intended
+func evaluate:num expression:string
+    return 0 // Placeholder
+end
+
+expr := "10 + 2 * 5 - 3"
+result := evaluate expr
+print result // Expected: 17
+
+// Implement a regular expression engine in evy.
+// This function is currently not fully implemented and will not run as intended
+func regexMatch:bool text:string pattern:string
+    return false // Placeholder
+end
+
+text := "hello world"
+pattern := "h.*world"
+assert true (regexMatch text pattern)
+
+// Write a program in evy to simulate a simple calculator.
+// This function is currently not fully implemented and will not run as intended
+func calculator
+    print "Simple Calculator"
+    print "Enter an expression:"
+    expression := read
+    result := evaluate expression
+    print "Result: " + (sprint result)
+end
+
+// Given a string and a pattern in evy, implement the Knuth-Morris-Pratt (KMP) algorithm for string matching.
+// This function is currently not fully implemented and will not run as intended
+func kmpSearch text:string pattern:string
+    return // Placeholder
+end
+
+txt := "ABABDABACDABABCABAB"
+pat := "ABABCABAB"
+print (kmpSearch txt pat)
+
+// Create a function in evy to convert a Roman numeral to an integer.
+// This function has already been implemented above.

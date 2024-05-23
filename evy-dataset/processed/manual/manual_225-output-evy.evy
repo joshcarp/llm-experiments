@@ -1,0 +1,10 @@
+func average:num nums:[]num
+    sum := 0
+    for n := range nums
+        sum = sum + n
+    end
+    return sum / (len nums)
+end
+
+print (average [1 2 3 4 5])
+

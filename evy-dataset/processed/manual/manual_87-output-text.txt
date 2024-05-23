@@ -1,0 +1,2 @@
+x: num = 5
+y: string = x.(string)   // Converts x to a string

@@ -1,0 +1,48 @@
+theta := 0 // angle of black circle as it rotates around y axis
+r := 25 // black circle radius (hopefully)
+tau := 2 * 3.14159265359 // 1 rotation
+rotations_per_second := 0.05
+rotation_speed := rotations_per_second * tau // per second
+
+prev_t := 0 // elapsed time at start of last frame
+delta_t := 0 // store milliseconds since last frame
+
+on animate t:num
+    delta_t = t - prev_t
+    prev_t = t
+    deg := t / 3
+    theta = theta + rotation_speed * delta_t * 0.001
+    draw theta deg
+end
+
+func abs:num z:num
+    if z >= 0
+        return z
+    else
+        return -z
+    end
+end
+
+func draw theta:num deg:num
+    clear
+    gridn 50 "lightgrey"
+
+    // Ellipse seems to crash if x is negative.
+    // So take abs value -- this gives correct result
+    // for black circle, but position of red dot about circle
+    // is a bit incorrect -- it should change from clockwise
+    // to counterclockwise as we increase theta and flip
+    // the black circle so it is facing back to front.
+    x := (abs (r * (cos theta)))
+
+    // black circle
+    color "black"
+    width 0.3
+    fill "none"
+    ellipse 2*r 2*r x r
+
+    // red dot
+    color "red"
+    width 3
+    ellipse 2*r 2*r x r 0 deg deg+0.1
+end

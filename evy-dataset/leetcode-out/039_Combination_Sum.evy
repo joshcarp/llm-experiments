@@ -1,0 +1,66 @@
+
+func combinationSum:[][]num candidates:[]num target:num
+    sort candidates
+    dp := [[]] * (target + 1)
+    dp[0] = [[]]
+    for i := range 1 (target + 1)
+        for j := range (len candidates)
+            if candidates[j] > i
+                break
+            end
+            for k := range (len dp[i - candidates[j]])
+                temp := dp[i - candidates[j]][k][:]
+                if (len temp) > 0 and temp[-1] > candidates[j]
+                    continue
+                end
+                temp = temp + [candidates[j]]
+                dp[i] = dp[i] + [temp]
+            end
+        end
+    end
+    return dp[target]
+end
+
+func test
+    s := {}
+    print (combinationSum [8 7 4 3] 11)
+end
+test
+// output:
+//panic: internal error: line 4 column 16 incompatible types: target [][]any, value [][]
+//
+//goroutine 1 [running]:
+//evylang.dev/evy/pkg/parser.wrapAny({0x104fbf898, 0x1400010c6c0}, 0x1400000d008)
+//	/home/runner/work/evy/evy/pkg/parser/ast.go:1176 +0x69c
+//evylang.dev/evy/pkg/parser.(*parser).parseInferredDeclStatement(0x14000108be0)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:550 +0x2a0
+//evylang.dev/evy/pkg/parser.(*parser).parseStatement(0x14000108be0)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:325 +0x6c
+//evylang.dev/evy/pkg/parser.(*parser).parseBlockWithEndTokens(0x14000108be0, 0x14000036fd0)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:683 +0x88
+//evylang.dev/evy/pkg/parser.(*parser).parseBlock(...)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:671
+//evylang.dev/evy/pkg/parser.(*parser).parseFunc(0x14000108be0)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:215 +0x1ec
+//evylang.dev/evy/pkg/parser.(*parser).parseProgram(0x14000108be0)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:169 +0x258
+//evylang.dev/evy/pkg/parser.(*parser).parse(...)
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:152
+//evylang.dev/evy/pkg/parser.Parse({0x140001aa300?, 0x140001a3260?}, {0x140001a3260?, 0x140001a3140?, 0x140001a3170?})
+//	/home/runner/work/evy/evy/pkg/parser/parser.go:28 +0x40
+//evylang.dev/evy/pkg/evaluator.(*Evaluator).Run(0x14000108b40, {0x140001aa300, 0x2c3})
+//	/home/runner/work/evy/evy/pkg/evaluator/evaluator.go:169 +0x120
+//main.(*runCmd).Run(0x1400007eea8)
+//	/home/runner/work/evy/evy/main.go:152 +0x198
+//reflect.Value.call({0x104f62480?, 0x1400007eea8?, 0x14000037a98?}, {0x104a3c530, 0x4}, {0x14000037b58, 0x0, 0x104a13d08?})
+//	/home/runner/.cache/hermit/pkg/go-1.22.3/src/reflect/value.go:596 +0x970
+//reflect.Value.Call({0x104f62480?, 0x1400007eea8?, 0x104f5bb60?}, {0x14000037b58?, 0x0?, 0x14000037b10?})
+//	/home/runner/.cache/hermit/pkg/go-1.22.3/src/reflect/value.go:380 +0x94
+//github.com/alecthomas/kong.callFunction({0x104f62480?, 0x1400007eea8?, 0x14000037d60?}, 0x140001a28a0)
+//	/home/runner/go/pkg/mod/github.com/alecthomas/kong@v0.9.0/callbacks.go:98 +0x390
+//github.com/alecthomas/kong.(*Context).RunNode(0x1400014e080, 0x1400016a0f0, {0x0, 0x0, 0x1400015a280?})
+//	/home/runner/go/pkg/mod/github.com/alecthomas/kong@v0.9.0/context.go:774 +0x630
+//github.com/alecthomas/kong.(*Context).Run(0x104f29620?, {0x0?, 0x14000157f18?, 0x7?})
+//	/home/runner/go/pkg/mod/github.com/alecthomas/kong@v0.9.0/context.go:799 +0x138
+//main.main()
+//	/home/runner/work/evy/evy/main.go:97 +0x150

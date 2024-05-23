@@ -1,0 +1,38 @@
+
+func searchMatrix:bool matrix:[][]num target:num
+    // binary search
+    lsRow := len matrix
+    lsCol := len matrix[0]
+    if target < matrix[0][0] or target > matrix[lsRow - 1][lsCol - 1]
+        return false
+    end
+    begin := 0
+    end := lsRow * lsCol - 1
+    while begin <= end
+        mid := floor ((begin + end) / 2)
+        row := floor (mid / lsCol)
+        col := mid % lsCol
+        if matrix[row][col] == target
+            return true
+        else if matrix[row][col] > target
+            end = mid - 1
+        else
+            begin = mid + 1
+        end
+    end
+    return false
+end
+
+func test
+    assert true (searchMatrix [[1 4 7 11 15] [2 5 8 12 19] [3 6 9 16 22] [10 13 14 17 24] [18 21 23 26 30]] 5)
+    assert false (searchMatrix [[1 4 7 11 15] [2 5 8 12 19] [3 6 9 16 22] [10 13 14 17 24] [18 21 23 26 30]] 20)
+    assert false (searchMatrix [[1 4 7 11 15] [2 5 8 12 19] [3 6 9 16 22] [10 13 14 17 24] [18 21 23 26 30]] 0)
+    assert false (searchMatrix [[1 4 7 11 15] [2 5 8 12 19] [3 6 9 16 22] [10 13 14 17 24] [18 21 23 26 30]] 31)
+    assert true (searchMatrix [[1]] 1)
+    assert false (searchMatrix [[1]] 2)
+    assert true (searchMatrix [[1 1]] 1)
+    assert false (searchMatrix [[1 1]] 2)
+    assert true (searchMatrix [[1 1] [2 2]] 2)
+    assert false (searchMatrix [[1 1] [2 2]] 3)
+end
+test

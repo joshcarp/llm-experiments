@@ -1,0 +1,100 @@
+
+func minWindow:string s:string t:string
+    lsS := len s
+    lsT := len t
+    needToFind := [0] * 256
+    hasFound := [0] * 256
+    minBegin := 0
+    minEnd := -1
+    minWindow := 100000000000000
+    for index := range lsT
+        needToFind[ord t[index]] = needToFind[ord t[index]] + 1
+    end
+    count := 0
+    begin := 0
+    for end := range lsS
+        endIndex := ord s[end]
+        if needToFind[endIndex] == 0
+            continue
+        end
+        hasFound[endIndex] = hasFound[endIndex] + 1
+        if hasFound[endIndex] <= needToFind[endIndex]
+            count = count + 1
+        end
+        if count == lsT
+            beginIndex := ord s[begin]
+            while needToFind[beginIndex] == 0 or hasFound[beginIndex] > needToFind[beginIndex]
+                if hasFound[beginIndex] > needToFind[beginIndex]
+                    hasFound[beginIndex] = hasFound[beginIndex] - 1
+                end
+                begin = begin + 1
+                beginIndex = ord s[begin]
+            end
+            windowLs := end - begin + 1
+            if windowLs < minWindow
+                minBegin = begin
+                minEnd = end
+                minWindow = windowLs
+            end
+        end
+    end
+    if count == lsT
+        return s[minBegin:minEnd + 1]
+    else
+        return ""
+    end
+end
+
+func test
+    s := Solution
+    print (minWindow s "a" "a")
+end
+test
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+// output:
+//line 9 column 5: invalid declaration of "minWindow", already used as function name
+//line 10 column 9: invalid declaration of "index", already used as function name
+//line 11 column 20: unknown variable name "ord"
+//line 3 column 5: "lsS" declared but not used
+//line 4 column 5: "lsT" declared but not used
+//line 6 column 5: "hasFound" declared but not used
+//line 7 column 5: "minBegin" declared but not used
+//line 8 column 5: "minEnd" declared but not used
+//line 12 column 5: missing return
+//line 15 column 9: expected "range", got "end"
+//line 16 column 21: unknown variable name "ord"
+//line 16 column 25: invalid inferred declaration for "endIndex"
+//line 17 column 12: unknown variable name "needToFind"
+//line 18 column 13: unknown function "continue"
+//line 18 column 13: at least one statement is required here
+//line 20 column 9: unknown variable name "hasFound"
+//line 21 column 12: unknown variable name "hasFound"
+//line 24 column 21: unknown variable name "lsT"
+//line 25 column 27: unknown variable name "ord"
+//line 25 column 31: invalid inferred declaration for "beginIndex"
+//line 26 column 19: unknown variable name "needToFind"
+//line 27 column 20: unknown variable name "hasFound"
+//line 28 column 21: unknown variable name "hasFound"
+//line 28 column 21: at least one statement is required here
+//line 31 column 17: unknown variable name "beginIndex"
+//line 33 column 25: unexpected "end"
+//line 33 column 25: invalid inferred declaration for "windowLs"
+//line 34 column 16: unknown variable name "windowLs"
+//line 35 column 17: unknown variable name "minBegin"
+//line 36 column 17: unknown variable name "minEnd"
+//line 37 column 17: cannot assign to "minWindow" as it is a function not a variable
+//line 35 column 17: at least one statement is required here
+//line 40 column 5: unexpected input "end"
+//line 41 column 17: unknown variable name "lsT"
+//line 42 column 16: unknown variable name "s"
+//line 42 column 16: return statement not allowed here
+//line 44 column 16: return statement not allowed here
+//line 46 column 1: unexpected input "end"
+//line 47 column 1: unreachable code
+//line 50 column 28: "minWindow" takes 2 arguments, found 3
+//line 52 column 1: unreachable code
+//line 53 column 1: unreachable code

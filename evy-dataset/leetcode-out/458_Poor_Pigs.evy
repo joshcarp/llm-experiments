@@ -1,0 +1,32 @@
+
+func poorPigs:num buckets:num minutesToDie:num minutesToTest:num
+    pigs := 0
+    while (floor (minutesToTest / minutesToDie) + 1) ^ pigs < buckets
+        pigs = pigs + 1
+    end
+    return pigs
+end
+
+func test
+    assert 0 (poorPigs 1 1 1)
+    assert 1 (poorPigs 2 1 1)
+    assert 2 (poorPigs 4 1 1)
+    assert 3 (poorPigs 9 1 1)
+    assert 4 (poorPigs 10 1 1)
+    assert 1 (poorPigs 1 1 10)
+    assert 1 (poorPigs 10 1 10)
+    assert 1 (poorPigs 10 10 1)
+    assert 2 (poorPigs 10 10 10)
+    assert 1 (poorPigs 10 1 100)
+    assert 1 (poorPigs 100 1 10)
+    assert 2 (poorPigs 100 1 100)
+    assert 1 (poorPigs 100 10 1)
+    assert 2 (poorPigs 100 10 10)
+    assert 3 (poorPigs 100 10 100)
+    assert 1 (poorPigs 100 100 1)
+    assert 2 (poorPigs 100 100 10)
+    assert 3 (poorPigs 100 100 100)
+end
+test
+// output:
+//line 4 column 54: illegal character "^"

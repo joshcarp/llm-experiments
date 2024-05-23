@@ -1,0 +1,53 @@
+
+func findJudge:num N:num trust:[][]num
+    if N == 1
+        return 1
+    end
+    d1:{}num
+    d2:{}num
+    for i := range trust
+        if has d1 trust[i][1]
+            d1[trust[i][1]] = d1[trust[i][1]] + 1
+        else
+            d1[trust[i][1]] = 1
+        end
+        if has d2 trust[i][0]
+            d2[trust[i][0]] = d2[trust[i][0]] + 1
+        else
+            d2[trust[i][0]] = 1
+        end
+    end
+    for i := range d1
+        if d1[i] == N - 1
+            if !(has d2 i)
+                return i
+            end
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (findJudge 2 [[1 2]])
+    assert 3 (findJudge 3 [[1 3] [2 3]])
+    assert -1 (findJudge 3 [[1 2] [2 3]])
+    assert 1 (findJudge 1 [])
+    assert -1 (findJudge 4 [[1 3] [1 4] [2 3] [2 4] [4 3]])
+end
+test
+// output:
+//line 9 column 24: array index expects num, found []num
+//line 9 column 26: "has" takes 2 arguments, found 0
+//line 9 column 26: expected end of line, found "]"
+//line 10 column 21: array index expects num, found []num
+//line 10 column 13: at least one statement is required here
+//line 12 column 21: array index expects num, found []num
+//line 12 column 13: at least one statement is required here
+//line 14 column 24: array index expects num, found []num
+//line 14 column 26: "has" takes 2 arguments, found 0
+//line 14 column 26: expected end of line, found "]"
+//line 15 column 21: array index expects num, found []num
+//line 15 column 13: at least one statement is required here
+//line 17 column 21: array index expects num, found []num
+//line 17 column 13: at least one statement is required here
+//line 23 column 24: expected return value of type num, found string

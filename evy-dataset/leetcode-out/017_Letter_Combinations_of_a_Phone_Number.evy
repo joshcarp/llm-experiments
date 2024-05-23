@@ -1,0 +1,62 @@
+
+dmap := {2:"abc" 3:"def" 4:"ghi" 5:"jkl" 6:"mno" 7:"pqrs" 8:"tuv" 9:"wxyz" 0:" " None:None}
+
+func letterCombinations:string digits:string
+    result:[]string
+    ls := len digits
+    if ls == 0
+        return result
+    end
+    current := digits[0]
+    posfix := letterCombinations digits[1:]
+    for t := range dmap[current]
+        if (len posfix) > 0
+            for p := range posfix
+                temp := t + p
+                result = result + [temp]
+            end
+        else
+            result = result + [t]
+        end
+    end
+    return join result ""
+end
+
+func test
+    assert "" (letterCombinations "")
+    assert "ad" (letterCombinations "23")
+    assert "ad ae af bd be bf cd ce cf" (letterCombinations "223")
+end
+test
+// output:
+//line 2 column 10: expected map key, found 2
+//line 2 column 18: expected map key, found 3
+//line 2 column 26: expected map key, found 4
+//line 2 column 34: expected map key, found 5
+//line 2 column 42: expected map key, found 6
+//line 2 column 50: expected map key, found 7
+//line 2 column 59: expected map key, found 8
+//line 2 column 67: expected map key, found 9
+//line 2 column 76: expected map key, found 0
+//line 2 column 87: unknown variable name "None"
+//line 2 column 91: invalid inferred declaration for "dmap"
+//line 8 column 16: expected return value of type string, found []string
+//line 12 column 20: unknown variable name "dmap"
+//line 12 column 24: range cannot be empty
+//line 12 column 24: unexpected input "["
+//line 15 column 25: unknown variable name "t"
+//line 15 column 27: invalid inferred declaration for "temp"
+//line 16 column 36: unknown variable name "temp"
+//line 15 column 17: at least one statement is required here
+//line 14 column 17: "p" declared but not used
+//line 19 column 32: unknown variable name "t"
+//line 19 column 13: at least one statement is required here
+//line 10 column 5: "current" declared but not used
+//line 21 column 5: missing return
+//line 22 column 17: unknown variable name "result"
+//line 22 column 24: "join" takes 2 arguments, found 0
+//line 22 column 24: expected end of line, found ""
+//line 22 column 12: return statement not allowed here
+//line 23 column 1: unexpected input "end"
+//line 24 column 1: unreachable code
+//line 30 column 1: unreachable code

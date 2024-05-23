@@ -1,0 +1,5 @@
+person1 := {name:"Alice" age:30 city:"New York"}
+person2 := {name:"Alice" age:30 city:"New York"}
+person3 := {name:"Bob" age:25 city:"London"}
+print person1==person2 // Prints: true
+print person1==person3 // Prints: false

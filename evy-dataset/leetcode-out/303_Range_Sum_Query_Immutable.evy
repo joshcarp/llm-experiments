@@ -1,0 +1,35 @@
+
+func NumArray:{}any nums:[]num
+    self:{}any
+    self.res := [0] * (len nums + 1)
+    self.data := nums[:]
+    for i := range (len self.data)
+        self.res[i + 1] = self.res[i] + nums[i]
+    end
+    return self
+end
+
+func sumRange:num self:{}any i:num j:num
+    return self.res[j + 1] - self.res[i]
+end
+
+func test
+    nums := [1 2 3 4 5]
+    numArray := (NumArray nums)
+    assert 3 (sumRange numArray 0 1)
+    assert 5 (sumRange numArray 1 2)
+end
+test
+// output:
+//line 4 column 14: expected "=", got ":="
+//line 4 column 33: unexpected whitespace before "+"
+//line 4 column 33: "len" takes 1 argument, found 0
+//line 4 column 33: expected ")", got "+"
+//line 5 column 15: expected "=", got ":="
+//line 7 column 17: only array, string and map type can be indexed, found any
+//line 7 column 9: at least one statement is required here
+//line 6 column 9: "i" declared but not used
+//line 13 column 20: only array, string and map type can be indexed, found any
+//line 13 column 12: expected return value of type num, found ILLEGAL
+//line 12 column 30: "i" declared but not used
+//line 12 column 36: "j" declared but not used

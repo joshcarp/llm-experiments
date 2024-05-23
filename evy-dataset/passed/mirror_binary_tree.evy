@@ -1,0 +1,92 @@
+
+func Node:{}any
+    self:{}any
+    self.value := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func Node:any value:num left:any right:any
+    self:{}any
+    self.value := value
+    self.left := left
+    self.right := right
+    return self
+end
+
+func __iter__:any self:any
+    if self.left != {}
+        for v := range self.left
+            yield v
+        end
+    end
+    yield self.value
+    if self.right != {}
+        for v := range self.right
+            yield v
+        end
+    end
+end
+
+func __len__:num self:any
+    sum := 0
+    for _ := range self
+        sum = sum + 1
+    end
+    return sum
+end
+
+func mirror:any self:any
+    self.left, self.right = self.right, self.left
+    if self.left != {}
+        self.left.mirror()
+    end
+    if self.right != {}
+        self.right.mirror()
+    end
+    return self
+end
+
+func makeTreeSeven:any
+    tree := Node 1
+    tree.left = Node 2
+    tree.right = Node 3
+    tree.left.left = Node 4
+    tree.left.right = Node 5
+    tree.right.left = Node 6
+    tree.right.right = Node 7
+    return tree
+end
+
+func makeTreeNine:any
+    tree := Node 1
+    tree.left = Node 2
+    tree.right = Node 3
+    tree.left.left = Node 4
+    tree.left.right = Node 5
+    tree.right.right = Node 6
+    tree.left.left.left = Node 7
+    tree.left.left.right = Node 8
+    tree.left.right.right = Node 9
+    return tree
+end
+
+func main
+    trees := {zero:Node 0 seven:makeTreeSeven nine:makeTreeNine}
+    for name := range trees
+        tree := trees[name]
+        print (sprintf "      The %v tree: %v\n" name (tuple tree))
+        print (sprintf "Mirror of %v tree: %v\n" name (tuple (tree.mirror())))
+    end
+end
+
+func tuple:any tree:any
+    result := []
+    for v := range tree
+        result = result + [v]
+    end
+    return result
+end
+
+main

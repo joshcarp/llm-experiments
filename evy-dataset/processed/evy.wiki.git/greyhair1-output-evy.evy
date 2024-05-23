@@ -1,0 +1,116 @@
+// parameters
+k := 7 // linear
+exp := 1.1 // exponent
+start := 0.5 // exponent
+cnt := 600
+hairLin := newHair cnt "linear"
+hairExp := newHair cnt "exp"
+
+frame := 0
+
+on animate
+    frame = frame + 1
+    if frame % 2 == 0
+        return
+    end
+    clear "red"
+    whiten hairLin
+    drawHead 25 hairLin
+
+    whiten hairExp
+    drawHead 75 hairExp
+
+    if hairLin.props.cnt[0] == 0 and hairExp.props.cnt[0] == 0
+        exit 0
+    end
+end
+
+func whiten hair:{}{}[]num
+    if hair.props.style[0] == 1
+        // exponential
+        whitenCnt (round start) hair
+        start = start * exp
+    else
+        whitenCnt k hair // linear
+    end
+end
+
+func whitenCnt n:num hair:{}{}[]num
+    for range n
+        if hair.props.cnt[0] <= 0
+            return
+        end
+        cnt := hair.props.cnt[0] - 1
+        hair.props.cnt[0] = cnt
+        idx := hair.left.idx[cnt]
+        hair.left.black[idx] = 0
+        idx = hair.right.idx[cnt]
+        hair.right.black[idx] = 0
+    end
+end
+
+func drawHead x:num hair:{}{}[]num
+    drawFace x 60
+    drawHair x-4 56 265 hair.left.black // left
+    drawHair x-7 58 79 hair.right.black // right
+end
+
+func drawHair x:num y:num rot:num hair:[]num
+    width 0.1
+    fill "none"
+    d := 0
+    for i := range (len hair)
+        if hair[i] == 1
+            stroke "black"
+        else
+            stroke "white"
+        end
+        ellipse x+d y-d 31 17 rot 200 0
+        d = d + 0.02
+    end
+end
+
+func drawFace x:num y:num
+    color "gold"
+    move x y
+    circle 15
+    color "black"
+    width 1.5
+    move x-5 y
+    line x y-2
+    move x+7 y-2
+    line x+9 y-0.5
+end
+
+func shuffle arr:[]num
+    for x := range (len arr) 0 -1
+        i := rand x
+        h := arr[i]
+        arr[i] = arr[x - 1]
+        arr[x - 1] = h
+    end
+end
+
+func newHair:{}{}[]num cnt:num style:string
+    lb:[]num // left black hair
+    rb:[]num // right black hair
+    li:[]num // left shuffled index for white hair in order
+    ri:[]num // right shuffled index for white hair in order
+    for i := range cnt
+        lb = lb + [1]
+        rb = rb + [1]
+        li = li + [i]
+        ri = ri + [i]
+    end
+    shuffle li
+    shuffle ri
+    s := 0
+    if style == "exp"
+        s = 1
+    end
+    return {
+        left:{black:lb idx:li}
+        right:{black:rb idx:ri}
+        props:{cnt:[cnt] style:[s]}
+    }
+end

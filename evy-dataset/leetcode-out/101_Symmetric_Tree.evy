@@ -1,0 +1,68 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.val = 0
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func isSymmetric:bool self:{}any root:{}any
+    if root == {}
+        return true
+    end
+    return mirrorVisit self root.left root.right
+end
+
+func mirrorVisit:bool self:{}any left:{}any right:{}any
+    if left == {} and right == {}
+        return true
+    end
+    if (has left "val") and (has right "val") and left["val"] == right["val"]
+        if mirrorVisit self left.left right.right and mirrorVisit self left.right right.left
+            return true
+        end
+    end
+    return false
+end
+
+func test
+    root := (TreeNode)
+    root.val = 1
+    root.left = (TreeNode)
+    root.left.val = 2
+    root.left.left = (TreeNode)
+    root.left.left.val = 3
+    root.left.right = (TreeNode)
+    root.left.right.val = 4
+    root.right = (TreeNode)
+    root.right.val = 2
+    root.right.left = (TreeNode)
+    root.right.left.val = 4
+    root.right.right = (TreeNode)
+    root.right.right.val = 3
+    sol := (Solution)
+    assert true==(isSymmetric sol root)
+end
+test
+// output:
+//line 19 column 33: "mirrorVisit" takes 2nd argument of type {}any, found any
+//line 19 column 43: "mirrorVisit" takes 3rd argument of type {}any, found any
+//line 27 column 51: unexpected whitespace before "and"
+//line 27 column 51: "mirrorVisit" takes 3 arguments, found 0
+//line 27 column 51: expected end of line, found "and"
+//line 38 column 14: field access with "." expects map type, found any
+//line 39 column 14: field access with "." expects map type, found any
+//line 40 column 14: field access with "." expects map type, found any
+//line 41 column 14: field access with "." expects map type, found any
+//line 42 column 14: field access with "." expects map type, found any
+//line 44 column 15: field access with "." expects map type, found any
+//line 45 column 15: field access with "." expects map type, found any
+//line 46 column 15: field access with "." expects map type, found any
+//line 47 column 15: field access with "." expects map type, found any
+//line 48 column 15: field access with "." expects map type, found any

@@ -1,0 +1,1 @@
+When is the 'input' event handler called?

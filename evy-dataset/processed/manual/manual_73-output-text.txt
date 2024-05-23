@@ -1,0 +1,2 @@
+n := 1 // type inference (num)
+print n

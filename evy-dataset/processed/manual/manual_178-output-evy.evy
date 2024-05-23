@@ -1,0 +1,19 @@
+func greet name:string
+    print ("Hello,") (name)
+end
+
+func concat:string a:string b:string
+    return (a + b)
+end
+
+func calculateArea:num length:num _width:num
+    area := (length * _width)
+    return area
+end
+
+greet ("Alice")
+a := "foo"
+b := "bar"
+print (concat (a) (b))
+result := calculateArea (5) (8)
+print ("Area of the rectangle:") (result)

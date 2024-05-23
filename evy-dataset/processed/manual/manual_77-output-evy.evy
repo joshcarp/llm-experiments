@@ -1,0 +1,2 @@
+flag := true and false or !(5 > 3)
+print flag

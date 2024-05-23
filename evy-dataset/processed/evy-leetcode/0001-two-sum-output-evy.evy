@@ -1,0 +1,18 @@
+func twosum:[]num nums:[]num target:num
+    m:{}num
+    for i := range (len nums)
+        v := nums[i]
+        if has m (sprintf "%v" (target - v))
+            return [m[sprintf "%v" (target - v)] i]
+        end
+        m[sprintf "%v" v] = i
+    end
+    return []
+end
+
+func test
+    assertEqual [0 1] (twosum [2 7 11 15] 9)
+    assertEqual [1 2] (twosum [3 2 4] 6)
+    assertEqual [0 1] (twosum [3 3] 6)
+end
+test

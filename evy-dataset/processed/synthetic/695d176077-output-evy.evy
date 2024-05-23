@@ -1,0 +1,27 @@
+func secondSmallest:num nums:[]num
+    if (len nums) < 2
+        return -1
+    end
+    min1 := nums[0]
+    min2 := 2147483647
+    for i := range nums
+        if nums[i] < min1
+            min2 = min1
+            min1 = nums[i]
+        else if nums[i] < min2 and nums[i] != min1
+            min2 = nums[i]
+        end
+    end
+    if min2 == 2147483647
+        return -1
+    end
+    return min2
+end
+
+func test
+    assert 2 (secondSmallest [1 2 3 4 5])
+    assert 2 (secondSmallest [2 2 2 2 2])
+    assert 3 (secondSmallest [1 2 3 4 5 6])
+    assert -1 (secondSmallest [1])
+    assert -1 (secondSmallest [])
+end

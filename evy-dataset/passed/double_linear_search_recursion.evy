@@ -1,0 +1,25 @@
+
+func search:num list_data:[]num key:num left:num right:num
+    if right == 0
+        right = (len list_data) - 1
+    end
+    if left > right
+        return -1
+    end
+    if list_data[left] == key
+        return left
+    end
+    if list_data[right] == key
+        return right
+    end
+    return search list_data key (left + 1) (right - 1)
+end
+
+func test
+    assert 5 (search (range 0 11) 5)
+    assert 2 (search [1 2 4 5 3] 4)
+    assert -1 (search [1 2 4 5 3] 6)
+    assert 0 (search [5] 5)
+    assert -1 (search [] 1)
+end
+test

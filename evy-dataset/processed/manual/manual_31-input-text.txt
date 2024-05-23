@@ -1,0 +1,1 @@
+What function removes leading and trailing characters from a string in Evy?

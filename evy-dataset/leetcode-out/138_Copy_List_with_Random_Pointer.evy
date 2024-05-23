@@ -1,0 +1,72 @@
+
+func RandomListNode:{}any x:num
+    self:{}any
+    self.label = x
+    self.next = {}
+    self.random = {}
+    return self
+end
+
+func copyRandomList:{}any head:{}any
+    p := head
+    while p != {}
+        next := p.next.({}any)
+        copy := (RandomListNode p.label.({}any))
+        p.next = copy
+        copy.next = next
+        p = next
+    end
+    p = head
+    while p != {}
+        if p.random != {}
+            p.next.random = p.random.next.({}any)
+        end
+        p = p.next.next.({}any)
+    end
+    p = head
+    if p != {}
+        headCopy := p.next.({}any)
+    else
+        headCopy := {}
+    end
+    while p != {}
+        copy := p.next.({}any)
+        p.next = copy.next.({}any)
+        p = p.next.({}any)
+        if p != {}
+            copy.next = p.next.({}any)
+        end
+    end
+    return headCopy
+end
+
+func test
+    head := (RandomListNode 1)
+    head.next = (RandomListNode 2)
+    head.next.next = (RandomListNode 3)
+    head.random = head.next.next
+    head.next.random = head
+    head.next.next.random = head.next
+    copy := copyRandomList head
+    assert 1 (copy.label.({}any))
+    assert 2 (copy.next.({}any).label.({}any))
+    assert 3 (copy.next.({}any).next.({}any).label.({}any))
+    assert 3 (copy.random.({}any).label.({}any))
+    assert 1 (copy.next.({}any).random.({}any).label.({}any))
+    assert 2 (copy.next.({}any).next.({}any).random.({}any).label.({}any))
+end
+test
+// output:
+//line 14 column 40: "RandomListNode" takes 1st argument of type num, found {}any
+//line 21 column 21: mismatched type for !=: any, {}
+//line 22 column 19: field access with "." expects map type, found any
+//line 22 column 13: at least one statement is required here
+//line 24 column 19: field access with "." expects map type, found any
+//line 28 column 9: "headCopy" declared but not used
+//line 30 column 9: "headCopy" declared but not used
+//line 40 column 12: unknown variable name "headCopy"
+//line 40 column 12: expected return value of type {}any, found ILLEGAL
+//line 46 column 14: field access with "." expects map type, found any
+//line 47 column 28: field access with "." expects map type, found any
+//line 48 column 14: field access with "." expects map type, found any
+//line 49 column 14: field access with "." expects map type, found any

@@ -1,0 +1,27 @@
+color "green"
+r:num
+x:num
+y:num
+nx:num
+ny:num
+
+for range 500000
+    r = rand1
+    if r < 0.01
+        nx = 0
+        ny = 0.16 * y
+    else if r < 0.08
+        nx = 0.2 * x - 0.26 * y
+        ny = 0.23 * x + 0.22 * y + 1.6
+    else if r < 0.15
+        nx = -0.15 * x + 0.28 * y
+        ny = 0.26 * x + 0.24 * y + 0.44
+    else
+        nx = 0.85 * x + 0.04 * y
+        ny = -0.04 * x + 0.85 * y + 1.6
+    end
+    x = nx
+    y = ny
+    move 50+x*15 y*10-3
+    circle 0.05
+end

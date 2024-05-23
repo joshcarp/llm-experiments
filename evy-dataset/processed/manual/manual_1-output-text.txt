@@ -1,0 +1,1 @@
+Built-ins in Evy are pre-defined functions and events that allow for user interaction, graphics, animation, mathematical operations, and more.

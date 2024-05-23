@@ -1,0 +1,22 @@
+
+func flipAndInvertImage:[][]num A:[][]num
+    for row := range A
+        for i := range (floor (len row) + 1)/2
+            row[i] = row[i] ^ 1
+            row[len row - i - 1] = row[len row - i - 1] ^ 1
+            tmp := row[i]
+            row[i] = row[len row - i - 1]
+            row[len row - i - 1] = tmp
+        end
+    end
+    return A
+end
+
+func test
+    assert [[1 1 0] [0 1 1] [0 0 0]] (flipAndInvertImage [[1 0 0] [0 1 0] [1 1 1]])
+    assert [[1 0] [0 1]] (flipAndInvertImage [[1 1] [0 0]])
+end
+test
+// output:
+//line 5 column 29: illegal character "^"
+//line 6 column 57: illegal character "^"

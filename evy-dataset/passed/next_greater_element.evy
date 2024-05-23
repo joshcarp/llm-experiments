@@ -1,0 +1,70 @@
+
+arr := [-10 -5 0 5 5.1 11 13 21 3 4 -21 -10 -5 -1 0]
+expect := [-5 0 5 5.1 11 13 21 -1 4 -1 -10 -5 -1 0 -1]
+
+func nextGreatestElementSlow: []num arr: []num
+    result := []num
+    arrSize := len arr
+    for i := range arrSize
+        nextElement := -1
+        for j := range i + 1 arrSize
+            if arr[i] < arr[j]
+                nextElement = arr[j]
+                break
+            end
+        end
+        result = result + [nextElement]
+    end
+    return result
+end
+
+func nextGreatestElementFast: []num arr: []num
+    result := []num
+    for i, outer := range arr
+        nextItem := -1
+        for inner := range arr[i + 1:]
+            if outer < inner
+                nextItem = inner
+                break
+            end
+        end
+        result = result + [nextItem]
+    end
+    return result
+end
+
+func nextGreatestElement: []num arr: []num
+    arrSize := len arr
+    stack := []num
+    result := []num
+    for i := range arrSize
+        result = result + [-1]
+    end
+    for index := range arrSize - 1 -1 -1
+        if (len stack) > 0
+            while stack[-1] <= arr[index]
+                stack = stack[:-1]
+                if (len stack) == 0
+                    break
+                end
+            end
+        end
+        if (len stack) > 0
+            result[index] = stack[-1]
+        end
+        stack = stack + [arr[index]]
+    end
+    return result
+end
+
+func test
+    assert true==(nextGreatestElementSlow arr == expect)
+    assert true==(nextGreatestElementFast arr == expect)
+    assert true==(nextGreatestElement arr == expect)
+end
+test
+
+test
+print (nextGreatestElementSlow arr)
+print (nextGreatestElementFast arr)
+print (nextGreatestElement arr)

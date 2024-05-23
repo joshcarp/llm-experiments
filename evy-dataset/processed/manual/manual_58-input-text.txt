@@ -1,0 +1,1 @@
+What is the difference between 'stroke' and 'fill' in Evy?

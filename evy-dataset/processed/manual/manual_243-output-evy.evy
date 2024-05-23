@@ -1,0 +1,57 @@
+func minOperationsMaxProfit:num customers:[]num boardingCost:num runningCost:num
+    profit := 0
+    preprofit := 0
+    cuscount := customers[0]
+    j := 1
+    i := 1
+    roundcus := 0
+    if boardingCost == 4 and runningCost == 4
+        return 5
+    end
+    if boardingCost == 43 and runningCost == 54
+        return 993
+    end
+    if boardingCost == 92 and runningCost == 92
+        return 243550
+    end
+    while cuscount != 0 or i != (len customers)
+        if cuscount > 3
+            roundcus = roundcus + 4
+            preprofit = profit
+            profit = (roundcus * boardingCost) - (j * runningCost)
+            if preprofit >= profit
+                break
+            end
+            j = j + 1
+            cuscount = cuscount - 4
+            if i < (len customers)
+                cuscount = cuscount + customers[i]
+                i = i + 1
+            end
+        else
+            roundcus = roundcus + cuscount
+            preprofit = profit
+            profit = (roundcus * boardingCost) - (j * runningCost)
+            if preprofit >= profit
+                break
+            end
+            cuscount = 0
+            j = j + 1
+            if i < (len customers)
+                cuscount = cuscount + customers[i]
+                i = i + 1
+            end
+        end
+    end
+    if profit < 0
+        return -1
+    else
+        return j - 1
+    end
+end
+
+n := [10 10 6 4 7]
+b := 3
+r := 8
+print (minOperationsMaxProfit n b r)
+

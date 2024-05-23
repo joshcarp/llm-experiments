@@ -1,0 +1,24 @@
+
+func romanToInt:num s:string
+    roman := {I:1 V:5 X:10 L:50 C:100 D:500 M:1000}
+    prev := 0
+    total := 0
+    for c := range s
+        curr := roman[c]
+        total = total + curr
+        if curr > prev
+            total = total - (2 * prev)
+        end
+        prev = curr
+    end
+    return total
+end
+
+func test
+    assert 1 (romanToInt "I")
+    assert 4 (romanToInt "IV")
+    assert 9 (romanToInt "IX")
+    assert 58 (romanToInt "LVIII")
+    assert 1994 (romanToInt "MCMXCIV")
+end
+test

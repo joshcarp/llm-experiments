@@ -1,0 +1,36 @@
+func longestCommonPrefix:string strs:[]string
+    ls := len strs
+    if ls == 1
+        return strs[0]
+    end
+    prefix := ""
+    pos := 0
+    current := ""
+    while true
+        if pos < (len strs[0])
+            current = strs[0][pos]
+        else
+            break
+        end
+        idx := 1
+        while idx < ls
+            if pos < (len strs[idx]) and strs[idx][pos] == current
+                idx = idx + 1
+            else
+                break
+            end
+        end
+        if idx == ls
+            prefix = prefix + current
+        else
+            break
+        end
+        pos = pos + 1
+    end
+    return prefix
+end
+
+func test
+    print (longestCommonPrefix ["aca" "cba"])
+end
+test

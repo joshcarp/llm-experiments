@@ -1,0 +1,16 @@
+//Determine if an array is sorted in ascending order
+```evy
+func isSortedAscending:bool arr:[]num
+    for i := range (len arr)
+        if i > 0 and arr[i] < arr[i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+assert true (isSortedAscending [1 2 3 4 5])
+assert false (isSortedAscending [5 4 3 2 1])
+assert true (isSortedAscending [1 1 1 1 1])
+assert false (isSortedAscending [1 2 3 4 5 0])
+```

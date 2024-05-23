@@ -1,0 +1,84 @@
+
+func Node:{}any
+    self:{}any
+    self.val := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    self.result := 0
+    return self
+end
+
+func pathSumHelper self:{}any root:{}any target:num soFar:num cache:{}num
+    if root != {}
+        complement := soFar + root.val - target
+        if has cache complement
+            self.result = self.result + cache[complement]
+        end
+        cache[soFar + root.val] = cache[soFar + root.val] + 1
+        pathSumHelper self root.left target (soFar + root.val) cache
+        pathSumHelper self root.right target (soFar + root.val) cache
+        cache[soFar + root.val] = cache[soFar + root.val] - 1
+    end
+end
+
+func pathSum self:{}any root:{}any sum:num
+    self.result = 0
+    cache := {0:1}
+    pathSumHelper self root sum 0 cache
+    return self.result
+end
+
+func test
+    root := (Node)
+    root.val = 10
+    root.left = (Node)
+    root.left.val = 5
+    root.left.left = (Node)
+    root.left.left.val = 3
+    root.left.right = (Node)
+    root.left.right.val = 2
+    root.left.right.right = (Node)
+    root.left.right.right.val = 1
+    root.right = (Node)
+    root.right.val = -3
+    root.right.right = (Node)
+    root.right.right.val = 11
+    sol := (Solution)
+    assert 3 (pathSum sol root 8)
+end
+test
+// output:
+//line 4 column 14: expected "=", got ":="
+//line 5 column 15: expected "=", got ":="
+//line 6 column 16: expected "=", got ":="
+//line 12 column 17: expected "=", got ":="
+//line 18 column 29: mismatched type for +: num, any
+//line 19 column 22: "has" takes 2nd argument of type string, found num
+//line 20 column 46: map index expects string, found num
+//line 20 column 13: at least one statement is required here
+//line 22 column 21: mismatched type for +: num, any
+//line 22 column 14: map index expects string, found num
+//line 23 column 52: mismatched type for +: num, any
+//line 23 column 32: "pathSumHelper" takes 2nd argument of type {}any, found any
+//line 24 column 53: mismatched type for +: num, any
+//line 24 column 32: "pathSumHelper" takes 2nd argument of type {}any, found any
+//line 25 column 21: mismatched type for +: num, any
+//line 25 column 14: map index expects string, found num
+//line 31 column 15: expected map key, found 0
+//line 33 column 12: expected no return value, found any
+//line 40 column 14: field access with "." expects map type, found any
+//line 41 column 14: field access with "." expects map type, found any
+//line 42 column 14: field access with "." expects map type, found any
+//line 43 column 14: field access with "." expects map type, found any
+//line 44 column 14: field access with "." expects map type, found any
+//line 45 column 14: field access with "." expects map type, found any
+//line 46 column 14: field access with "." expects map type, found any
+//line 48 column 15: field access with "." expects map type, found any
+//line 49 column 15: field access with "." expects map type, found any
+//line 50 column 15: field access with "." expects map type, found any
+//line 52 column 14: "assert" takes variadic arguments of type any, found none

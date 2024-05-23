@@ -1,0 +1,15 @@
+func maxProfit:num prices:[]num
+    mprofit := 0
+    lowest := prices[0]
+    for price := range prices
+        mprofit = max mprofit (price - lowest)
+        lowest = min lowest price
+    end
+    return mprofit
+end
+
+func test
+    assertEqual 5 (maxProfit [7 1 5 3 6 4])
+    assertEqual 0 (maxProfit [7 6 4 3 1])
+end
+test

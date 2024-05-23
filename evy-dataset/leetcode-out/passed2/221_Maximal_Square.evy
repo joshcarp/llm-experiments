@@ -1,0 +1,120 @@
+
+func maximalSquare:num matrix:[][]string
+    if matrix == [] or (len matrix) == 0
+        return 0
+    end
+    rows := (len matrix)
+    cols := (len matrix[0])
+    res := 0
+    prev := 0
+    dp := [0] * (cols + 1)
+    for i := range 1 (rows + 1)
+        for j := range 1 (cols + 1)
+            temp := dp[j]
+            if matrix[i - 1][j - 1] == "1"
+                dp[j] = min (dp[j - 1]) (dp[j]) (prev) + 1
+                res = max (res) (dp[j])
+            else
+                dp[j] = 0
+            end
+            prev = temp
+        end
+    end
+    return (res * res)
+end
+
+func min:num a:num b:num c:num
+    if a < b
+        if a < c
+            return a
+        else
+            return c
+        end
+    else
+        if b < c
+            return b
+        else
+            return c
+        end
+    end
+end
+
+func max:num a:num b:num
+    if a > b
+        return a
+    else
+        return b
+    end
+end
+
+func test
+    assert 4 (maximalSquare [["1" "0" "1" "0" "0"] ["1" "0" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "0" "0" "1" "0"]])
+    assert 1 (maximalSquare [["0" "1"] ["1" "0"]])
+    assert 9 (maximalSquare [["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"]])
+    assert 0 (maximalSquare [["0" "0" "0"] ["0" "0" "0"]])
+    assert 0 (maximalSquare [])
+end
+test
+```
+
+The errors were caused by trying to override the built-in `min` and `max` functions. Evy doesn't allow overriding built-in functions. To fix this, we need to rename the functions to something else, like `min_custom` and `max_custom`. 
+
+Here's the corrected code:
+
+```evy
+func maximalSquare:num matrix:[][]string
+    if matrix == [] or (len matrix) == 0
+        return 0
+    end
+    rows := (len matrix)
+    cols := (len matrix[0])
+    res := 0
+    prev := 0
+    dp := [0] * (cols + 1)
+    for i := range 1 (rows + 1)
+        for j := range 1 (cols + 1)
+            temp := dp[j]
+            if matrix[i - 1][j - 1] == "1"
+                dp[j] = min_custom (dp[j - 1]) (dp[j]) (prev) + 1
+                res = max_custom (res) (dp[j])
+            else
+                dp[j] = 0
+            end
+            prev = temp
+        end
+    end
+    return (res * res)
+end
+
+func min_custom:num a:num b:num c:num
+    if a < b
+        if a < c
+            return a
+        else
+            return c
+        end
+    else
+        if b < c
+            return b
+        else
+            return c
+        end
+    end
+end
+
+func max_custom:num a:num b:num
+    if a > b
+        return a
+    else
+        return b
+    end
+end
+
+func test
+    assert 4 (maximalSquare [["1" "0" "1" "0" "0"] ["1" "0" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "0" "0" "1" "0"]])
+    assert 1 (maximalSquare [["0" "1"] ["1" "0"]])
+    assert 9 (maximalSquare [["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"] ["1" "1" "1" "1" "1"]])
+    assert 0 (maximalSquare [["0" "0" "0"] ["0" "0" "0"]])
+    assert 0 (maximalSquare [])
+end
+test

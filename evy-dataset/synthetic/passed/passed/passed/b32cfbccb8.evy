@@ -1,0 +1,20 @@
+//Convert a binary number to decimal
+
+func bin2dec:num bin:string
+    result := 0
+    for i := range (len bin)-1 -1 -1
+        if bin[i] == "1"
+            result = result + (pow 2 (len bin)-i-1)
+        end
+    end
+    return result
+end
+
+assert 1 (bin2dec "1")
+assert 2 (bin2dec "10")
+assert 3 (bin2dec "11")
+assert 4 (bin2dec "100")
+assert 5 (bin2dec "101")
+assert 10 (bin2dec "1010")
+assert 15 (bin2dec "1111")
+

@@ -1,0 +1,76 @@
+// 199. Binary Tree Right Side View
+// Solved
+// Medium
+// Topics
+// Companies
+// Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+// Example 1:
+// Input: root = [1,2,3,null,5,null,4]
+// Output: [1,3,4]
+// Example 2:
+// Input: root = [1,null,3]
+// Output: [1,3]
+// Example 3:
+// Input: root = []
+// Output: []
+// Constraints:
+// The number of nodes in the tree is in the range [0, 100].
+// -100 <= Node.val <= 100
+
+func rightSideView:[]any treearr:[]any
+    root:any
+    root = buildBinaryTree treearr
+    queue := []
+    res := []
+    queue = queue + [root]
+    while (len queue) > 0
+        size := len queue
+        for i := range 0 size
+            node:{}any
+            node = queue[0].({}any)
+            queue = queue[1:]
+            if (has node "val") and i == size - 1
+                res = res + [node["val"]]
+            end
+            if (has node "left") and node["left"].({}any) != {}
+                queue = queue + [node["left"]]
+            end
+            if (has node "right") and node["right"].({}any) != {}
+                queue = queue + [node["right"]]
+            end
+        end
+    end
+    return res
+end
+
+func buildBinaryTree:{}any tree:[]any
+    root:{}any
+    rootany:any
+    rootany = root
+    queue := [rootany]
+    for i := range 0 (len tree)
+        if (len queue) == 0
+            break
+        end
+        node:{}any
+        node = queue[0].({}any)
+        queue = queue[1:]
+        anynull:any
+        anynull = "null"
+        if tree[i] != anynull
+            node["val"] = tree[i]
+            node["left"] = {}
+            node["right"] = {}
+            queue = queue + [node["left"]]
+            queue = queue + [node["right"]]
+        end
+    end
+    return root
+end
+
+func test
+    assertEqual [1 3 4 ""][:-1] (rightSideView [1 2 3 "null" 5 "null" 4])
+    assertEqual [1 3 ""][:-1] (rightSideView [1 "null" 3])
+    assertEqual [] (rightSideView [])
+    assertEqual [1 3 4 ""][:-1] (rightSideView [1 2 3 4])
+end

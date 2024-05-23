@@ -1,0 +1,14 @@
+//Find the height of a binary tree
+
+func height:num root:{}any
+    if root == {}
+        return 0
+    end
+    leftHeight := height root.left.({}any)
+    rightHeight := height root.right.({}any)
+    return max leftHeight+1 rightHeight+1
+end
+
+tree := {val:1 left:{val:2 left:{} right:{val:4 left:{} right:{}}} right:{val:3 left:{} right:{}}}
+assert 3 (height tree)
+

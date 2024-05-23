@@ -1,0 +1,1 @@
+How do I calculate the average of all numbers in an array?

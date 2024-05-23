@@ -1,0 +1,101 @@
+//
+// Mouse chaser
+//
+//
+
+// --- Setup constants --------
+speed := 20
+friction := 5
+
+// --- State ------------------
+chaserX := 0
+chaserY := 0
+chaserVelX := 0
+chaserVelY := 0
+
+targetX := 0
+targetY := 0
+
+// evy passes an absolute time rather than time delta
+// so we store the previous time in order to calculate delta
+previousTime := 0
+
+// --- events -----------------
+
+on move x:num y:num
+    targetX = x
+    targetY = y
+end
+
+on animate t:num
+    // calculate deltaTime
+    deltaTime := (t - previousTime) / 1000
+    previousTime = t
+
+    // -- update (time bound)
+    update deltaTime
+
+    // -- draw (frame bound)
+    col := spinColor t
+    clear col
+    drawWorld
+end
+
+// --- movement updates ------
+
+func update dT:num
+    scaledFriction := 1 / (1 + dT * friction)
+    chaserVelX = chaserVelX * scaledFriction
+    chaserVelY = chaserVelY * scaledFriction
+
+    chase
+
+    chaserX = chaserX + chaserVelX * dT
+    chaserY = chaserY + chaserVelY * dT
+end
+
+func chase
+    dir := direction chaserX chaserY targetX targetY
+
+    moveX := cos dir
+    moveY := sin dir
+
+    chaserVelX = chaserVelX + moveX * speed
+    chaserVelY = chaserVelY + moveY * speed
+end
+
+// --- drawing ---------------
+
+func drawWorld
+    drawEntity "red" "darkred" chaserX chaserY 5
+end
+
+func drawEntity col:string strokeCol:string x:num y:num size:num
+    fill col
+    stroke strokeCol
+    move x y
+    circle size
+end
+
+// --- utilities ------------
+
+func spinColor:string deg:num
+    deg = deg % 360
+    col := sprintf "hsl(%f 0%% 100%% / 2%%)" deg
+    return col
+end
+
+func constrain:num in:num minimum:num maximum:num
+    if in < minimum
+        return minimum
+    else if in > maximum
+        return maximum
+    end
+    return in
+end
+
+func direction:num x:num y:num toX:num toY:num
+    deltaX := toX - x
+    deltaY := toY - y
+    return atan2 deltaY deltaX
+end

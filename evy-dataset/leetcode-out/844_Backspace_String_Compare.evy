@@ -1,0 +1,39 @@
+
+func backspaceCompare:bool S:string T:string
+    if S == T
+        return true
+    end
+    sStack := []
+    tStack := []
+    for c := range S
+        if c != "#"
+            sStack = sStack + [c]
+        else if (len sStack) != 0
+            sStack = sStack[:-1]
+        end
+    end
+    for c := range T
+        if c != "#"
+            tStack = tStack + [c]
+        else if (len tStack) != 0
+            tStack = tStack[:-1]
+        end
+    end
+    return join sStack "" == join tStack ""
+end
+
+func test
+    assert true==(backspaceCompare "ab" "ab")
+    assert true==(backspaceCompare "ab" "eidbaooo")
+    assert false==(backspaceCompare "ab" "eidboaoo")
+    assert false==(backspaceCompare "ab" "a")
+    assert true==(backspaceCompare "adc" "dcda")
+end
+test
+// output:
+//line 10 column 29: mismatched type for +: []any, []string
+//line 17 column 29: mismatched type for +: []any, []string
+//line 22 column 27: unexpected whitespace before "=="
+//line 22 column 27: "join" takes 2 arguments, found 0
+//line 22 column 27: expected end of line, found "=="
+//line 22 column 12: expected return value of type bool, found string

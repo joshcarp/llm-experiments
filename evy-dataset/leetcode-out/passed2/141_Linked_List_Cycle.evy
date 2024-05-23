@@ -1,0 +1,33 @@
+
+func ListNode:{}any
+    self:{}any
+    self.val = 0
+    self.next = {}
+    return self
+end
+
+func Solution:{}any
+    self:{}any
+    return self
+end
+
+func hasCycle:bool self:{}any head:{}any
+    fast := head.next.({}any)
+    slow := head.next.({}any)
+    while fast != slow and fast != {} and fast.next != {}
+        fast = fast.next.next.({}any)
+        slow = slow.next.({}any)
+    end
+    return fast == slow
+end
+
+func test
+    head := (ListNode)
+    head.val = 1
+    head.next = (ListNode)
+    head.next.val = 2
+    head.next.next = head
+    sol := (Solution)
+    assert true (hasCycle sol head)
+end
+test

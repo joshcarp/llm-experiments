@@ -1,0 +1,31 @@
+func convert:string n:num
+    if n == 0
+        return "0"
+    end
+    result := ""
+    while n > 0
+        if n % 2 == 0
+            result = "0" + result
+        else
+            result = "1" + result
+        end
+        n = floor n/2
+    end
+    return result
+end
+
+assert "10" (convert 2)
+assert "11" (convert 3)
+assert "100" (convert 4)
+assert "101" (convert 5)
+assert "110" (convert 6)
+assert "111" (convert 7)
+assert "1000" (convert 8)
+assert "1001" (convert 9)
+assert "1010" (convert 10)
+assert "1011" (convert 11)
+assert "1100" (convert 12)
+assert "1101" (convert 13)
+assert "1110" (convert 14)
+assert "1111" (convert 15)
+assert "10000" (convert 16)

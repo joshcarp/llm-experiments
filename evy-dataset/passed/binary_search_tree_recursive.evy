@@ -1,0 +1,238 @@
+
+func Node:{}any
+    self:{}any
+    self.label = label
+    self.parent = parent
+    self.left = {}
+    self.right = {}
+    return self
+end
+
+func BinarySearchTree:{}any
+    self:{}any
+    self.root = {}
+    return self
+end
+
+func empty self:{}any
+    self.root = {}
+end
+
+func isEmpty:bool self:{}any
+    return self.root == {}
+end
+
+func put self:{}any label:num
+    self.root = self._put self.root label {}
+end
+
+func _put:any node:{}any label:num parent:{}any
+    if node == {}
+        node = (Node label parent)
+    else if label < node.label
+        node.left = self._put node.left label node
+    else if label > node.label
+        node.right = self._put node.right label node
+    else
+        raise "Node with label " + (sprint label) + " already exists"
+    end
+    return node
+end
+
+func search:any self:{}any label:num
+    return self._search self.root label
+end
+
+func _search:any node:{}any label:num
+    if node == {}
+        raise "Node with label " + (sprint label) + " does not exist"
+    else if label < node.label
+        node = self._search node.left label
+    else if label > node.label
+        node = self._search node.right label
+    end
+    return node
+end
+
+func remove self:{}any label:num
+    node := self.search label
+    if node.right != {} and node.left != {}
+        lowestNode := self._getLowestNode node.right
+        lowestNode.left = node.left
+        lowestNode.right = node.right
+        node.left.parent = lowestNode
+        if node.right != {}
+            node.right.parent = lowestNode
+        end
+        self._reassignNodes node lowestNode
+    else if node.right == {} and node.left != {}
+        self._reassignNodes node node.left
+    else if node.right != {} and node.left == {}
+        self._reassignNodes node node.right
+    else
+        self._reassignNodes node {}
+    end
+end
+
+func _reassignNodes node:{}any newChildren:{}any
+    if newChildren != {}
+        newChildren.parent = node.parent
+    end
+    if node.parent != {}
+        if node.parent.right == node
+            node.parent.right = newChildren
+        else
+            node.parent.left = newChildren
+        end
+    else
+        self.root = newChildren
+    end
+end
+
+func _getLowestNode:any node:{}any
+    if node.left != {}
+        lowestNode := self._getLowestNode node.left
+    else
+        lowestNode := node
+        self._reassignNodes node node.right
+    end
+    return lowestNode
+end
+
+func exists:bool self:{}any label:num
+    try
+        self.search label
+        return true
+    catch
+        return false
+    end
+end
+
+func getMaxLabel:num self:{}any
+    if self.root == {}
+        raise "Binary search tree is empty"
+    end
+    node := self.root
+    while node.right != {}
+        node = node.right
+    end
+    return node.label
+end
+
+func getMinLabel:num self:{}any
+    if self.root == {}
+        raise "Binary search tree is empty"
+    end
+    node := self.root
+    while node.left != {}
+        node = node.left
+    end
+    return node.label
+end
+
+func inorderTraversal:any self:{}any
+    return self._inorderTraversal self.root
+end
+
+func _inorderTraversal:any node:{}any
+    if node != {}
+        yield from self._inorderTraversal node.left
+        yield node
+        yield from self._inorderTraversal node.right
+    end
+end
+
+func preorderTraversal:any self:{}any
+    return self._preorderTraversal self.root
+end
+
+func _preorderTraversal:any node:{}any
+    if node != {}
+        yield node
+        yield from self._preorderTraversal node.left
+        yield from self._preorderTraversal node.right
+    end
+end
+
+func binarySearchTreeExample
+    t := (BinarySearchTree)
+    t.put 8
+    t.put 3
+    t.put 6
+    t.put 1
+    t.put 10
+    t.put 14
+    t.put 13
+    t.put 4
+    t.put 7
+    t.put 5
+
+    print """
+            8
+           / \\
+          3   10
+         / \\    \\
+        1   6    14
+           / \\   /
+          4   7 13
+           \\
+            5
+        """
+
+    print "Label 6 exists:" (t.exists 6)
+    print "Label 13 exists:" (t.exists 13)
+    print "Label -1 exists:" (t.exists -1)
+    print "Label 12 exists:" (t.exists 12)
+
+    // Prints all the elements of the list in inorder traversal
+    inorderTraversalNodes := []
+    for i := range (t.inorderTraversal)
+        inorderTraversalNodes = inorderTraversalNodes + [i.label]
+    end
+    print "Inorder traversal:" inorderTraversalNodes
+
+    // Prints all the elements of the list in preorder traversal
+    preorderTraversalNodes := []
+    for i := range (t.preorderTraversal)
+        preorderTraversalNodes = preorderTraversalNodes + [i.label]
+    end
+    print "Preorder traversal:" preorderTraversalNodes
+
+    print "Max. label:" (t.getMaxLabel)
+    print "Min. label:" (t.getMinLabel)
+
+    // Delete elements
+    print "\nDeleting elements 13, 10, 8, 3, 6, 14"
+    print """
+          4
+         / \\
+        1   7
+             \\
+              5
+        """
+    t.remove 13
+    t.remove 10
+    t.remove 8
+    t.remove 3
+    t.remove 6
+    t.remove 14
+
+    // Prints all the elements of the list in inorder traversal after delete
+    inorderTraversalNodes := []
+    for i := range (t.inorderTraversal)
+        inorderTraversalNodes = inorderTraversalNodes + [i.label]
+    end
+    print "Inorder traversal after delete:" inorderTraversalNodes
+
+    // Prints all the elements of the list in preorder traversal after delete
+    preorderTraversalNodes := []
+    for i := range (t.preorderTraversal)
+        preorderTraversalNodes = preorderTraversalNodes + [i.label]
+    end
+    print "Preorder traversal after delete:" preorderTraversalNodes
+
+    print "Max. label:" (t.getMaxLabel)
+    print "Min. label:" (t.getMinLabel)
+end
+
+binarySearchTreeExample

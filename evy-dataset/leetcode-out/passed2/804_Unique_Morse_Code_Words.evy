@@ -1,0 +1,23 @@
+
+MorseTab := [".-" "-..." "-.-." "-.." "." "..-." "--." "...." ".." ".---" "-.-" ".-.." "--" "-." "---" ".--." "--.-" ".-." "..." "-" "..-." "...-" ".--" "-.." "-.--" "--.."]
+
+func uniqueMorseRepresentations:num words:[]string
+    if (len words) == 0
+        return 0
+    end
+    ansSet:{}bool
+    for word := range words
+        morsed := ""
+        for c := range word
+            morsed = morsed + MorseTab[ord c - 97]
+        end
+        ansSet[morsed] = true
+    end
+    return len ansSet
+end
+
+func test
+    assert 2 (uniqueMorseRepresentations ["gin" "zen" "gig" "msg"])
+    assert 1 (uniqueMorseRepresentations ["a"])
+end
+test

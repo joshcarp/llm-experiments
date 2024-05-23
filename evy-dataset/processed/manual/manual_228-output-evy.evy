@@ -1,0 +1,13 @@
+func contains:bool arr:[]num val:num
+    for elem := range arr
+        if elem == val
+            return true
+        end
+    end
+    return false
+end
+
+numbers := [1 2 3 4 5]
+print (contains numbers 3) // Prints: true
+print (contains numbers 6) // Prints: false
+

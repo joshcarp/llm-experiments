@@ -1,0 +1,114 @@
+
+func fourSum:[]num nums:[]num target:num
+    sort_nums := nums[:]
+    sort sort_nums
+    ls := len nums
+    res := {}
+    pairs := {}
+    for i := range ls - 3
+        for j := range i + 1 ls - 2
+            res_2 := sort_nums[i] + sort_nums[j]
+            if has pairs (target - res_2)
+                pairs[target - res_2] = pairs[target - res_2] + [[i j]]
+            else
+                pairs[target - res_2] = [[i j]]
+            end
+        end
+    end
+    for key := range pairs
+        temp := pairs[key]
+        for pair := range temp
+            j := pair[1] + 1
+            k := ls - 1
+            while j < k
+                current := sort_nums[j] + sort_nums[k]
+                if current == key
+                    result := [sort_nums[pair[0]] sort_nums[pair[1]] sort_nums[j] sort_nums[k]]
+                    res[sprintf "%v" result] = true
+                    j = j + 1
+                else if current < key
+                    j = j + 1
+                else
+                    k = k - 1
+                end
+            end
+        end
+    end
+    resultArr:[]num
+    for key := range res
+        resultArr = resultArr + [str2num key]
+    end
+    return resultArr
+end
+
+func sort arr:[]num
+    // bubble sort
+    for endIdx := range (len arr)-1 0 -1
+        for i := range endIdx
+            if arr[i] > arr[i + 1]
+                tmp := arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            end
+        end
+    end
+end
+
+func test
+    print (fourSum [0 0 0 0] 0)
+end
+test
+// output:
+//line 8 column 23: unexpected whitespace after "-"
+//line 8 column 25: range cannot be empty
+//line 8 column 25: unexpected input 3
+//line 9 column 24: unknown variable name "i"
+//line 9 column 26: range cannot be empty
+//line 9 column 26: unexpected input "+"
+//line 10 column 32: unknown variable name "i"
+//line 10 column 33: invalid inferred declaration for "res_2"
+//line 11 column 36: unknown variable name "res_2"
+//line 11 column 41: "has" takes 2 arguments, found 0
+//line 11 column 41: expected end of line, found ")"
+//line 12 column 32: unknown variable name "res_2"
+//line 12 column 17: at least one statement is required here
+//line 14 column 32: unknown variable name "res_2"
+//line 14 column 17: at least one statement is required here
+//line 6 column 5: "res" declared but not used
+//line 16 column 9: missing return
+//line 17 column 5: unexpected input "end"
+//line 18 column 22: unknown variable name "pairs"
+//line 18 column 27: range cannot be empty
+//line 19 column 17: unknown variable name "pairs"
+//line 19 column 22: invalid inferred declaration for "temp"
+//line 20 column 27: unknown variable name "temp"
+//line 20 column 31: range cannot be empty
+//line 21 column 18: unknown variable name "pair"
+//line 21 column 22: invalid inferred declaration for "j"
+//line 22 column 18: unknown variable name "ls"
+//line 22 column 21: invalid inferred declaration for "k"
+//line 23 column 19: unknown variable name "j"
+//line 24 column 28: unknown variable name "sort_nums"
+//line 24 column 37: invalid inferred declaration for "current"
+//line 25 column 20: unknown variable name "current"
+//line 26 column 32: unknown variable name "sort_nums"
+//line 26 column 41: invalid inferred declaration for "result"
+//line 27 column 21: unknown variable name "res"
+//line 28 column 21: unknown variable name "j"
+//line 26 column 21: at least one statement is required here
+//line 29 column 25: unknown variable name "current"
+//line 30 column 21: unknown variable name "j"
+//line 30 column 21: at least one statement is required here
+//line 32 column 21: unknown variable name "k"
+//line 32 column 21: at least one statement is required here
+//line 35 column 9: unexpected input "end"
+//line 36 column 5: unexpected input "end"
+//line 38 column 22: unknown variable name "res"
+//line 38 column 25: range cannot be empty
+//line 39 column 34: function call must be parenthesized: (str2num ...)
+//line 40 column 5: unexpected input "end"
+//line 41 column 12: return statement not allowed here
+//line 42 column 1: unexpected input "end"
+//line 43 column 1: unreachable code
+//line 56 column 1: unreachable code
+//line 60 column 1: unreachable code

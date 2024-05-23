@@ -1,0 +1,17 @@
+func fibonacci:num n:num
+    zero := 0
+    one := 1
+    for range 1 n
+        tmp := one
+        one = one + zero
+        zero = tmp
+    end
+    return one
+end
+
+func test
+    assertEqual 1 (fibonacci 2)
+    assertEqual 2 (fibonacci 3)
+    assertEqual 3 (fibonacci 4)
+end
+test

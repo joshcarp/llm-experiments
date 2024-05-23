@@ -1,0 +1,13 @@
+
+func main
+    filename := "test"
+    if (len argv) > 1
+        filename = argv[1]
+    end
+    printf "Creating %v in java and python dir...\n" filename
+    file := open (sprintf "python/%v.py" filename) "w"
+    file.close()
+    file := open (sprintf "java/%v.java" filename) "w"
+    file.close()
+    print "Done!"
+end

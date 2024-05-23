@@ -1,0 +1,9 @@
+func power:num base:num exp:num
+    if exp == 0
+        return 1
+    else
+        return base * (power base exp-1)
+    end
+end
+
+print (power 2 3) // Prints: 8

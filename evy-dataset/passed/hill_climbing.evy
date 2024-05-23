@@ -1,0 +1,120 @@
+
+import math
+
+class SearchProblem:{}any
+    self:{}any
+    self.x := x
+    self.y := y
+    self.step_size := step_size
+    self.function := function_to_optimize
+    return self
+end
+
+func score:num self:{}any
+    return self.function(self.x, self.y)
+end
+
+func getNeighbors:[]any self:{}any
+    step_size := self.step_size
+    return [
+        SearchProblem(x, y, step_size, self.function)
+        for x, y in (
+            (self.x - step_size, self.y - step_size),
+            (self.x - step_size, self.y),
+            (self.x - step_size, self.y + step_size),
+            (self.x, self.y - step_size),
+            (self.x, self.y + step_size),
+            (self.x + step_size, self.y - step_size),
+            (self.x + step_size, self.y),
+            (self.x + step_size, self.y + step_size),
+        )
+    ]
+end
+
+func hash:num self:{}any
+    return hash(sprintf "%v" self)
+end
+
+func eq:bool self:{}any obj:{}any
+    if (typeof obj) == "SearchProblem"
+        return hash(sprintf "%v" self) == hash(sprintf "%v" obj)
+    end
+    return false
+end
+
+func string:string self:{}any
+    return sprintf "x: %v y: %v" self.x self.y
+end
+
+func hillClimbing:{}any searchProb:{}any findMax:bool = true max_x:num = math.inf min_x:num = -math.inf max_y:num = math.inf min_y:num = -math.inf visualization:bool = false maxIter:num = 10000
+    currentState := searchProb
+    scores := []
+    iterations := 0
+    solutionFound := false
+    visited := {}
+    while (!solutionFound) and iterations < maxIter
+        visited[sprintf "%v" currentState] = true
+        iterations = iterations + 1
+        currentScore := currentState.score()
+        scores = scores + [currentScore]
+        neighbors := currentState.getNeighbors()
+        maxChange := -math.inf
+        minChange := math.inf
+        nextState := {}
+        for neighbor := range neighbors
+            if has visited (sprintf "%v" neighbor)
+                continue
+            end
+            if (neighbor.x > max_x) or (neighbor.x < min_x) or (neighbor.y > max_y) or (neighbor.y < min_y)
+                continue
+            end
+            change := neighbor.score() - currentScore
+            if findMax
+                if change > maxChange and change > 0
+                    maxChange = change
+                    nextState = neighbor
+                end
+            else
+                if change < minChange and change < 0
+                    minChange = change
+                    nextState = neighbor
+                end
+            end
+        end
+        if nextState != {}
+            currentState = nextState
+        else
+            solutionFound = true
+        end
+    end
+    if visualization
+        import "matplotlib.pyplot" as plt
+        plt.plot(range(iterations), scores)
+        plt.xlabel("Iterations")
+        plt.ylabel("Function values")
+        plt.show()
+    end
+    return currentState
+end
+
+func testF1:num x:num y:num
+    return (pow x 2) + (pow y 2)
+end
+test
+
+prob := SearchProblem(x=3, y=4, step_size=1, function_to_optimize=testF1)
+localMin := hillClimbing(prob, findMax=false)
+print (sprintf "The minimum score for f(x, y) = x^2 + y^2 found via hill climbing: %v" (localMin.score()))
+
+prob := SearchProblem(x=12, y=47, step_size=1, function_to_optimize=testF1)
+localMin := hillClimbing(prob, findMax=false, max_x=100, min_x=5, max_y=50, min_y=-5, visualization=true)
+print (sprintf "The minimum score for f(x, y) = x^2 + y^2 with the domain 100 > x > 5 and 50 > y > - 5 found via hill climbing: %v" (localMin.score()))
+
+func testF2:num x:num y:num
+    return (3 * (pow x 2)) - (6 * y)
+end
+test
+
+prob := SearchProblem(x=3, y=4, step_size=1, function_to_optimize=testF1)
+localMin := hillClimbing(prob, findMax=true)
+print (sprintf "The maximum score for f(x, y) = x^2 + y^2 found via hill climbing: %v" (localMin.score()))

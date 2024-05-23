@@ -1,0 +1,41 @@
+//Implement merge sort
+
+func mergeSort:[]num arr:[]num
+    if (len arr) <= 1
+        return arr
+    end
+    mid := floor (len arr) / 2
+    left := mergeSort arr[:mid]
+    right := mergeSort arr[mid:]
+    return merge left right
+end
+
+func merge:[]num left:[]num right:[]num
+    result := []
+    i := 0
+    j := 0
+    while i < (len left) and j < (len right)
+        if left[i] <= right[j]
+            result = result + [left[i]]
+            i = i + 1
+        else
+            result = result + [right[j]]
+            j = j + 1
+        end
+    end
+    while i < (len left)
+        result = result + [left[i]]
+        i = i + 1
+    end
+    while j < (len right)
+        result = result + [right[j]]
+        j = j + 1
+    end
+    return result
+end
+
+    assert [1 2 3 4 5] (mergeSort [5 2 4 1 3])
+    assert [1 2 3 4 5 6 7 8 9 10] (mergeSort [10 9 8 7 6 5 4 3 2 1])
+    assert [] (mergeSort [])
+    assert [1] (mergeSort [1])
+

@@ -1,0 +1,18 @@
+
+func doubleLinearSearch:num arr:[]num searchItem:num
+    startInd := 0
+    endInd := (len arr) - 1
+    while startInd <= endInd
+        if arr[startInd] == searchItem
+            return startInd
+        end
+        if arr[endInd] == searchItem
+            return endInd
+        end
+        startInd = startInd + 1
+        endInd = endInd - 1
+    end
+    return -1
+end
+
+print (doubleLinearSearch (range 100) 40)

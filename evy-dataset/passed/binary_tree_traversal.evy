@@ -1,0 +1,226 @@
+
+func TreeNode:{}any
+    self:{}any
+    self.data := 0
+    self.right := {}
+    self.left := {}
+    return self
+end
+
+func buildTree:{}any
+    print "\n********Press N to stop entering at any point of time********\n"
+    check := read "Enter the value of the root node: "
+    q := []
+    tree_node := (TreeNode)
+    tree_node.data = str2num check
+    q = q + [tree_node]
+    while (len q) > 0
+        node_found:{}any
+        node_found = q[0].({}any)
+        q = q[1:]
+        msg := sprintf "Enter the left node of %v: " node_found.data
+        check := read msg
+        if check == "n"
+            return tree_node
+        end
+        left_node := (TreeNode)
+        left_node.data = str2num check
+        node_found.left = left_node
+        q = q + [left_node]
+        msg := sprintf "Enter the right node of %v: " node_found.data
+        check := read msg
+        if check == "n"
+            return tree_node
+        end
+        right_node := (TreeNode)
+        right_node.data = str2num check
+        node_found.right = right_node
+        q = q + [right_node]
+    end
+    return {}
+end
+
+func preOrder node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    print node.data ","
+    preOrder node.left.({}any)
+    preOrder node.right.({}any)
+end
+
+func inOrder node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    inOrder node.left.({}any)
+    print node.data ","
+    inOrder node.right.({}any)
+end
+
+func postOrder node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    postOrder node.left.({}any)
+    postOrder node.right.({}any)
+    print node.data ","
+end
+
+func levelOrder node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    q := []
+    q = q + [node]
+    while (len q) > 0
+        node_dequeued:{}any
+        node_dequeued = q[0].({}any)
+        q = q[1:]
+        print node_dequeued.data ","
+        if node_dequeued.left != {}
+            q = q + [node_dequeued.left]
+        end
+        if node_dequeued.right != {}
+            q = q + [node_dequeued.right]
+        end
+    end
+end
+
+func levelOrderActual node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    q := []
+    q = q + [node]
+    while (len q) > 0
+        list_ := []
+        while (len q) > 0
+            node_dequeued:{}any
+            node_dequeued = q[0].({}any)
+            q = q[1:]
+            print node_dequeued.data ","
+            if node_dequeued.left != {}
+                list_ = list_ + [node_dequeued.left]
+            end
+            if node_dequeued.right != {}
+                list_ = list_ + [node_dequeued.right]
+            end
+        end
+        print ""
+        for node := range list_
+            q = q + [node]
+        end
+    end
+end
+
+func preOrderIter node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    stack := []
+    n:{}any
+    n = node
+    while n != {} or (len stack) > 0
+        while n != {}
+            print n.data ","
+            stack = stack + [n]
+            n = n.left.({}any)
+        end
+        n = stack[-1].({}any)
+        stack = stack[:-1]
+        n = n.right.({}any)
+    end
+end
+
+func inOrderIter node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    stack := []
+    n:{}any
+    n = node
+    while n != {} or (len stack) > 0
+        while n != {}
+            stack = stack + [n]
+            n = n.left.({}any)
+        end
+        n = stack[-1].({}any)
+        stack = stack[:-1]
+        print n.data ","
+        n = n.right.({}any)
+    end
+end
+
+func postOrderIter node:{}any
+    if (typeof node) != "TreeNode" or node == {}
+        return
+    end
+    stack1 := []
+    stack2 := []
+    n:{}any
+    n = node
+    stack1 = stack1 + [n]
+    while (len stack1) > 0
+        n = stack1[-1].({}any)
+        stack1 = stack1[:-1]
+        if n.left != {}
+            stack1 = stack1 + [n.left]
+        end
+        if n.right != {}
+            stack1 = stack1 + [n.right]
+        end
+        stack2 = stack2 + [n]
+    end
+    while (len stack2) > 0
+        n = stack2[-1].({}any)
+        stack2 = stack2[:-1]
+        print n.data ","
+    end
+end
+
+func prompt s:string width:num char:string
+    if s == ""
+        return "\n" + (width * char)
+    end
+    left := floor (width - (len s) - 2) / 2
+    extra := (width - (len s) - 2) % 2
+    return sprintf "%v %s %v" (left * char) s ((left + extra) * char)
+end
+
+func main
+    node:{}any
+    node = buildTree
+    print (prompt "Binary Tree Traversals")
+    print (prompt "Pre Order Traversal")
+    preOrder node
+    print (prompt "")
+    print ""
+    print (prompt "In Order Traversal")
+    inOrder node
+    print (prompt "")
+    print ""
+    print (prompt "Post Order Traversal")
+    postOrder node
+    print (prompt "")
+    print ""
+    print (prompt "Level Order Traversal")
+    levelOrder node
+    print (prompt "")
+    print ""
+    print (prompt "Actual Level Order Traversal")
+    levelOrderActual node
+    print ("*" * 50)
+    print ""
+    print (prompt "Pre Order Traversal - Iteration Version")
+    preOrderIter node
+    print (prompt "")
+    print ""
+    print (prompt "In Order Traversal - Iteration Version")
+    inOrderIter node
+    print (prompt "")
+    print ""
+    print (prompt "Post Order Traversal - Iteration Version")
+    postOrderIter node
+    print (prompt "")
+end

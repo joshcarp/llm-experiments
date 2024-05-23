@@ -1,0 +1,102 @@
+
+func Node:{}any data:any
+    self:{}any
+    self.data = data
+    self.next:any = {}
+    self.prev:any = {}
+    return self
+end
+
+func Stack:{}any
+    self:{}any
+    self.head:any = {}
+    return self
+end
+
+func push self:{}any data:any
+    if self.head == {}
+        self.head = (Node data)
+    else
+        new_node := (Node data)
+        self.head.prev = new_node
+        new_node.next = self.head
+        new_node.prev = {}
+        self.head = new_node
+    end
+end
+
+func pop:any self:{}any
+    if self.head == {}
+        return {}
+    else
+        temp := self.head.data
+        self.head = self.head.next
+        if self.head != {}
+            self.head.prev = {}
+        end
+        return temp
+    end
+end
+
+func top:any self:{}any
+    if self.head != {}
+        return self.head.data
+    else
+        return {}
+    end
+end
+
+func len:num self:{}any
+    temp:any
+    temp = self.head
+    count := 0
+    while temp != {}
+        count = count + 1
+        temp = temp.next
+    end
+    return count
+end
+
+func isEmpty:bool self:{}any
+    return self.head == {}
+end
+
+func printStack self:{}any
+    print "stack elements are:"
+    temp:any
+    temp = self.head
+    while temp != {}
+        print temp.data "->"
+        temp = temp.next
+    end
+end
+
+func test
+    stack := (Stack)
+    assert true==(isEmpty stack)
+    printStack stack
+    for i := range 0 4
+        push stack i
+    end
+    assert false==(isEmpty stack)
+    printStack stack
+    assert 3==(top stack)
+    assert 4==(len stack)
+    assert 3==(pop stack)
+    printStack stack
+end
+test
+
+stack := (Stack)
+print "Stack operations using Doubly LinkedList"
+push stack 4
+push stack 5
+push stack 6
+push stack 7
+printStack stack
+print "\nTop element is " (top stack)
+print "Size of the stack is " (len stack)
+pop stack
+pop stack
+printStack stack
+print "\nstack is empty:" (isEmpty stack)

@@ -1,0 +1,82 @@
+
+func ladderLength:num beginWord:string endWord:string wordList:[]string
+    wordList = wordList[:]
+    wordList.discard beginWord
+    wordList.discard endWord
+    hash_map:{}any
+    res := []
+    res = bfs (set [beginWord]) (set [endWord]) wordList 2
+    return res
+end
+
+func bfs:num forward:{}string backward:{}string wordlist:[]string level:num
+    if (len forward) == 0 or (len backward) == 0
+        return 0
+    end
+    if (len forward) > (len backward)
+        return bfs backward forward wordlist level
+    end
+    is_connected := false
+    next_level:{}string
+    for word := range forward
+        for c := range "abcdefghijklmnopqrstuvwxyz"
+            for index := range (len word)
+                neigh := word[:index] + c + word[index + 1:]
+                if has backward neigh
+                    is_connected = true
+                    return level
+                end
+                if !(is_connected) and has wordlist neigh
+                    next_level.add neigh
+                    wordlist.discard neigh
+                end
+            end
+        end
+    end
+    if !(is_connected)
+        return bfs next_level backward wordlist (level + 1)
+    end
+end
+
+func test
+    s := {}
+    assert 5 (ladderLength "hit" "cog" ["hot" "dot" "dog" "lot" "log"])
+    assert 2 (ladderLength "a" "b" ["a" "b" "c"])
+    assert 2 (ladderLength "hot" "dog" ["hot" "dog"])
+    assert 5 (ladderLength "qa" "sq" ["si" "go" "se" "cm" "so" "ph" "mt" "db" "mb" "sb" "kr" "ln" "tm" "le" "av" "sm" "ar" "ci" "ca" "br" "ti" "ba" "to" "ra" "fa" "yo" "ow" "sn" "ya" "cr" "po" "fe" "ho" "ma" "re" "or" "rn" "au" "ur" "rh" "sr" "tc" "lt" "lo" "as" "fr" "nb" "yb" "if" "pb" "ge" "th" "pm" "rb" "sh" "co" "ga" "li" "ha" "hz" "no" "bi" "di" "hi" "qa" "pi" "os" "uh" "wm" "an" "me" "mo" "na" "la" "st" "er" "sc" "ne" "mn" "mi" "am" "ex" "pt" "io" "be" "fm" "ta" "tb" "ni" "mr" "pa" "he" "lr" "sq" "ye"])
+    assert 4 (ladderLength "hot" "dog" ["hot" "cog" "dog" "tot" "hog" "hop" "pot" "dot"])
+end
+test
+// output:
+//line 4 column 13: field access with "." expects map type, found []string
+//line 5 column 13: field access with "." expects map type, found []string
+//line 8 column 16: unknown variable name "set"
+//line 8 column 20: expected ")", got "["
+//line 8 column 20: "bfs" takes 4 arguments, found 0
+//line 8 column 5: "res" accepts values of type []any, found num
+//line 8 column 20: expected end of line, found "["
+//line 9 column 12: expected return value of type num, found []any
+//line 2 column 23: "beginWord" declared but not used
+//line 2 column 40: "endWord" declared but not used
+//line 6 column 5: "hash_map" declared but not used
+//line 23 column 17: invalid declaration of "index", already used as function name
+//line 24 column 37: "index" takes 2 arguments, found 0
+//line 24 column 56: unexpected whitespace before "+"
+//line 24 column 56: "index" takes 2 arguments, found 0
+//line 24 column 56: expected "]", got "+"
+//line 24 column 56: invalid inferred declaration for "neigh"
+//line 25 column 33: unknown variable name "neigh"
+//line 25 column 38: "has" takes 2 arguments, found 0
+//line 29 column 40: function call must be parenthesized: (has ...)
+//line 30 column 36: expected "=", got identifier
+//line 30 column 41: unexpected end of line
+//line 31 column 29: field access with "." expects map type, found []string
+//line 30 column 21: at least one statement is required here
+//line 35 column 5: missing return
+//line 36 column 10: unknown variable name "is_connected"
+//line 37 column 20: unknown variable name "next_level"
+//line 37 column 31: "bfs" takes 4 arguments, found 0
+//line 37 column 31: expected end of line, found backward
+//line 37 column 16: return statement not allowed here
+//line 39 column 1: unexpected input "end"
+//line 42 column 5: "s" declared but not used

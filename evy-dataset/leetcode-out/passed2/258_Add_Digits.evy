@@ -1,0 +1,27 @@
+
+func addDigits:num n:num
+    if n < 10
+        return n
+    end
+    sum := 0
+    while n > 0
+        sum = sum + (n % 10)
+        n = floor n/10
+    end
+    if sum < 10
+        return sum
+    else
+        return addDigits sum
+    end
+end
+
+func test
+    assert 2 (addDigits 38)
+    assert 0 (addDigits 0)
+    assert 1 (addDigits 10)
+    assert 1 (addDigits 1)
+    assert 9 (addDigits 9)
+    assert 1 (addDigits 100)
+    assert 2 (addDigits 101)
+end
+test

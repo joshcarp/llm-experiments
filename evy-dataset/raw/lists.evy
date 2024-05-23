@@ -1,0 +1,4 @@
+fruits := ["apple" "banana" "orange"]
+print (fruits[0])
+fruits =  (fruits) + (["grape"])
+print (fruits)

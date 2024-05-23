@@ -1,0 +1,57 @@
+
+func Node:{}any
+    self:{}any
+    self.value := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+func mergeTwoBinaryTrees:{}any tree1:{}any tree2:{}any
+    if tree1 == {}
+        return tree2
+    end
+    if tree2 == {}
+        return tree1
+    end
+    tree1.value = tree1.value + tree2.value
+    tree1.left = mergeTwoBinaryTrees tree1.left tree2.left
+    tree1.right = mergeTwoBinaryTrees tree1.right tree2.right
+    return tree1
+end
+
+func printPreorder root:{}any
+    if root != {}
+        print root.value
+        printPreorder root.left
+        printPreorder root.right
+    end
+end
+
+tree1 := (Node)
+tree1.left = (Node)
+tree1.right = (Node)
+tree1.left.left = (Node)
+tree1.value = 1
+tree1.left.value = 2
+tree1.right.value = 3
+tree1.left.left.value = 4
+
+tree2 := (Node)
+tree2.left = (Node)
+tree2.right = (Node)
+tree2.left.right = (Node)
+tree2.right.right = (Node)
+tree2.value = 2
+tree2.left.value = 4
+tree2.right.value = 6
+tree2.left.right.value = 9
+tree2.right.right.value = 5
+
+print "Tree1 is: "
+printPreorder tree1
+print "Tree2 is: "
+printPreorder tree2
+mergedTree := mergeTwoBinaryTrees tree1 tree2
+print "Merged Tree is: "
+printPreorder mergedTree

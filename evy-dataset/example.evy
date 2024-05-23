@@ -1,0 +1,12 @@
+instance:{}any
+
+func Singleton:{}any
+    self:{}any
+    self.getInstance = func:any self:{}any
+        if (instance == {})
+            instance = (Singleton)
+        end
+        return instance
+    end
+    return self
+end

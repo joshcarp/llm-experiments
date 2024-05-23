@@ -1,0 +1,33 @@
+
+func permuteUnique:[][]num nums:[]num
+    res := [[]]
+    if (len nums) == 0
+        return res
+    end
+    permute res nums 0
+    return res
+end
+
+func permute self:[][]num nums:[]num index:num
+    if index == (len nums)
+        self = self + [[nums[:]]]
+        return
+    end
+    appeared := {}
+    for i := range index (len nums)
+        if has appeared (sprint nums[i])
+            continue
+        end
+        appeared[sprint nums[i]] = true
+        nums[i], nums[index] = nums[index], nums[i]
+        permute self nums (index + 1)
+        nums[i], nums[index] = nums[index], nums[i]
+    end
+end
+
+func test
+    assert [[1 2 3] [1 3 2] [2 1 3] [2 3 1] [3 1 2] [3 2 1]] (permuteUnique [1 2 3])
+    assert [[1 1 2] [1 2 1] [2 1 1]] (permuteUnique [1 1 2])
+    assert [[]] (permuteUnique [])
+end
+test

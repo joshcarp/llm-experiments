@@ -1,0 +1,1 @@
+Write an Evy function to calculate the sum of numbers in an array.

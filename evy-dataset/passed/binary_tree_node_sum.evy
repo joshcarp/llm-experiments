@@ -1,0 +1,54 @@
+
+class Node:{}any
+    self:{}any
+    self.value := 0
+    self.left := {}
+    self.right := {}
+    return self
+end
+
+class BinaryTreeNodeSum:{}any
+    self:{}any
+    self.tree := {}
+    return self
+end
+
+func depth_first_search self:{}any node:{}any:num
+    if node == {}
+        return 0
+    end
+    return node.value + (self.depth_first_search node.left + self.depth_first_search node.right)
+end
+
+func __iter__ self:{}any:any
+    yield self.depth_first_search self.tree
+end
+
+func test
+    tree := (Node)
+    tree.value = 10
+    assert 10 (sum (BinaryTreeNodeSum tree))
+    tree.left = (Node)
+    tree.left.value = 5
+    assert 15 (sum (BinaryTreeNodeSum tree))
+    tree.right = (Node)
+    tree.right.value = -3
+    assert 12 (sum (BinaryTreeNodeSum tree))
+    tree.left.left = (Node)
+    tree.left.left.value = 12
+    assert 24 (sum (BinaryTreeNodeSum tree))
+    tree.right.left = (Node)
+    tree.right.left.value = 8
+    tree.right.right = (Node)
+    tree.right.right.value = 0
+    assert 32 (sum (BinaryTreeNodeSum tree))
+end
+test
+
+func sum:num iterable:any
+    result := 0
+    for item := range iterable
+        result = result + item
+    end
+    return result
+end

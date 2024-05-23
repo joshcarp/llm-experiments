@@ -1,0 +1,6 @@
+str := ""
+if str == ""
+    print "String is empty"
+else
+    print "String is not empty"
+end

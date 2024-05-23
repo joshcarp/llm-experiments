@@ -1,0 +1,64 @@
+pi := 3.14159265359
+
+font {size:4 family:"arial"}
+
+speed := 50
+ydist := 50
+
+on animate ms:num
+    clear
+    gridn 50 "hsl(0deg 100% 0% / 20%)"
+    t := ms / 1000 * speed / 25
+    scale := ydist / 2
+    ylinear := (trianglewave t) * scale * 2 / pi + 50
+    ycos := (cos t) * scale + 50
+    draw ylinear ycos
+end
+
+func draw ylinear:num ycos:num
+    clear
+    draw_dot ylinear "black"
+    draw_dot ycos "hsl(0deg 100% 50% / 90%)"
+    draw_labels
+end
+
+func draw_labels
+    color "red"
+    move 10 92
+    text "sine"
+    color "black"
+    move 20 92
+    text "linear"
+end
+
+func draw_dot y:num c:string
+    color c
+    move 50 y
+    circle 1
+end
+
+p := 2 * pi
+p100 := 100 * p
+
+func trianglewave:num x:num
+    x100 := 100 * x
+    h := x100 % p100 / 100
+    y := (abs h-p/2) - p / 4
+    return y
+end
+
+func abs:num n:num
+    if n < 0
+        return -n
+    end
+    return n
+end
+
+on input id:string val:string
+    n := str2num val
+    if id == "sliderx"
+        speed = n
+    else if id == "slidery"
+        ydist = n
+    end
+end
