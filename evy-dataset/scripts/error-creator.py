@@ -5,35 +5,58 @@ import subprocess
 from random import random
 
 
-def run_evy(filename):
-    """Runs the `evy run` command on the given file and returns stdout."""
+def run_evy(filename, timeout=None):  # Add timeout parameter (default=None for no timeout)
+    """Runs the `evy run` command with an optional timeout and returns stdout/stderr."""
 
     try:
-        result = subprocess.run(
+        process = subprocess.Popen(
             ["evy", "run", filename],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True,               # Capture output as text
-            check=True               # Raise an error if the command fails
+            text=True
         )
-        return result.stdout, result.stderr
+        outs, errs = process.communicate(timeout=timeout)  # Communicate with timeout
+
+        # Check return code even with timeout, as communicate() doesn't raise errors on its own
+        if process.returncode != 0:
+            raise subprocess.CalledProcessError(process.returncode, process.args, output=outs, stderr=errs)
+
+        return outs, errs
+
     except FileNotFoundError:
         raise FileNotFoundError(f"Error: 'evy' command not found. Is it installed and in your PATH?")
+
+    except subprocess.TimeoutExpired:
+        process.kill()  # Terminate the process if it times out
+        outs, errs = process.communicate()  # Get any partial output
+        raise TimeoutError(f"'evy run' timed out after {timeout} seconds") from None
+
     except subprocess.CalledProcessError as e:
-        raise RuntimeError(f"Error running evy on {filename}: {e.stderr}")
+        return "", e.stderr
 
 def hash_prompt(prompt_text):
     """Hashes a prompt using SHA256."""
-    return hashlib.sha256(prompt_text.encode()).hexdigest()
+    return hashlib.sha256(prompt_text.encode()).hexdigest()[:8]
 
-def newfile(dict: {}, root: str):
-    id = hash_prompt(dict.__str__())
-    for key, val in dict.items():
-        if val == "":
-            continue
-        filename = f"{id[:8]}-{key}"
-        with open(os.path.join(root, filename), "w") as f:
-            f.write(val)
+def newfile(orig, root):
+    id = hash_prompt(orig)
+    bad = corrupt_code(orig, len(orig))
+
+    badfilepath = os.path.join(root, f"{id}-input-evy-bad.evy")
+    with open(badfilepath, "w") as f:
+        f.write(bad)
+    stdout, stderr = run_evy(badfilepath)
+    if stderr == "":
+        os.remove(badfilepath)
+        return
+    with open(os.path.join(root, f"{id}-output-evy.evy"), "w") as f:
+        f.write(orig)
+    if stdout != "":
+        with open(os.path.join(root, f"{id}-input-stdout"), "w") as f:
+            f.write(stdout)
+    if stderr != "":
+        with open(os.path.join(root, f"{id}-input-stderr"), "w") as f:
+            f.write(stderr)
 
 import random
 from string import punctuation, whitespace
@@ -46,7 +69,6 @@ def corrupt_code(code_str, seed):
         lambda s: s.replace(":", ";", 1),
         lambda s: s + random.choice(punctuation),
         lambda s: s[:-1] + random.choice(whitespace),
-        lambda s: s[:2] + s[2:].upper(),
         lambda s: s + "\n.", # should always fail on this one
     ]
     for i in range(seed, seed + len(corruption_options)):
@@ -67,10 +89,9 @@ def main():
             match = filename_pattern.match(file)
             if match:
                 filepath = os.path.join(root, file)  # Get the full file path
-                stdout, stderr = run_evy(filepath)
                 with open(filepath) as f:
                     good = f.read()
-                newfile({"input-evy-error.evy": corrupt_code(good, len(good)), "input-stdout": stdout, "input-stderr": stderr, "output-evy": good, "input-text.txt": "Can you fix this evy code for me?"}, root)
+                newfile(good, root)
 
 if __name__ == "__main__":
     main()
