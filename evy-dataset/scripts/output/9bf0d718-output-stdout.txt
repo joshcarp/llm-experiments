@@ -1,0 +1,1 @@
+line 15 column 18: "max" takes 2 arguments, found 1

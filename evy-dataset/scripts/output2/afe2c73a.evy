@@ -1,0 +1,31 @@
+output: ```evy
+func subarrays:num sum:num product:num max:num min:num length:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        for end := range start+length (len nums)
+            subarray := nums[start:end]
+            subarraySum := 0
+            subarrayProduct := 1
+            subarrayMax := -2147483648
+            subarrayMin := 2147483647
+            for subarrayNum := range subarray
+                subarraySum = subarraySum + subarrayNum
+                subarrayProduct = subarrayProduct * subarrayNum
+                subarrayMax = max subarrayMax subarrayNum
+                subarrayMin = min subarrayMin subarrayNum
+            end
+            if subarraySum == sum and subarrayProduct == product and subarrayMax == max and subarrayMin == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays [1 2 3 4 5] 3 12 4 5 2)
+    assert 0 (subarrays [1 2 3 4 5] 3 12 4 5 3)
+    assert 1 (subarrays [1 2 3 4 5] 3 6 3 4 2)
+    assert 0 (subarrays [1 2 3 4 5] 3 6 3 4 3)
+end
+     

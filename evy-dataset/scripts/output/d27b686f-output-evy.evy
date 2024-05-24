@@ -1,0 +1,22 @@
+
+func subarrays:num product:num minElem:num nums:[]num
+    result := 0
+    prefix := [0] * (len nums + 1)
+    for i := range nums
+        prefix[i + 1] = prefix[i] + nums[i]
+    end
+    for i := range (len nums)
+        for j := range i+1 (len nums)
+            if product==(prefix[j + 1] - prefix[i]) and nums[j] >= minElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+product := 12
+minElem := 2
+print (subarrays nums product minElem) // Prints: 3
+     

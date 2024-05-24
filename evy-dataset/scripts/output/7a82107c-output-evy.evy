@@ -1,0 +1,30 @@
+
+func lds:num nums:[]num
+    n := len nums
+    lds_lengths := [0] * n
+    lds_lengths[0] = 1
+    max_length := 1
+    for i := range 1 n
+        current_length := 1
+        for j := range i
+            if nums[i] < nums[j] and current_length < lds_lengths[j] + 1
+                current_length = lds_lengths[j] + 1
+            end
+        end
+        lds_lengths[i] = current_length
+        if current_length > max_length
+            max_length = current_length
+        end
+    end
+    return max_length
+end
+
+func test
+    assert 4 (lds [5 4 3 2 1])
+    assert 1 (lds [1])
+    assert 2 (lds [2 1])
+    assert 3 (lds [3 2 1 0])
+end
+     
+
+test

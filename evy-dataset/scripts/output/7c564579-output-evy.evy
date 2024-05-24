@@ -1,0 +1,48 @@
+
+func subarrays:num sum:num maxElem:num nums:[]num
+    result := 0
+    prefixSum := {0:1}
+    currentSum := 0
+    for num := range nums
+        currentSum = currentSum + num
+        if currentSum - sum >= 0 and has prefixSum[currentSum - sum]
+            result = result + prefixSum[currentSum - sum]
+        end
+        if !(has prefixSum[currentSum])
+            prefixSum[currentSum] = 0
+        end
+        prefixSum[currentSum] = prefixSum[currentSum] + 1
+    end
+    return result
+end
+
+func maxElem:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        if result < n
+            result = n
+        end
+    end
+    return result
+end
+
+func subarraysWithSumAndMaxElem:num sum:num maxElem:num nums:[]num
+    result := 0
+    for i := range (len nums)
+        for j := range i+1 (len nums)+1
+            if (maxElem nums[i:j]) <= maxElem and (sum nums[i:j]) == sum
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 3 (subarraysWithSumAndMaxElem 5 2 [1 2 3 4 5])
+    assert 2 (subarraysWithSumAndMaxElem 3 2 [1 2 3 4 5])
+    assert 0 (subarraysWithSumAndMaxElem 10 2 [1 2 3 4 5])
+end
+     
+
+test

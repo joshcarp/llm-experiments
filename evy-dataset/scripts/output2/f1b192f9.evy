@@ -1,0 +1,27 @@
+
+func subarrays:num length:num product:num nums:[]num
+    result := 0
+    prefix := [0] * len(nums)
+    prefix[0] = nums[0]
+    for i := range 1 (len nums)
+        prefix[i] = prefix[i - 1] * nums[i]
+    end
+    for i := range length (len nums)
+        startProd := 1
+        if i >= length
+            startProd = prefix[i - length]
+        end
+        endProd := prefix[i] / startProd
+        if endProd == product
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 12 [1 2 3 4])
+    assert 1 (subarrays 3 24 [1 2 3 4])
+    assert 0 (subarrays 4 100 [1 2 3 4])
+end
+     

@@ -1,0 +1,40 @@
+output:
+def count_subarrays(arr, sum, min_elem):
+    """
+    Counts the number of subarrays with a given sum and minimum element in every subarray.
+
+    Args:
+        arr (list): The input array.
+        sum (int): The target sum.
+        min_elem (int): The minimum element that must be present in every subarray.
+
+    Returns:
+        int: The number of subarrays with the given sum and minimum element.
+    """
+    if not arr:
+        return 0
+
+    # Initialize the dp table. dp[i][j][k] stores the number of subarrays with sum j and minimum element k in the first i elements of the array.
+    dp = [[[0 for k in range(min_elem, sum + 1)] for j in range(sum + 1)] for i in range(len(arr) + 1)]
+    dp[0][0][0] = 1  # Base case: empty subarray has sum 0 and minimum element 0.
+
+    for i in range(1, len(arr) + 1):
+        for j in range(sum + 1):
+            for k in range(min_elem, sum + 1):
+                # Case 1: Do not include the current element.
+                dp[i][j][k] = dp[i - 1][j][k]
+
+                # Case 2: Include the current element if it satisfies the conditions.
+                if j + arr[i - 1] <= sum and k <= arr[i - 1]:
+                    dp[i][j][k] += dp[i - 1][j + arr[i - 1]][arr[i - 1]]
+
+    return dp[len(arr)][sum][min_elem]
+
+
+# Example usage.
+arr = [1, 2, 3, 4, 5]
+sum = 5
+min_elem = 2
+result = count_subarrays(arr, sum, min_elem)
+print(result)  # Output: 2
+     

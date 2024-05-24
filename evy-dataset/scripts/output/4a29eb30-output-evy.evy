@@ -1,0 +1,43 @@
+
+func subarrays:num product:num maxElem:num minElem:num nums:[]num
+    left := 0
+    right := 0
+    prod := nums[0]
+    minE := nums[0]
+    maxE := nums[0]
+    result := 0
+    while right < (len nums)
+        if prod == product and minE == minElem and maxE == maxElem
+            result = result + 1
+            prod = prod / nums[left]
+            minE = min nums[left] minE
+            maxE = max nums[left] maxE
+            left = left + 1
+        else if prod < product or minE < minElem or maxE > maxElem
+            if right + 1 < (len nums)
+                right = right + 1
+                prod = prod * nums[right]
+                minE = min nums[right] minE
+                maxE = max nums[right] maxE
+            else
+                break
+        else
+            prod = prod / nums[left]
+            minE = min nums[left] minE
+            maxE = max nums[left] maxE
+            left = left + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 6 [1 2 3 4] 3 4)
+    assert 0 (subarrays 6 [1 2 3 4] 2 4)
+    assert 1 (subarrays 6 [1 2 3 4] 3 3)
+    assert 0 (subarrays 6 [1 2 3 4] 4 4)
+    assert 3 (subarrays 24 [8 2 6 12 4 3 1 5] 3 12)
+end
+     
+
+test

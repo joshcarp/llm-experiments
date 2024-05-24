@@ -1,0 +1,20 @@
+
+func subarrays:num sum:num min:num length:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        for end := range start+length
+            if end < (len nums) and nums[start] == min and (sum nums[start:end]) == sum
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 5 1 [1 2 1 3 2 1 4 1 5])
+    assert 0 (subarrays 5 2 [1 2 1 3 2 1 4 1 5])
+    assert 1 (subarrays 3 1 [1 2 1 3 2 1 4 1 5])
+    assert 0 (subarrays 3 2 [1 2 1 3 2 1 4 1 5])
+end
+     

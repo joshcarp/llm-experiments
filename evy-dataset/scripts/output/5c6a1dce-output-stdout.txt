@@ -1,0 +1,6 @@
+line 2 column 28: invalid declaration of "min", already used as function name
+line 22 column 5: invalid declaration of "min", already used as function name
+line 24 column 16: function call must be parenthesized: (min ...)
+line 25 column 13: cannot assign to "min" as it is a function not a variable
+line 25 column 13: at least one statement is required here
+line 28 column 15: "min" takes 2 arguments, found 0

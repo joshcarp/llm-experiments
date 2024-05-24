@@ -1,0 +1,26 @@
+output:
+def count_subarrays:int
+    n:int
+    arr:[]int
+    k:int
+    sum:int
+    min:int
+    count:int = 0
+    for i := range n
+        if i >= k
+            if (sum + arr[i] - arr[i - k]) >= min
+                count = count + 1
+            end
+        end
+        sum = sum + arr[i] - arr[i - k]
+    end
+    return count
+end
+
+n := 5
+arr := [1 2 3 4 5]
+k := 3
+sum := 0
+min := 3
+print (count_subarrays n arr k sum min)
+     

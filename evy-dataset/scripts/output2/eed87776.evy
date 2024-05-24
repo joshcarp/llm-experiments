@@ -1,0 +1,33 @@
+
+func quickSelect:num arr:[]num k:num
+    pivot := arr[floor (len arr)/2]
+    left := []
+    right := []
+    mid := []
+    for elem := range arr
+        if elem == pivot
+            mid = mid + [elem]
+        else if elem < pivot
+            left = left + [elem]
+        else
+            right = right + [elem]
+        end
+    end
+    if k < len left
+        return quickSelect left k
+    else if k >= len left + len mid
+        return quickSelect right (k - (len left + len mid))
+    else
+        return mid[0]
+    end
+end
+
+func findKthLargest:num nums:[]num k:num
+    return quickSelect nums (len nums) - k
+end
+
+nums := [3 2 1 5 6 4]
+k := 2
+print (findKthLargest nums k) // Prints: 5
+
+     

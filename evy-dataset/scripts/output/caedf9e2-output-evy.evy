@@ -1,0 +1,19 @@
+
+func subarrays:num product:num maxElem:num nums:[]num
+    result := 0
+    prefix := [0] * (len nums + 1)
+    for i := range nums
+        prefix[i + 1] = prefix[i] * nums[i]
+    end
+    for i := range (len nums)
+        for j := range i+1 (len nums)
+            if prefix[j + 1] / prefix[i] == product and nums[j] <= maxElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+print (subarrays [1 2 3 4 5] 10 2) // Prints: 2
+     

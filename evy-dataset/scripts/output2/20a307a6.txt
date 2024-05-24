@@ -1,0 +1,16 @@
+
+func isSorted:bool arr:[]num
+    for i := range 1 (len arr)
+        if arr[i] < arr[i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+numbers := [1 2 3 4 5]
+print (isSorted numbers) // Prints: true
+
+numbers = [5 4 3 2 1]
+print (isSorted numbers) // Prints: false
+     

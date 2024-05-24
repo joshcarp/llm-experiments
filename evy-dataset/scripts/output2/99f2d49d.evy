@@ -1,0 +1,31 @@
+output: ```evy
+func subarrays:num length:num sum:num product:num max:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        end := start + length
+        if end > (len nums)
+            break
+        end
+        subarray := nums[start:end]
+        subsum := 0
+        subproduct := 1
+        submax := 0
+        for n := range subarray
+            subsum = subsum + n
+            subproduct = subproduct * n
+            submax = max submax n
+        end
+        if subsum == sum and subproduct == product and submax == max
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 3 6 3 [1 2 1 2 1 2])
+    assert 0 (subarrays 2 3 6 3 [1 2 1 2 1 3])
+    assert 1 (subarrays 3 6 36 3 [1 2 1 2 1 2 3])
+    assert 0 (subarrays 3 6 36 3 [1 2 1 2 1 3 4])
+end
+     

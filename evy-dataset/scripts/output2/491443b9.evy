@@ -1,0 +1,23 @@
+output: ```evy
+func maxProduct:num nums:[]num
+    if nums == []
+        return 0
+    end
+    maxEndingHere := nums[0]
+    minEndingHere := nums[0]
+    maxSoFar := nums[0]
+    for i := range 1 (len nums)
+        tmp := maxEndingHere
+        maxEndingHere = max (nums[i] maxEndingHere*nums[i] minEndingHere*nums[i])
+        minEndingHere = min (nums[i] minEndingHere*nums[i] tmp*nums[i])
+        maxSoFar = max maxSoFar maxEndingHere
+    end
+    return maxSoFar
+end
+
+func test
+    assert 6 (maxProduct [2 3 -2 4])
+    assert 0 (maxProduct [0 2 3 0 2])
+    assert -2 (maxProduct [-2 0 -1])
+end
+     

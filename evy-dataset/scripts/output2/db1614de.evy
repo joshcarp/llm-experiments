@@ -1,0 +1,21 @@
+
+func subarrayCount:num arr:[]num length:num
+    if length > (len arr)
+        return 0
+    end
+    count := 0
+    for i := range length
+        count = count + 1
+    end
+    for i := range 1 (len arr)-length+1
+        count = count + 1
+    end
+    return count
+end
+
+func test
+    assert 5 (subarrayCount [1 2 3 4 5] 2)
+    assert 10 (subarrayCount [1 2 3 4 5 6 7 8 9 10] 3)
+    assert 0 (subarrayCount [1 2 3 4 5] 6)
+end
+     

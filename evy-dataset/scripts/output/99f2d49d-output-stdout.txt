@@ -1,0 +1,40 @@
+line 2 column 51: invalid declaration of "max", already used as function name
+line 5 column 9: at least one statement is required here
+line 4 column 9: "start" declared but not used
+line 6 column 12: unexpected "end"
+line 7 column 13: break is not in a loop
+line 9 column 26: unknown variable name "start"
+line 9 column 31: invalid inferred declaration for "subarray"
+line 13 column 24: unknown variable name "subarray"
+line 13 column 32: range cannot be empty
+line 14 column 31: unknown variable name "n"
+line 15 column 39: unknown variable name "n"
+line 16 column 33: unknown variable name "n"
+line 16 column 34: "max" takes 2 arguments, found 0
+line 2 column 20: "length" declared but not used
+line 2 column 31: "sum" declared but not used
+line 2 column 39: "product" declared but not used
+line 2 column 51: "max" declared but not used
+line 3 column 5: "result" declared but not used
+line 17 column 9: missing return
+line 18 column 12: unknown variable name "subsum"
+line 19 column 13: unknown variable name "result"
+line 19 column 13: at least one statement is required here
+line 21 column 5: unexpected input "end"
+line 22 column 12: unknown variable name "result"
+line 22 column 12: return statement not allowed here
+line 23 column 1: unexpected input "end"
+line 24 column 1: unreachable code
+line 25 column 1: unreachable code
+line 26 column 1: unreachable code
+line 27 column 1: unreachable code
+line 28 column 1: unreachable code
+line 29 column 1: invalid declaration of "max", already used as function name
+line 30 column 40: function call must be parenthesized: (max ...)
+line 30 column 44: "subarrays" takes 5 arguments, found 0
+line 30 column 44: expected end of line, found nums
+line 30 column 1: unreachable code
+line 31 column 1: unreachable code
+line 32 column 1: unreachable code
+line 33 column 6: unreachable code
+line 25 column 1: "nums" declared but not used

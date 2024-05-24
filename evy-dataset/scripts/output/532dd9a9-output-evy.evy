@@ -1,0 +1,19 @@
+
+func subarrays:num arr:[]num length:num min:num
+    result := 0
+    for i := range (len arr)
+        if arr[i] >= min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 3 (subarrays [1 2 3 4 5] 2 2)
+    assert 2 (subarrays [1 2 3 4 5] 3 3)
+    assert 0 (subarrays [1 2 3 4 5] 4 4)
+end
+     
+
+test

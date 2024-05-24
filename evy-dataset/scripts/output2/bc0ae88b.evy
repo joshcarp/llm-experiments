@@ -1,0 +1,27 @@
+
+func subarrays:num length:num sum:num maxElem:num nums:[]num
+    result := 0
+    windowSum := 0
+    windowMax := 0
+    for i := range (len nums)
+        if i >= length
+            windowSum = windowSum - nums[i - length]
+            windowMax = max 0 (windowMax - nums[i - length])
+        end
+        windowSum = windowSum + nums[i]
+        windowMax = max windowMax nums[i]
+        if windowSum == sum and windowMax == sum
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 3 [1 1 1 1])
+    assert 1 (subarrays 3 6 [1 2 3 4])
+    assert 0 (subarrays 2 5 [1 1 1 1])
+    assert 1 (subarrays 1 1 [1])
+    assert 0 (subarrays 1 2 [1])
+end
+     

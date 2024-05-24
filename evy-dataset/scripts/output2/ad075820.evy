@@ -1,0 +1,22 @@
+
+func subarraySum:num nums:[]num target:num
+    count := 0
+    prefixSum := 0
+    sumMap:{}num
+    sumMap[0] = 1
+    for i := range (len nums)
+        prefixSum = prefixSum + nums[i]
+        if hasPrefix:sumMap
+            count = count + sumMap[prefixSum - target]
+        end
+        sumMap[prefixSum] = sumMap[prefixSum] + 1
+    end
+    return count
+end
+
+func test
+    assert 2 (subarraySum [1 1 1] 2)
+    assert 1 (subarraySum [1 2 1] 3)
+    assert 0 (subarraySum [1 2 1] 4)
+end
+     

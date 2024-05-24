@@ -1,0 +1,22 @@
+
+func wordFreq:num words:string
+    wordFreqMap:{}num
+    words = words + " "
+    word := ""
+    for ch := range words
+        if ch == " "
+            if word != ""
+                wordFreqMap[word] = wordFreqMap[word] + 1
+            end
+            word = ""
+        else
+            word = word + ch
+        end
+    end
+    return wordFreqMap
+end
+
+func test
+    assert {a:1 b:2 c:3 d:4} (wordFreq "a b c d a b c d a")
+end
+     

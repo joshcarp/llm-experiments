@@ -1,0 +1,35 @@
+
+func subarrays:num length:num sum:num product:num min:num nums:[]num
+    subarrayCount := 0
+    for start := range (len nums)
+        end := start + length
+        if end > (len nums)
+            break
+        end
+        subarray := nums[start:end]
+        subarraySum := 0
+        subarrayProduct := 1
+        subarrayMin := nums[-1]
+        for n := range subarray
+            subarraySum = subarraySum + n
+            subarrayProduct = subarrayProduct * n
+            if n < subarrayMin
+                subarrayMin = n
+            end
+        end
+        if subarraySum == sum and subarrayProduct == product and subarrayMin == min
+            subarrayCount = subarrayCount + 1
+        end
+    end
+    return subarrayCount
+end
+
+nums := [1 2 3 4 5]
+length := 2
+sum := 5
+product := 6
+min := 2
+result := subarrays length sum product min nums
+print result // Prints: 1
+
+     

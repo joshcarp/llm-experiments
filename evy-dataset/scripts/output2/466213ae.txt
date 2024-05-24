@@ -1,0 +1,15 @@
+
+func unique_count:num nums:[]num
+    seen:{}bool
+    for n := range nums
+        seen[sprint n] = true
+    end
+    return len seen
+end
+
+func test
+    assert 3 (unique_count [1 2 3 4 5])
+    assert 1 (unique_count [1 1 1 1 1])
+    assert 5 (unique_count [1 2 3 4 5 1 2 3 4 5])
+end
+     

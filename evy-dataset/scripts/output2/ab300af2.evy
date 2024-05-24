@@ -1,0 +1,23 @@
+
+func subarrays:num arr:[]num max:num
+    result := 0
+    for start := range (len arr)
+        currentMax := 0
+        for end := range start+1 (len arr)
+            currentMax = max currentMax arr[end]
+            if currentMax <= max
+                result = result + 1
+            else
+                break
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 10 (subarrays [1 2 3 4 5] 3)
+    assert 14 (subarrays [1 2 3 4 5] 4)
+    assert 15 (subarrays [1 2 3 4 5] 5)
+end
+     

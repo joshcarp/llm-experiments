@@ -1,0 +1,26 @@
+
+func subarrays:num sum:num length:num nums:[]num
+    result := 0
+    for i := range (len nums) - length + 1
+        window := nums[i:i + length]
+        sumWindow := 0
+        for w := range window
+            sumWindow = sumWindow + w
+        end
+        if sumWindow == sum
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 3 [1 2 1 2 3])
+    assert 1 (subarrays 3 [1 2 1 2 3 4])
+    assert 0 (subarrays 3 [1 2 1 2 3 4 5])
+    assert 1 (subarrays 5 [1 2 1 2 3 4 5])
+    assert 0 (subarrays 5 [1 2 1 2 3 4])
+end
+     
+
+test

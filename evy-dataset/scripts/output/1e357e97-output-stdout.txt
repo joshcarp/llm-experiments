@@ -1,0 +1,2 @@
+line 8 column 77: "max" takes 2 arguments, found 3
+line 9 column 67: "min" takes 2 arguments, found 3

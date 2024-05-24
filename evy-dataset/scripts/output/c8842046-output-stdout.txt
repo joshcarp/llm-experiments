@@ -1,0 +1,31 @@
+line 2 column 43: invalid declaration of "min", already used as function name
+line 4 column 35: unexpected whitespace after "-"
+line 4 column 37: range cannot be empty
+line 4 column 37: unknown function "length"
+line 2 column 43: "min" declared but not used
+line 3 column 5: "result" declared but not used
+line 2 column 20: "length" declared but not used
+line 2 column 31: "product" declared but not used
+line 5 column 9: missing return
+line 6 column 19: unknown variable name "nums"
+line 6 column 23: invalid inferred declaration for "window"
+line 9 column 24: unknown variable name "window"
+line 9 column 30: range cannot be empty
+line 10 column 21: unknown variable name "w"
+line 11 column 23: unknown variable name "w"
+line 11 column 24: "min" takes 2 arguments, found 0
+line 12 column 9: unexpected input "end"
+line 13 column 17: unknown variable name "product"
+line 14 column 13: unknown variable name "result"
+line 14 column 13: at least one statement is required here
+line 16 column 5: unexpected input "end"
+line 17 column 12: unknown variable name "result"
+line 17 column 12: return statement not allowed here
+line 18 column 1: unexpected input "end"
+line 19 column 1: unreachable code
+line 21 column 40: "subarrays" takes 4 arguments, found 3
+line 22 column 40: "subarrays" takes 4 arguments, found 3
+line 23 column 41: "subarrays" takes 4 arguments, found 3
+line 25 column 6: unreachable code
+line 26 column 1: unreachable code
+line 27 column 1: unreachable code

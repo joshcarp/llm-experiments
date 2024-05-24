@@ -1,0 +1,19 @@
+
+func replaceAll:string str:string old:string new:string
+    result := ""
+    idx := find str old
+    while idx >= 0
+        result = result + str[0:idx] + new
+        str = str[idx + (len old):]
+        idx = find str old
+    end
+    result = result + str
+    return result
+end
+
+str := "abracadabra"
+old := "bra"
+new := "foo"
+str = replaceAll str old new
+print str // Prints: "afoofoofoo"
+     

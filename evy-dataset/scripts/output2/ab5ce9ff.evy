@@ -1,0 +1,30 @@
+output:
+def max_element_subarrays: int
+    arr: list
+    k: int
+    max_so_far: int
+    max_ending_here: int
+    count: int
+    i: int
+    j: int
+    max_so_far = -2147483648
+    max_ending_here = -2147483648
+    count = 0
+    for i = range 0 (len arr)-k+1
+        max_ending_here = max arr[i:i+k]
+        if max_so_far < max_ending_here
+            max_so_far = max_ending_here
+        end
+    end
+    for j = range (len arr)-k+1
+        if max_so_far == arr[j:j+k]
+            count = count + 1
+        end
+    end
+    return count
+end
+
+arr := [1 2 3 4 5]
+k := 2
+print (max_element_subarrays arr k) // Prints: 2
+     

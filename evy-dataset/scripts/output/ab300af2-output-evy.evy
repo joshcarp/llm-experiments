@@ -1,0 +1,24 @@
+
+func subarrays:num nums:[]num max:num
+    result := 0
+    prefix := 0
+    for i := range (len nums)
+        if nums[i] <= max
+            prefix = prefix + 1
+        else
+            prefix = 0
+        end
+        result = result + prefix
+    end
+    return result
+end
+
+func test
+    assert 3 (subarrays [1 2 3 4] 2)
+    assert 2 (subarrays [1 2 3 4] 3)
+    assert 1 (subarrays [1 2 3 4] 4)
+    assert 0 (subarrays [1 2 3 4] 5)
+end
+     
+
+test

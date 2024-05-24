@@ -1,0 +1,21 @@
+
+func charFreq:num s:string
+    freqs:{}num
+    for c := range s
+        if has freqs c
+            freqs[c] = freqs[c] + 1
+        else
+            freqs[c] = 1
+        end
+    end
+    return freqs
+end
+
+func test
+    freqs := charFreq "hello"
+    assert 1 freqs["h"]
+    assert 1 freqs["e"]
+    assert 2 freqs["l"]
+    assert 1 freqs["o"]
+end
+     

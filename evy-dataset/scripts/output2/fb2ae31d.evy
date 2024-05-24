@@ -1,0 +1,21 @@
+
+func intersection:num[] arr1:num[] arr2:num[]
+    result:set
+    for elem := range arr1
+        result = result + {elem}
+    end
+    intersection:set
+    for elem := range arr2
+        if result.has elem
+            intersection = intersection + {elem}
+        end
+    end
+    return intersection:[]
+end
+
+func test
+    assert {1 2 3} (intersection [1 2 2 1] [2 2 3 4])
+    assert {4 7} (intersection [1 2 4 7 9] [2 4 6 7 8])
+    assert {} (intersection [1 2 3] [4 5 6])
+end
+     

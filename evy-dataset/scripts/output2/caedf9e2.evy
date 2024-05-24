@@ -1,0 +1,41 @@
+output:
+def count_subarrays(arr, product, max_element):
+    """Counts the number of subarrays with a given product and maximum element in every subarray.
+
+    Args:
+        arr: The input array.
+        product: The target product.
+        max_element: The maximum element allowed in every subarray.
+
+    Returns:
+        The number of subarrays with the given product and maximum element.
+    """
+
+    # Initialize the dp table. dp[i][j][k] stores the number of subarrays ending at index i with product j and maximum element k.
+    dp = [[[0 for _ in range(max_element + 1)] for _ in range(product + 1)] for _ in range(len(arr) + 1)]
+    dp[0][0][0] = 1  # Base case: The empty subarray has product 0 and maximum element 0.
+
+    # Iterate over the input array.
+    for i in range(1, len(arr) + 1):
+        # Iterate over all possible products.
+        for j in range(product + 1):
+            # Iterate over all possible maximum elements.
+            for k in range(max_element + 1):
+                # Case 1: Do not include the current element in the subarray.
+                dp[i][j][k] = dp[i - 1][j][k]
+
+                # Case 2: Include the current element in the subarray.
+                if j == 0 or arr[i - 1] <= k:
+                    dp[i][j][k] += dp[i - 1][j * arr[i - 1]][max(k, arr[i - 1])]
+
+    # Return the number of subarrays with the given product and maximum element.
+    return dp[len(arr)][product][max_element]
+
+
+# Example usage.
+arr = [1, 2, 3, 4, 5]
+product = 12
+max_element = 3
+result = count_subarrays(arr, product, max_element)
+print(result)  # Output: 2
+     

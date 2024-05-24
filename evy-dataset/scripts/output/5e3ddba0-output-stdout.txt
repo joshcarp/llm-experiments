@@ -1,0 +1,28 @@
+line 4 column 31: unexpected whitespace after "-"
+line 4 column 33: range cannot be empty
+line 4 column 33: unknown function "length"
+line 5 column 24: unknown variable name "i"
+line 5 column 25: invalid inferred declaration for "window"
+line 7 column 24: unknown variable name "window"
+line 7 column 30: range cannot be empty
+line 8 column 37: unknown variable name "w"
+line 2 column 20: "sum" declared but not used
+line 2 column 28: "length" declared but not used
+line 3 column 5: "result" declared but not used
+line 9 column 9: missing return
+line 10 column 12: unknown variable name "sumWindow"
+line 11 column 13: unknown variable name "result"
+line 11 column 13: at least one statement is required here
+line 13 column 5: unexpected input "end"
+line 14 column 12: unknown variable name "result"
+line 14 column 12: return statement not allowed here
+line 15 column 1: unexpected input "end"
+line 16 column 1: unreachable code
+line 18 column 38: "subarrays" takes 3 arguments, found 2
+line 19 column 40: "subarrays" takes 3 arguments, found 2
+line 20 column 42: "subarrays" takes 3 arguments, found 2
+line 21 column 42: "subarrays" takes 3 arguments, found 2
+line 22 column 40: "subarrays" takes 3 arguments, found 2
+line 24 column 6: unreachable code
+line 25 column 1: unreachable code
+line 26 column 1: unreachable code

@@ -1,0 +1,17 @@
+
+func rotate:[]num nums:[]num k:num
+    n := len nums
+    k = k % n
+    if k == 0
+        return nums
+    end
+    nums = nums[n - k:] + nums[:n - k]
+    return nums
+end
+
+func test
+    assert [5 6 7 1 2 3 4] (rotate [1 2 3 4 5 6 7] 3)
+    assert [1 2 3 4 5 6 7] (rotate [1 2 3 4 5 6 7] 0)
+    assert [4 5 6 7 1 2 3] (rotate [1 2 3 4 5 6 7] 4)
+end
+     

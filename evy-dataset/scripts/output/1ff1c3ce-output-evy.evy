@@ -1,0 +1,28 @@
+
+func mode:num nums:[]num
+    counts:{}num
+    for n := range nums
+        if !(has counts n)
+            counts[n] = 0
+        end
+        counts[n] = counts[n] + 1
+    end
+    maxCount := 0
+    mode := -1
+    for key := range counts
+        count := counts[key]
+        if count > maxCount
+            maxCount = count
+            mode = key.(num)
+        end
+    end
+    return mode
+end
+
+func test
+    assert 1 (mode [1 2 3 4 5 1 2 3])
+    assert 2 (mode [1 2 3 4 5 1 2 3 4])
+end
+     
+
+test

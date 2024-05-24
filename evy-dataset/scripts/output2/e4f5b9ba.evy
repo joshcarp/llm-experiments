@@ -1,0 +1,26 @@
+
+func subarrays:num product:num min:num length:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        for end := range start+length (len nums)
+            subarray := nums[start:end]
+            p := 1
+            m := subarray[0]
+            for n := range subarray
+                p = p * n
+                m = min m n
+            end
+            if p == product and m == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays [1 2 3 4] 6 2 2)
+    assert 0 (subarrays [1 2 3 4] 5 2 2)
+    assert 1 (subarrays [1 2 3 4] 12 3 2)
+end
+     

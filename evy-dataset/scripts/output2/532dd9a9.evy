@@ -1,0 +1,17 @@
+output:
+def count_subarrays(arr, k: int, min_val: int) -> int:
+    """Finds the number of subarrays of length k with a minimum element of at least min_val.
+    For example:
+    count_subarrays([1, 2, 3, 4, 5], 2, 3) == 2
+    count_subarrays([1, 2, 3, 4, 5], 3, 3) == 1
+    count_subarrays([1, 2, 3, 4, 5], 4, 3) == 0
+    """
+    count = 0
+    current_min = min_val
+    for i in range(len(arr) - k + 1):
+        current_min = min(current_min, arr[i:i + k])
+        if current_min >= min_val:
+            count += 1
+    return count
+
+     

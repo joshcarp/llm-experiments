@@ -1,0 +1,27 @@
+
+func subarrays:num length:num sum:num product:num nums:[]num
+    result := 0
+    for i := range (len nums)
+        if i + length - 1 < (len nums)
+            window := nums[i:i + length]
+            windowSum := 0
+            windowProduct := 1
+            for w := range window
+                windowSum = windowSum + w
+                windowProduct = windowProduct * w
+            end
+            if windowSum == sum and windowProduct == product
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+length := 2
+sum := 5
+product := 12
+result := subarrays length sum product
+print result // Prints: 1
+     

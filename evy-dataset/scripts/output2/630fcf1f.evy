@@ -1,0 +1,25 @@
+
+func subarrays:num sum:num product:num nums:[]num
+    result := 0
+    prefixSum := {0:1}
+    prefixProduct := {1:1}
+    runningSum := 0
+    runningProduct := 1
+    for i := range (len nums)
+        runningSum = runningSum + nums[i]
+        runningProduct = runningProduct * nums[i]
+        if prefixSum.has (runningSum - sum)
+            result = result + prefixSum[runningSum - sum]
+        end
+        prefixSum[runningSum] = prefixSum[runningSum] + 1
+        prefixProduct[runningProduct] = prefixProduct[runningProduct] + 1
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays [1 2 3] 3 6)
+    assert 1 (subarrays [1 2 3] 3 3)
+    assert 0 (subarrays [1 2 3] 4 6)
+end
+     

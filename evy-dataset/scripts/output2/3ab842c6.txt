@@ -1,0 +1,19 @@
+
+func isPalindrome:bool arr:[]num
+    length := len arr
+    for i := range (floor length/2)
+        if arr[i] != arr[-i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isPalindrome [1 2 3 2 1])
+    assert true==(isPalindrome [1 2 2 1])
+    assert false==(isPalindrome [1 2 3 4 5])
+    assert true==(isPalindrome [1])
+    assert true==(isPalindrome [1 2 1])
+end
+     

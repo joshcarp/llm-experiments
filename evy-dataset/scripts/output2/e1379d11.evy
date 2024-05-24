@@ -1,0 +1,25 @@
+output: ```evy
+func strstr:num str:string sub:string
+    if (len sub) == 0
+        return 0
+    end
+    for i := range str
+        if (len sub) > (len str) - i
+            return -1
+        end
+        if str[i:i + (len sub)] == sub
+            return i
+        end
+    end
+    return -1
+end
+
+txt := "GeeksforGeeks"
+pattern := "Geeks"
+index := strstr txt pattern
+if index == -1
+    print "Pattern not found"
+else
+    print "Pattern found at index:" index
+end
+     

@@ -1,0 +1,26 @@
+
+func subarraySum:num nums:[]num target:num
+    count := 0
+    prefixSum := {0:1}
+    sum := 0
+    for n := range nums
+        sum = sum + n
+        if hasKey prefixSum sum - target
+            count = count + prefixSum[sum - target]
+        end
+        if !(hasKey prefixSum sum)
+            prefixSum[sum] = 0
+        end
+        prefixSum[sum] = prefixSum[sum] + 1
+    end
+    return count
+end
+
+func test
+    assert 2 (subarraySum [1 1 1] 2)
+    assert 1 (subarraySum [1 2 1] 3)
+    assert 0 (subarraySum [1 2 1] 4)
+end
+     
+
+test

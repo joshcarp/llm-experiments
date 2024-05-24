@@ -1,0 +1,18 @@
+
+func toLowercase:string str:string
+    result:string
+    for i := range str
+        ch := str[i]
+        if "A" <= ch and ch <= "Z"
+            ch = (lower ch)
+        end
+        result = result + ch
+    end
+    return result
+end
+
+txt := "HELLO"
+txt = toLowercase txt
+print txt // Prints: hello
+
+     

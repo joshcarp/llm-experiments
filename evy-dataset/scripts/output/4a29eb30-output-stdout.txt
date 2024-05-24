@@ -1,0 +1,17 @@
+line 24 column 9: unexpected input "else"
+line 25 column 13: unreachable code
+line 26 column 13: unreachable code
+line 27 column 13: unreachable code
+line 28 column 13: unreachable code
+line 34 column 1: unexpected input "func"
+line 35 column 27: "subarrays" takes 2nd argument of type num, found []num
+line 35 column 39: "subarrays" takes 4th argument of type []num, found num
+line 36 column 27: "subarrays" takes 2nd argument of type num, found []num
+line 36 column 39: "subarrays" takes 4th argument of type []num, found num
+line 37 column 27: "subarrays" takes 2nd argument of type num, found []num
+line 37 column 39: "subarrays" takes 4th argument of type []num, found num
+line 38 column 27: "subarrays" takes 2nd argument of type num, found []num
+line 38 column 39: "subarrays" takes 4th argument of type []num, found num
+line 39 column 28: "subarrays" takes 2nd argument of type num, found []num
+line 39 column 49: "subarrays" takes 4th argument of type []num, found num
+line 40 column 1: missing return

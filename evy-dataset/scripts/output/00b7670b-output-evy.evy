@@ -1,0 +1,29 @@
+
+func subarrays:num arr:[]num k:num
+    maxElem := -2147483648
+    minElem := 2147483647
+    result := 0
+    for i := range 0 k
+        if arr[i] > maxElem
+            maxElem = arr[i]
+        end
+        if arr[i] < minElem
+            minElem = arr[i]
+        end
+    end
+    if maxElem - minElem <= 1
+        result = 1
+    end
+    return result
+end
+
+func maxSlidingWindow:num arr:[]num k:num
+    result := 0
+    for i := range (len arr)-k+1
+        result = result + (subarrays arr i k)
+    end
+    return result
+end
+
+print (maxSlidingWindow [1 2 3 4] 2)
+     

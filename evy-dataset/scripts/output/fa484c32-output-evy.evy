@@ -1,0 +1,22 @@
+
+func subarrays:num product:num length:num nums:[]num
+    result := 0
+    window := 1
+    for i := range length
+        window = window * nums[i]
+    end
+    if window == product
+        result = result + 1
+    end
+    for i := range (len nums)-length+1
+        window = window / nums[i]
+        window = window * nums[i + length]
+        if window == product
+            result = result + 1
+        end
+    end
+    return result
+end
+
+print (subarrays 24 [1 2 3 4 5 6 7 8 9])
+     

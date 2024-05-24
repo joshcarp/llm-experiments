@@ -1,0 +1,18 @@
+
+func intersection:array nums1:array nums2:array
+    result:set
+    for num := range nums1
+        if has result num
+            continue
+        end
+        if has nums2 num
+            result = result + {num}
+        end
+    end
+    return result
+end
+
+nums1 := [1 2 2 1]
+nums2 := [2 2]
+print (intersection nums1 nums2) // Prints: [2]
+     

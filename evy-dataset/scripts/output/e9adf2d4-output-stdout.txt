@@ -1,0 +1,9 @@
+line 2 column 28: invalid declaration of "min", already used as function name
+line 17 column 25: "subarrays" takes 1st argument of type num, found []num
+line 17 column 39: "subarrays" takes 3rd argument of type []num, found num
+line 18 column 25: "subarrays" takes 1st argument of type num, found []num
+line 18 column 39: "subarrays" takes 3rd argument of type []num, found num
+line 19 column 25: "subarrays" takes 1st argument of type num, found []num
+line 19 column 39: "subarrays" takes 3rd argument of type []num, found num
+line 20 column 25: "subarrays" takes 1st argument of type num, found []num
+line 20 column 39: "subarrays" takes 3rd argument of type []num, found num

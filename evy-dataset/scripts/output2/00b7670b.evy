@@ -1,0 +1,35 @@
+output:
+def count_subarrays:
+    """
+    Finds the number of subarrays of a given length with a maximum and minimum element in every subarray.
+    For example:
+    count_subarrays([1, 2, 3, 4, 5], 2) == 9
+    count_subarrays([1, 2, 3, 4, 5], 3) == 4
+    count_subarrays([1, 2, 3, 4, 5], 4) == 1
+    count_subarrays([1, 2, 3, 4, 5], 5) == 0
+    """
+    n = len(arr)
+    if n < subarray_length:
+        return 0
+    max_element = -1000000000
+    min_element = 1000000000
+    for i in range(subarray_length):
+        max_element = max(max_element, arr[i])
+        min_element = min(min_element, arr[i])
+    count = 1
+    if max_element == min_element:
+        count = n - subarray_length + 1
+    for i in range(subarray_length, n):
+        if arr[i] == max_element:
+            if arr[i - subarray_length] == max_element:
+                count -= 1
+        elif arr[i] == min_element:
+            if arr[i - subarray_length] == min_element:
+                count -= 1
+        max_element = max(max_element, arr[i])
+        min_element = min(min_element, arr[i])
+        if max_element == min_element:
+            count += 1
+    return count
+
+     

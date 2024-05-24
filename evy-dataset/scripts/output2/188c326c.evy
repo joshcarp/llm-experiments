@@ -1,0 +1,14 @@
+
+func reverse_array:array arr:[]num
+    result:[]num
+    for i := range (len arr)-1 -1 -1
+        result = result + [arr[i]]
+    end
+    return result
+end
+
+numbers := [1 2 3 4 5]
+numbers = reverse_array numbers
+print numbers // Prints: [5 4 3 2 1]
+
+     

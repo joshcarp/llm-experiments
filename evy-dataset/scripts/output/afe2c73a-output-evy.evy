@@ -1,0 +1,32 @@
+
+func subarrays:num sum:num prod:num max:num min:num length:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)-length+1
+        end := start + length - 1
+        window := nums[start:end+1]
+        windowSum := 0
+        windowProd := 1
+        windowMax := -2147483648
+        windowMin := 2147483647
+        for n := range window
+            windowSum = windowSum + n
+            windowProd = windowProd * n
+            windowMax = max windowMax n
+            windowMin = min windowMin n
+        end
+        if windowSum == sum and windowProd == prod and windowMax == max and windowMin == min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 3 6 3 1 [1 2 1 2 3])
+    assert 0 (subarrays 3 6 3 1 [1 2 1 2 4])
+    assert 1 (subarrays 3 6 3 1 [1 2 3 2 3])
+    assert 0 (subarrays 3 6 3 1 [1 2 3 2 4])
+end
+     
+
+test

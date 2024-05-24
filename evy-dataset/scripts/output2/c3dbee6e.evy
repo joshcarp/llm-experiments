@@ -1,0 +1,32 @@
+
+func merge:num nums1:[]num nums2:[]num
+    m := len nums1
+    n := len nums2
+    p1 := 0
+    p2 := 0
+    result:[]num
+    while p1 < m and p2 < n
+        if nums1[p1] < nums2[p2]
+            result = result + [nums1[p1]]
+            p1 = p1 + 1
+        else
+            result = result + [nums2[p2]]
+            p2 = p2 + 1
+        end
+    end
+    while p1 < m
+        result = result + [nums1[p1]]
+        p1 = p1 + 1
+    end
+    while p2 < n
+        result = result + [nums2[p2]]
+        p2 = p2 + 1
+    end
+    return result
+end
+
+nums1 := [1 2 3 0 0 0]
+nums2 := [2 5 6]
+nums1 = merge nums1 3 nums2 3
+print nums1 // Prints: [1 2 2 3 5 6]
+     

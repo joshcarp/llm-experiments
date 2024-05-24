@@ -1,0 +1,26 @@
+
+func subarrays:num length:num sum:num min:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)-length+1
+        window := nums[start:start + length]
+        windowSum := 0
+        windowMin := 1000000000
+        for w := range window
+            windowSum = windowSum + w
+            if w < windowMin
+                windowMin = w
+            end
+        end
+        if windowSum == sum and windowMin == min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5 6 7 8 9 10]
+length := 3
+sum := 15
+min := 3
+print (subarrays nums length sum min) // Prints: 2
+     

@@ -1,0 +1,32 @@
+
+func mode:num nums:[]num
+    nums = nums[:]
+    sort nums
+    length := len nums
+    if length == 0
+        return -1
+    end
+    maxCount := 1
+    currentCount := 1
+    modeValue := nums[0]
+    for i := range 1 length
+        if nums[i] == nums[i - 1]
+            currentCount = currentCount + 1
+        else
+            currentCount = 1
+        end
+        if currentCount > maxCount
+            maxCount = currentCount
+            modeValue = nums[i]
+        end
+    end
+    return modeValue
+end
+
+func test
+    assert 1 (mode [1 1 2 2 3])
+    assert 2 (mode [1 2 2 3 3])
+    assert -1 (mode [])
+    assert 1 (mode [1])
+end
+     

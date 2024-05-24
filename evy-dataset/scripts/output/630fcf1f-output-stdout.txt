@@ -1,0 +1,9 @@
+line 10 column 29: expected end of line, found "("
+line 10 column 12: expected condition of type bool, found any
+line 11 column 43: map index expects string, found num
+line 11 column 13: at least one statement is required here
+line 13 column 31: expected ")", got "("
+line 14 column 25: map index expects string, found num
+line 14 column 13: at least one statement is required here
+line 16 column 21: map index expects string, found num
+line 2 column 28: "product" declared but not used

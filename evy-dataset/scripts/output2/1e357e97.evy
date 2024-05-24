@@ -1,0 +1,22 @@
+output: ```evy
+func minProdSubarray:num nums:[]num
+    minProd := nums[0]
+    maxProd := nums[0]
+    result := nums[0]
+    for i := range 1 (len nums)
+        tmpMin := minProd * nums[i]
+        tmpMax := maxProd * nums[i]
+        minProd = min tmpMin (min tmpMax nums[i])
+        maxProd = max tmpMax (max tmpMin nums[i])
+        result = min result minProd
+    end
+    return result
+end
+
+func test
+    assert -2 (minProdSubarray [-2 3 -4])
+    assert -6 (minProdSubarray [-2 -3 -4])
+    assert -3 (minProdSubarray [-2 -1 -3])
+    assert -24 (minProdSubarray [-2 3 -4 0 -2])
+end
+     

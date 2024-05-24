@@ -1,0 +1,24 @@
+
+func minProdSubarray:num nums:[]num
+    result := nums[0]
+    minEndingHere := nums[0]
+    maxEndingHere := nums[0]
+    for i := range 1 (len nums)
+        tmp := maxEndingHere
+        maxEndingHere = max (maxEndingHere*nums[i]) (minEndingHere*nums[i]) (nums[i])
+        minEndingHere = min (tmp*nums[i]) (minEndingHere*nums[i]) (nums[i])
+        result = min result maxEndingHere
+    end
+    return result
+end
+
+func test
+    assert -2 (minProdSubarray [2 3 -2 4])
+    assert -6 (minProdSubarray [2 -3 -4 1 -5])
+    assert -1 (minProdSubarray [-1 -2 -3])
+    assert -1 (minProdSubarray [-1 0 -3])
+    assert -1 (minProdSubarray [-1 0 -3 0])
+end
+     
+
+test

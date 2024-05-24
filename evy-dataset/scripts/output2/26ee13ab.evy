@@ -1,0 +1,26 @@
+
+func subarrays:num length:num product:num min:num nums:[]num
+    result := 0
+    windowProduct := 1
+    windowMin := nums[0]
+    for i := range 1 (len nums)
+        windowProduct = windowProduct * nums[i]
+        windowMin = min windowMin nums[i]
+        if i >= length
+            windowProduct = windowProduct / nums[i - length]
+            windowMin = min windowMin nums[i - length]
+        end
+        if windowProduct == product and windowMin == min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 12 3 [1 2 3 4])
+    assert 0 (subarrays 2 12 3 [1 2 5 4])
+    assert 1 (subarrays 3 24 2 [1 2 3 4])
+    assert 0 (subarrays 3 24 2 [1 2 5 4])
+end
+     

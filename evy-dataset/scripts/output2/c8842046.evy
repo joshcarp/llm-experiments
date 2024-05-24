@@ -1,0 +1,29 @@
+output: ```evy
+func subarrays:num length:num product:num min:num
+    result := 0
+    for start := range 0 (-(length - 1))
+        window := product
+        windowMin := min
+        for end := range start+length start+1
+            window = window / (windowMin)
+            windowMin = min
+            window = window * (getArray arr:num[] start:num end:num)
+            windowMin = min (windowMin) (getArray arr:num[] start:num end:num)
+        end
+        if window == product
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func getArray:num[] arr:num[] start:num end:num
+    result := []
+    for i := range start end
+        result = result + [arr[i]]
+    end
+    return result
+end
+
+print (subarrays [1 2 3 4 5 6 7 8 9 10] 24 3)
+     

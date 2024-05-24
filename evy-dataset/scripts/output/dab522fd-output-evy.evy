@@ -1,0 +1,38 @@
+
+func subarrays:num product:num maxElem:num length:num nums:[]num
+    result := 0
+    windowProduct := 1
+    windowMax := 0
+    windowLength := 0
+    for i := range (len nums)
+        n := nums[i]
+        windowProduct = windowProduct * n
+        if n > windowMax
+            windowMax = n
+        end
+        windowLength = windowLength + 1
+        while windowProduct >= product or windowMax >= maxElem or windowLength > length
+            windowProduct = windowProduct / nums[i - windowLength]
+            windowMax = 0
+            for j := range (windowLength)
+                n := nums[i - windowLength + 1 + j]
+                if n > windowMax
+                    windowMax = n
+                end
+            end
+        end
+        result = result + 1
+    end
+    return result
+end
+
+func test
+    assert 1 (subarrays 1 1 1 [1])
+    assert 2 (subarrays 2 2 2 [1 2])
+    assert 4 (subarrays 4 3 3 [1 2 3])
+    assert 0 (subarrays 5 4 3 [1 2 3])
+    assert 1 (subarrays 10 5 3 [1 2 5])
+end
+     
+
+test

@@ -1,0 +1,37 @@
+line 4 column 35: unexpected whitespace after "-"
+line 4 column 37: range cannot be empty
+line 4 column 37: unknown function "length"
+line 2 column 40: "maxElem" declared but not used
+line 2 column 52: "length" declared but not used
+line 3 column 5: "result" declared but not used
+line 2 column 20: "sum" declared but not used
+line 2 column 28: "product" declared but not used
+line 5 column 9: missing return
+line 8 column 22: unknown variable name "nums"
+line 8 column 26: invalid inferred declaration for "windowMax"
+line 9 column 24: unknown variable name "start"
+line 9 column 30: range cannot be empty
+line 9 column 30: unexpected input "end"
+line 10 column 37: unknown variable name "nums"
+line 11 column 45: unknown variable name "nums"
+line 12 column 16: unknown variable name "nums"
+line 13 column 17: unknown variable name "windowMax"
+line 13 column 17: at least one statement is required here
+line 15 column 9: unexpected input "end"
+line 16 column 25: unknown variable name "sum"
+line 17 column 13: unknown variable name "result"
+line 17 column 13: at least one statement is required here
+line 19 column 5: unexpected input "end"
+line 20 column 12: unknown variable name "result"
+line 20 column 12: return statement not allowed here
+line 21 column 1: unexpected input "end"
+line 22 column 1: unreachable code
+line 23 column 1: unreachable code
+line 24 column 1: unreachable code
+line 25 column 1: unreachable code
+line 26 column 1: unreachable code
+line 27 column 1: unreachable code
+line 28 column 44: "subarrays" takes 5 arguments, found 4
+line 28 column 1: unreachable code
+line 29 column 6: unreachable code
+line 23 column 1: "nums" declared but not used

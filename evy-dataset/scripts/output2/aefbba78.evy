@@ -1,0 +1,18 @@
+
+func frequency:num arr:[]num
+    freq:{}num
+    for n := range arr
+        if !(has freq n)
+            freq[n] = 0
+        end
+        freq[n] = freq[n] + 1
+    end
+    return freq
+end
+
+func test
+    assert {1 2 3 4 5} (frequency [1 2 3 4 5])
+    assert {1 2 3 4 5} (frequency [1 2 3 4 5 1 2 3 4 5])
+    assert {1 2 3 4 5} (frequency [1 2 3 4 5 1 2 3 4 5 1 2 3 4 5])
+end
+     

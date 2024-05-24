@@ -1,0 +1,2 @@
+line 25 column 39: "subarrays" takes 4 arguments, found 3
+line 21 column 1: "nums" declared but not used

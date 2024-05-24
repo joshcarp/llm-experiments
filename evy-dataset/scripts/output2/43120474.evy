@@ -1,0 +1,32 @@
+
+func subarrays:num sum:num product:num minElem:num length:num arr:[]num
+    result := 0
+    for start := range 0 (len arr)-length+1
+        for end := range start+length (len arr)+1
+            subarray := arr[start:end]
+            subarraySum := 0
+            subarrayProduct := 1
+            subarrayMin := subarray[0]
+            for elem := range subarray
+                subarraySum = subarraySum + elem
+                subarrayProduct = subarrayProduct * elem
+                if elem < subarrayMin
+                    subarrayMin = elem
+                end
+            end
+            if subarraySum == sum and subarrayProduct == product and subarrayMin == minElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 4 1 2 [1 2 1 2])
+    assert 0 (subarrays 2 4 1 2 [1 2 3 4])
+    assert 1 (subarrays 2 4 1 2 [1 2 1 4])
+    assert 0 (subarrays 2 4 1 2 [1 2 1 2 3])
+    assert 0 (subarrays 2 4 1 2 [1 2 3 4 5])
+end
+     

@@ -1,0 +1,17 @@
+
+func union:array arr1:array arr2:array
+    result:set
+    for elem := range arr1
+        result = result + {elem}
+    end
+    for elem := range arr2
+        result = result + {elem}
+    end
+    return (array)result
+end
+
+numbers1 := [1 2 3 4]
+numbers2 := [3 4 5 6]
+numbers3 := union numbers1 numbers2
+print numbers3 // Prints: [1 2 3 4 5 6]
+     

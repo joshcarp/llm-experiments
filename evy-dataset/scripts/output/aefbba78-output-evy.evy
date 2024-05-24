@@ -1,0 +1,18 @@
+
+func countFreq:num nums:[]num
+    freqs:{}num
+    for n := range nums
+        if has freqs n
+            freqs[n] = freqs[n] + 1
+        else
+            freqs[n] = 1
+        end
+    end
+    return freqs
+end
+
+numbers := [1 2 3 4 5 1 2 3]
+freqs := countFreq numbers
+print freqs // Prints: {1:2 2:2 3:2 4:1 5:1}
+
+     

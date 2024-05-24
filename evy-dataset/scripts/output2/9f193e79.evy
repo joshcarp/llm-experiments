@@ -1,0 +1,42 @@
+output:
+def count_subarrays(arr, s):
+    """Counts the number of subarrays with sum s and maximum and minimum element in every subarray.
+
+    Args:
+        arr: The input array.
+        s: The target sum.
+
+    Returns:
+        The number of subarrays with sum s and maximum and minimum element in every subarray.
+    """
+
+    # Initialize the dp table. dp[i][j][k] stores the number of subarrays with sum s and maximum element arr[i] and minimum element arr[j].
+    dp = [[[0 for k in range(len(arr))] for j in range(len(arr))] for i in range(len(arr))]
+
+    # Base case: If the subarray is empty, there is one subarray with sum 0 and maximum and minimum element 0.
+    for i in range(len(arr)):
+        dp[i][i][i] = 1
+
+    # Iterate over the subarrays of length 2 to len(arr).
+    for l in range(2, len(arr) + 1):
+        # Iterate over the starting indices of the subarrays.
+        for i in range(len(arr) - l + 1):
+            # Iterate over the maximum and minimum elements of the subarrays.
+            for j in range(i, i + l):
+                for k in range(i, i + l):
+                    # If the sum of the subarray is equal to s, then the number of subarrays with sum s and maximum element arr[j] and minimum element arr[k] is equal to the sum of the number of subarrays with sum s-arr[j] and maximum element arr[j] and minimum element arr[k-1] and the number of subarrays with sum s-arr[k] and maximum element arr[j-1] and minimum element arr[k].
+                    if arr[j] + arr[k] == s:
+                        dp[i][j][k] = dp[i][j - 1][k] + dp[i][j][k - 1]
+                    # Otherwise, the number of subarrays with sum s and maximum element arr[j] and minimum element arr[k] is 0.
+                    else:
+                        dp[i][j][k] = 0
+
+    # Return the number of subarrays with sum s and maximum and minimum element in every subarray.
+    return dp[0][len(arr) - 1][len(arr) - 1]
+
+
+# Example usage.
+arr = [1, 2, 3, 4, 5]
+s = 6
+print(count_subarrays(arr, s))  # Output: 2
+     

@@ -1,0 +1,21 @@
+
+func maxSubArray:num nums:[]num
+    maxEndingHere := nums[0]
+    maxSoFar := nums[0]
+    for i := range 1 (len nums)
+        maxEndingHere = max (nums[i] maxEndingHere+nums[i])
+        maxSoFar = max maxSoFar maxEndingHere
+    end
+    return maxSoFar
+end
+
+func test
+    assert 6 (maxSubArray [5 4 -1 7 8])
+    assert 23 (maxSubArray [1 2 3 4 5 6 7 8 9 10])
+    assert -1 (maxSubArray [-1 -2 -3 -4 -5])
+    assert 0 (maxSubArray [0 0 0 0])
+    assert -1 (maxSubArray [-1])
+end
+     
+
+test

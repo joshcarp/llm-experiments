@@ -1,0 +1,17 @@
+
+func findDuplicate:num nums:[]num
+    for i := range 1 (len nums)
+        if nums[i] == nums[i - 1]
+            return nums[i]
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (findDuplicate [1 2 2 3 4])
+    assert 1 (findDuplicate [1 1 2 3 4])
+    assert 3 (findDuplicate [1 2 3 3 4])
+    assert -1 (findDuplicate [1 2 3 4 5])
+end
+     

@@ -1,0 +1,29 @@
+
+func lds:num nums:[]num
+    n := len nums
+    dp := [0] * n
+    for i := range n
+        dp[i] = 1
+        for j := range i
+            if nums[i] < nums[j] and dp[i] < dp[j] + 1
+                dp[i] = dp[j] + 1
+            end
+        end
+    end
+    max := 0
+    for i := range n
+        if max < dp[i]
+            max = dp[i]
+        end
+    end
+    return max
+end
+
+func test
+    assert 4 (lds [5 4 3 2 1])
+    assert 1 (lds [1])
+    assert 2 (lds [2 1])
+    assert 3 (lds [1 2 3])
+    assert 4 (lds [4 3 2 1 0])
+end
+     

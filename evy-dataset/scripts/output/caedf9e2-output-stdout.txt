@@ -1,0 +1,13 @@
+line 4 column 31: unexpected whitespace before "+"
+line 4 column 31: "len" takes 1 argument, found 0
+line 4 column 31: expected ")", got "+"
+line 4 column 31: invalid inferred declaration for "prefix"
+line 6 column 9: unknown variable name "prefix"
+line 6 column 9: at least one statement is required here
+line 5 column 9: "i" declared but not used
+line 10 column 16: unknown variable name "prefix"
+line 9 column 13: "j" declared but not used
+line 2 column 20: "product" declared but not used
+line 2 column 32: "maxElem" declared but not used
+line 18 column 18: "subarrays" takes 1st argument of type num, found []num
+line 18 column 33: "subarrays" takes 3rd argument of type []num, found num

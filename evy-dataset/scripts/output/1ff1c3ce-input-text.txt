@@ -1,0 +1,1 @@
+Find the mode of all elements in an array

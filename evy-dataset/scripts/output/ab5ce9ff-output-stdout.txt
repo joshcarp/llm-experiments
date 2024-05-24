@@ -1,0 +1,23 @@
+line 4 column 30: unexpected whitespace after "-"
+line 4 column 32: range cannot be empty
+line 4 column 32: unknown function "k"
+line 5 column 27: unknown variable name "i"
+line 5 column 28: invalid inferred declaration for "currentMax"
+line 6 column 24: unknown variable name "i"
+line 6 column 25: range cannot be empty
+line 6 column 25: unexpected input "+"
+line 7 column 13: unknown variable name "currentMax"
+line 2 column 30: "k" declared but not used
+line 3 column 5: "result" declared but not used
+line 8 column 9: missing return
+line 9 column 12: unknown variable name "currentMax"
+line 10 column 13: unknown variable name "result"
+line 10 column 13: at least one statement is required here
+line 12 column 5: unexpected input "end"
+line 13 column 12: unknown variable name "result"
+line 13 column 12: return statement not allowed here
+line 14 column 1: unexpected input "end"
+line 15 column 1: unreachable code
+line 22 column 6: unreachable code
+line 23 column 1: unreachable code
+line 24 column 1: unreachable code

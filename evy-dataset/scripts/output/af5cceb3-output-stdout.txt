@@ -1,0 +1,4 @@
+line 40 column 1: invalid return type: a
+line 40 column 14: invalid type declaration for "a"
+line 40 column 20: invalid type declaration for "b"
+line 40 column 1: cannot override builtin function "max"

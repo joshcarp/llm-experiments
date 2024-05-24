@@ -1,1 +1,0 @@
-Determine if an array is sorted in descending order

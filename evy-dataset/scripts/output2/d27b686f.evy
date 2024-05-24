@@ -1,0 +1,40 @@
+output:
+def count_subarrays(arr, product, min_element):
+    """Counts the number of subarrays with a given product and minimum element in every subarray.
+
+    Args:
+        arr: The input array.
+        product: The desired product.
+        min_element: The minimum element that must be present in every subarray.
+
+    Returns:
+        The number of subarrays with the given product and minimum element.
+    """
+    if not arr:
+        return 0
+
+    # Initialize the dp table. dp[i][j][k] stores the number of subarrays ending at index i with product j and minimum element k.
+    dp = [[[0 for _ in range(min_element, arr[-1] + 1)] for _ in range(product + 1)] for _ in range(len(arr) + 1)]
+
+    # Base case: dp[0][0][0] = 1. There is one empty subarray with product 0 and minimum element 0.
+    dp[0][0][0] = 1
+
+    for i in range(1, len(arr) + 1):
+        for j in range(product + 1):
+            for k in range(min_element, arr[-1] + 1):
+                # Case 1: Do not include the current element.
+                dp[i][j][k] = dp[i - 1][j][k]
+
+                # Case 2: Include the current element.
+                if j >= arr[i - 1] and k <= arr[i - 1]:
+                    dp[i][j][k] += dp[i - 1][j // arr[i - 1]][min(k, arr[i - 1])]
+
+    return dp[len(arr)][product][min_element]
+
+# Example usage:
+arr = [1, 2, 3, 4, 5]
+product = 12
+min_element = 2
+result = count_subarrays(arr, product, min_element)
+print(result)  # Output: 2
+     

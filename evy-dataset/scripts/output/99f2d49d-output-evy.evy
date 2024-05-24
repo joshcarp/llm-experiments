@@ -1,0 +1,33 @@
+
+func subarrays:num length:num sum:num product:num max:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        end := start + length
+        if end > (len nums)
+            break
+        end
+        subarray := nums[start:end]
+        subsum := 0
+        subproduct := 1
+        submax := -2147483648
+        for n := range subarray
+            subsum = subsum + n
+            subproduct = subproduct * n
+            submax = max submax n
+        end
+        if subsum == sum and subproduct == product and submax == max
+            result = result + 1
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+length := 2
+sum := 6
+product := 12
+max := 5
+result := subarrays length sum product max nums
+print result // Prints: 1
+
+     

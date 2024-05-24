@@ -1,0 +1,11 @@
+output: ```evy
+func isSubstring:bool str1:string str2:string
+    return (indexof str2 str1) != -1
+end
+
+func test
+    assert true==(isSubstring "llo" "Hello")
+    assert true==(isSubstring "world" "world")
+    assert false==(isSubstring "world" "HelloWorld")
+end
+     

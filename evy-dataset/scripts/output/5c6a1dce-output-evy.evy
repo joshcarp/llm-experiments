@@ -1,0 +1,33 @@
+
+func subarrays:num sum:num min:num length:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)-length+1
+        window := nums[start:start + length]
+        if (sumArray window) == sum and (minArray window) == min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func sumArray:num nums:[]num
+    sum := 0
+    for n := range nums
+        sum = sum + n
+    end
+    return sum
+end
+
+func minArray:num nums:[]num
+    min := nums[0]
+    for n := range nums
+        if n < min
+            min = n
+        end
+    end
+    return min
+end
+
+nums := [1 2 3 4 5]
+print (subarrays 6 2 3 nums) // Prints: 2
+     

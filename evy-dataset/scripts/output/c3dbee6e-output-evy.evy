@@ -1,0 +1,27 @@
+
+func merge:num nums1:[]num nums2:[]num
+    m := len nums1
+    n := len nums2
+    result := nums1 + nums2
+    sort result
+    return result
+end
+
+func sort nums:[]num
+    // bubble sort
+    for endIdx := range (len nums)-1 0 -1
+        for i := range endIdx
+            if nums[i] > nums[i + 1]
+                tmp := nums[i]
+                nums[i] = nums[i + 1]
+                nums[i + 1] = tmp
+            end
+        end
+    end
+end
+
+nums1 := [1 2 3 0 0 0]
+nums2 := [2 5 6]
+result := merge nums1 nums2
+print result // Prints: [1 2 2 3 5 6]
+     

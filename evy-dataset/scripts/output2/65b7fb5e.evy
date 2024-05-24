@@ -1,0 +1,18 @@
+
+func median:num nums:[]num
+    nums = sort nums
+    length := len nums
+    if length % 2 == 1
+        return nums[floor(length / 2)]
+    else
+        return (nums[length / 2 - 1] + nums[length / 2]) / 2
+    end
+end
+
+func test
+    assert 2.5 (median [1 2 3 4 5])
+    assert 3 (median [1 2 3 4 5 6])
+    assert 4 (median [4 5 6 7 8])
+    assert 4.5 (median [4 5 6 7 8 9])
+end
+     
