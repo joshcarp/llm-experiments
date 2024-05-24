@@ -1,0 +1,12 @@
+
+func isSubstring:bool haystack:string needle:string
+    return (index haystack needle) >= 0
+end
+
+func test
+    assert true (isSubstring "hello" "ell")
+    assert false (isSubstring "hello" "world")
+end
+     
+
+test

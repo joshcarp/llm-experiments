@@ -1,0 +1,5 @@
+
+message := " Hello, world! "
+trimmed := message[1:-1]
+print trimmed
+     
