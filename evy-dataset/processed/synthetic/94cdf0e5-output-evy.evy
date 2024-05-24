@@ -1,0 +1,11 @@
+
+func minProd:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        result = min result n
+    end
+    return result
+end
+
+print (minProd [1 2 3 4 5])
+     

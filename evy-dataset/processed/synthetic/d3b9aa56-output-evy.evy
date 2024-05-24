@@ -1,0 +1,14 @@
+
+func inorder:string root:{}any
+    if root == {}
+        return ""
+    end
+    left := root["left"].({}any)
+    right := root["right"].({}any)
+    return (inorder left) + (root["val"].(string)) + (inorder right)
+end
+
+tree := {val:"1" left:{val:"2" left:{} right:{val:"4" left:{} right:{}}} right:{val:"3" left:{} right:{}}}
+assert "2413" (inorder tree)
+
+     

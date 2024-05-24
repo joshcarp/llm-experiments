@@ -1,0 +1,14 @@
+
+func depth:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := depth root.left.({}any)
+    right := depth root.right.({}any)
+    return max left+1 right+1
+end
+
+tree := {val:1 left:{val:2 left:{} right:{val:4 left:{} right:{}}} right:{val:3 left:{} right:{}}}
+assert 3 (depth tree)
+
+     

@@ -1,0 +1,17 @@
+
+func maxProduct:num nums:[]num
+    result := nums[0]
+    minProd := nums[0]
+    maxProd := nums[0]
+    for i := range 1 (len nums)
+        tmpMax := maxProd*nums[i]
+        tmpMin := minProd*nums[i]
+        maxProd = max tmpMax (max tmpMin 0)
+        minProd = min tmpMin (min tmpMax 0)
+        result = max result maxProd
+    end
+    return result
+end
+
+print (maxProduct [2 3 -2 4])
+     

@@ -1,0 +1,29 @@
+
+func isPermutation:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    sMap:{}num
+    tMap:{}num
+    for i := range s
+        if !(has sMap i)
+            sMap[i] = 0
+        end
+        sMap[i] = sMap[i] + 1
+    end
+    for i := range t
+        if !(has tMap i)
+            tMap[i] = 0
+        end
+        tMap[i] = tMap[i] + 1
+    end
+    return sMap == tMap
+end
+
+func test
+    assert true (isPermutation "abc" "bca")
+    assert false (isPermutation "abc" "bcd")
+end
+     
+
+test
