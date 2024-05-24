@@ -1,0 +1,16 @@
+
+func findMissing:num nums:[]num
+    for i := range 1 (len nums)
+        if nums[i] != nums[i - 1] + 1
+            return nums[i - 1] + 1
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (findMissing [1 3])
+    assert 4 (findMissing [1 2 3 5])
+    assert 0 (findMissing [-1 1])
+end
+     

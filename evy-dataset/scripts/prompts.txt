@@ -1,0 +1,521 @@
+Find the maximum element in an array
+Find the minimum element in an array
+Find the sum of all elements in an array
+Find the average of all elements in an array
+Find the median of all elements in an array
+Find the mode of all elements in an array
+Find the number of unique elements in an array
+Find the frequency of each element in an array
+Reverse an array
+Rotate an array by k positions
+Find the missing element in a sorted array
+Find the duplicate element in a sorted array
+Find the kth largest element in an array
+Find the kth smallest element in an array
+Merge two sorted arrays
+Find the intersection of two arrays
+Find the union of two arrays
+Check if an array is sorted
+Check if an array is palindromic
+Find the longest increasing subsequence in an array
+Find the longest common subsequence of two arrays
+Find the longest decreasing subsequence in an array
+Find the maximum sum of a subarray
+Find the minimum sum of a subarray
+Find the maximum product of a subarray
+Find the minimum product of a subarray
+Find the number of subarrays with a given sum
+Find the number of subarrays with a given product
+Find the number of subarrays with a given length
+Find the number of subarrays with a given maximum element
+Find the number of subarrays with a given minimum element
+Find the number of subarrays with a given sum and length
+Find the number of subarrays with a given product and length
+Find the number of subarrays with a given maximum and minimum element
+Find the number of subarrays with a given sum and maximum element
+Find the number of subarrays with a given sum and minimum element
+Find the number of subarrays with a given product and maximum element
+Find the number of subarrays with a given product and minimum element
+Find the number of subarrays with a given length and maximum element
+Find the number of subarrays with a given length and minimum element
+Find the number of subarrays with a given length and sum
+Find the number of subarrays with a given length and product
+Find the number of subarrays with a given length and maximum and minimum element
+Find the number of subarrays with a given length and sum and maximum element
+Find the number of subarrays with a given length and sum and minimum element
+Find the number of subarrays with a given length and product and maximum element
+Find the number of subarrays with a given length and product and minimum element
+Find the number of subarrays with a given sum and product
+Find the number of subarrays with a given sum and maximum and minimum element
+Find the number of subarrays with a given product and maximum and minimum element
+Find the number of subarrays with a given sum, product, and maximum and minimum element
+Find the number of subarrays with a given length, sum, and product
+Find the number of subarrays with a given length, sum, and maximum element
+Find the number of subarrays with a given length, sum, and minimum element
+Find the number of subarrays with a given length, product, and maximum element
+Find the number of subarrays with a given length, product, and minimum element
+Find the number of subarrays with a given length, sum, product, and maximum element
+Find the number of subarrays with a given length, sum, product, and minimum element
+Find the number of subarrays with a given sum, product, and maximum and minimum element and length
+Find the number of subarrays with a given sum, product, and maximum element and length
+Find the number of subarrays with a given sum, product, and minimum element and length
+Find the number of subarrays with a given sum, maximum element, and length
+Find the number of subarrays with a given sum, minimum element, and length
+Find the number of subarrays with a given product, maximum element, and length
+Find the number of subarrays with a given product, minimum element, and length
+Find the number of subarrays with a given maximum element and length
+Find the number of subarrays with a given minimum element and length
+Check if a string is a palindrome
+Reverse a string
+Find the length of a string
+Find the number of characters in a string
+Find the number of words in a string
+Find the frequency of each character in a string
+Find the frequency of each word in a string
+Check if a string is a substring of another string
+Find the index of a substring in a string
+Find the number of occurrences of a substring in a string
+Replace all occurrences of a substring in a string
+Remove all occurrences of a substring from a string
+Convert a string to uppercase
+Convert a string to lowercase
+Check if a string is empty
+Trim a string
+Find the first non-repeating character in a string
+Find the last non-repeating character in a string
+Find the first repeating character in a string
+Find the last repeating character in a string
+Find the number of repeating characters in a string
+Find the number of non-repeating characters in a string
+Find the longest common substring of two strings
+Find the longest common prefix of two strings
+Find the longest common suffix of two strings
+Find the shortest common superstring of two strings
+Find the edit distance between two strings
+Find the Hamming distance between two strings
+Find the number of anagrams of a string
+Find the number of permutations of a string
+Check if two strings are anagrams
+Check if two strings are permutations
+Find the number of substrings of a string
+Find the number of palindromic substrings of a string
+Find the number of unique substrings of a string
+Find the number of substrings of a string with a given length
+Find the number of substrings of a string with a given sum of characters
+Find the number of substrings of a string with a given product of characters
+Find the number of substrings of a string with a given maximum and minimum character
+Find the number of substrings of a string with a given maximum and minimum character and length
+Find the number of substrings of a string with a given sum of characters and length
+Find the number of substrings of a string with a given product of characters and length
+Find the number of substrings of a string with a given maximum and minimum character and sum of characters
+Find the number of substrings of a string with a given maximum and minimum character and product of characters
+Find the number of substrings of a string with a given sum of characters and product of characters
+Find the number of substrings of a string with a given sum of characters and maximum and minimum character
+Find the number of substrings of a string with a given product of characters and maximum and minimum character
+Find the number of substrings of a string with a given sum of characters, product of characters, and maximum and minimum character
+Find the number of substrings of a string with a given length, sum of characters, and product of characters
+Find the number of substrings of a string with a given length, sum of characters, and maximum and minimum character
+Find the number of substrings of a string with a given length, product of characters, and maximum and minimum character
+Find the number of substrings of a string with a given length, sum of characters, product of characters, and maximum and minimum character
+Find the length of a linked list
+Find the middle node of a linked list
+Reverse a linked list
+Check if a linked list is circular
+Find the nth node from the end of a linked list
+Insert a node at the beginning of a linked list
+Insert a node at the end of a linked list
+Insert a node at a given position in a linked list
+Delete a node from the beginning of a linked list
+Delete a node from the end of a linked list
+Delete a node from a given position in a linked list
+Delete a node with a given value from a linked list
+Merge two sorted linked lists
+Find the intersection of two linked lists
+Find the union of two linked lists
+Check if a linked list is sorted
+Check if a linked list is palindromic
+Find the longest increasing subsequence in a linked list
+Find the longest common subsequence of two linked lists
+Find the longest decreasing subsequence in a linked list
+Find the maximum sum of a sublist
+Find the minimum sum of a sublist
+Find the maximum product of a sublist
+Find the minimum product of a sublist
+Find the number of sublists with a given sum
+Find the number of sublists with a given product
+Find the number of sublists with a given length
+Find the number of sublists with a given maximum element
+Find the number of sublists with a given minimum element
+Find the number of sublists with a given sum and length
+Find the number of sublists with a given product and length
+Find the number of sublists with a given maximum and minimum element
+Find the number of sublists with a given sum and maximum element
+Find the number of sublists with a given sum and minimum element
+Find the number of sublists with a given product and maximum element
+Find the number of sublists with a given product and minimum element
+Find the number of sublists with a given length and maximum element
+Find the number of sublists with a given length and minimum element
+Find the number of sublists with a given length and sum
+Find the number of sublists with a given length and product
+Find the number of sublists with a given length and maximum and minimum element
+Find the number of sublists with a given length and sum and maximum element
+Find the number of sublists with a given length and sum and minimum element
+Find the number of sublists with a given length and product and maximum element
+Find the number of sublists with a given length and product and minimum element
+Find the number of sublists with a given sum and product
+Find the number of sublists with a given sum and maximum and minimum element
+Find the number of sublists with a given product and maximum and minimum element
+Find the number of sublists with a given sum, product, and maximum and minimum element
+Find the number of sublists with a given length, sum, and product
+Find the number of sublists with a given length, sum, and maximum element
+Find the number of sublists with a given length, sum, and minimum element
+Find the number of sublists with a given length, product, and maximum element
+Find the number of sublists with a given length, product, and minimum element
+Find the number of sublists with a given length, sum, product, and maximum element
+Find the number of sublists with a given length, sum, product, and minimum element
+Find the number of sublists with a given sum, product, and maximum and minimum element and length
+Find the number of sublists with a given sum, product, and maximum element and length
+Find the number of sublists with a given sum, product, and minimum element and length
+Find the number of sublists with a given sum, maximum element, and length
+Find the number of sublists with a given sum, minimum element, and length
+Find the number of sublists with a given product, maximum element, and length
+Find the number of sublists with a given product, minimum element, and length
+Find the number of sublists with a given maximum element and length
+Find the number of sublists with a given minimum element and length
+Find the height of a binary tree
+Find the depth of a binary tree
+Find the number of nodes in a binary tree
+Find the number of leaves in a binary tree
+Find the number of internal nodes in a binary tree
+Find the diameter of a binary tree
+Find the level order traversal of a binary tree
+Find the inorder traversal of a binary tree
+Find the preorder traversal of a binary tree
+Find the postorder traversal of a binary tree
+Find the maximum element in a binary tree
+Find the minimum element in a binary tree
+Find the sum of all elements in a binary tree
+Find the average of all elements in a binary tree
+Find the median of all elements in a binary tree
+Find the mode of all elements in a binary tree
+Find the number of unique elements in a binary tree
+Find the frequency of each element in a binary tree
+Check if a binary tree is balanced
+Check if a binary tree is a binary search tree
+Check if a binary tree is a complete binary tree
+Check if a binary tree is a full binary tree
+Check if a binary tree is a perfect binary tree
+Find the lowest common ancestor of two nodes in a binary tree
+Find the path from the root to a given node in a binary tree
+Find the distance between two nodes in a binary tree
+Find the maximum path sum in a binary tree
+Find the minimum path sum in a binary tree
+Find the number of paths with a given sum in a binary tree
+Find the number of paths with a given product in a binary tree
+Find the number of paths with a given length in a binary tree
+Find the number of paths with a given maximum element in a binary tree
+Find the number of paths with a given minimum element in a binary tree
+Find the number of paths with a given sum and length in a binary tree
+Find the number of paths with a given product and length in a binary tree
+Find the number of paths with a given maximum and minimum element in a binary tree
+Find the number of paths with a given sum and maximum element in a binary tree
+Find the number of paths with a given sum and minimum element in a binary tree
+Find the number of paths with a given product and maximum element in a binary tree
+Find the number of paths with a given product and minimum element in a binary tree
+Find the number of paths with a given length and maximum element in a binary tree
+Find the number of paths with a given length and minimum element in a binary tree
+Find the number of paths with a given length and sum in a binary tree
+Find the number of paths with a given length and product in a binary tree
+Find the number of paths with a given length and maximum and minimum element in a binary tree
+Find the number of paths with a given length, sum, and product in a binary tree
+Find the number of paths with a given length, sum, and maximum element in a binary tree
+Find the number of paths with a given length, sum, and minimum element in a binary tree
+Find the number of paths with a given length, product, and maximum element in a binary tree
+Find the number of paths with a given length, product, and minimum element in a binary tree
+Find the number of paths with a given length, sum, product, and maximum element in a binary tree
+Find the number of paths with a given length, sum, product, and minimum element in a binary tree
+Find the number of paths with a given sum, product, and maximum and minimum element and length in a binary tree
+Find the number of paths with a given sum, product, and maximum element and length in a binary tree
+Find the number of paths with a given sum, product, and minimum element and length in a binary tree
+Find the number of paths with a given sum, maximum element, and length in a binary tree
+Find the number of paths with a given sum, minimum element, and length in a binary tree
+Find the number of paths with a given product, maximum element, and length in a binary tree
+Find the number of paths with a given product, minimum element, and length in a binary tree
+Find the number of paths with a given maximum element and length in a binary tree
+Find the number of paths with a given minimum element and length in a binary tree
+Find the number of vertices in a graph
+Find the number of edges in a graph
+Find the degree of a vertex in a graph
+Find the adjacency list of a graph
+Find the adjacency matrix of a graph
+Check if a graph is directed
+Check if a graph is undirected
+Check if a graph is connected
+Check if a graph is acyclic
+Find the shortest path between two vertices in a graph
+Find the minimum spanning tree of a graph
+Find the number of connected components in a graph
+Find the topological sort of a directed acyclic graph
+Find the strongly connected components of a directed graph
+Check if a graph is bipartite
+Find the number of cycles in a graph
+Find the number of paths with a given length in a graph
+Find the number of paths with a given sum of weights in a graph
+Find the number of paths with a given product of weights in a graph
+Find the number of paths with a given maximum weight in a graph
+Find the number of paths with a given minimum weight in a graph
+Find the number of paths with a given sum of weights and length in a graph
+Find the number of paths with a given product of weights and length in a graph
+Find the number of paths with a given maximum weight and length in a graph
+Find the number of paths with a given minimum weight and length in a graph
+Find the number of paths with a given sum of weights and maximum weight in a graph
+Find the number of paths with a given sum of weights and minimum weight in a graph
+Find the number of paths with a given product of weights and maximum weight in a graph
+Find the number of paths with a given product of weights and minimum weight in a graph
+Find the number of paths with a given maximum weight and minimum weight in a graph
+Find the number of paths with a given sum of weights, product of weights, and maximum weight in a graph
+Find the number of paths with a given sum of weights, product of weights, and minimum weight in a graph
+Find the number of paths with a given sum of weights, maximum weight, and minimum weight in a graph
+Find the number of paths with a given product of weights, maximum weight, and minimum weight in a graph
+Find the number of paths with a given sum of weights, product of weights, maximum weight, and minimum weight in a graph
+Find the number of paths with a given length, sum of weights, and product of weights in a graph
+Find the number of paths with a given length, sum of weights, and maximum weight in a graph
+Find the number of paths with a given length, sum of weights, and minimum weight in a graph
+Find the number of paths with a given length, product of weights, and maximum weight in a graph
+Find the number of paths with a given length, product of weights, and minimum weight in a graph
+Find the number of paths with a given length, sum of weights, product of weights, and maximum weight in a graph
+Find the number of paths with a given length, sum of weights, product of weights, and minimum weight in a graph
+Find the number of paths with a given length, sum of weights, maximum weight, and minimum weight in a graph
+Find the number of paths with a given length, product of weights, maximum weight, and minimum weight in a graph
+Find the number of paths with a given length, sum of weights, product of weights, maximum weight, and minimum weight in a graph
+Find the nth Fibonacci number
+Find the number of ways to climb a staircase with n steps
+Find the maximum sum of a contiguous subarray
+Find the minimum sum of a contiguous subarray
+Find the maximum product of a contiguous subarray
+Find the minimum product of a contiguous subarray
+Find the number of ways to make change with n coins
+Find the longest common subsequence of two sequences
+Find the longest increasing subsequence of a sequence
+Find the longest decreasing subsequence of a sequence
+Find the edit distance between two sequences
+Find the number of ways to partition a string into palindromes
+Find the number of ways to tile a floor with n tiles
+Find the number of ways to make change with n coins and k denominations
+Find the number of ways to make change with n coins and k denominations, where each coin can be used an unlimited number of times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used a limited number of times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most once
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most twice
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most three times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most four times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most five times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most six times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most seven times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most eight times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most nine times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most ten times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most eleven times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most twelve times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most thirteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most fourteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most fifteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most sixteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most seventeen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most eighteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most nineteen times
+Find the number of ways to make change with n coins and k denominations, where each coin can be used at most twenty times
+Find the minimum number of coins to make change
+Find the optimal way to cut a rod
+Find the minimum number of jumps to reach the end of an array
+Find the maximum profit from buying and selling a stock
+Find the optimal way to assign tasks to workers
+Find the optimal way to schedule jobs
+Find the optimal way to select activities
+Find the optimal way to merge k sorted arrays
+Find the optimal way to merge k sorted lists
+Find the optimal way to merge k sorted trees
+Find the optimal way to pack items in a knapsack
+Find the optimal way to solve the fractional knapsack problem
+Find the optimal way to solve the 0/1 knapsack problem
+Find the optimal way to solve the set cover problem
+Find the optimal way to solve the vertex cover problem
+Find the optimal way to solve the traveling salesman problem
+Implement bubble sort
+Implement insertion sort
+Implement selection sort
+Implement merge sort
+Implement quick sort
+Implement heap sort
+Implement radix sort
+Implement counting sort
+Implement bucket sort
+Implement shell sort
+Implement gnome sort
+Implement cocktail sort
+Implement cycle sort
+Implement bitonic sort
+Implement insertion sort with binary search
+Implement merge sort with recursion
+Implement quick sort with recursion
+Implement heap sort with recursion
+Implement radix sort with recursion
+Implement counting sort with recursion
+Implement bucket sort with recursion
+Implement shell sort with recursion
+Implement gnome sort with recursion
+Implement cocktail sort with recursion
+Implement cycle sort with recursion
+Implement bitonic sort with recursion
+Implement linear search
+Implement binary search
+Implement jump search
+Implement interpolation search
+Implement Fibonacci search
+Implement ternary search
+Implement exponential search
+Implement binary search with recursion
+Implement jump search with recursion
+Implement interpolation search with recursion
+Implement Fibonacci search with recursion
+Implement ternary search with recursion
+Implement exponential search with recursion
+Implement the N-Queens problem
+Implement the Sudoku solver
+Implement the Hamiltonian cycle problem
+Implement the Traveling Salesman problem
+Implement the Subset Sum problem
+Implement the Knapsack problem
+Implement the 0/1 Knapsack problem
+Implement the Set Cover problem
+Implement the Vertex Cover problem
+Implement the Graph Coloring problem
+Find the greatest common divisor of two numbers
+Find the least common multiple of two numbers
+Find the factorial of a number
+Find the nth prime number
+Find the number of divisors of a number
+Find the sum of divisors of a number
+Find the product of divisors of a number
+Find the prime factorization of a number
+Find the modular inverse of a number
+Find the modular exponentiation of a number
+Find the Euclidean distance between two points
+Find the Manhattan distance between two points
+Find the Chebyshev distance between two points
+Find the area of a triangle
+Find the perimeter of a triangle
+Find the volume of a sphere
+Find the surface area of a sphere
+Find the volume of a cylinder
+Find the surface area of a cylinder
+Find the volume of a cone
+Find the surface area of a cone
+Find the volume of a pyramid
+Find the surface area of a pyramid
+Find the volume of a rectangular prism
+Find the surface area of a rectangular prism
+Find the volume of a cube
+Find the surface area of a cube
+Find the area of a circle
+Find the circumference of a circle
+Find the area of a rectangle
+Find the perimeter of a rectangle
+Find the area of a square
+Find the perimeter of a square
+Find the area of a parallelogram
+Find the perimeter of a parallelogram
+Find the area of a trapezoid
+Find the perimeter of a trapezoid
+Find the area of a rhombus
+Find the perimeter of a rhombus
+Implement the binary search tree
+Implement the hash table
+Implement the stack
+Implement the queue
+Implement the priority queue
+Implement the graph
+Implement the trie
+Implement the heap
+Implement the bloom filter
+Implement the linked list
+Implement the stack
+Implement the queue
+Implement the binary tree
+Implement the binary search tree
+Implement the hash table
+Implement the heap
+Implement the graph
+Implement the trie
+Implement the Singleton pattern
+Implement the Factory pattern
+Implement the Abstract Factory pattern
+Implement the Builder pattern
+Implement the Prototype pattern
+Implement the Adapter pattern
+Implement the Bridge pattern
+Implement the Composite pattern
+Implement the Decorator pattern
+Implement the Facade pattern
+Implement the Flyweight pattern
+Implement the Proxy pattern
+Implement the Chain of Responsibility pattern
+Implement the Command pattern
+Implement the Interpreter pattern
+Implement the Iterator pattern
+Implement the Mediator pattern
+Implement the Memento pattern
+Implement the Observer pattern
+Implement the State pattern
+Implement the Strategy pattern
+Implement the Template Method pattern
+Implement the Visitor pattern
+Implement the quicksort algorithm
+Implement the mergesort algorithm
+Implement the binary search algorithm
+Implement the hash table data structure
+Implement the linked list data structure
+Implement the stack data structure
+Implement the queue data structure
+Implement the priority queue data structure
+Implement the binary tree data structure
+Implement the graph data structure
+Implement the Dijkstra's algorithm for shortest path finding
+Implement the Floyd-Warshall algorithm for all-pairs shortest paths
+Implement the Bellman-Ford algorithm for shortest path finding with negative weights
+Implement the Kruskal's algorithm for minimum spanning tree
+Implement the Prim's algorithm for minimum spanning tree
+Implement the A* search algorithm for shortest path finding with heuristics
+Implement the Breadth-First Search (BFS) algorithm for graph traversal
+Implement the Depth-First Search (DFS) algorithm for graph traversal
+Implement the topological sort algorithm for directed acyclic graphs
+Implement the strongly connected components algorithm for directed graphs
+Implement the knapsack problem using dynamic programming
+Implement the N-Queens problem using backtracking
+Implement the Sudoku solver using backtracking
+Implement the Traveling Salesman problem using backtracking
+Implement the Subset Sum problem using dynamic programming
+Implement the Set Cover problem using greedy algorithms
+Implement the Vertex Cover problem using greedy algorithms
+Implement the graph coloring problem using backtracking
+Implement the Huffman coding algorithm for data compression
+Implement the LZW compression algorithm for data compression
+Implement the run-length encoding (RLE) algorithm for data compression
+Implement the Burrows-Wheeler transform (BWT) algorithm for data compression
+Implement the Ziv-Lempel algorithm for data compression
+Implement the RSA algorithm for public-key cryptography
+Implement the Diffie-Hellman key exchange algorithm for key exchange
+Implement the AES algorithm for symmetric-key encryption
+Implement the DES algorithm for symmetric-key encryption
+Implement the SHA-256 algorithm for cryptographic hashing
+Implement the MD5 algorithm for cryptographic hashing
+Implement the SHA-1 algorithm for cryptographic hashing
+Implement the Rabin-Karp algorithm for string matching
+Implement the Boyer-Moore algorithm for string matching
+Implement the Knuth-Morris-Pratt (KMP) algorithm for string matching
+Implement the Trie data structure for efficient prefix searching
+Implement the Bloom filter for approximate set membership testing
+Implement the Aho-Corasick algorithm for multiple pattern searching
+Implement the dynamic programming approach to solve the longest common subsequence problem
+Implement the greedy approach to solve the fractional knapsack problem
+Implement the backtracking approach to solve the N-Queens problem
+Implement the divide-and-conquer approach to solve the mergesort algorithm.

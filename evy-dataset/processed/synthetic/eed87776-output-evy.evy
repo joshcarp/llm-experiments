@@ -1,0 +1,41 @@
+
+func quickSelect:num arr:[]num k:num
+    return quickSelectHelper arr k 0 (len arr)-1
+end
+
+func quickSelectHelper:num arr:[]num k:num left:num right:num
+    pivotIdx := partition arr left right
+    if pivotIdx == k
+        return arr[pivotIdx]
+    else if pivotIdx < k
+        return quickSelectHelper arr k pivotIdx+1 right
+    else
+        return quickSelectHelper arr k left pivotIdx-1
+    end
+end
+
+func partition:num arr:[]num left:num right:num
+    pivot := arr[right]
+    storeIdx := left
+    for i := range left right
+        if arr[i] <= pivot
+            tmp := arr[storeIdx]
+            arr[storeIdx] = arr[i]
+            arr[i] = tmp
+            storeIdx = storeIdx + 1
+        end
+    end
+    tmp := arr[storeIdx]
+    arr[storeIdx] = arr[right]
+    arr[right] = tmp
+    return storeIdx
+end
+
+func test
+    assert 5 (quickSelect [1 2 3 4 5] 2)
+    assert 4 (quickSelect [1 2 3 4 5] 1)
+    assert 1 (quickSelect [1 2 3 4 5] 0)
+    assert 5 (quickSelect [5 4 3 2 1] 4)
+    assert 1 (quickSelect [5 4 3 2 1] 0)
+end
+     

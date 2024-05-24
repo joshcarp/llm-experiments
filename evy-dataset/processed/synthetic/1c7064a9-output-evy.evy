@@ -1,0 +1,20 @@
+
+func isPalindrome:bool str:string
+    length := len str
+    for i := range (floor length/2)
+        if str[i] != str[-(i + 1)]
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isPalindrome "aba")
+    assert true==(isPalindrome "racecar")
+    assert false==(isPalindrome "hello")
+    assert true==(isPalindrome "xyzzyx")
+    assert true==(isPalindrome "xyzyx")
+    assert false==(isPalindrome "xyzy")
+end
+     

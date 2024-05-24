@@ -1,0 +1,28 @@
+
+func kthSmallest:num nums:[]num k:num
+    nums = nums[:]
+    sort nums
+    return nums[k - 1]
+end
+
+func sort nums:[]num
+    // bubble sort
+    for endIdx := range (len nums)-1 0 -1
+        for i := range endIdx
+            if nums[i] > nums[i + 1]
+                tmp := nums[i]
+                nums[i] = nums[i + 1]
+                nums[i + 1] = tmp
+            end
+        end
+    end
+end
+
+func test
+    assert 3 (kthSmallest [1 2 3 4 5] 3)
+    assert 5 (kthSmallest [1 2 3 4 5] 5)
+    assert 1 (kthSmallest [1 2 3 4 5] 1)
+    assert 2 (kthSmallest [1 2 3 4 5] 2)
+    assert 4 (kthSmallest [1 2 3 4 5] 4)
+end
+     

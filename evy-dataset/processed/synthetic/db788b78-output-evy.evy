@@ -1,0 +1,32 @@
+
+func subarrayProduct:num nums:[]num k:num
+    left := 0
+    right := 0
+    prod := nums[0]
+    count := 0
+    while right < (len nums)
+        if prod == k
+            count = count + 1
+            if right + 1 < (len nums)
+                prod = prod * nums[right + 1]
+            end
+        else if prod > k
+            prod = prod / nums[left]
+            left = left + 1
+        else
+            right = right + 1
+            if right < (len nums)
+                prod = prod * nums[right]
+            end
+        end
+    end
+    return count
+end
+
+func test
+    assert 2 (subarrayProduct [1 2 1 2 3] 2)
+    assert 1 (subarrayProduct [1 2 1 2 3] 3)
+    assert 0 (subarrayProduct [1 2 1 2 3] 4)
+    assert 1 (subarrayProduct [1 2 1 2 3] 6)
+end
+     
