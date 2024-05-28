@@ -23820,6 +23820,43 @@ end
      
 ```"
 "
+Find the minimum product of a sublist
+","```evy
+
+func minProd:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        result = min result n
+    end
+    return result
+end
+
+print (minProd [1 2 3 4 5])
+     
+     
+```"
+"
+Find the missing element in a sorted array
+","```evy
+
+func findMissing:num nums:[]num
+    for i := range 1 (len nums)
+        if nums[i] != nums[i - 1] + 1
+            return nums[i - 1] + 1
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (findMissing [1 3])
+    assert 4 (findMissing [1 2 3 5])
+    assert 0 (findMissing [-1 1])
+end
+     
+     
+```"
+"
 Implement breadth-first search (BFS)
 
 ","```evy
@@ -23851,6 +23888,25 @@ assert true (bfs graph start fin)
      
 ```"
 "
+Find the sum of all elements in an array
+","```evy
+
+func sum_array:num arr:[]num
+    sum := 0
+    for n := range arr
+        sum = sum + n
+    end
+    return sum
+end
+
+numbers := [1 2 3 4 5]
+sum := sum_array numbers
+print sum // Prints: 15
+
+     
+     
+```"
+"
 Find the least common multiple (LCM) of two numbers
 
 ","```evy
@@ -23872,6 +23928,28 @@ func test
     assert 12 (lcm 4 6)
     assert 24 (lcm 8 12)
 end
+     
+```"
+"
+Find the duplicate element in a sorted array
+","```evy
+
+func findDuplicate:num nums:[]num
+    for i := range 1 (len nums)
+        if nums[i] == nums[i - 1]
+            return nums[i]
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (findDuplicate [1 2 2 3 4 5])
+    assert 1 (findDuplicate [1 1 2 3 4 5])
+    assert 3 (findDuplicate [1 2 3 3 4 5])
+    assert -1 (findDuplicate [1 2 3 4 5 6])
+end
+     
      
 ```"
 "
@@ -23914,6 +23992,41 @@ assert true (isSortedDescending [5 4 3 2 1])
 assert false (isSortedDescending [1 2 3 4 5])
 assert true (isSortedDescending [5 5 5 5 5])
 assert false (isSortedDescending [5 4 3 2 1 6])
+     
+```"
+"
+Find the number of words in a string
+","```evy
+
+func wordCount:num str:string
+    words := split str "" ""
+    return len words
+end
+
+txt := ""Hello world how are you""
+print (wordCount txt) // Prints: 5
+
+     
+     
+```"
+"
+Find the number of unique elements in an array
+","```evy
+
+func uniqueCount:num nums:[]num
+    seen:{}bool
+    for n := range nums
+        seen[sprint n] = true
+    end
+    return len seen
+end
+
+func test
+    assert 3 (uniqueCount [1 2 3 4 5])
+    assert 1 (uniqueCount [1 1 1 1 1])
+    assert 5 (uniqueCount [1 2 3 4 5 1 2 3 4 5])
+end
+     
      
 ```"
 "
@@ -23968,6 +24081,58 @@ end
      
 ```"
 "
+Find the depth of a binary tree
+","```evy
+
+func depth:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := depth root.left.({}any)
+    right := depth root.right.({}any)
+    return max left+1 right+1
+end
+
+tree := {val:1 left:{val:2 left:{} right:{val:4 left:{} right:{}}} right:{val:3 left:{} right:{}}}
+assert 3 (depth tree)
+
+     
+     
+```"
+"
+Find the kth smallest element in an array
+","```evy
+
+func kthSmallest:num nums:[]num k:num
+    nums = nums[:]
+    sort nums
+    return nums[k - 1]
+end
+
+func sort nums:[]num
+    // bubble sort
+    for endIdx := range (len nums)-1 0 -1
+        for i := range endIdx
+            if nums[i] > nums[i + 1]
+                tmp := nums[i]
+                nums[i] = nums[i + 1]
+                nums[i + 1] = tmp
+            end
+        end
+    end
+end
+
+func test
+    assert 3 (kthSmallest [1 2 3 4 5] 3)
+    assert 5 (kthSmallest [1 2 3 4 5] 5)
+    assert 1 (kthSmallest [1 2 3 4 5] 1)
+    assert 2 (kthSmallest [1 2 3 4 5] 2)
+    assert 4 (kthSmallest [1 2 3 4 5] 4)
+end
+     
+     
+```"
+"
 Find the maximum element in a binary tree
 
 ","```evy
@@ -23984,6 +24149,72 @@ func test
     tree := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
     assert 5 (maxElem tree)
 end
+     
+```"
+"
+Find the number of subarrays with a given length and sum
+","```evy
+
+func subarrays:num length:num sum:num nums:[]num
+    result := 0
+    window := 0
+    for i := range (len nums)
+        window = window + nums[i]
+        if i >= length - 1
+            window = window - nums[i - length + 1]
+            if window == sum
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (subarrays 2 3 [1 1 1 1])
+    assert 1 (subarrays 3 6 [1 2 3 4])
+    assert 0 (subarrays 2 5 [1 1 1 1])
+end
+     
+     
+```"
+"
+Find the maximum product of a sublist
+","```evy
+
+func maxProduct:num nums:[]num
+    result := nums[0]
+    minProd := nums[0]
+    maxProd := nums[0]
+    for i := range 1 (len nums)
+        tmpMax := maxProd*nums[i]
+        tmpMin := minProd*nums[i]
+        maxProd = max tmpMax (max tmpMin 0)
+        minProd = min tmpMin (min tmpMax 0)
+        result = max result maxProd
+    end
+    return result
+end
+
+print (maxProduct [2 3 -2 4])
+     
+     
+```"
+"
+Check if a string is a substring of another string
+","```evy
+
+func isSubstring:bool haystack:string needle:string
+    return (index haystack needle) >= 0
+end
+
+func test
+    assert true (isSubstring ""hello"" ""ell"")
+    assert false (isSubstring ""hello"" ""world"")
+end
+     
+
+test
      
 ```"
 "
@@ -24007,6 +24238,39 @@ assert [2 3 4 5 1] (rotate [1 2 3 4 5] 1)
 assert [4 5 1 2 3] (rotate [1 2 3 4 5] 3)
 assert [1 2 3 4 5] (rotate [1 2 3 4 5] 5)
 assert [1 2 3 4 5] (rotate [1 2 3 4 5] 10)
+     
+```"
+"
+Find the number of characters in a string
+","```evy
+
+func string_length:num str:string
+    return (len str)
+end
+
+txt := ""Hello, world!""
+print (string_length txt) // Prints: 13
+     
+     
+```"
+"
+Find the number of sublists with a given length and maximum element
+","```evy
+
+func sublists_count:num arr:[]num length:num maxElem:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+length
+            if j < (len arr) and arr[j] <= maxElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+print (sublists_count [1 2 3 4 5] 3 3) // Prints: 4
+     
      
 ```"
 "
@@ -24223,6 +24487,95 @@ end
      
 ```"
 "
+Check if two strings are permutations
+","```evy
+
+func isPermutation:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    sMap:{}num
+    tMap:{}num
+    for i := range s
+        if !(has sMap i)
+            sMap[i] = 0
+        end
+        sMap[i] = sMap[i] + 1
+    end
+    for i := range t
+        if !(has tMap i)
+            tMap[i] = 0
+        end
+        tMap[i] = tMap[i] + 1
+    end
+    return sMap == tMap
+end
+
+func test
+    assert true (isPermutation ""abc"" ""bca"")
+    assert false (isPermutation ""abc"" ""bcd"")
+end
+     
+
+test
+     
+```"
+"
+Find the inorder traversal of a binary tree
+","```evy
+
+func inorder:string root:{}any
+    if root == {}
+        return """"
+    end
+    left := root[""left""].({}any)
+    right := root[""right""].({}any)
+    return (inorder left) + (root[""val""].(string)) + (inorder right)
+end
+
+tree := {val:""1"" left:{val:""2"" left:{} right:{val:""4"" left:{} right:{}}} right:{val:""3"" left:{} right:{}}}
+assert ""2413"" (inorder tree)
+
+     
+     
+```"
+"
+Find the number of nodes in a binary tree
+","```evy
+
+func nodeCount:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := nodeCount root[""left""].({}any)
+    right := nodeCount root[""right""].({}any)
+    return left + right + 1
+end
+
+tree := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (nodeCount tree) // Prints: 5
+     
+     
+```"
+"
+Find the minimum element in an array
+","```evy
+
+func minElem:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        if result > n
+            result = n
+        end
+    end
+    return result
+end
+
+print (minElem [1 2 3 4])
+     
+     
+```"
+"
 Calculate the factorial of a number
 
 ","```evy
@@ -24336,6 +24689,31 @@ assert -1 (secondLargest [])
      
 ```"
 "
+Check if a string is a palindrome
+","```evy
+
+func isPalindrome:bool str:string
+    length := len str
+    for i := range (floor length/2)
+        if str[i] != str[-(i + 1)]
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isPalindrome ""aba"")
+    assert true==(isPalindrome ""racecar"")
+    assert false==(isPalindrome ""hello"")
+    assert true==(isPalindrome ""xyzzyx"")
+    assert true==(isPalindrome ""xyzyx"")
+    assert false==(isPalindrome ""xyzy"")
+end
+     
+     
+```"
+"
 Remove all spaces from a string
 
 ","```evy
@@ -24371,6 +24749,86 @@ end
 for i := range 10
     print (fibonacci i) // Prints the first 10 Fibonacci numbers
 end
+     
+```"
+"
+Find the kth largest element in an array
+","```evy
+
+func quickSelect:num arr:[]num k:num
+    return quickSelectHelper arr k 0 (len arr)-1
+end
+
+func quickSelectHelper:num arr:[]num k:num left:num right:num
+    pivotIdx := partition arr left right
+    if pivotIdx == k
+        return arr[pivotIdx]
+    else if pivotIdx < k
+        return quickSelectHelper arr k pivotIdx+1 right
+    else
+        return quickSelectHelper arr k left pivotIdx-1
+    end
+end
+
+func partition:num arr:[]num left:num right:num
+    pivot := arr[right]
+    storeIdx := left
+    for i := range left right
+        if arr[i] <= pivot
+            tmp := arr[storeIdx]
+            arr[storeIdx] = arr[i]
+            arr[i] = tmp
+            storeIdx = storeIdx + 1
+        end
+    end
+    tmp := arr[storeIdx]
+    arr[storeIdx] = arr[right]
+    arr[right] = tmp
+    return storeIdx
+end
+
+func test
+    assert 5 (quickSelect [1 2 3 4 5] 2)
+    assert 4 (quickSelect [1 2 3 4 5] 1)
+    assert 1 (quickSelect [1 2 3 4 5] 0)
+    assert 5 (quickSelect [5 4 3 2 1] 4)
+    assert 1 (quickSelect [5 4 3 2 1] 0)
+end
+     
+     
+```"
+"
+Check if two strings are anagrams
+","```evy
+
+func isAnagram:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    sMap:{}num
+    tMap:{}num
+    for c := range s
+        if !(has sMap c)
+            sMap[c] = 0
+        end
+        sMap[c] = sMap[c] + 1
+    end
+    for c := range t
+        if !(has tMap c)
+            tMap[c] = 0
+        end
+        tMap[c] = tMap[c] + 1
+    end
+    return sMap == tMap
+end
+
+func test
+    assert true==(isAnagram ""anagram"" ""nagaram"")
+    assert false==(isAnagram ""rat"" ""car"")
+end
+     
+
+test
      
 ```"
 "
@@ -24440,6 +24898,25 @@ end
      
 ```"
 "
+Find the maximum element in a binary tree
+","```evy
+
+func maxElem:num root:{}any
+    if root == {}
+        return -2147483648
+    end
+    left := maxElem root[""left""].({}any)
+    right := maxElem root[""right""].({}any)
+    return max (max left right) root[""val""].(num)
+end
+
+root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (maxElem root) // Prints: 5
+
+     
+     
+```"
+"
 Find the minimum element in a binary tree
 
 ","```evy
@@ -24461,6 +24938,29 @@ end
 root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{}}}
 assert 1 (minVal root)
 
+     
+```"
+"
+Rotate an array by k positions
+","```evy
+
+func rotate:[]num nums:[]num k:num
+    n := len nums
+    k = k % n
+    if k == 0
+        return nums
+    end
+    nums = nums[n - k:] + nums[:n - k]
+    return nums
+end
+
+func test
+    assert [5 6 7 1 2 3 4] (rotate [1 2 3 4 5 6 7] 3)
+    assert [1 2 3 4 5 6 7] (rotate [1 2 3 4 5 6 7] 0)
+    assert [2 3 4 5 6 7 1] (rotate [1 2 3 4 5 6 7] 1)
+    assert [7 1 2 3 4 5 6] (rotate [1 2 3 4 5 6 7] 6)
+end
+     
      
 ```"
 "
@@ -24497,6 +24997,36 @@ end
 tree := {val:1 left:{val:2 left:{} right:{val:4 left:{} right:{}}} right:{val:3 left:{} right:{}}}
 assert ""1243"" (preorder tree)
 
+     
+```"
+"
+Check if an array is palindromic
+","```evy
+
+func isPalindrome:bool arr:[]num
+    length := len arr
+    for i := range (floor length/2)
+        if arr[i] != arr[-i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isPalindrome [1 2 2 1])
+    assert true==(isPalindrome [1 2 3 2 1])
+    assert false==(isPalindrome [1 2 3 4 5])
+    assert true==(isPalindrome [1])
+    assert true==(isPalindrome [1 1])
+    assert true==(isPalindrome [1 1 1])
+    assert true==(isPalindrome [1 1 1 1])
+    assert false==(isPalindrome [1 2 1 2])
+    assert false==(isPalindrome [1 2 3 4 5 4 3 2 1])
+    assert true==(isPalindrome [1 2 3 2 1])
+    assert true==(isPalindrome [1 2 2 1])
+end
+     
      
 ```"
 "
@@ -24544,6 +25074,24 @@ end
 
 primes := calcPrimes 100
 print primes
+     
+```"
+"
+Find the minimum element in a binary tree
+","```evy
+
+func minElem:num root:{}any
+    if root == {}
+        return 9223372036854775807
+    end
+    left := minElem root[""left""].({}any)
+    right := minElem root[""right""].({}any)
+    return min (min left right) root[""val""].(num)
+end
+
+root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (minElem root) // Prints: 1
+     
      
 ```"
 "
@@ -24721,6 +25269,24 @@ assert ""abc"" (toLowercase ""aBc"")
      
 ```"
 "
+Find the maximum element in an array
+","```evy
+
+func maxElem:num nums:[]num
+    result := nums[0]
+    for n := range nums[1:]
+        if result < n
+            result = n
+        end
+    end
+    return result
+end
+
+print (maxElem [1 2 3 4])
+     
+     
+```"
+"
 Remove duplicates from an unsorted array
 
 ","```evy
@@ -24800,6 +25366,24 @@ print numbers // Prints: [5 4 3 2 1]
      
 ```"
 "
+Find the sum of all elements in a binary tree
+","```evy
+
+func sumTree:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := sumTree root[""left""].({}any)
+    right := sumTree root[""right""].({}any)
+    return root[""val""].(num) + left + right
+end
+
+tree := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (sumTree tree) // Prints: 15
+     
+     
+```"
+"
 More Advanced (Optional)
 
 ","```evy
@@ -24857,6 +25441,22 @@ test
      
 ```"
 "
+Find the average of all elements in an array
+","```evy
+
+func average:num nums:[]num
+    sum := 0
+    for n := range nums
+        sum = sum + n
+    end
+    return sum / (len nums)
+end
+
+print (average [1 2 3 4 5])
+     
+     
+```"
+"
 Convert a string to uppercase
 
 ","```evy
@@ -24864,6 +25464,23 @@ assert ""HELLO"" (upper ""hello"")
 assert ""WORLD"" (upper ""world"")
 assert ""123"" (upper ""123"")
 
+     
+```"
+"
+Reverse a string
+","```evy
+
+func reverse_string:string str:string
+    if (len str) == 0
+        return """"
+    else
+        return (reverse_string str[1:]) + str[0]
+    end
+end
+
+txt := ""Evy""
+print (reverse_string txt) // Prints: yvE
+     
      
 ```"
 "
@@ -24916,6 +25533,53 @@ insert root 6
 insert root 8
 print root
 
+     
+```"
+"
+Trim a string
+","```evy
+
+message := "" Hello, world! ""
+trimmed := message[1:-1]
+print trimmed
+     
+     
+```"
+"
+Find the number of subarrays with a given product
+","```evy
+
+func subarrayProduct:num nums:[]num k:num
+    left := 0
+    right := 0
+    prod := nums[0]
+    count := 0
+    while right < (len nums)
+        if prod == k
+            count = count + 1
+            if right + 1 < (len nums)
+                prod = prod * nums[right + 1]
+            end
+        else if prod > k
+            prod = prod / nums[left]
+            left = left + 1
+        else
+            right = right + 1
+            if right < (len nums)
+                prod = prod * nums[right]
+            end
+        end
+    end
+    return count
+end
+
+func test
+    assert 2 (subarrayProduct [1 2 1 2 3] 2)
+    assert 1 (subarrayProduct [1 2 1 2 3] 3)
+    assert 0 (subarrayProduct [1 2 1 2 3] 4)
+    assert 1 (subarrayProduct [1 2 1 2 3] 6)
+end
+     
      
 ```"
 "
@@ -24983,6 +25647,27 @@ assert [1 2 3 4 5 6 7 8 9 10] (quickSort [10 9 8 7 6 5 4 3 2 1])
 assert [] (quickSort [])
 assert [1] (quickSort [1])
 
+     
+```"
+"
+Check if an array is sorted
+","```evy
+
+func isSorted:bool arr:[]num
+    for i := range 1 (len arr)
+        if arr[i] < arr[i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+numbers := [1 2 3 4 5]
+print (isSorted numbers) // Prints: true
+numbers = [5 4 3 2 1]
+print (isSorted numbers) // Prints: false
+
+     
      
 ```"
 "
