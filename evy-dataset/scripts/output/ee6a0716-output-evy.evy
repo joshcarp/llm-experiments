@@ -1,0 +1,26 @@
+
+func adjMatrix:num[][] G:graph
+    n := len G
+    adj := zero n n
+    for u := range n
+        for v := range n
+            if hasEdge G u v
+                adj[u][v] = 1
+            end
+        end
+    end
+    return adj
+end
+
+func test
+    G := graph
+    addEdge G 0 1
+    addEdge G 0 2
+    addEdge G 1 2
+    addEdge G 1 3
+    addEdge G 2 4
+    print (adjMatrix G)
+end
+     
+
+test

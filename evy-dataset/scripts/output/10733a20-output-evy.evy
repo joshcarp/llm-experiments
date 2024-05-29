@@ -1,0 +1,30 @@
+
+func substrings:num str:string sum:num max:num min:num
+    result := 0
+    for start := range (len str)
+        for end := range start+1 (len str)+1
+            sub := str[start:end]
+            val := 0
+            for ch := range sub
+                val = val + (codeOf ch)
+            end
+            if val >= sum and (codeOf sub[0]) >= max and (codeOf sub[-1]) <= min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (substrings "abc" 1 97 99)
+    assert 0 (substrings "abc" 2 97 99)
+    assert 1 (substrings "abc" 1 98 99)
+    assert 0 (substrings "abc" 2 98 99)
+    assert 2 (substrings "abc" 1 97 98)
+    assert 1 (substrings "abc" 2 97 98)
+    assert 0 (substrings "abc" 3 97 98)
+end
+     
+
+test

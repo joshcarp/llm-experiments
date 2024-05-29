@@ -1,0 +1,13 @@
+
+func list_length:num head:any
+    length := 0
+    while head != null
+        length = length + 1
+        head = head.next
+    end
+    return length
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:null}}}
+print (list_length head) // Prints: 3
+     

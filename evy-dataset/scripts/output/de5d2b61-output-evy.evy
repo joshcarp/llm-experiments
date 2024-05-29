@@ -1,0 +1,18 @@
+ ```evy
+func substrings_count:num str:string length:num
+    if length <= 0 or length > (len str)
+        return 0
+    end
+    return (len str) - length + 1
+end
+
+func test
+    assert 5==(substrings_count "HelloWorld" 2)
+    assert 4==(substrings_count "HelloWorld" 3)
+    assert 0==(substrings_count "HelloWorld" 10)
+    assert 1==(substrings_count "HelloWorld" 100)
+    assert 0==(substrings_count "HelloWorld" 0)
+end
+     
+
+test

@@ -1,0 +1,23 @@
+
+func deleteNode:any head:any val:num
+    if head == nil
+        return nil
+    end
+    if head.val == val
+        return head.next
+    end
+    head.next = deleteNode head.next val
+    return head
+end
+
+func printList:void head:any
+    while head != nil
+        print head.val
+        head = head.next
+    end
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+head = deleteNode head 3
+printList head // Prints: 1 2 4
+     

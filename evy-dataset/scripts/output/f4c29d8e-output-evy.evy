@@ -1,0 +1,18 @@
+
+func frequency:num root:{}any
+    if root == {}
+        return {}
+    end
+    left := frequency root["left"].({}any)
+    right := frequency root["right"].({}any)
+    result:{}num
+    for key := range left
+        result[key] = left[key] + right[key]
+    end
+    result["val"] = root["val"].(num) + left["val"] + right["val"]
+    return result
+end
+
+root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (frequency root)
+     

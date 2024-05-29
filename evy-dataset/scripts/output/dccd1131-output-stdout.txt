@@ -1,0 +1,4 @@
+line 9 column 45: unknown variable name "null"
+line 9 column 49: invalid inferred declaration for "head"
+line 10 column 1: unknown variable name "head"
+line 11 column 7: unknown variable name "head"

@@ -1,0 +1,25 @@
+
+func findLastRepeatingChar:string str:string
+    seen:{}bool
+    lastRepeatIdx := -1
+    for i := range (len str)
+        ch := str[i]
+        if has seen ch
+            lastRepeatIdx = i
+        end
+        seen[ch] = true
+    end
+    if lastRepeatIdx == -1
+        return ""
+    end
+    return str[lastRepeatIdx]
+end
+
+func test
+    assert "a" (findLastRepeatingChar "banana")
+    assert "o" (findLastRepeatingChar "hello")
+    assert "" (findLastRepeatingChar "abcde")
+end
+     
+
+test

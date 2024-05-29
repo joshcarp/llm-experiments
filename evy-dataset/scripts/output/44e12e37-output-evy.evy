@@ -1,0 +1,23 @@
+
+func numPaths:num root:node product:num length:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if root.val == product and length == 1
+        result = result + 1
+    end
+    result = result + (numPaths root.left product/(root.val) length-1)
+    result = result + (numPaths root.right product/(root.val) length-1)
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert 2 (numPaths root 6 2)
+    assert 1 (numPaths root 2 2)
+    assert 0 (numPaths root 1 2)
+end
+     
+
+test

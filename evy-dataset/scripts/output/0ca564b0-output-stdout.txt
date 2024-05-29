@@ -1,0 +1,2 @@
+line 2 column 20: invalid type declaration for "g"
+line 14 column 10: invalid type declaration for "g"

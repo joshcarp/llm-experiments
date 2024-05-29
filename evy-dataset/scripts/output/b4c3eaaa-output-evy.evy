@@ -1,0 +1,21 @@
+
+func pathsWithProductMax:num root:node product:num maxElem:num
+    if root == null
+        return 0
+    end
+    leftPaths := pathsWithProductMax root.left product*root.val (max root.val maxElem)
+    rightPaths := pathsWithProductMax root.right product*root.val (max root.val maxElem)
+    if product*root.val == maxElem
+        return 1 + leftPaths + rightPaths
+    else
+        return leftPaths + rightPaths
+    end
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (pathsWithProductMax root 24 5)
+end
+     
+
+test

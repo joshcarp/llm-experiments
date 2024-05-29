@@ -1,0 +1,21 @@
+
+func numPathsSum:num root:node sum:num
+    if root == null
+        return 0
+    end
+    left := numPathsSum root.left sum
+    right := numPathsSum root.right sum
+    if root.val == sum
+        return left + right + 1
+    end
+    return left + right
+end
+
+func test
+    root := {val:5 left:{val:4 left:null right:{val:11 left:{val:7 left:null right:null} right:{val:2 left:null right:null}}} right:{val:8 left:{val:13 left:null right:null} right:{val:4 left:null right:{val:1 left:null right:null}}}}
+    sum := 22
+    assert 3 (numPathsSum root sum)
+end
+     
+
+test

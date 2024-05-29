@@ -1,0 +1,27 @@
+
+func maxPathSum:num root:node
+    if root == null
+        return -2147483648
+    end
+    left := maxPathSum root.left
+    right := maxPathSum root.right
+    self := root.val
+    if left > 0
+        self = self + left
+    end
+    if right > 0
+        self = self + right
+    end
+    maxSum := max self (max left right)
+    self = max self.val (max self.val 0) + (max left 0) + (max right 0)
+    maxSum = max maxSum self
+    return maxSum
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert 6 (maxPathSum root)
+end
+     
+
+test

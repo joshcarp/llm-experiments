@@ -1,0 +1,2 @@
+line 2 column 41: invalid declaration of "max", already used as function name
+line 2 column 49: invalid declaration of "min", already used as function name

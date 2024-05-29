@@ -1,0 +1,4 @@
+line 2 column 66: invalid declaration of "min", already used as function name
+line 30 column 1: invalid declaration of "min", already used as function name
+line 31 column 52: function call must be parenthesized: (min ...)
+line 31 column 55: "sublists_count" takes 5 arguments, found 0

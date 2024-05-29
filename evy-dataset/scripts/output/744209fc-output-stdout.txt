@@ -1,0 +1,13 @@
+line 5 column 25: array index expects num, found []num
+line 5 column 27: range cannot be empty
+line 5 column 27: unexpected input "]"
+line 6 column 20: unknown variable name "v"
+line 10 column 5: missing return
+line 11 column 12: unknown variable name "result"
+line 11 column 12: return statement not allowed here
+line 12 column 1: unexpected input "end"
+line 13 column 1: unreachable code
+line 14 column 1: unreachable code
+line 15 column 1: unreachable code
+line 16 column 1: unreachable code
+line 17 column 6: unreachable code

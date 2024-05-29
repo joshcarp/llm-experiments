@@ -1,0 +1,35 @@
+
+func lis:num head:node
+    if head == null
+        return 0
+    end
+    tail := head
+    length := 1
+    while tail.next != null
+        if tail.next.val > tail.val
+            length = length + 1
+        end
+        tail = tail.next
+    end
+    return length
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:null}}}}
+    assert 4 (lis head)
+    head = {val:1 next:{val:2 next:{val:3 next:{val:2 next:null}}}}
+    assert 3 (lis head)
+    head = {val:1 next:{val:2 next:{val:1 next:{val:2 next:null}}}}
+    assert 2 (lis head)
+    head = {val:1 next:{val:1 next:{val:1 next:{val:1 next:null}}}}
+    assert 1 (lis head)
+    head = {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:null}}}}}
+    assert 5 (lis head)
+    head = {val:5 next:{val:4 next:{val:3 next:{val:2 next:{val:1 next:null}}}}}
+    assert 1 (lis head)
+    head = {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:{val:4 next:null}}}}}}
+    assert 4 (lis head)
+end
+     
+
+test

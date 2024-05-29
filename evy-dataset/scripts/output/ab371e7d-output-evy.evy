@@ -1,0 +1,34 @@
+
+func sublists:num arr:[]num product:num max:num min:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+1 (len arr)
+            product2 := 1
+            max2 := -2147483648
+            min2 := 2147483647
+            for k := range i j
+                product2 = product2 * arr[k]
+                if arr[k] > max2
+                    max2 = arr[k]
+                end
+                if arr[k] < min2
+                    min2 = arr[k]
+                end
+            end
+            if product2 == product and max2 == max and min2 == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists [1 2 3 4 5] 12 5 1)
+    assert 0 (sublists [1 2 3 4 5] 13 5 1)
+    assert 1 (sublists [1 2 3 4 5] 10 4 2)
+    assert 0 (sublists [1 2 3 4 5] 10 5 2)
+end
+     
+
+test

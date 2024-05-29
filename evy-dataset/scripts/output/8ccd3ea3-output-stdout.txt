@@ -1,0 +1,6 @@
+line 2 column 24: invalid type declaration for "graph"
+line 2 column 33: expected identifier, got "["
+line 2 column 33: expected identifier, got "["
+line 2 column 33: invalid type declaration for ""
+line 2 column 41: expected identifier, got "["
+line 2 column 41: expected identifier, got "["

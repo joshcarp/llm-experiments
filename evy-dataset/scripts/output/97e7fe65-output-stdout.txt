@@ -1,0 +1,9 @@
+line 4 column 16: unexpected "for"
+line 4 column 16: invalid inferred declaration for "dp"
+line 5 column 5: unknown variable name "dp"
+line 8 column 13: unknown variable name "dp"
+line 9 column 13: unknown variable name "dp"
+line 12 column 21: unknown variable name "dp"
+line 12 column 21: at least one statement is required here
+line 17 column 12: unknown variable name "dp"
+line 17 column 12: expected return value of type num, found ILLEGAL

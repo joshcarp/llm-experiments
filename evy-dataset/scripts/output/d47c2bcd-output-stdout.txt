@@ -1,0 +1,12 @@
+line 9 column 13: expected "range", got "end"
+line 10 column 44: unexpected "end"
+line 15 column 5: missing return
+line 16 column 12: unknown variable name "result"
+line 16 column 12: return statement not allowed here
+line 17 column 1: unexpected input "end"
+line 18 column 1: unreachable code
+line 19 column 1: unreachable code
+line 20 column 1: unreachable code
+line 21 column 1: unreachable code
+line 22 column 1: unreachable code
+line 23 column 6: unreachable code

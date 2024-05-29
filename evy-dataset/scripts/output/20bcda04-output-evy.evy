@@ -1,0 +1,19 @@
+
+func sublists_with_max:num nums:[]num max:num
+    result := 0
+    for start := range (len nums)
+        for end := range start+1 (len nums)+1
+            sublist := nums[start:end]
+            if (max sublist) <= max
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+maxElem := 3
+print (sublists_with_max nums maxElem) // Prints: 10
+
+     

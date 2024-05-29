@@ -1,0 +1,36 @@
+
+func distance:num root:node a:num b:num
+    if root == nil
+        return -1
+    end
+    if root.val == a or root.val == b
+        return 0
+    end
+    left := distance root.left a b
+    right := distance root.right a b
+    if left == -1 and right == -1
+        return -1
+    end
+    if left == -1
+        return right + 1
+    end
+    if right == -1
+        return left + 1
+    end
+    return min left+right+2
+end
+
+func findDistance:num root:node a:num b:num
+    distance root a b
+end
+
+func test
+    root := {val:1 left:{val:2 left:nil right:{val:4 left:nil right:nil}} right:{val:3 left:nil right:nil}}
+    assert 3 (findDistance root 2 4)
+    assert 2 (findDistance root 2 3)
+    assert 0 (findDistance root 1 1)
+    assert -1 (findDistance root 5 6)
+end
+     
+
+test

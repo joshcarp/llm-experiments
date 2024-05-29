@@ -1,0 +1,6 @@
+line 5 column 18: string index expects num, found string
+line 5 column 20: invalid inferred declaration for "ch"
+line 6 column 19: unknown variable name "ch"
+line 7 column 13: unknown variable name "ch"
+line 7 column 13: at least one statement is required here
+line 9 column 27: unknown variable name "ch"

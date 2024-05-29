@@ -1,0 +1,33 @@
+
+func diameter:num root:node
+    if root == null
+        return 0
+    end
+    leftHeight := height root.left
+    rightHeight := height root.right
+    leftDiameter := diameter root.left
+    rightDiameter := diameter root.right
+    return max (leftHeight + rightHeight + 2) (leftDiameter) (rightDiameter)
+end
+
+func height:num root:node
+    if root == null
+        return 0
+    end
+    return max (height root.left + 1) (height root.right + 1)
+end
+
+func max:num a:num b:num c:num
+    m := a
+    if b > m
+        m = b
+    end
+    if c > m
+        m = c
+    end
+    return m
+end
+
+root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+print (diameter root) // Prints: 4
+     

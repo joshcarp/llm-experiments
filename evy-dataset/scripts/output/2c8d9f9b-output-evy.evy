@@ -1,0 +1,17 @@
+
+func average:num root:node
+    if root == null
+        return 0
+    end
+    left_avg := average root.left
+    right_avg := average root.right
+    return (root.val + left_avg + right_avg) / 3
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert 2 (average root)
+end
+     
+
+test

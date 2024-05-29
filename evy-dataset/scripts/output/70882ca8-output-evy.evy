@@ -1,0 +1,25 @@
+
+func isBipartite:bool graph:[][]num
+    color := [-1] * (len graph)
+    func dfs:bool c:num node:num
+        if color[node] != -1
+            return color[node] == c
+        end
+        color[node] = c
+        for neighbor := range graph[node]
+            if !(dfs (1 - c) neighbor)
+                return false
+            end
+        end
+        return true
+    end
+    return dfs 0 0
+end
+
+func test
+    assert true (isBipartite [[1 2] [0 2] [0 1]])
+    assert false (isBipartite [[1 2] [0 2] [0 1] [3]])
+end
+     
+
+test

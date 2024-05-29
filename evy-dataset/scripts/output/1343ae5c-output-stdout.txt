@@ -1,0 +1,3 @@
+line 8 column 27: function call must be parenthesized: (permutations ...)
+line 8 column 9: at least one statement is required here
+line 7 column 9: "i" declared but not used

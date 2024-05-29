@@ -1,0 +1,45 @@
+
+func anagrams:num str:string
+    result := 0
+    for i := range 0 (len str)
+        for j := range i+1 (len str)
+            if (anagram str[i:j])
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func anagram:bool s1:string s2:string
+    if (len s1) != (len s2)
+        return false
+    end
+    s1Arr := split s1 ""
+    s2Arr := split s2 ""
+    sort s1Arr
+    sort s2Arr
+    return s1Arr == s2Arr
+end
+
+func sort arr:[]string
+    // bubble sort
+    for endIdx := range (len arr)-1 0 -1
+        for i := range endIdx
+            if (strcmp arr[i] arr[i + 1]) > 0
+                tmp := arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            end
+        end
+    end
+end
+
+func test
+    assert 3 (anagrams "abc")
+    assert 6 (anagrams "abcd")
+    assert 1 (anagrams "aaaaa")
+end
+     
+
+test

@@ -1,0 +1,33 @@
+
+func sublists_count:num arr:[]num length:num product:num max:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+length
+            if j < (len arr)
+                sub := arr[i:j]
+                product2 := 1
+                max2 := sub[0]
+                for k := range sub
+                    product2 = product2 * sub[k]
+                    if sub[k] > max2
+                        max2 = sub[k]
+                    end
+                end
+                if product2 == product and (max == -1 or max2 == max)
+                    result = result + 1
+                end
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists_count [1 2 3 4 5] 2 10 -1)
+    assert 1 (sublists_count [1 2 3 4 5] 2 10 4)
+    assert 0 (sublists_count [1 2 3 4 5] 2 11 -1)
+    assert 0 (sublists_count [1 2 3 4 5] 2 11 4)
+end
+     
+
+test

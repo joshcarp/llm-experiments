@@ -1,0 +1,20 @@
+line 5 column 13: expected "range", got "end"
+line 7 column 34: unexpected "end"
+line 7 column 34: range cannot be empty
+line 6 column 13: "product2" declared but not used
+line 8 column 17: unknown variable name "product2"
+line 2 column 29: "product" declared but not used
+line 3 column 5: "result" declared but not used
+line 9 column 13: missing return
+line 10 column 16: unknown variable name "product2"
+line 11 column 17: unknown variable name "result"
+line 11 column 17: at least one statement is required here
+line 13 column 9: unexpected input "end"
+line 14 column 5: unexpected input "end"
+line 15 column 12: unknown variable name "result"
+line 15 column 12: return statement not allowed here
+line 16 column 1: unexpected input "end"
+line 17 column 1: unreachable code
+line 23 column 6: unreachable code
+line 24 column 1: unreachable code
+line 25 column 1: unreachable code

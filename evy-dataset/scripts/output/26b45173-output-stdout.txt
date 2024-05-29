@@ -1,0 +1,6 @@
+line 2 column 17: invalid type declaration for "g"
+line 2 column 22: expected identifier, got "["
+line 2 column 22: expected identifier, got "["
+line 2 column 22: invalid type declaration for ""
+line 2 column 30: expected identifier, got "["
+line 2 column 30: expected identifier, got "["

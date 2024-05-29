@@ -1,0 +1,12 @@
+
+func insert_beginning:any head:any val:any
+    new_node:{}any
+    new_node["val"] = val
+    new_node["next"] = head
+    return new_node
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:null}}}
+head = insert_beginning head 4
+print head // Prints: {val:4 next:{val:1 next:{val:2 next:{val:3 next:null}}}}
+     

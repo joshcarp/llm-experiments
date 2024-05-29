@@ -1,0 +1,21 @@
+
+func numPathsWithProduct:num root:node product:num
+    if root == null
+        return 0
+    end
+    leftPaths := numPathsWithProduct root.left product
+    rightPaths := numPathsWithProduct root.right product
+    if root.val == product
+        return 1 + leftPaths + rightPaths
+    else
+        return leftPaths + rightPaths
+    end
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert 2 (numPathsWithProduct root 6)
+end
+     
+
+test

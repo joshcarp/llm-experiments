@@ -1,0 +1,3 @@
+line 8 column 28: unexpected "if"
+line 8 column 28: expected ")", got "if"
+line 8 column 12: expected return value of type num, found ILLEGAL

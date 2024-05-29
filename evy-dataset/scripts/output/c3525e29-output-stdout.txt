@@ -1,0 +1,6 @@
+line 4 column 19: unknown variable name "inf"
+line 4 column 22: invalid inferred declaration for "distances"
+line 5 column 5: unknown variable name "distances"
+line 15 column 16: unknown variable name "distances"
+line 16 column 17: unknown variable name "distances"
+line 2 column 16: "minWeight" declared but not used

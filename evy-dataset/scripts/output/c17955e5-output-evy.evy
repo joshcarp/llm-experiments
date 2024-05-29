@@ -1,0 +1,25 @@
+
+func numPaths:num root:node length:num sum:num product:num minElem:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if length == 0 and sum == root.val and product == root.val and minElem == root.val
+        result = result + 1
+    end
+    result = result + (numPaths root.left length-1 sum+root.val product*root.val (min root.val minElem))
+    result = result + (numPaths root.right length-1 sum+root.val product*root.val (min root.val minElem))
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (numPaths root 2 6 24 1)
+    assert 1 (numPaths root 1 1 1 1)
+    assert 0 (numPaths root 0 0 0 0)
+    assert 1 (numPaths root 1 4 4 4)
+    assert 0 (numPaths root 2 7 28 4)
+end
+     
+
+test

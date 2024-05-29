@@ -1,0 +1,23 @@
+
+func sublistsSum:num nums:[]num sum:num
+    result := 0
+    for start := range 0 (len nums)
+        currentSum := nums[start]
+        if currentSum == sum
+            result = result + 1
+        end
+        for end := range start+1 (len nums)
+            currentSum = currentSum + nums[end]
+            if currentSum == sum
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+sum := 5
+print (sublistsSum nums sum) // Prints: 4
+
+     

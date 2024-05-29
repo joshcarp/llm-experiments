@@ -1,0 +1,29 @@
+ ```evy
+func substrings:num str:string sum:num prod:num
+    result := 0
+    for start := range (len str)-2
+        for end := range start+2 (len str)
+            sub := str[start:end]
+            sum2 := 0
+            prod2 := 1
+            for c := range sub
+                sum2 = sum2 + (ord c - ord "0")
+                prod2 = prod2 * (ord c - ord "0")
+            end
+            if sum2 == sum and prod2 == prod
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (substrings "1234" 5 120)
+    assert 0 (substrings "1234" 5 121)
+    assert 1 (substrings "1234" 3 12)
+    assert 0 (substrings "1234" 3 13)
+end
+     
+
+test

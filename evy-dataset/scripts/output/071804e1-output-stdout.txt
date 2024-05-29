@@ -1,0 +1,6 @@
+line 6 column 13: field access with "." expects map type, found any
+line 11 column 45: unknown variable name "None"
+line 11 column 49: invalid inferred declaration for "head"
+line 12 column 7: unknown variable name "head"
+line 13 column 1: unknown variable name "head"
+line 14 column 7: unknown variable name "head"

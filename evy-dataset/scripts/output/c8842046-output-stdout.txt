@@ -2,10 +2,10 @@ line 2 column 43: invalid declaration of "min", already used as function name
 line 4 column 35: unexpected whitespace after "-"
 line 4 column 37: range cannot be empty
 line 4 column 37: unknown function "length"
-line 2 column 43: "min" declared but not used
-line 3 column 5: "result" declared but not used
 line 2 column 20: "length" declared but not used
 line 2 column 31: "product" declared but not used
+line 2 column 43: "min" declared but not used
+line 3 column 5: "result" declared but not used
 line 5 column 9: missing return
 line 6 column 19: unknown variable name "nums"
 line 6 column 23: invalid inferred declaration for "window"

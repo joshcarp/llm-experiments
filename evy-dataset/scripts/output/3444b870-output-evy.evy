@@ -1,0 +1,22 @@
+
+func hammingDistance:num s1:string s2:string
+    if (len s1) != (len s2)
+        return -1
+    end
+    distance := 0
+    for i := range (len s1)
+        if s1[i] != s2[i]
+            distance = distance + 1
+        end
+    end
+    return distance
+end
+
+func test
+    assert 3 (hammingDistance "karolin" "kathrin")
+    assert 0 (hammingDistance "hello" "hello")
+    assert 1 (hammingDistance "hamming" "distance")
+end
+     
+
+test

@@ -1,0 +1,14 @@
+line 5 column 14: unexpected "]"
+line 5 column 14: invalid inferred declaration for "dp"
+line 7 column 9: unknown variable name "dp"
+line 7 column 9: at least one statement is required here
+line 6 column 9: "i" declared but not used
+line 10 column 9: unknown variable name "dp"
+line 10 column 9: at least one statement is required here
+line 9 column 9: "j" declared but not used
+line 15 column 17: unknown variable name "dp"
+line 15 column 17: at least one statement is required here
+line 17 column 17: unknown variable name "dp"
+line 17 column 17: at least one statement is required here
+line 21 column 12: unknown variable name "dp"
+line 21 column 12: expected return value of type num, found ILLEGAL

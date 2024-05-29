@@ -1,0 +1,37 @@
+
+func findLastNonRepeatingChar:string str:string
+    seen:{}bool
+    lastSeen:{}num
+    result:string
+    for i := range (len str)
+        ch := str[i]
+        if !(has seen ch)
+            seen[ch] = true
+            lastSeen[ch] = i
+        else
+            lastSeen[ch] = -1
+        end
+    end
+    maxIdx := -1
+    for key := range lastSeen
+        idx := lastSeen[key]
+        if idx != -1 and idx > maxIdx
+            maxIdx = idx
+            result = key
+        end
+    end
+    return result
+end
+
+func test
+    assert "c" (findLastNonRepeatingChar "abcabcbb")
+    assert "e" (findLastNonRepeatingChar "ccccccce")
+    assert "a" (findLastNonRepeatingChar "aba")
+    assert "" (findLastNonRepeatingChar "aa")
+    assert "b" (findLastNonRepeatingChar "ab")
+    assert "c" (findLastNonRepeatingChar "abc")
+    assert "d" (findLastNonRepeatingChar "abcd")
+end
+     
+
+test

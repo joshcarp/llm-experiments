@@ -1,0 +1,36 @@
+
+func paths:num maxWeight:num maxLength:num graph:any
+    // Initialize the number of paths to 0
+    paths := 0
+    // Initialize a queue to store the paths to explore
+    queue := [graph maxWeight maxLength]
+    while (len queue) > 0
+        // Get the next path from the queue
+        path := queue[0]
+        maxWeight := path[1]
+        length := path[2]
+        graph := path[3:]
+        // If the path meets the criteria, increment the count
+        if maxWeight <= maxWeight and length <= maxLength
+            paths = paths + 1
+        end
+        // Explore the next paths by adding the neighbors of the current node to the queue
+        for neighbor := range graph[0]
+            newMaxWeight := maxWeight + graph[0][neighbor]
+            newLength := length + 1
+            newGraph := graph[1:]
+            if newMaxWeight <= maxWeight and newLength <= maxLength
+                queue = queue + [[neighbor newMaxWeight newLength newGraph]]
+            end
+        end
+        // Remove the path from the queue
+        queue = queue[1:]
+    end
+    return paths
+end
+
+graph := {0:{1:2 2:4} 1:{0:2 2:1} 2:{0:4 1:1}}
+maxWeight := 5
+maxLength := 2
+print (paths graph maxWeight maxLength) // Prints: 2
+     

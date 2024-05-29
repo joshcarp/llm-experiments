@@ -1,0 +1,26 @@
+
+func sublists:num sum:num length:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)-length+1
+        window := nums[start:start + length]
+        windowSum := 0
+        for w := range window
+            windowSum = windowSum + w
+        end
+        if windowSum == sum
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists 3 [1 2 3 4])
+    assert 1 (sublists 3 [1 2 3 4 5])
+    assert 0 (sublists 3 [1 2 3 4 5 6])
+    assert 1 (sublists 6 [1 2 3 4 5 6])
+    assert 0 (sublists 6 [1 2 3 4 5])
+end
+     
+
+test

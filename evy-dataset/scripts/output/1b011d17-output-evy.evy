@@ -1,0 +1,30 @@
+
+func isConnected:bool graph:[][]num
+    visited := [false] * (len graph)
+    dfs graph visited 0
+    for v := range visited
+        if v == false
+            return false
+        end
+    end
+    return true
+end
+
+func dfs graph:[][]num visited:[]bool v:num
+    visited[v] = true
+    for neighbor := range graph[v]
+        if visited[neighbor] == false
+            dfs graph visited neighbor
+        end
+    end
+end
+
+func test
+    g := [[1 2] [0 3] [0 4] [1 5] [2 6] [4 7] [5 8] [6 9]]
+    assert true (isConnected g)
+    g = [[1 2] [0 3] [0 4] [1 5] [2 6] [4 7] [5 8] [6 9] [10 11]]
+    assert false (isConnected g)
+end
+     
+
+test

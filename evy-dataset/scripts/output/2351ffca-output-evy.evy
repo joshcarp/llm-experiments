@@ -1,0 +1,19 @@
+
+func sublists_count:num arr:[]num length:num sum:num max:num
+    if length == 0 and sum == 0 and max == 0
+        return 1
+    else
+        return 0
+    end
+end
+
+func test
+    assert 1 (sublists_count [1 2 3] 2 5 3)
+    assert 0 (sublists_count [1 2 3] 2 4 3)
+    assert 0 (sublists_count [1 2 3] 3 6 3)
+    assert 1 (sublists_count [1 2 3] 1 3 3)
+    assert 0 (sublists_count [1 2 3] 1 2 2)
+end
+     
+
+test

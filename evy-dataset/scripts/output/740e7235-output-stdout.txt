@@ -1,0 +1,22 @@
+line 3 column 16: unknown variable name "nil"
+line 6 column 38: field access with "." expects map type, found any
+line 6 column 39: "lowestCommonAncestor" takes 3 arguments, found 0
+line 6 column 39: expected end of line, found left
+line 7 column 39: field access with "." expects map type, found any
+line 7 column 40: "lowestCommonAncestor" takes 3 arguments, found 0
+line 7 column 40: expected end of line, found right
+line 8 column 16: unknown variable name "nil"
+line 10 column 21: unknown variable name "nil"
+line 2 column 40: "p" declared but not used
+line 2 column 46: "q" declared but not used
+line 18 column 37: unknown variable name "nil"
+line 18 column 41: invalid inferred declaration for "root"
+line 19 column 10: unknown variable name "root"
+line 19 column 14: invalid inferred declaration for "p"
+line 20 column 10: unknown variable name "root"
+line 20 column 14: invalid inferred declaration for "q"
+line 21 column 38: unknown variable name "root"
+line 21 column 43: "lowestCommonAncestor" takes 3 arguments, found 0
+line 21 column 43: expected end of line, found p
+line 22 column 19: field access with "." expects map type, found any
+line 22 column 20: expected end of line, found val

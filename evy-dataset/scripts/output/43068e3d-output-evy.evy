@@ -1,0 +1,25 @@
+
+func numPathsSumLength:num root:node sum:num length:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if sum == root.val and length == 1
+        result = result + 1
+    end
+    result = result + (numPathsSumLength root.left sum-root.val length-1)
+    result = result + (numPathsSumLength root.right sum-root.val length-1)
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (numPathsSumLength root 6 2)
+    assert 1 (numPathsSumLength root 5 2)
+    assert 0 (numPathsSumLength root 4 2)
+    assert 1 (numPathsSumLength root 3 1)
+    assert 0 (numPathsSumLength root 2 1)
+end
+     
+
+test

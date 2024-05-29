@@ -1,0 +1,12 @@
+line 3 column 16: unknown variable name "nil"
+line 4 column 16: unknown variable name "nil"
+line 4 column 16: expected return value of type any, found ILLEGAL
+line 6 column 17: field access with "." expects map type, found any
+line 6 column 18: invalid inferred declaration for "next"
+line 7 column 9: field access with "." expects map type, found any
+line 8 column 12: unknown variable name "next"
+line 12 column 45: unknown variable name "nil"
+line 12 column 48: invalid inferred declaration for "head"
+line 13 column 7: unknown variable name "head"
+line 14 column 1: unknown variable name "head"
+line 15 column 7: unknown variable name "head"

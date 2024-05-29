@@ -1,0 +1,13 @@
+
+func sublist_count:num arr:[]num length:num
+    count := 0
+    for i := range (len arr) - length + 1
+        count = count + 1
+    end
+    return count
+end
+
+numbers := [1 2 3 4 5]
+print (sublist_count numbers 2) // Prints: 4
+
+     

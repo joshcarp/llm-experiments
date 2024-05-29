@@ -1,0 +1,24 @@
+
+func firstUniqChar:string s:string
+    seen:{}bool
+    for c := range s
+        seen[c] = seen[c] + 1
+    end
+    for i := range (len s)
+        c := s[i]
+        if seen[c] == 1
+            return c
+        end
+    end
+    return "_"
+end
+
+func test
+    assert "a" (firstUniqChar "leetcode")
+    assert "b" (firstUniqChar "abcabcbb")
+    assert "_" (firstUniqChar "bbbbb")
+    assert "c" (firstUniqChar "pwwkew")
+end
+     
+
+test

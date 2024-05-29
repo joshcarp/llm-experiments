@@ -1,0 +1,23 @@
+
+func paths:num root:node length:num sum:num
+    if root == null
+        if length == 0 and sum == 0
+            return 1
+        else
+            return 0
+        end
+    end
+    left := paths root.left length-1 sum-root.val
+    right := paths root.right length-1 sum-root.val
+    return left + right
+end
+
+func test
+    root := buildTree
+    assert 3 (paths root 2 1)
+    assert 1 (paths root 3 2)
+    assert 0 (paths root 4 3)
+end
+     
+
+test

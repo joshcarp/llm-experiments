@@ -1,0 +1,13 @@
+
+func numLeaves:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := numLeaves root["left"].({}any)
+    right := numLeaves root["right"].({}any)
+    return left + right + (if root["val"].(num) == -1 then 1 else 0 end)
+end
+
+root := {val:-1 left:{val:1 left:{} right:{}} right:{val:2 left:{} right:{val:3 left:{} right:{}}}}
+print (numLeaves root) // Prints: 3
+     

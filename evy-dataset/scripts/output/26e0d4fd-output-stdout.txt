@@ -1,9 +1,9 @@
 line 2 column 20: invalid declaration of "max", already used as function name
 line 2 column 28: invalid declaration of "min", already used as function name
-line 3 column 5: "left" declared but not used
-line 4 column 5: "right" declared but not used
 line 2 column 20: "max" declared but not used
 line 2 column 28: "min" declared but not used
+line 3 column 5: "left" declared but not used
+line 4 column 5: "right" declared but not used
 line 38 column 1: invalid declaration of "max", already used as function name
 line 39 column 1: invalid declaration of "min", already used as function name
 line 40 column 18: function call must be parenthesized: (max ...)

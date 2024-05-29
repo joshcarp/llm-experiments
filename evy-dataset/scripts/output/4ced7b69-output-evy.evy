@@ -1,0 +1,19 @@
+
+func commonPrefix:string s1:string s2:string
+    minLen := min (len s1) (len s2)
+    for i := range minLen
+        if s1[i] != s2[i]
+            return s1[:i]
+        end
+    end
+    return s1[:minLen]
+end
+
+func test
+    assert "fl" (commonPrefix "flower" "flow")
+    assert "" (commonPrefix "dog" "racecar")
+    assert "aaaaa" (commonPrefix "aaaaa" "aaaaa")
+end
+     
+
+test

@@ -1,0 +1,15 @@
+line 5 column 19: unknown variable name "nil"
+line 6 column 20: field access with "." expects map type, found any
+line 7 column 20: field access with "." expects map type, found any
+line 6 column 9: at least one statement is required here
+line 13 column 73: unknown variable name "nil"
+line 13 column 76: invalid inferred declaration for "head"
+line 14 column 24: unknown variable name "head"
+line 14 column 28: "middleNode" takes 1 argument, found 0
+line 15 column 18: field access with "." expects map type, found any
+line 15 column 19: expected end of line, found val
+line 16 column 5: unknown variable name "head"
+line 17 column 23: unknown variable name "head"
+line 17 column 27: "middleNode" takes 1 argument, found 0
+line 18 column 18: field access with "." expects map type, found any
+line 18 column 19: expected end of line, found val

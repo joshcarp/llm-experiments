@@ -1,0 +1,30 @@
+
+func pathsSumProductMinElemLength:num root:node sum:num product:num minElem:num minLength:num
+    if root == null
+        return 0
+    end
+    leftPaths := pathsSumProductMinElemLength root.left sum product minElem minLength
+    rightPaths := pathsSumProductMinElemLength root.right sum product minElem minLength
+    currentPath := 0
+    if root.val >= minElem
+        if sum == root.val and product == root.val and (length == 1 or length == 0)
+            currentPath = currentPath + 1
+        end
+        if sum - root.val >= 0 and product / root.val >= 0 and (length == 1 or length == 0)
+            currentPath = currentPath + 1
+        end
+    end
+    return leftPaths + rightPaths + currentPath
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert 2 (pathsSumProductMinElemLength root 3 6 1 0)
+    assert 1 (pathsSumProductMinElemLength root 3 6 2 0)
+    assert 0 (pathsSumProductMinElemLength root 3 6 4 0)
+    assert 1 (pathsSumProductMinElemLength root 1 2 1 1)
+    assert 0 (pathsSumProductMinElemLength root 1 2 2 1)
+end
+     
+
+test

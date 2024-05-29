@@ -1,0 +1,38 @@
+
+func substrings:num s:string maxChar:num minChar:num
+    result := 0
+    for start := range (len s)
+        for end := range start+1 (len s)+1
+            sub := s[start:end]
+            maxC := 0
+            minC := 1000000000
+            product := 1
+            for c := range sub
+                cc := str2num c
+                maxC = max maxC cc
+                minC = min minC cc
+                product = product * cc
+            end
+            if maxC <= maxChar and minC >= minChar and product % 2 == 1
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 10 (substrings "abcde" 2 1)
+    assert 0 (substrings "abcde" 3 2)
+    assert 1 (substrings "abcde" 2 2)
+    assert 0 (substrings "abcde" 1 5)
+    assert 1 (substrings "abcde" 5 1)
+    assert 1 (substrings "abcde" 5 5)
+    assert 2 (substrings "abcde" 4 2)
+    assert 3 (substrings "abcde" 3 3)
+    assert 4 (substrings "abcde" 2 4)
+    assert 5 (substrings "abcde" 1 5)
+end
+
+test
+     

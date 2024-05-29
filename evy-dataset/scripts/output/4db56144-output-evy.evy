@@ -1,0 +1,28 @@
+
+func sublists:num arr:[]num product:num minElem:num
+    result := 0
+    for start := range 0 (len arr)
+        for end := range start+1 (len arr)+1
+            subArr := arr[start:end]
+            prod := 1
+            mn := subArr[0]
+            for n := range subArr
+                prod = prod * n
+                mn = min mn n
+            end
+            if prod == product and minElem == mn
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists [1 2 3 4] 12 1)
+    assert 1 (sublists [1 2 3 4] 6 2)
+    assert 0 (sublists [1 2 3 4] 24 1)
+end
+     
+
+test

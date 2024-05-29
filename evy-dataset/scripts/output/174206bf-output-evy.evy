@@ -1,0 +1,44 @@
+ ```evy
+func substrings_with_sum:num str:string sum:num
+    result := 0
+    for start := range (len str)
+        for end := range start+1 (len str)+1
+            sub := str[start:end]
+            sum2 := 0
+            for ch := range sub
+                sum2 = sum2 + (ord ch)
+            end
+            if sum2 == sum
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (substrings_with_sum "abc" 97)
+    assert 0 (substrings_with_sum "abc" 98)
+    assert 3 (substrings_with_sum "abc" 99)
+    assert 6 (substrings_with_sum "abc" 100)
+    assert 10 (substrings_with_sum "abc" 101)
+    assert 15 (substrings_with_sum "abc" 102)
+    assert 21 (substrings_with_sum "abc" 103)
+    assert 28 (substrings_with_sum "abc" 104)
+    assert 36 (substrings_with_sum "abc" 105)
+    assert 45 (substrings_with_sum "abc" 106)
+    assert 55 (substrings_with_sum "abc" 107)
+    assert 66 (substrings_with_sum "abc" 108)
+    assert 78 (substrings_with_sum "abc" 109)
+    assert 91 (substrings_with_sum "abc" 110)
+    assert 105 (substrings_with_sum "abc" 111)
+    assert 120 (substrings_with_sum "abc" 112)
+    assert 136 (substrings_with_sum "abc" 113)
+    assert 153 (substrings_with_sum "abc" 114)
+    assert 171 (substrings_with_sum "abc" 115)
+    assert 190 (substrings_with_sum "abc" 116)
+    assert 210 (substrings_with_sum "abc" 117)
+end
+     
+
+test

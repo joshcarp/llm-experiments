@@ -1,0 +1,22 @@
+
+func middleNode:any head:any
+    slow := head
+    fast := head
+    while fast != nil and fast.next != nil
+        slow = slow.next
+        fast = fast.next.next
+    end
+    return slow
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:nil}}}}
+    node := middleNode head
+    assert 3 node.val
+    head = {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+    node = middleNode head
+    assert 3 node.val
+end
+     
+
+test

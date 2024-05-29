@@ -1,0 +1,19 @@
+
+func isFullBinaryTree:bool root:Node
+    if root == null
+        return true
+    end
+    leftFull := isFullBinaryTree root.left
+    rightFull := isFullBinaryTree root.right
+    return leftFull and rightFull and (root.left != null) and (root.right != null)
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert true (isFullBinaryTree root)
+    root.left.right = {val:4 left:null right:null}
+    assert false (isFullBinaryTree root)
+end
+     
+
+test

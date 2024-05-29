@@ -1,0 +1,1 @@
+line 2 column 43: invalid declaration of "min", already used as function name

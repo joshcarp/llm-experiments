@@ -1,0 +1,7 @@
+line 2 column 32: "minElem" declared but not used
+line 17 column 25: "subarrays" takes 1st argument of type num, found []num
+line 17 column 39: "subarrays" takes 4th argument of type []num, found num
+line 18 column 25: "subarrays" takes 1st argument of type num, found []num
+line 18 column 40: "subarrays" takes 4th argument of type []num, found num
+line 19 column 25: "subarrays" takes 1st argument of type num, found []num
+line 19 column 39: "subarrays" takes 4th argument of type []num, found num

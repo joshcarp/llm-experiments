@@ -1,0 +1,21 @@
+
+func firstRepeatingChar:string str:string
+    seen:{}bool
+    for i := range 0 (len str)
+        ch := str[i]
+        if has seen ch
+            return ch
+        end
+        seen[ch] = true
+    end
+    return ""
+end
+
+func test
+    assert "a" (firstRepeatingChar "aba")
+    assert "b" (firstRepeatingChar "abcabcbb")
+    assert "" (firstRepeatingChar "abcde")
+end
+     
+
+test

@@ -1,0 +1,41 @@
+
+func paths_with_sum:num graph:map[string][][]string sum:num
+    paths := 0
+    visited := {}
+    for node := range graph
+        visited[node] = false
+    end
+    path := [node]
+    dfs sum graph visited path
+    return paths
+end
+
+func dfs:void sum:num graph:map[string][][]string visited:{}bool path:[]string
+    node := path[-1]
+    if sum == 0
+        paths = paths + 1
+        return
+    end
+    for neighbor := range graph[node]
+        if !(visited[neighbor])
+            visited[neighbor] = true
+            path = path + [neighbor]
+            dfs sum-1 graph visited path
+            visited[neighbor] = false
+            path = path[:-1]
+        end
+    end
+end
+
+graph := {
+    "A": ["B" "C"]
+    "B": ["D" "E"]
+    "C": ["F"]
+    "D": []
+    "E": ["F"]
+    "F": []
+}
+sum := 2
+paths := paths_with_sum graph sum
+print paths // Prints: 2
+     

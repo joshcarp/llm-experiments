@@ -1,0 +1,41 @@
+
+func sublists:num product:num maxElem:num length:num nums:[]num
+    result := 0
+    for i := range length
+        for j := range (len nums)
+            if nums[j] > maxElem
+                continue
+            end
+            prod := nums[j]
+            for k := range i+1
+                j = j + 1
+                if j >= (len nums) or nums[j] > maxElem
+                    break
+                end
+                prod = prod * nums[j]
+            end
+            if prod == product
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists 6 3 2 [1 2 3 4])
+    assert 0 (sublists 6 3 2 [1 2 5 4])
+    assert 1 (sublists 6 3 2 [1 2 3 4 5])
+    assert 0 (sublists 6 3 2 [1 2 3 4 5 6])
+    assert 0 (sublists 6 3 2 [1 2 3 4 5 7])
+    assert 0 (sublists 6 3 2 [1 2 3 4 5 6 7])
+    assert 1 (sublists 24 4 3 [1 2 3 4 5 6 7])
+    assert 0 (sublists 24 4 3 [1 2 3 4 5 6 7 8])
+    assert 0 (sublists 24 4 3 [1 2 3 4 5 6 7 8 9])
+    assert 0 (sublists 24 4 3 [1 2 3 4 5 6 7 8 9 10])
+    assert 1 (sublists 120 5 4 [1 2 3 4 5 6 7 8 9 10])
+    assert 0 (sublists 120 5 4 [1 2 3 4 5 6 7 8 9 10 11])
+end
+     
+
+test

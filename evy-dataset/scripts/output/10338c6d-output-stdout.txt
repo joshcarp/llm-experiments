@@ -1,0 +1,5 @@
+line 6 column 10: "dfs1" takes 1st argument of type []num, found [][]num
+line 9 column 24: unexpected whitespace before "*"
+line 9 column 9: at least one statement is required here
+line 8 column 9: "i" declared but not used
+line 41 column 5: "component" declared but not used

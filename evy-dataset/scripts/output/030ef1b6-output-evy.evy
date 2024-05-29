@@ -1,0 +1,25 @@
+ ```evy
+func adjList:num[][] G:num[][]
+    adj := [][]
+    for u := range G
+        for v := range G[u]
+            if u < v and G[u][v] == 1
+                adj[u] = adj[u] + [v]
+            end
+        end
+    end
+    return adj
+end
+
+func test
+    G := [[0 1 0 0 1 0]
+         [1 0 1 0 0 0]
+         [0 1 0 1 0 0]
+         [0 0 1 0 1 1]
+         [1 0 0 1 0 0]
+         [0 0 0 1 0 0]]
+    print (adjList G)
+end
+     
+
+test

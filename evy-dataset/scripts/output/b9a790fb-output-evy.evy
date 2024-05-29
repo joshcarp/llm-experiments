@@ -1,0 +1,11 @@
+
+func substrings:num str:string
+    return (len str) * (len str + 1) / 2
+end
+
+assert 10 (substrings "abcde")
+assert 6 (substrings "foobar")
+assert 1 (substrings "x")
+assert 0 (substrings "")
+
+     

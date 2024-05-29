@@ -1,0 +1,14 @@
+line 4 column 34: unexpected whitespace after "-"
+line 4 column 36: range cannot be empty
+line 4 column 36: unknown function "length"
+line 7 column 53: unknown variable name "start"
+line 7 column 13: at least one statement is required here
+line 6 column 13: "i" declared but not used
+line 12 column 5: missing return
+line 13 column 12: unknown variable name "result"
+line 13 column 12: return statement not allowed here
+line 14 column 1: unexpected input "end"
+line 15 column 1: unreachable code
+line 21 column 6: unreachable code
+line 22 column 1: unreachable code
+line 23 column 1: unreachable code

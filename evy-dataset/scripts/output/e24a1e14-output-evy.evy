@@ -1,0 +1,27 @@
+
+func substrings:num str:string sum:num prod:num
+    result := 0
+    for start := range (len str)
+        for end := range start+1 (len str)+1
+            sub := str[start:end]
+            sum2 := 0
+            prod2 := 1
+            for ch := range sub
+                sum2 = sum2 + (ord ch)
+                prod2 = prod2 * (ord ch)
+            end
+            if sum2 == sum and prod2 == prod
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (substrings "abc" 1 3)
+    assert 2 (substrings "aba" 2 4)
+    assert 0 (substrings "abc" 4 5)
+end
+test
+     

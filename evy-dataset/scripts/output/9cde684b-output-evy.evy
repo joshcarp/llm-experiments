@@ -1,0 +1,34 @@
+ ```evy
+func substrings:num str:string length:num sum:num product:num max:string min:string
+    result := 0
+    for i := range 0 (len str)-length+1
+        sub := str[i:i + length]
+        sum2 := 0
+        product2 := 1
+        max2 := "0"
+        min2 := "z"
+        for c := range sub
+            sum2 = sum2 + (ord c)
+            product2 = product2 * (ord c)
+            if (ord c) > (ord max2)
+                max2 = c
+            end
+            if (ord c) < (ord min2)
+                min2 = c
+            end
+        end
+        if sum2 == sum and product2 == product and max2 == max and min2 == min
+            result = result + 1
+        end
+    end
+    return result
+end
+
+str := "abcde"
+length := 2
+sum := 5
+product := 12
+max := "c"
+min := "a"
+print (substrings str length sum product max min)
+     

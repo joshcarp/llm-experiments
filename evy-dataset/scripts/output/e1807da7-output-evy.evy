@@ -1,0 +1,26 @@
+
+func pathSum:num root:node sum:num min:num
+    if root == null
+        return 0
+    end
+    left := pathSum root.left sum min
+    right := pathSum root.right sum min
+    total := left + right
+    if root.val >= min and root.val + left + right >= sum
+        total = total + 1
+    end
+    return total
+end
+
+func solve:num root:node sum:num min:num
+    if root == null
+        return 0
+    end
+    return pathSum root sum min
+end
+
+root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+sum := 7
+min := 2
+print (solve root sum min) // Prints: 2
+     

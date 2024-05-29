@@ -1,0 +1,15 @@
+
+func numUnique:num root:node
+    if root == null
+        return 0
+    end
+    set := {}
+    set[root.val] = true
+    set = set + (numUnique root.left)
+    set = set + (numUnique root.right)
+    return len set
+end
+
+root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+print (numUnique root) // Prints: 3
+     

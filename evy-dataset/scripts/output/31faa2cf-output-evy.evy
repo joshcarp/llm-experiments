@@ -1,0 +1,20 @@
+
+func isCircular:bool head:any
+    slow := head
+    fast := head
+    while slow != nil and fast != nil and fast.next != nil
+        slow = slow.next
+        fast = fast.next.next
+    end
+    return slow == fast
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:head}}}}
+    assert true (isCircular head)
+    head = {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+    assert false (isCircular head)
+end
+     
+
+test

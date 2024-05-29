@@ -1,0 +1,34 @@
+
+func paths:num minWeight:num minLength:num graph:any
+    // Initialize the number of paths to 0
+    paths := 0
+    // Iterate over all the edges in the graph
+    for edge := range graph
+        weight := edge.weight
+        length := edge.length
+        if weight >= minWeight and length >= minLength
+            paths = paths + 1
+        end
+    end
+    return paths
+end
+
+graph := {
+    "A": {
+        "B": {weight:1 length:1}
+        "C": {weight:2 length:2}
+    }
+    "B": {
+        "C": {weight:3 length:3}
+        "D": {weight:4 length:4}
+    }
+    "C": {
+        "D": {weight:5 length:5}
+    }
+}
+
+minWeight := 2
+minLength := 3
+numPaths := paths minWeight minLength graph
+print numPaths // Prints: 1
+     

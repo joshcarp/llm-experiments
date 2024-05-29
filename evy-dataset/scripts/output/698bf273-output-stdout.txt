@@ -1,0 +1,20 @@
+line 4 column 5: invalid declaration of "paths", already used as function name
+line 6 column 28: expected num, string, array or map after range, found any
+line 7 column 23: field access with "." expects map type, found none
+line 7 column 24: invalid inferred declaration for "weight"
+line 8 column 23: field access with "." expects map type, found none
+line 8 column 24: invalid inferred declaration for "length"
+line 9 column 12: unknown variable name "weight"
+line 10 column 13: cannot assign to "paths" as it is a function not a variable
+line 10 column 13: at least one statement is required here
+line 13 column 17: "paths" takes 3 arguments, found 0
+line 2 column 16: "minWeight" declared but not used
+line 2 column 30: "minLength" declared but not used
+line 17 column 5: expected map key, found "A"
+line 18 column 9: expected map key, found "B"
+line 19 column 9: expected map key, found "C"
+line 21 column 5: expected map key, found "B"
+line 22 column 9: expected map key, found "C"
+line 23 column 9: expected map key, found "D"
+line 25 column 5: expected map key, found "C"
+line 26 column 9: expected map key, found "D"

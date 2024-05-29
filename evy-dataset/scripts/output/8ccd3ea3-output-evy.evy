@@ -1,0 +1,28 @@
+
+func isUndirected:bool graph:map[string][]string
+    for node := range graph
+        for neighbor := range graph[node]
+            if !(has graph[neighbor] node)
+                return false
+            end
+        end
+    end
+    return true
+end
+
+graph := {
+    "A": ["B" "C"]
+    "B": ["A" "D"]
+    "C": ["A" "D"]
+    "D": ["B" "C"]
+}
+print (isUndirected graph) // Prints: true
+
+graph = {
+    "A": ["B" "C"]
+    "B": ["A" "D"]
+    "C": ["A"]
+    "D": ["B"]
+}
+print (isUndirected graph) // Prints: false
+     

@@ -1,0 +1,26 @@
+
+func lowestCommonAncestor:any root:any p:any q:any
+    if root == nil or root == p or root == q
+        return root
+    end
+    left := lowestCommonAncestor root.left p q
+    right := lowestCommonAncestor root.right p q
+    if left != nil and right != nil
+        return root
+    else if left != nil
+        return left
+    else
+        return right
+    end
+end
+
+func test
+    root := {val:3 left:{val:5 left:nil right:{val:6 left:nil right:nil}} right:{val:1 left:{val:0 left:nil right:nil} right:{val:8 left:nil right:nil}}}
+    p := root.left
+    q := root.right.right
+    ancestor := lowestCommonAncestor root p q
+    print ancestor.val // Prints: 1
+end
+     
+
+test

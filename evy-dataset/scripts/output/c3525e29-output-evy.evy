@@ -1,0 +1,29 @@
+
+func paths:num minWeight:num graph:[][]num
+    // Initialize the distance to each node to be infinity
+    distances := [inf] * (len graph)
+    distances[0] = 0
+    // Initialize the number of paths to each node to be 0
+    pathsToNode := [0] * (len graph)
+    pathsToNode[0] = 1
+    // Initialize the queue with the starting node
+    queue := [0]
+    while (len queue) > 0
+        node := queue[0]
+        queue = queue[1:]
+        for neighbor := range graph[node]
+            if distances[node] + graph[node][neighbor] >= minWeight and distances[neighbor] > distances[node] + graph[node][neighbor]
+                distances[neighbor] = distances[node] + graph[node][neighbor]
+                pathsToNode[neighbor] = pathsToNode[node]
+                queue = queue + [neighbor]
+            end
+        end
+    end
+    return pathsToNode[-1]
+end
+
+graph := [[0 1 0 0 0] [1 0 1 0 0] [0 1 0 1 0] [0 0 1 0 1] [0 0 0 1 0]]
+minWeight := 2
+result := paths minWeight graph
+print result // Prints: 2
+     

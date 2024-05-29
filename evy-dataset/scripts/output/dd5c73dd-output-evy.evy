@@ -1,0 +1,26 @@
+
+func isBalanced:bool root:Node
+    if root == nil
+        return true
+    end
+    leftHeight := height root.left
+    rightHeight := height root.right
+    return abs leftHeight-rightHeight <= 1 and (isBalanced root.left) and (isBalanced root.right)
+end
+
+func height:num root:Node
+    if root == nil
+        return 0
+    end
+    return max (height root.left)+1 (height root.right)+1
+end
+
+func test
+    root := {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:2 left:nil right:{val:3 left:nil right:nil}}}
+    assert true (isBalanced root)
+    root = {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:2 left:nil right:{val:3 left:nil right:{val:3 left:nil right:nil}}}}}
+    assert false (isBalanced root)
+end
+     
+
+test

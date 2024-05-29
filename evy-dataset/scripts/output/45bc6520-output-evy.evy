@@ -1,0 +1,15 @@
+
+func pathsWithProduct:num maxElem:num length:num root:*Node
+    if root == nil
+        return 0
+    end
+    return (pathsWithProduct root.left root.val.num maxElem length) + (pathsWithProduct root.right root.val.num maxElem length) + (pathsWithProduct root.left 0 root.val.num length-1) + (pathsWithProduct root.right 0 root.val.num length-1)
+end
+
+func test
+    root := {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:4 left:nil right:{val:5 left:nil right:nil}}}
+    assert 4 (pathsWithProduct root 12 5 3)
+end
+     
+
+test

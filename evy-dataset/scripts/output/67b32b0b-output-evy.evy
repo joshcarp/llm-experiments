@@ -1,0 +1,24 @@
+
+func sublists:num arr:[]num max:num min:num
+    result := 0
+    for start := range (len arr)
+        for end := range start+1 (len arr)+1
+            sublist := arr[start:end]
+            if (sublist[-1] - sublist[0]) >= max - min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (sublists [1 2 3 4 5] 2 1)
+    assert 0 (sublists [1 2 3 4 5] 5 1)
+    assert 10 (sublists [1 2 3 4 5] 4 1)
+    assert 0 (sublists [1 2 3 4 5] 5 2)
+    assert 5 (sublists [1 2 3 4 5] 4 2)
+end
+     
+
+test

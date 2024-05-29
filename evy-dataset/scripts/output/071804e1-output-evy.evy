@@ -1,0 +1,15 @@
+
+func insert_node:any pos:num val:any head:any
+    if pos == 0
+        return {val:val next:head}
+    else
+        head.next = insert_node pos-1 val head.next
+        return head
+    end
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:None}}}
+print head
+head = insert_node 1 4 head
+print head
+     

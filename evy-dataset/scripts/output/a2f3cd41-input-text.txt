@@ -1,0 +1,1 @@
+Find the number of paths with a given product of weights and length in a graph

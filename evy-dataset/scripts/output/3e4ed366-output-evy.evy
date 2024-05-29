@@ -1,0 +1,25 @@
+
+func isDirected:bool graph:map[string][]string
+    for key := range graph
+        edges := graph[key]
+        for edge := range edges
+            if hasKey graph edge
+                if graph[edge] == []
+                    return true
+                end
+                if !(hasKey graph[edge] key)
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
+func test
+    assert true (isDirected {a:["b" "c"] b:["d"] c:["e"] d:["f"] e:["g"] f:["h"] g:["i"] h:["j"] i:["k"] j:["l"] k:["m"] l:["n"] m:["o"] n:["p"] o:["q"] p:["r"] q:["s"] r:["t"] s:["u"] t:["v"] u:["w"] v:["x"] w:["y"] x:["z"] y:["a"] z:[]})
+    assert false (isDirected {a:["b" "c"] b:["d"] c:["e"] d:["f"] e:["g"] f:["h"] g:["i"] h:["j"] i:["k"] j:["l"] k:["m"] l:["n"] m:["o"] n:["p"] o:["q"] p:["r"] q:["s"] r:["t"] s:["u"] t:["v"] u:["w"] v:["x"] w:["y"] x:["z"] y:["a"] z:["a"]})
+end
+     
+
+test

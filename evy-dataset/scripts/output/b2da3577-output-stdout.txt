@@ -1,0 +1,14 @@
+line 4 column 16: expected return value of type num, found []num
+line 6 column 31: unexpected whitespace before "*"
+line 6 column 31: "findPath" takes 2 arguments, found 0
+line 6 column 31: expected end of line, found "*"
+line 7 column 17: mismatched type for !=: num, []
+line 8 column 23: mismatched type for +: []num, num
+line 8 column 16: expected return value of type num, found []num
+line 10 column 32: unexpected whitespace before "*"
+line 10 column 32: "findPath" takes 2 arguments, found 0
+line 10 column 32: expected end of line, found "*"
+line 11 column 18: mismatched type for !=: num, []
+line 12 column 23: mismatched type for +: []num, num
+line 12 column 16: expected return value of type num, found []num
+line 14 column 12: expected return value of type num, found []

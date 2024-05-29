@@ -1,0 +1,25 @@
+
+func substrings:num str:string sum:num length:num
+    result := 0
+    for start := range (len str) - length + 1
+        end := start + length
+        sub := str[start:end]
+        sum2 := 0
+        for c := range sub
+            sum2 = sum2 + (codePointAt sub c)
+        end
+        if sum2 == sum
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (substrings "abcabc" 3 2)
+    assert 1 (substrings "abcabc" 3 3)
+    assert 0 (substrings "abcabc" 3 4)
+end
+     
+
+test

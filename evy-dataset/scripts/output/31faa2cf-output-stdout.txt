@@ -1,0 +1,11 @@
+line 5 column 19: unknown variable name "nil"
+line 6 column 20: field access with "." expects map type, found any
+line 7 column 20: field access with "." expects map type, found any
+line 6 column 9: at least one statement is required here
+line 13 column 61: unknown variable name "head"
+line 13 column 65: invalid inferred declaration for "head"
+line 14 column 29: unknown variable name "head"
+line 14 column 33: "isCircular" takes 1 argument, found 0
+line 15 column 5: unknown variable name "head"
+line 16 column 30: unknown variable name "head"
+line 16 column 34: "isCircular" takes 1 argument, found 0

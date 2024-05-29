@@ -1,0 +1,12 @@
+line 3 column 5: invalid type declaration for "seen"
+line 5 column 9: unknown variable name "seen"
+line 2 column 20: "str" declared but not used
+line 6 column 5: missing return
+line 7 column 16: unknown variable name "seen"
+line 7 column 20: "len" takes 1 argument, found 0
+line 7 column 12: return statement not allowed here
+line 8 column 1: unexpected input "end"
+line 9 column 1: unreachable code
+line 15 column 6: unreachable code
+line 16 column 1: unreachable code
+line 17 column 1: unreachable code

@@ -1,0 +1,4 @@
+line 2 column 58: invalid declaration of "min", already used as function name
+line 7 column 17: unknown function "continue"
+line 7 column 17: at least one statement is required here
+line 10 column 24: "min" takes 2 arguments, found 0

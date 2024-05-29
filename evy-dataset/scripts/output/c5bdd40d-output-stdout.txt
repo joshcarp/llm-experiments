@@ -1,0 +1,4 @@
+line 13 column 14: failed assertion: want != got: 3 != 21
+line 14 column 14: failed assertion: want != got: 2 != 15
+line 15 column 14: failed assertion: want != got: 1 != 10
+line 16 column 14: failed assertion: want != got: 0 != 6

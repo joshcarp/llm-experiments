@@ -1,0 +1,17 @@
+
+func postorder:string root:node
+    if root == null
+        return ""
+    end
+    left := postorder root.left
+    right := postorder root.right
+    return left + right + root.val
+end
+
+func test
+    root := {val:"1" left:{val:"2" left:null right:null} right:{val:"3" left:null right:null}}
+    assert "231" (postorder root)
+end
+     
+
+test

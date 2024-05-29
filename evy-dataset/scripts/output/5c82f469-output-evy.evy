@@ -1,0 +1,19 @@
+
+func preorder:string root:node
+    if root == null
+        return ""
+    end
+    result := ""
+    result = result + (str root.val)
+    result = result + (preorder root.left)
+    result = result + (preorder root.right)
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:3 left:null right:null}}
+    assert "123" (preorder root)
+end
+     
+
+test

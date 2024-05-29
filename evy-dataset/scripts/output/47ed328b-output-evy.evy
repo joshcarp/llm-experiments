@@ -1,0 +1,32 @@
+
+func findNthFromEnd:any L:any n:num
+    if n <= 0 or L == {}
+        return {}
+    end
+    p1 := L
+    for i := range n
+        if p1.next == {}
+            return {}
+        end
+        p1 = p1.next
+    end
+    p2 := L
+    while p1.next != {}
+        p1 = p1.next
+        p2 = p2.next
+    end
+    return p2
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:{val:5 next:{}}}}}}
+    assert 2 (findNthFromEnd head 2)
+    assert 3 (findNthFromEnd head 1)
+    assert 1 (findNthFromEnd head 5)
+    assert 5 (findNthFromEnd head 0)
+    assert {} (findNthFromEnd head 6)
+    assert {} (findNthFromEnd {} 0)
+end
+     
+
+test

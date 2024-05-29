@@ -1,0 +1,2 @@
+line 2 column 18: invalid type declaration for "root"
+line 15 column 16: invalid type declaration for "root"

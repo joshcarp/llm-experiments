@@ -1,0 +1,5 @@
+line 2 column 58: invalid declaration of "max", already used as function name
+line 16 column 49: unexpected whitespace before "=="
+line 16 column 49: "max" takes 2 arguments, found 0
+line 16 column 49: expected ")", got "=="
+line 2 column 58: "max" declared but not used

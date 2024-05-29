@@ -1,0 +1,13 @@
+line 2 column 25: invalid type declaration for "graph"
+line 2 column 34: expected identifier, got "["
+line 2 column 34: expected identifier, got "["
+line 2 column 34: invalid type declaration for ""
+line 2 column 42: expected identifier, got "["
+line 2 column 42: expected identifier, got "["
+line 13 column 1: invalid return type: sum
+line 13 column 23: invalid type declaration for "graph"
+line 13 column 32: expected identifier, got "["
+line 13 column 32: expected identifier, got "["
+line 13 column 32: invalid type declaration for ""
+line 13 column 40: expected identifier, got "["
+line 13 column 40: expected identifier, got "["

@@ -1,0 +1,10 @@
+
+func isEmpty:bool str:string
+    return (len str) == 0
+end
+
+assert true==(isEmpty "")
+assert false==(isEmpty "abc")
+assert true==(isEmpty " ")
+assert false==(isEmpty "a")
+     

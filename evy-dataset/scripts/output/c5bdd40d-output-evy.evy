@@ -1,0 +1,20 @@
+
+func sublists_count:num arr:[]num length:num sum:num
+    if length == 0 or sum == 0
+        return 1
+    else if length < 0 or sum < 0
+        return 0
+    else
+        return (sublists_count arr length-1 sum) + (sublists_count arr length sum-arr[0])
+    end
+end
+
+func test
+    assert 3 (sublists_count [1 2 3 4] 2 5)
+    assert 2 (sublists_count [1 2 3 4] 2 4)
+    assert 1 (sublists_count [1 2 3 4] 2 3)
+    assert 0 (sublists_count [1 2 3 4] 2 2)
+end
+     
+
+test

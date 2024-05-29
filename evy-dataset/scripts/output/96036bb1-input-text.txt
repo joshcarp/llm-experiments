@@ -1,0 +1,1 @@
+Delete a node with a given value from a linked list

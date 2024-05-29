@@ -1,0 +1,14 @@
+
+func permutations:num str:string
+    if (len str) == 0
+        return 1
+    end
+    result := 0
+    for i := range (len str)
+        result = result + permutations str[0:i] + str[i+1:]
+    end
+    return result
+end
+
+print (permutations "abc") // Prints: 6
+     

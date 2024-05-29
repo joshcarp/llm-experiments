@@ -1,0 +1,4 @@
+line 3 column 33: unexpected whitespace before "+"
+line 3 column 33: "len" takes 1 argument, found 0
+line 3 column 33: expected ")", got "+"
+line 3 column 12: expected return value of type num, found ILLEGAL

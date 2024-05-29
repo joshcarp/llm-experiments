@@ -1,0 +1,12 @@
+line 2 column 25: invalid declaration of "max", already used as function name
+line 6 column 24: "max" takes 2 arguments, found 1
+line 15 column 30: "sublists_count" takes 1st argument of type num, found []num
+line 15 column 44: "sublists_count" takes 3rd argument of type []num, found num
+line 16 column 30: "sublists_count" takes 1st argument of type num, found []num
+line 16 column 44: "sublists_count" takes 3rd argument of type []num, found num
+line 17 column 30: "sublists_count" takes 1st argument of type num, found []num
+line 17 column 44: "sublists_count" takes 3rd argument of type []num, found num
+line 18 column 30: "sublists_count" takes 1st argument of type num, found []num
+line 18 column 44: "sublists_count" takes 3rd argument of type []num, found num
+line 19 column 31: "sublists_count" takes 1st argument of type num, found []num
+line 19 column 45: "sublists_count" takes 3rd argument of type []num, found num

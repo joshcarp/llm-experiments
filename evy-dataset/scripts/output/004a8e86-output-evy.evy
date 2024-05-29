@@ -1,0 +1,36 @@
+
+func mode:num root:node
+    if root == null
+        return -1
+    end
+    count := {}
+    maxCount := 0
+    mode := -1
+    func traverse:void root:node
+        if root == null
+            return
+        end
+        if !(has count root.val)
+            count[root.val] = 0
+        end
+        count[root.val] = count[root.val] + 1
+        if count[root.val] > maxCount
+            maxCount = count[root.val]
+            mode = root.val
+        else if count[root.val] == maxCount
+            mode = -1
+        end
+        traverse root.left
+        traverse root.right
+    end
+    traverse root
+    return mode
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:null} right:{val:2 left:null right:{val:3 left:null right:null}}}
+    assert 2 (mode root)
+end
+     
+
+test

@@ -1,0 +1,27 @@
+
+func sublists:num sum:num maxElem:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)
+        for end := range start+1 (len nums)+1
+            sublist := nums[start:end]
+            subsum := 0
+            max := -1
+            for s := range sublist
+                subsum = subsum + s
+                if s > max
+                    max = s
+                end
+            end
+            if subsum == sum and max <= maxElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+sum := 6
+maxElem := 3
+print (sublists nums sum maxElem) // Prints: 3
+     

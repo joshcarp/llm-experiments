@@ -1,0 +1,25 @@
+
+func minSumSublist:num nums:[]num
+    result := nums[0]
+    currentSum := result
+    for i := range 1 (len nums)
+        currentSum = min currentSum (nums[i] + currentSum)
+        result = min result currentSum
+    end
+    return result
+end
+
+func test
+    assert -1 (minSumSublist [-1 -2 -3 -4])
+    assert -1 (minSumSublist [-1 -2 -3 -4 -1])
+    assert 0 (minSumSublist [0 -1 -2 -3 -4])
+    assert 1 (minSumSublist [1 -1 -2 -3 -4])
+    assert 5 (minSumSublist [5 -1 -2 -3 -4])
+    assert 5 (minSumSublist [5 -1 -2 -3 -4 5])
+    assert -1 (minSumSublist [-1])
+    assert 0 (minSumSublist [0])
+    assert 1 (minSumSublist [1])
+end
+     
+
+test

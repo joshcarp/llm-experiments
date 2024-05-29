@@ -1,0 +1,10 @@
+line 2 column 36: invalid declaration of "max", already used as function name
+line 2 column 44: invalid declaration of "min", already used as function name
+line 24 column 24: "sublists" takes 1st argument of type num, found []num
+line 24 column 45: "sublists" takes 6th argument of type []num, found num
+line 25 column 24: "sublists" takes 1st argument of type num, found []num
+line 25 column 45: "sublists" takes 6th argument of type []num, found num
+line 26 column 24: "sublists" takes 1st argument of type num, found []num
+line 26 column 44: "sublists" takes 6th argument of type []num, found num
+line 27 column 24: "sublists" takes 1st argument of type num, found []num
+line 27 column 44: "sublists" takes 6th argument of type []num, found num

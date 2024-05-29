@@ -1,0 +1,13 @@
+line 8 column 5: unreachable code
+line 9 column 5: unreachable code
+line 10 column 5: unreachable code
+line 27 column 21: "paths" takes 1st argument of type num, found [][]num
+line 27 column 29: "paths" takes 3rd argument of type [][]num, found num
+line 28 column 21: "paths" takes 1st argument of type num, found [][]num
+line 28 column 29: "paths" takes 3rd argument of type [][]num, found num
+line 29 column 21: "paths" takes 1st argument of type num, found [][]num
+line 29 column 29: "paths" takes 3rd argument of type [][]num, found num
+line 30 column 21: "paths" takes 1st argument of type num, found [][]num
+line 30 column 29: "paths" takes 3rd argument of type [][]num, found num
+line 31 column 21: "paths" takes 1st argument of type num, found [][]num
+line 31 column 29: "paths" takes 3rd argument of type [][]num, found num

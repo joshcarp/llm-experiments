@@ -1,0 +1,2 @@
+line 2 column 54: invalid declaration of "max", already used as function name
+line 2 column 25: "arr" declared but not used

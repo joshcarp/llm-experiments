@@ -1,0 +1,32 @@
+
+func isPerfectBinaryTree:bool root:Node
+    if root == nil
+        return true
+    end
+    leftHeight := height root.left
+    rightHeight := height root.right
+    return leftHeight == rightHeight and isPerfectBinaryTree root.left and isPerfectBinaryTree root.right
+end
+
+func height:num root:Node
+    if root == nil
+        return 0
+    end
+    leftHeight := height root.left + 1
+    rightHeight := height root.right + 1
+    if leftHeight > rightHeight
+        return leftHeight
+    else
+        return rightHeight
+    end
+end
+
+func test
+    root := {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:4 left:nil right:{val:5 left:nil right:nil}}}
+    assert true (isPerfectBinaryTree root)
+    root = {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:4 left:nil right:{val:5 left:{val:6 left:nil right:nil} right:nil}}}
+    assert false (isPerfectBinaryTree root)
+end
+     
+
+test

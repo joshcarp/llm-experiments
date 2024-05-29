@@ -1,0 +1,25 @@
+
+func countComponents:num graph:[][]num
+    visited := [false] * (len graph)
+    count := 0
+    for i := range (len graph)
+        if visited[i] == false
+            dfs i graph visited
+            count = count + 1
+        end
+    end
+    return count
+end
+
+func dfs:void node:num graph:[][]num visited:[]bool
+    visited[node] = true
+    for neighbor := range graph[node]
+        if visited[neighbor] == false
+            dfs neighbor graph visited
+        end
+    end
+end
+
+graph := [[1 2] [0 3] [0] [1]]
+print (countComponents graph) // Prints: 2
+     

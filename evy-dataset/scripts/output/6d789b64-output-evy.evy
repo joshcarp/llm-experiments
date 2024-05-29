@@ -1,0 +1,29 @@
+
+func sublists:num sum:num min:num nums:[]num
+    result := 0
+    for start := range (len nums)
+        for end := range start+1 (len nums)+1
+            subarray := nums[start:end]
+            subsum := 0
+            minsub := 1000000000
+            for n := range subarray
+                subsum = subsum + n
+                minsub = min subsum minsub
+            end
+            if subsum == sum and minsub >= min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 3 (sublists [1 2 3 4 5] 5 1)
+    assert 0 (sublists [1 2 3 4 5] 5 3)
+    assert 1 (sublists [1 2 3 4 5] 4 2)
+    assert 0 (sublists [1 2 3 4 5] 6 4)
+end
+     
+
+test

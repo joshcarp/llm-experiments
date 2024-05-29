@@ -1,0 +1,40 @@
+
+func substrings:num str:string product:num maxChar:string minChar:string
+    result := 0
+    for start := range (len str)
+        for end := range start+1 (len str)+1
+            sub := str[start:end]
+            if (productOf sub) == product and (contains sub maxChar) and (contains sub minChar)
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func productOf:num str:string
+    product := 1
+    for c := range str
+        product = product * (ord c - ord "a" + 1)
+    end
+    return product
+end
+
+func contains:bool str:string c:string
+    for s := range str
+        if s == c
+            return true
+        end
+    end
+    return false
+end
+
+func test
+    assert 1 (substrings "abc" 6 "c" "a")
+    assert 2 (substrings "aba" 2 "a" "b")
+    assert 0 (substrings "abc" 7 "c" "a")
+    assert 0 (substrings "aba" 3 "a" "b")
+end
+     
+
+test

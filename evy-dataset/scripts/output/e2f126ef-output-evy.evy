@@ -1,0 +1,20 @@
+
+func pathsSumMinElemLength:num root:node sum:num minElem:num length:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if root.val >= minElem and root.val + (pathsSumMinElemLength root.left sum-root.val minElem length-1) + (pathsSumMinElemLength root.right sum-root.val minElem length-1) == sum
+        result = result + 1
+    end
+    result = result + (pathsSumMinElemLength root.left sum minElem length) + (pathsSumMinElemLength root.right sum minElem length)
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (pathsSumMinElemLength root 7 2 2)
+end
+     
+
+test

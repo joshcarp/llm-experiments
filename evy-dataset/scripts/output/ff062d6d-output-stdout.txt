@@ -1,0 +1,20 @@
+line 4 column 34: unexpected whitespace after "-"
+line 4 column 36: range cannot be empty
+line 4 column 36: unknown function "length"
+line 6 column 13: expected "range", got "end"
+line 7 column 22: unknown variable name "ord"
+line 7 column 26: expected ")", got identifier
+line 2 column 44: "length" declared but not used
+line 3 column 5: "result" declared but not used
+line 2 column 32: "product" declared but not used
+line 8 column 9: missing return
+line 9 column 12: unknown variable name "p"
+line 10 column 13: unknown variable name "result"
+line 10 column 13: at least one statement is required here
+line 12 column 5: unexpected input "end"
+line 13 column 12: unknown variable name "result"
+line 13 column 12: return statement not allowed here
+line 14 column 1: unexpected input "end"
+line 15 column 1: unreachable code
+line 21 column 1: unreachable code
+line 22 column 6: unreachable code

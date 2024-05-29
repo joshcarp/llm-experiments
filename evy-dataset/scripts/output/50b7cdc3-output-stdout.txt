@@ -1,0 +1,9 @@
+line 4 column 12: unknown variable name "find"
+line 4 column 17: invalid inferred declaration for "idx"
+line 5 column 11: unknown variable name "idx"
+line 6 column 33: unknown variable name "idx"
+line 7 column 19: unknown variable name "idx"
+line 8 column 9: unknown variable name "idx"
+line 6 column 9: at least one statement is required here
+line 2 column 35: "old" declared but not used
+line 2 column 46: "new" declared but not used

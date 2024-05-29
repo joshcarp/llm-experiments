@@ -1,0 +1,39 @@
+
+func numCycles:num g:graph
+    visited := [false] * len g
+    recStack := [false] * len g
+    count := 0
+    for node := range g
+        if !(visited[node])
+            dfs g visited recStack node count
+        end
+    end
+    return count
+end
+
+func dfs g:graph visited:[]bool recStack:[]bool node:num count:num
+    visited[node] = true
+    recStack[node] = true
+    for neighbor := range g[node]
+        if !(visited[neighbor])
+            dfs g visited recStack neighbor count
+        else
+            if recStack[neighbor]
+                count = count + 1
+            end
+        end
+    end
+    recStack[node] = false
+end
+
+g := {0:[1 2] 1:[0 2] 2:[0 1]}
+assert 1 (numCycles g)
+g = {0:[1 2] 1:[0 2] 2:[1]}
+assert 0 (numCycles g)
+g = {0:[1 2] 1:[0 2] 2:[0]}
+assert 1 (numCycles g)
+g = {0:[1 2] 1:[0 2] 2:[0 1]}
+assert 1 (numCycles g)
+g = {0:[1 2] 1:[0 2] 2:[0 1] 3:[2]}
+assert 2 (numCycles g)
+

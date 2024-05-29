@@ -1,0 +1,56 @@
+
+func isAcyclic:bool graph:map[string][]string
+    visited:set[string]
+    recStack:set[string]
+    for node := range graph
+        if !(visited.has node)
+            if hasCycle graph node visited recStack
+                return false
+            end
+        end
+    end
+    return true
+end
+
+func hasCycle:bool graph:map[string][]string node:string visited:set[string] recStack:set[string]
+    visited.add node
+    recStack.add node
+    for neighbor := range graph[node]
+        if !(visited.has neighbor)
+            if hasCycle graph neighbor visited recStack
+                return true
+            end
+        else
+            if recStack.has neighbor
+                return true
+            end
+        end
+    end
+    recStack.remove node
+    return false
+end
+
+graph := {
+    "A": ["B" "C"]
+    "B": ["D" "E"]
+    "C": ["F"]
+    "D": ["G"]
+    "E": ["H"]
+    "F": []
+    "G": []
+    "H": []
+}
+print (isAcyclic graph) // Prints: true
+
+graph = {
+    "A": ["B" "C"]
+    "B": ["D" "E"]
+    "C": ["F"]
+    "D": ["G"]
+    "E": ["H"]
+    "F": ["C"]
+    "G": []
+    "H": []
+}
+print (isAcyclic graph) // Prints: false
+     

@@ -1,0 +1,22 @@
+
+func sublists_count:num arr:[]num length:num sum:num min:num
+    result := 0
+    for start := range 0 (len arr)
+        for end := range start+length (len arr) + 1
+            sublist := arr[start:end]
+            if (sum sublist) == sum and (min sublist) == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists_count [1 2 3 4 5] 2 5 2)
+    assert 1 (sublists_count [1 2 3 4 5] 3 6 2)
+    assert 0 (sublists_count [1 2 3 4 5] 4 10 2)
+end
+     
+
+test

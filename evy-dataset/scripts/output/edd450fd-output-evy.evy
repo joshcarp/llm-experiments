@@ -1,0 +1,20 @@
+
+func charFreq:num s:string
+    freqs:{}num
+    for c := range s
+        if has freqs c
+            freqs[c] = freqs[c] + 1
+        else
+            freqs[c] = 1
+        end
+    end
+    return freqs
+end
+
+txt := "hello world"
+freqs := charFreq txt
+for key := range freqs
+    print key ":" freqs[key]
+end
+
+     

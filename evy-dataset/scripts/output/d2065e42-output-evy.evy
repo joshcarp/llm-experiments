@@ -1,0 +1,35 @@
+
+func paths:num sum:num length:num graph:[][]num
+    if length == 0
+        return 1
+    else
+        return 0
+    end
+    visited := [false] * (len graph)
+    visited[0] = true
+    return paths_helper graph visited sum length 0
+end
+
+func paths_helper:num graph:[][]num visited:[]bool sum:num length:num currentSum:num
+    result := 0
+    for i := range 1 (len graph)
+        if graph[currentSum][i] > 0 and !(visited[i])
+            visited[i] = true
+            result = result + (paths_helper graph visited sum length 1)
+            visited[i] = false
+        end
+    end
+    return result
+end
+
+func test
+    graph := [[0 1 0 0 0] [1 0 1 0 0] [0 1 0 1 0] [0 0 1 0 1] [0 0 0 1 0]]
+    assert 3 (paths graph 2 2)
+    assert 4 (paths graph 3 2)
+    assert 1 (paths graph 4 2)
+    assert 0 (paths graph 5 2)
+    assert 0 (paths graph 2 3)
+end
+     
+
+test

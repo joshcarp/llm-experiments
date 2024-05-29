@@ -1,0 +1,13 @@
+
+func numInternalNodes:num root:{}any
+    if root == {}
+        return 0
+    end
+    left := root["left"].({}any)
+    right := root["right"].({}any)
+    return (numInternalNodes left) + (numInternalNodes right) + 1
+end
+
+root := {left:{right:{} left:{}} right:{left:{} right:{}}}
+print (numInternalNodes root) // Prints: 3
+     

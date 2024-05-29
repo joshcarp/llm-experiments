@@ -1,0 +1,16 @@
+
+func delete_first:any head:any
+    if head == nil
+        return nil
+    end
+    next := head.next
+    head.next = nil
+    head = next
+    return head
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:nil}}}
+print head // Prints: {val:1 next:{val:2 next:{val:3 next:nil}}}
+head = delete_first head
+print head // Prints: {val:2 next:{val:3 next:nil}}}
+     

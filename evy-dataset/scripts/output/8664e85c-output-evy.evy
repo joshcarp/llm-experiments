@@ -1,0 +1,49 @@
+
+func intersection:Node* head1:Node* head2:Node*
+    p1 := head1
+    p2 := head2
+    while p1 != p2
+        if p1 == nil
+            p1 = head2
+        else
+            p1 = p1.next
+        end
+        if p2 == nil
+            p2 = head1
+        else
+            p2 = p2.next
+        end
+    end
+    return p1
+end
+
+func test
+    head1 := {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+    head2 := {val:5 next:{val:6 next:{val:7 next:{val:8 next:{val:9 next:{val:10 next:{val:11 next:{val:12 next:nil}}}}}}}}
+    head3 := {val:13 next:{val:14 next:{val:15 next:{val:16 next:nil}}}}
+    head4 := {val:17 next:{val:18 next:{val:19 next:{val:20 next:nil}}}}
+    head5 := {val:21 next:{val:22 next:{val:23 next:{val:24 next:nil}}}}
+    head6 := {val:25 next:{val:26 next:{val:27 next:{val:28 next:nil}}}}
+    head7 := {val:29 next:{val:30 next:{val:31 next:{val:32 next:nil}}}}
+    head8 := {val:33 next:{val:34 next:{val:35 next:{val:36 next:nil}}}}
+    head9 := {val:37 next:{val:38 next:{val:39 next:{val:40 next:nil}}}}
+    head10 := {val:41 next:{val:42 next:{val:43 next:{val:44 next:nil}}}}
+    head11 := {val:45 next:{val:46 next:{val:47 next:{val:48 next:nil}}}}
+    head12 := {val:49 next:{val:50 next:{val:51 next:{val:52 next:nil}}}}
+    head13 := {val:53 next:{val:54 next:{val:55 next:{val:56 next:nil}}}}
+    head14 := {val:57 next:{val:58 next:{val:59 next:{val:60 next:nil}}}}
+    head15 := {val:61 next:{val:62 next:{val:63 next:{val:64 next:nil}}}}
+    head16 := {val:65 next:{val:66 next:{val:67 next:{val:68 next:nil}}}}
+    head17 := {val:69 next:{val:70 next:{val:71 next:{val:72 next:nil}}}}
+    head18 := {val:73 next:{val:74 next:{val:75 next:{val:76 next:nil}}}}
+    head19 := {val:77 next:{val:78 next:{val:79 next:{val:80 next:nil}}}}
+    head20 := {val:81 next:{val:82 next:{val:83 next:{val:84 next:nil}}}}
+    head21 := {val:85 next:{val:86 next:{val:87 next:{val:88 next:nil}}}}
+    head22 := {val:89 next:{val:90 next:{val:91 next:{val:92 next:nil}}}}
+    head23 := {val:93 next:{val:94 next:{val:95 next:{val:96 next:nil}}}}
+    head24 := {val:97 next:{val:98 next:{val:99 next:{val:100 next:nil}}}}
+    head25 := {val:101 next:{val:102 next:{val:103 next:{val:104 next:nil}}}}
+    head26 := {val:105 next:{val:106 next:{val:107 next:{val:108 next:nil}}}}
+    head27 := {val:109 next:{val:110 next:{val:111 next:{val:112 next:nil}}}}
+
+test

@@ -1,0 +1,21 @@
+
+func numPaths:num root:node max:num min:num
+    if root == null
+        return 1
+    end
+    result := 0
+    if root.val >= min and root.val <= max
+        result = result + 1
+    end
+    result = result + (numPaths root.left max min)
+    result = result + (numPaths root.right max min)
+    return result
+end
+
+func test
+    root := {val:5 left:{val:3 left:null right:null} right:{val:7 left:null right:null}}
+    assert 3 (numPaths root 10 2)
+end
+     
+
+test

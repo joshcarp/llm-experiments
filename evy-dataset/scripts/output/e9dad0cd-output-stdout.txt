@@ -1,0 +1,15 @@
+line 4 column 16: unexpected whitespace before "*"
+line 4 column 16: invalid inferred declaration for "dp"
+line 6 column 9: unknown variable name "dp"
+line 6 column 9: at least one statement is required here
+line 5 column 9: "i" declared but not used
+line 11 column 17: unknown variable name "dp"
+line 11 column 17: at least one statement is required here
+line 10 column 17: "w" declared but not used
+line 14 column 17: unknown variable name "dp"
+line 14 column 17: at least one statement is required here
+line 13 column 17: "w" declared but not used
+line 9 column 13: "j" declared but not used
+line 8 column 9: "i" declared but not used
+line 18 column 12: unknown variable name "dp"
+line 18 column 12: expected return value of type num, found ILLEGAL

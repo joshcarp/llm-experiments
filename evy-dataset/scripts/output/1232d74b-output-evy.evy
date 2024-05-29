@@ -1,0 +1,23 @@
+
+func palindromes:num str:string
+    result := 0
+    for start := range 0 (len str)
+        for end := range start+1 (len str)+1
+            sub := str[start:end]
+            if sub == (reverse sub)
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 3 (palindromes "abcba")
+    assert 6 (palindromes "abccba")
+    assert 1 (palindromes "aba")
+    assert 0 (palindromes "abcd")
+end
+     
+
+test

@@ -1,0 +1,2 @@
+line 2 column 43: invalid declaration of "max", already used as function name
+line 12 column 85: "sublists_count" takes 4 arguments, found 5

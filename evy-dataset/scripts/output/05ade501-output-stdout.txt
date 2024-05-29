@@ -1,0 +1,5 @@
+line 2 column 37: invalid declaration of "max", already used as function name
+line 2 column 45: invalid declaration of "min", already used as function name
+line 7 column 27: expected end of line, found subArr
+line 8 column 33: "max" takes 2 arguments, found 1
+line 9 column 33: "min" takes 2 arguments, found 1

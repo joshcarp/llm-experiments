@@ -1,0 +1,20 @@
+line 5 column 13: expected "range", got "end"
+line 6 column 33: unexpected "end"
+line 6 column 33: invalid inferred declaration for "subarr"
+line 7 column 21: unknown variable name "subarr"
+line 7 column 27: "len" takes 1 argument, found 0
+line 7 column 48: expected ")", got identifier
+line 2 column 54: "product" declared but not used
+line 11 column 5: missing return
+line 12 column 12: unknown variable name "result"
+line 12 column 12: return statement not allowed here
+line 13 column 1: unexpected input "end"
+line 14 column 1: unreachable code
+line 15 column 1: unreachable code
+line 16 column 1: unreachable code
+line 17 column 1: unreachable code
+line 18 column 1: unreachable code
+line 19 column 1: unreachable code
+line 20 column 1: unreachable code
+line 21 column 1: unreachable code
+line 22 column 6: unreachable code

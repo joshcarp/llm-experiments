@@ -1,0 +1,26 @@
+
+func isBST:bool root:Node
+    return isBSTHelper root -2147483648 2147483647
+end
+
+func isBSTHelper:bool root:Node min:num max:num
+    if root == null
+        return true
+    end
+    if root.val < min or root.val > max
+        return false
+    end
+    leftValid := isBSTHelper root.left min root.val
+    rightValid := isBSTHelper root.right root.val max
+    return leftValid and rightValid
+end
+
+func test
+    root := {val:5 left:{val:3 left:null right:null} right:{val:7 left:null right:null}}
+    assert true (isBST root)
+    root = {val:5 left:{val:3 left:null right:null} right:{val:7 left:{val:6 left:null right:null} right:null}}
+    assert false (isBST root)
+end
+     
+
+test

@@ -1,0 +1,1 @@
+Find the number of paths with a given product, minimum element, and length in a binary tree

@@ -1,0 +1,28 @@
+
+func levelOrderTraversal:array root:node
+    if root == null
+        return []
+    end
+    queue := [root]
+    result := []
+    while len queue > 0
+        node := queue[0]
+        result = result + [node.val]
+        if node.left != null
+            queue = queue + [node.left]
+        end
+        if node.right != null
+            queue = queue + [node.right]
+        end
+        queue = queue[1:]
+    end
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:4 left:null right:null}} right:{val:3 left:null right:null}}
+    assert [1 2 3 4] (levelOrderTraversal root)
+end
+     
+
+test

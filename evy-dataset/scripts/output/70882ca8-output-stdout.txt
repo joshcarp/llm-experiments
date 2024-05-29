@@ -1,0 +1,29 @@
+line 3 column 5: invalid declaration of "color", already used as function name
+line 4 column 5: unexpected input "func"
+line 5 column 18: unknown variable name "node"
+line 5 column 22: "color" takes 1 argument, found 0
+line 5 column 22: expected end of line, found "]"
+line 5 column 12: expected condition of type bool, found none
+line 6 column 26: unknown variable name "node"
+line 6 column 30: "color" takes 1 argument, found 0
+line 6 column 30: expected end of line, found "]"
+line 6 column 20: expected return value of type bool, found none
+line 8 column 15: unknown variable name "node"
+line 8 column 19: "color" takes 1 argument, found 0
+line 8 column 19: expected end of line, found "]"
+line 9 column 37: unknown variable name "node"
+line 9 column 41: range cannot be empty
+line 9 column 41: unexpected input "]"
+line 10 column 27: unknown variable name "c"
+line 10 column 28: "dfs" takes 2 arguments, found 0
+line 10 column 30: expected end of line, found neighbor
+line 13 column 9: missing return
+line 14 column 16: return statement not allowed here
+line 15 column 5: unexpected input "end"
+line 16 column 12: return statement not allowed here
+line 16 column 5: unreachable code
+line 17 column 1: unexpected input "end"
+line 18 column 1: unreachable code
+line 23 column 6: unreachable code
+line 24 column 1: unreachable code
+line 25 column 1: unreachable code

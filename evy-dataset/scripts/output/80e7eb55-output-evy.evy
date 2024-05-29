@@ -1,0 +1,24 @@
+
+func pathsWithProductMinElem:num root:node product:num minElem:num
+    if root == null
+        return 0
+    end
+    leftPaths := pathsWithProductMinElem root.left product minElem
+    rightPaths := pathsWithProductMinElem root.right product minElem
+    if root.val == product and root.val >= minElem
+        return leftPaths + rightPaths + 1
+    else
+        return leftPaths + rightPaths
+    end
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (pathsWithProductMinElem root 6 1)
+    assert 0 (pathsWithProductMinElem root 7 1)
+    assert 1 (pathsWithProductMinElem root 4 4)
+    assert 0 (pathsWithProductMinElem root 15 5)
+end
+     
+
+test

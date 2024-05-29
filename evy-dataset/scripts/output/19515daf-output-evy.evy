@@ -1,0 +1,18 @@
+
+func sublists_with_min:num nums:[]num min:num
+    result := 0
+    for start := range (len nums)
+        for end := range start+1 (len nums)+1
+            if nums[end - 1] >= min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+min := 3
+print (sublists_with_min nums min) // Prints: 10
+
+     

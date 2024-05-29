@@ -1,0 +1,16 @@
+
+func remove_substring:string str:string sub:string
+    result := ""
+    idx := find sub str
+    while idx >= 0
+        result = result + str[0:idx] + str[idx + (len sub):]
+        idx = find sub str[idx + (len sub):]
+    end
+    return result
+end
+
+txt := "Hello, world! This is a test."
+sub := "is"
+txt = remove_substring txt sub
+print txt // Prints: Hello, world! Th
+     

@@ -1,0 +1,24 @@
+
+func isSorted:bool head:any
+    if head == null
+        return true
+    end
+    prev := head.val.(num)
+    head = head.next
+    while head != null
+        if prev > head.val.(num)
+            return false
+        end
+        prev = head.val.(num)
+        head = head.next
+    end
+    return true
+end
+
+func test
+    assert true==(isSorted {val:1 next:{val:2 next:{val:3 next:{val:4 next:null}}}}
+    assert false==(isSorted {val:1 next:{val:2 next:{val:3 next:{val:1 next:null}}}}
+end
+     
+
+test

@@ -1,0 +1,17 @@
+
+func pathsSumProductMaxMinLength:num root:node sum:num product:num max:num min:num length:num
+    if root == null
+        return 0
+    end
+    leftSum := pathsSumProductMaxMinLength root.left sum*root.val product*root.val (max root.val) min root.val length+1
+    rightSum := pathsSumProductMaxMinLength root.right sum*root.val product*root.val (max root.val) min root.val length+1
+    return leftSum + rightSum + (sum == root.val and product == root.val and max == root.val and min == root.val and length == 1)
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 4 (pathsSumProductMaxMinLength root 10 60 5 1 4)
+end
+     
+
+test

@@ -1,0 +1,32 @@
+
+func sublists_count:num arr:[]num length:num product:num min:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+length
+            if j - i < length
+                continue
+            end
+            product2 := 1
+            min2 := 1000000000000000000
+            for k := range i j
+                product2 = product2 * arr[k]
+                if arr[k] < min2
+                    min2 = arr[k]
+                end
+            end
+            if product2 == product and min2 >= min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists_count [1 2 3 4 5] 2 12 2)
+    assert 1 (sublists_count [1 2 3 4 5] 3 20 2)
+    assert 0 (sublists_count [1 2 3 4 5] 4 100 3)
+end
+     
+
+test

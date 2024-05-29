@@ -1,0 +1,22 @@
+ ```evy
+func substrings:num str:string
+    sum := 0
+    product := 1
+    max := str[0]
+    min := str[0]
+    for i := range 1 (len str)
+        sum = sum + str[i]
+        product = product * str[i]
+        if str[i] > max
+            max = str[i]
+        end
+        if str[i] < min
+            min = str[i]
+        end
+    end
+    return sum product max min
+end
+
+str := "abc"
+substrings str // Prints: 18 6 c a
+     

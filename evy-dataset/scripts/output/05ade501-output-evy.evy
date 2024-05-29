@@ -1,0 +1,26 @@
+
+func sublists:num arr:[]num sum:num max:num min:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+1 (len arr)
+            subArr := arr[i:j]
+            subSum := sum subArr
+            subMax := max subArr
+            subMin := min subArr
+            if subSum == sum and subMax == max and subMin == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (sublists [1 2 3 4 5] 6 5 1)
+    assert 0 (sublists [1 2 3 4 5] 7 5 1)
+    assert 1 (sublists [1 2 3 4 5] 5 4 2)
+    assert 0 (sublists [1 2 3 4 5] 4 4 2)
+end
+     
+
+test

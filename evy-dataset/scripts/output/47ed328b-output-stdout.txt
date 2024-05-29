@@ -1,0 +1,8 @@
+line 3 column 20: mismatched type for ==: any, {}
+line 8 column 14: field access with "." expects map type, found any
+line 11 column 16: field access with "." expects map type, found any
+line 7 column 9: "i" declared but not used
+line 14 column 13: field access with "." expects map type, found any
+line 15 column 16: field access with "." expects map type, found any
+line 16 column 16: field access with "." expects map type, found any
+line 15 column 9: at least one statement is required here

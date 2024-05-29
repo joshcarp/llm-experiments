@@ -1,0 +1,15 @@
+
+func insert_end:any head:any val:any
+    if head == null
+        return {val:val next:null}
+    end
+    head.next = insert_end head.next val
+    return head
+end
+
+head := {val:1 next:null}
+head = insert_end head 2
+head = insert_end head 3
+head = insert_end head 4
+print head // Prints: {val:1 next:{val:2 next:{val:3 next:{val:4 next:null}}}}
+     

@@ -1,0 +1,35 @@
+
+func delete_last_node:any head:any
+    if head == nil
+        return nil
+    end
+    prev:any
+    curr:any
+    head
+    while curr.next != nil
+        prev = curr
+        curr = curr.next
+    end
+    if prev == nil
+        return nil
+    else
+        prev.next = nil
+        return head
+    end
+end
+
+func print_list:void head:any
+    curr := head
+    while curr != nil
+        print curr.val
+        curr = curr.next
+    end
+    print "\n"
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+print_list head
+head = delete_last_node head
+print_list head
+
+     

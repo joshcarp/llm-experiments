@@ -1,0 +1,24 @@
+
+func numPaths:num root:node length:num sum:num product:num maxElem:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if length == 0 and sum == root.val and product == root.val and maxElem == root.val
+        result = result + 1
+    end
+    result = result + (numPaths root.left length-1 sum+root.val product*root.val (max root.val.maxElem))
+    result = result + (numPaths root.right length-1 sum+root.val product*root.val (max root.val.maxElem))
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (numPaths root 2 6 12 4)
+    assert 1 (numPaths root 1 1 1 1)
+    assert 0 (numPaths root 0 0 0 0)
+    assert 1 (numPaths root 3 12 60 5)
+end
+     
+
+test

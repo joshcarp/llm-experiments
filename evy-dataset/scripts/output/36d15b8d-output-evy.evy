@@ -1,0 +1,33 @@
+
+func lds:num head:node
+    if head == null
+        return 0
+    end
+    maxLen := 1
+    prevVal := head.val
+    head = head.next
+    while head != null
+        if head.val < prevVal
+            maxLen = max 1+maxLen
+        end
+        prevVal = head.val
+        head = head.next
+    end
+    return maxLen
+end
+
+func test
+    n1 := {val:5 next:null}
+    n2 := {val:4 next:null}
+    n3 := {val:3 next:null}
+    n4 := {val:2 next:null}
+    n5 := {val:1 next:null}
+    n1.next = n2
+    n2.next = n3
+    n3.next = n4
+    n4.next = n5
+    assert 5 (lds n1)
+end
+     
+
+test

@@ -1,0 +1,32 @@
+
+func sublists:num arr:[]num product:num maxElem:num
+    result := 0
+    for start := range 0 (len arr)
+        for end := range start+1 (len arr)+1
+            subArr := arr[start:end]
+            product2 := 1
+            maxElem2 := -1
+            for x := range subArr
+                product2 = product2 * x
+                if x > maxElem2
+                    maxElem2 = x
+                end
+            end
+            if product2 == product and maxElem2 <= maxElem
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists [1 2 3 4] 6 3)
+    assert 0 (sublists [1 2 3 4] 7 3)
+    assert 1 (sublists [1 2 3 4] 4 3)
+    assert 0 (sublists [1 2 3 4] 5 2)
+    assert 2 (sublists [1 2 3 4] 6 4)
+end
+     
+
+test

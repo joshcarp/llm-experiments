@@ -1,0 +1,30 @@
+ ```evy
+func deleteNode:any head:any pos:num
+    if pos == 0
+        return head.next
+    end
+    curr := head
+    prev := head
+    for i := range pos
+        prev = curr
+        curr = curr.next
+    end
+    prev.next = curr.next
+    return head
+end
+
+func printList:void head:any
+    curr := head
+    while curr != nil
+        print curr.val
+        curr = curr.next
+    end
+    print "\n"
+end
+
+head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+printList head
+head = deleteNode head 2
+printList head
+
+     

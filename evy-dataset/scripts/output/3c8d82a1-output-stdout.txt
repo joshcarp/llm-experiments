@@ -1,0 +1,42 @@
+line 4 column 5: invalid declaration of "paths", already used as function name
+line 10 column 26: only array, string and map type can be indexed, found any
+line 10 column 27: invalid inferred declaration for "maxWeight"
+line 11 column 23: only array, string and map type can be indexed, found any
+line 11 column 24: invalid inferred declaration for "length"
+line 12 column 22: only array, string and map type can be indexed, found any
+line 12 column 23: invalid inferred declaration for "graph"
+line 14 column 39: unknown variable name "length"
+line 15 column 13: cannot assign to "paths" as it is a function not a variable
+line 15 column 13: at least one statement is required here
+line 18 column 36: only array, string and map type can be indexed, found any
+line 18 column 37: range cannot be empty
+line 18 column 37: unexpected input 0
+line 19 column 46: only array, string and map type can be indexed, found any
+line 19 column 47: invalid inferred declaration for "newMaxWeight"
+line 20 column 26: unknown variable name "length"
+line 20 column 33: invalid inferred declaration for "newLength"
+line 21 column 30: only array, string and map type can be indexed, found any
+line 21 column 31: invalid inferred declaration for "newGraph"
+line 22 column 16: unknown variable name "newMaxWeight"
+line 23 column 35: unknown variable name "neighbor"
+line 23 column 17: at least one statement is required here
+line 28 column 5: missing return
+line 29 column 17: "paths" takes 3 arguments, found 0
+line 29 column 12: return statement not allowed here
+line 30 column 1: unexpected input "end"
+line 31 column 1: unreachable code
+line 32 column 11: expected map key, found 0
+line 32 column 14: expected map key, found 1
+line 32 column 18: expected map key, found 2
+line 32 column 23: expected map key, found 1
+line 32 column 26: expected map key, found 0
+line 32 column 30: expected map key, found 2
+line 32 column 35: expected map key, found 2
+line 32 column 38: expected map key, found 0
+line 32 column 42: expected map key, found 1
+line 32 column 1: unreachable code
+line 33 column 1: unreachable code
+line 34 column 1: unreachable code
+line 35 column 14: "paths" takes 1st argument of type num, found {}{}num
+line 35 column 1: unreachable code
+line 36 column 6: unreachable code

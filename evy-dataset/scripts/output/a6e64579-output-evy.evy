@@ -1,0 +1,28 @@
+
+func reverse_list:any head:any
+    prev:any
+    curr:any
+    next:any
+    prev = nil
+    curr = head
+    while curr != nil
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    end
+    return prev
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:3 next:{val:4 next:nil}}}}
+    reversed := reverse_list head
+    assert 4 (reversed.val)
+    assert 3 (reversed.next.val)
+    assert 2 (reversed.next.next.val)
+    assert 1 (reversed.next.next.next.val)
+    assert nil (reversed.next.next.next.next)
+end
+     
+
+test

@@ -1,0 +1,1 @@
+line 9 column 9: "(seen[(str[i])])" accepts values of type num, found bool

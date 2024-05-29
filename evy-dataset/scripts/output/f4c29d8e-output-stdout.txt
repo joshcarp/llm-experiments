@@ -1,0 +1,6 @@
+line 4 column 16: expected return value of type num, found {}
+line 10 column 15: map index expects string, found num
+line 10 column 9: at least one statement is required here
+line 12 column 45: only array, string and map type can be indexed, found num
+line 13 column 12: expected return value of type num, found {}num
+line 7 column 5: "right" declared but not used

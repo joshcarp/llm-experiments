@@ -1,0 +1,21 @@
+
+func sublists_count:num arr:[]num m:num n:num
+    result := 0
+    for i := range (len arr)-n+1
+        for j := range i+n
+            if arr[j] >= arr[i] and arr[j] <= arr[i+n-1]
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (sublists_count [1 2 3 4 5] 2 3)
+    assert 2 (sublists_count [1 2 3 4 5] 2 4)
+    assert 0 (sublists_count [1 2 3 4 5] 2 5)
+end
+     
+
+test

@@ -1,0 +1,29 @@
+line 5 column 13: expected "range", got "end"
+line 6 column 28: unexpected "end"
+line 6 column 28: invalid inferred declaration for "sub"
+line 7 column 28: unknown variable name "sub"
+line 7 column 31: "str2num" takes 1 argument, found 0
+line 7 column 13: invalid declaration of "min", already used as function name
+line 8 column 23: "min" takes 2 arguments, found 0
+line 8 column 13: invalid declaration of "max", already used as function name
+line 9 column 23: "min" takes 2 arguments, found 0
+line 10 column 35: unknown variable name "sub"
+line 10 column 38: "len" takes 1 argument, found 0
+line 11 column 23: unknown variable name "sub"
+line 11 column 26: invalid inferred declaration for "ch"
+line 12 column 17: unexpected input "num"
+line 13 column 17: cannot assign to "min" as it is a function not a variable
+line 14 column 17: cannot assign to "max" as it is a function not a variable
+line 15 column 29: unexpected "num"
+line 11 column 17: at least one statement is required here
+line 10 column 17: "i" declared but not used
+line 17 column 24: function call must be parenthesized: (min ...)
+line 2 column 39: "maxC" declared but not used
+line 21 column 5: missing return
+line 22 column 12: unknown variable name "result"
+line 22 column 12: return statement not allowed here
+line 23 column 1: unexpected input "end"
+line 24 column 1: unreachable code
+line 33 column 6: unreachable code
+line 34 column 1: unreachable code
+line 35 column 1: unreachable code

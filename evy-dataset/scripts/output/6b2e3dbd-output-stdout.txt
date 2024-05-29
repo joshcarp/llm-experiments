@@ -1,0 +1,10 @@
+line 3 column 5: invalid type declaration for "seen"
+line 6 column 16: unknown variable name "seen"
+line 6 column 21: "has" takes 2 arguments, found 0
+line 6 column 21: expected end of line, found ch
+line 7 column 13: unknown variable name "count"
+line 7 column 13: at least one statement is required here
+line 9 column 9: unknown variable name "seen"
+line 5 column 9: "ch" declared but not used
+line 11 column 12: unknown variable name "count"
+line 11 column 12: expected return value of type num, found ILLEGAL

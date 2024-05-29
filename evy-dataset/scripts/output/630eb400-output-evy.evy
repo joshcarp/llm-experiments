@@ -1,0 +1,71 @@
+ ```evy
+func scs:string s1:string s2:string
+    m := len s1
+    n := len s2
+    dp := [][]int m+1 n+1
+    for i := range m+1
+        dp[i][0] = i
+    end
+    for j := range n+1
+        dp[0][j] = j
+    end
+    for i := range 1 m+1
+        for j := range 1 n+1
+            if s1[i - 1] == s2[j - 1]
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else
+                dp[i][j] = min (dp[i - 1][j] + 1) (dp[i][j - 1] + 1)
+            end
+        end
+    end
+    result:string
+    i := m
+    j := n
+    while i > 0 and j > 0
+        if s1[i - 1] == s2[j - 1]
+            result = s1[i - 1] + result
+            i = i - 1
+            j = j - 1
+        else
+            if dp[i - 1][j] < dp[i][j - 1]
+                result = s1[i - 1] + result
+                i = i - 1
+            else
+                result = s2[j - 1] + result
+                j = j - 1
+            end
+        end
+    end
+    while i > 0
+        result = s1[i - 1] + result
+        i = i - 1
+    end
+    while j > 0
+        result = s2[j - 1] + result
+        j = j - 1
+    end
+    return result
+end
+
+func min:num a:num b:num
+    if a < b
+        return a
+    else
+        return b
+    end
+end
+
+func test
+    assert "aba" (scs "aa" "ba")
+    assert "bacb" (scs "bac" "cb")
+    assert "abcabc" (scs "abc" "abc")
+    assert "aaaaa" (scs "aaaaa" "")
+    assert "bcde" (scs "bcde" "")
+    assert "" (scs "" "")
+    assert "abcde" (scs "abcde" "abcde")
+    assert "abcde" (scs "abcde" "abcde")
+    assert "abcde" (scs "abcde" "abcde")
+end
+     
+
+test

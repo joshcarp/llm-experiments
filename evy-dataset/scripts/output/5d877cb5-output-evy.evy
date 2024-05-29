@@ -1,0 +1,30 @@
+
+func sublists_count:num arr:[]num length:num min:num
+    result := 0
+    for start := range 0 (len arr)
+        for end := range start+length (len arr) + 1
+            if end - start < length
+                break
+            end
+            sublist := arr[start:end]
+            m := sublist[0]
+            for n := range sublist
+                if m > n
+                    m = n
+                end
+            end
+            if m >= min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+numbers := [1 2 3 4 5 6 7 8 9 10]
+length := 3
+min := 5
+count := sublists_count numbers length min
+print count // Prints: 2
+
+     

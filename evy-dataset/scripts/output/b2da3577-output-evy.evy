@@ -1,0 +1,21 @@
+
+func findPath:num root:num target:num
+    if root == target
+        return [root]
+    end
+    leftPath := findPath root * 2 + 1 target
+    if leftPath != []
+        return [root] + leftPath
+    end
+    rightPath := findPath root * 2 + 2 target
+    if rightPath != []
+        return [root] + rightPath
+    end
+    return []
+end
+
+root := 1
+target := 7
+path := findPath root target
+print path // Prints: [1 2 4 7]
+     

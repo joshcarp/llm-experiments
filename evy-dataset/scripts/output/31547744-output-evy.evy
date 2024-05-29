@@ -1,0 +1,26 @@
+
+func paths:num root:node length:num min:num
+    if root == null
+        return 0
+    end
+    result := 0
+    if root.val >= min
+        result = result + 1
+    end
+    if length == 1
+        return result
+    end
+    result = result + (paths root.left length-1 min) + (paths root.right length-1 min)
+    return result
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (paths root 2 2)
+    assert 1 (paths root 2 3)
+    assert 0 (paths root 2 4)
+    assert 0 (paths root 1 5)
+end
+     
+
+test

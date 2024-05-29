@@ -1,0 +1,34 @@
+
+func sublists_count:num arr:[]num length:num sum:num product:num min:num
+    result := 0
+    for i := range (len arr)
+        for j := range i+1 (len arr)
+            sublist := arr[i:j]
+            sublength := j - i
+            subsum := 0
+            subproduct := 1
+            submin := sublist[0]
+            for k := range sublist
+                subsum = subsum + k
+                subproduct = subproduct * k
+                if submin > k
+                    submin = k
+                end
+            end
+            if sublength == length and subsum == sum and subproduct == product and submin == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+numbers := [1 2 3 4 5]
+length := 3
+sum := 6
+product := 60
+min := 2
+count := sublists_count numbers length sum product min
+print count // Prints: 1
+
+     

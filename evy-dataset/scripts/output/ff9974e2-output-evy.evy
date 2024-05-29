@@ -1,0 +1,25 @@
+ ```evy
+func substrings_with_product:num str:string product:num
+    result := 0
+    prefix := [0] * (len str + 1)
+    for i := range (len str)
+        prefix[i + 1] = prefix[i] * (str_code_at str i) % 1000000007
+    end
+    for i := range (len str)
+        for j := range i+1 (len str)
+            if prefix[j + 1] / prefix[i] == product
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (substrings_with_product "abc" 1)
+    assert 2 (substrings_with_product "abc" 3)
+    assert 0 (substrings_with_product "abc" 5)
+end
+     
+
+test

@@ -1,0 +1,19 @@
+
+func lcs:string s1:string s2:string
+    minLen := min (len s1) (len s2)
+    for i := range minLen
+        if s1[-i:] != s2[-i:]
+            return s1[:-(i - 1)]
+        end
+    end
+    return s1
+end
+
+func test
+    assert "ord" (lcs "record" "discord")
+    assert "ance" (lcs "finance" "performance")
+    assert "" (lcs "apple" "banana")
+end
+     
+
+test

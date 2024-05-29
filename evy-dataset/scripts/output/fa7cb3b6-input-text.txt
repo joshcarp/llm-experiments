@@ -1,0 +1,1 @@
+Delete a node from the beginning of a linked list

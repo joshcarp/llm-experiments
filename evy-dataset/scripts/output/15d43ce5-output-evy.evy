@@ -1,0 +1,26 @@
+
+func pathsWithProduct:num root:node* product:num minElem:num length:num
+    if root == nil
+        return 0
+    end
+    result := 0
+    if root.val >= minElem and product % root.val == 0
+        result = result + 1
+    end
+    result = result + (pathsWithProduct root.left product:product minElem:minElem length:length + 1)
+    result = result + (pathsWithProduct root.right product:product minElem:minElem length:length + 1)
+    return result
+end
+
+func pathsWithProductMinElemLength:num root:node* product:num minElem:num length:num
+    return pathsWithProduct root product:product minElem:minElem length:length
+end
+
+root := {val:1 left:{val:2 left:nil right:{val:3 left:nil right:nil}} right:{val:4 left:nil right:nil}}
+product := 6
+minElem := 1
+length := 2
+result := pathsWithProductMinElemLength root product:product minElem:minElem length:length
+print result // Prints: 2
+
+     

@@ -1,0 +1,1 @@
+Insert a node at the beginning of a linked list

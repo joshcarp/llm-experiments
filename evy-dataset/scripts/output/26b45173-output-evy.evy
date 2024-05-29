@@ -1,0 +1,23 @@
+
+func degree:num g:map[string][]string v:string
+    if !(has g v)
+        return 0
+    end
+    return (len g[v])
+end
+
+g := {
+    "A": ["B" "C"]
+    "B": ["A" "D" "E"]
+    "C": ["A" "F"]
+    "D": ["B"]
+    "E": ["B" "F"]
+    "F": ["C" "E"]
+}
+print (degree g "A") // Prints: 2
+print (degree g "B") // Prints: 3
+print (degree g "C") // Prints: 2
+print (degree g "D") // Prints: 1
+print (degree g "E") // Prints: 2
+print (degree g "F") // Prints: 2
+     

@@ -1,0 +1,21 @@
+
+func numUniqueSubstrings:num str:string
+    seen:{}num
+    result:num
+    for i := range 0 (len str)
+        if !(has seen str[i])
+            result = result + 1
+        end
+        seen[str[i]] = true
+    end
+    return result
+end
+
+func test
+    assert 10 (numUniqueSubstrings "abcabcbb")
+    assert 3 (numUniqueSubstrings "bbbbb")
+    assert 1 (numUniqueSubstrings "pwwkew")
+end
+     
+
+test

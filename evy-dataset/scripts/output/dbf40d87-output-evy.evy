@@ -1,0 +1,25 @@
+
+func substrings:num str:string sum:num max:string min:string
+    result := 0
+    for start := range (len str)-2 -1
+        for end := range (len str)-start+1
+            sub := str[start:end+1]
+            sum2 := 0
+            for c := range sub
+                sum2 = sum2 + (ord c - ord "a") + 1
+            end
+            if sum2 == sum and (contains sub max) and (contains sub min)
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+func test
+    assert 1 (substrings "abc" 3 "b" "a")
+    assert 0 (substrings "abc" 3 "d" "a")
+    assert 2 (substrings "abcabc" 6 "c" "a")
+end
+test
+     

@@ -1,0 +1,21 @@
+
+func numPathsMaxElem:num root:node maxElem:num
+    if root == null
+        return 0
+    end
+    leftPaths := numPathsMaxElem root.left maxElem
+    rightPaths := numPathsMaxElem root.right maxElem
+    totalPaths := leftPaths + rightPaths
+    if root.val <= maxElem
+        totalPaths = totalPaths + 1
+    end
+    return totalPaths
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 6 (numPathsMaxElem root 4)
+end
+     
+
+test

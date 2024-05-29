@@ -1,0 +1,35 @@
+
+func paths:num root:node length:num max:num min:num
+    if root == null
+        if length == 0 and max == -2147483648 and min == 2147483647
+            return 1
+        else
+            return 0
+        end
+    end
+    left := paths root.left.(node) length-1 (max) root.val.(num)
+    right := paths root.right.(node) length-1 (max) root.val.(num)
+    return left + right
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 2 (paths root 2 5 1)
+    assert 1 (paths root 1 4 1)
+    assert 0 (paths root 1 5 1)
+    assert 0 (paths root 2 4 1)
+    assert 0 (paths root 2 5 1)
+    assert 0 (paths root 3 4 1)
+    assert 0 (paths root 3 5 1)
+    assert 0 (paths root 4 4 1)
+    assert 0 (paths root 4 5 1)
+    assert 0 (paths root 5 4 1)
+    assert 0 (paths root 5 5 1)
+    assert 0 (paths root 6 4 1)
+    assert 0 (paths root 6 5 1)
+    assert 0 (paths root 7 4 1)
+    assert 0 (paths root 7 5 1)
+end
+     
+
+test

@@ -1,0 +1,17 @@
+
+func numEdges:num G:[][]num
+    result := 0
+    for u := range G
+        for v := range G[u]
+            if u < v
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+G := [[1 2 3] [1 2 3] [1 2 3]]
+print (numEdges G) // Prints: 3
+
+     

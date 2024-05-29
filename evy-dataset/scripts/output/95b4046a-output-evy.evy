@@ -1,0 +1,27 @@
+
+func sublists:num sum:num product:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)
+        for end := range start+1 (len nums)+1
+            subarray := nums[start:end]
+            subsum := 0
+            subproduct := 1
+            for n := range subarray
+                subsum = subsum + n
+                subproduct = subproduct * n
+            end
+            if subsum == sum and subproduct == product
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+sum := 6
+product := 120
+result := sublists nums sum product
+print result // Prints: 2
+
+     

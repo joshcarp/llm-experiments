@@ -1,0 +1,2 @@
+line 27 column 17: "sublists" takes 1st argument of type num, found []num
+line 27 column 34: "sublists" takes 4th argument of type []num, found num

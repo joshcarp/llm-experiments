@@ -1,0 +1,6 @@
+line 6 column 35: unexpected ":"
+line 6 column 35: "height" takes 1 argument, found 0
+line 6 column 35: expected end of line, found ":"
+line 7 column 37: unexpected ":"
+line 7 column 37: "height" takes 1 argument, found 0
+line 7 column 37: expected end of line, found ":"

@@ -1,0 +1,23 @@
+
+func sublists_count:num arr:[]num length:num product:num
+    result := 0
+    for start := range (len arr) - length + 1
+        current_product := 1
+        for i := range length
+            current_product = current_product * arr[start + i]
+        end
+        if current_product == product
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func test
+    assert 2 (sublists_count [1 2 3 4 5] 2 12)
+    assert 1 (sublists_count [1 2 3 4 5] 3 20)
+    assert 0 (sublists_count [1 2 3 4 5] 4 100)
+end
+     
+
+test

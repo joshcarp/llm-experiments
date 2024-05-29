@@ -1,0 +1,19 @@
+
+func paths:num sum:num prod:num length:num root:{}
+    if root == {}
+        return 0
+    end
+    if length == 0
+        if sum == 0 and prod == 1
+            return 1
+        end
+        return 0
+    end
+    left := paths root["left"]:{} sum+root["val"].(num) prod*root["val"].(num) length-1
+    right := paths root["right"]:{} sum+root["val"].(num) prod*root["val"].(num) length-1
+    return left + right
+end
+
+root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (paths root 0 1 3) // Prints: 2
+     

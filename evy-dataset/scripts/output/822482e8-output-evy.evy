@@ -1,0 +1,17 @@
+
+func numUnique:num str:string
+    seen:{}
+    for c := range str
+        seen[c] = true
+    end
+    return len seen
+end
+
+func test
+    assert 3 (numUnique "abcabcbb")
+    assert 1 (numUnique "bbbbb")
+    assert 2 (numUnique "pwwkew")
+end
+     
+
+test

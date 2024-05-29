@@ -1,0 +1,3 @@
+line 2 column 50: invalid type declaration for "root"
+line 2 column 56: invalid type declaration for "Node"
+line 3 column 8: invalid type declaration for "root"

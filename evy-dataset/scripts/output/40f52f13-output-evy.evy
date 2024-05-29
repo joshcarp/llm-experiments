@@ -1,0 +1,29 @@
+
+func sublists:num sum:num prod:num min:num length:num nums:[]num
+    result := 0
+    for start := range 0 (len nums)-length+1
+        for end := range start+length (len nums)+1
+            subarray := nums[start:end]
+            subsum := 0
+            subprod := 1
+            submin := 1000000000
+            for n := range subarray
+                subsum = subsum + n
+                subprod = subprod * n
+                submin = min submin n
+            end
+            if subsum == sum and subprod == prod and submin == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+sum := 6
+prod := 120
+min := 2
+length := 3
+print (sublists sum prod min length nums)
+     

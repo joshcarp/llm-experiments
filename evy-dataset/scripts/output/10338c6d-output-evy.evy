@@ -1,0 +1,76 @@
+
+func scc:[][]num G:[][]num
+    n := len G
+    visited := [false] * n
+    order:[]num
+    dfs1 G order visited
+    Gt:[][]num
+    for i := range n
+        Gt = Gt + [[0] * n]
+    end
+    for i := range n
+        for j := range n
+            Gt[j][i] = G[i][j]
+        end
+    end
+    visited = [false] * n
+    components:[][]num
+    dfs2 Gt components visited order
+    return components
+end
+
+func dfs1 G:[]num order:[]num visited:[]bool
+    for i := range (len G)
+        if !(visited[i])
+            visit i G visited order
+        end
+    end
+end
+
+func visit i:num G:[]num visited:[]bool order:[]num
+    visited[i] = true
+    for j := range (len G[i])
+        if !(visited[j])
+            visit j G visited order
+        end
+    end
+    order = order + [i]
+end
+
+func dfs2 Gt:[][]num components:[][]num visited:[]bool order:[]num
+    component:[]num
+    for i := range (len order)
+        j := order[-(i + 1)]
+        if !(visited[j])
+            visit2 j Gt components visited
+        end
+    end
+end
+
+func visit2 i:num Gt:[][]num components:[][]num visited:[]bool
+    visited[i] = true
+    component:[]num
+    component = component + [i]
+    for j := range (len Gt[i])
+        if !(visited[j]) and Gt[i][j] == 1
+            visit2 j Gt components visited
+            component = component + (components[-1])
+        end
+    end
+    components = components + [component]
+end
+
+func test
+    G := [[0 1 0 0 0 0 0]
+         [0 0 1 0 0 0 0]
+         [0 0 0 1 0 0 0]
+         [0 0 0 0 1 0 0]
+         [0 0 0 0 0 1 0]
+         [0 0 0 0 0 0 1]
+         [0 0 0 0 0 0 0]]
+    components := scc G
+    print components
+end
+     
+
+test

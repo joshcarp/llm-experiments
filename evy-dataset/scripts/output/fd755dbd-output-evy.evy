@@ -1,0 +1,30 @@
+
+func sublists:num length:num product:num maxElem:num nums:[]num
+    result := 0
+    for i := range (len nums)
+        for j := range i+length
+            if j < (len nums)
+                sublist := nums[i:j]
+                subproduct := 1
+                submax := 0
+                for k := range sublist
+                    subproduct = subproduct * sublist[k]
+                    if sublist[k] > submax
+                        submax = sublist[k]
+                    end
+                end
+                if subproduct == product and submax == maxElem
+                    result = result + 1
+                end
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+product := 12
+maxElem := 3
+length := 2
+print (sublists length product maxElem nums) // Prints: 2
+     

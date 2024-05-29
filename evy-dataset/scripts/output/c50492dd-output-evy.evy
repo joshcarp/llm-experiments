@@ -1,0 +1,32 @@
+
+func subarrays:num arr:[]num maxElem:num subarrayLen:num
+    result := 0
+    for start := range 0 (len arr)-subarrayLen + 1
+        end := start + subarrayLen - 1
+        window := arr[start:end + 1]
+        m := max window
+        if m <= maxElem
+            result = result + 1
+        end
+    end
+    return result
+end
+
+func max:num nums:[]num
+    m := nums[0]
+    for n := range nums[1:]
+        if m < n
+            m = n
+        end
+    end
+    return m
+end
+
+func test
+    assert 3 (subarrays [1 2 3 4 5] 3 2)
+    assert 2 (subarrays [1 2 3 4 5] 2 3)
+    assert 0 (subarrays [1 2 3 4 5] 1 5)
+end
+     
+
+test

@@ -1,0 +1,1 @@
+Find the number of substrings of a string with a given product of characters and maximum and minimum character

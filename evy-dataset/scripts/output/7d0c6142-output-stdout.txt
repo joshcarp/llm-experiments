@@ -1,0 +1,16 @@
+line 3 column 16: unknown variable name "null"
+line 6 column 17: field access with "." expects map type, found any
+line 6 column 18: invalid inferred declaration for "prev"
+line 7 column 16: field access with "." expects map type, found any
+line 8 column 19: unknown variable name "null"
+line 9 column 12: unknown variable name "prev"
+line 12 column 9: unknown variable name "prev"
+line 13 column 20: field access with "." expects map type, found any
+line 19 column 76: unknown variable name "null"
+line 19 column 80: "isSorted" takes 1 argument, found 0
+line 19 column 80: expected ")", got "}"
+line 19 column 80: expected end of line, found "}"
+line 20 column 77: unknown variable name "null"
+line 20 column 81: "isSorted" takes 1 argument, found 0
+line 20 column 81: expected ")", got "}"
+line 20 column 81: expected end of line, found "}"

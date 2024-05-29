@@ -1,0 +1,2 @@
+line 2 column 29: expected identifier, got "end"
+line 2 column 29: expected identifier, got "end"

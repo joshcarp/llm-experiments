@@ -1,0 +1,26 @@
+line 5 column 13: expected "range", got "end"
+line 6 column 35: unexpected "end"
+line 6 column 35: invalid inferred declaration for "sublist"
+line 8 column 13: invalid declaration of "max", already used as function name
+line 9 column 28: unknown variable name "sublist"
+line 9 column 35: range cannot be empty
+line 10 column 35: unknown variable name "s"
+line 11 column 20: unknown variable name "s"
+line 12 column 21: cannot assign to "max" as it is a function not a variable
+line 12 column 21: at least one statement is required here
+line 15 column 16: unknown variable name "subsum"
+line 2 column 19: "sum" declared but not used
+line 2 column 27: "maxElem" declared but not used
+line 18 column 9: missing return
+line 19 column 5: unexpected input "end"
+line 20 column 12: unknown variable name "result"
+line 20 column 12: return statement not allowed here
+line 21 column 1: unexpected input "end"
+line 22 column 1: unreachable code
+line 23 column 1: unreachable code
+line 24 column 1: unreachable code
+line 25 column 1: unreachable code
+line 26 column 17: "sublists" takes 1st argument of type num, found []num
+line 26 column 26: "sublists" takes 3rd argument of type []num, found num
+line 26 column 1: unreachable code
+line 27 column 6: unreachable code

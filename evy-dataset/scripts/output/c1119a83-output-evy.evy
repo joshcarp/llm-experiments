@@ -1,0 +1,47 @@
+
+func isPalindrome:bool head:Node
+    fast := head
+    slow := head
+    while fast != nil and fast.next != nil
+        fast = fast.next.next
+        slow = slow.next
+    end
+    if fast == nil
+        return true
+    else
+        return false
+    end
+end
+
+func reverse:Node head:Node
+    var prev:Node
+    while head != nil
+        tmp := head.next
+        head.next = prev
+        prev = head
+        head = tmp
+    end
+    return prev
+end
+
+func checkPalindrome:bool head:Node
+    if head == nil or head.next == nil
+        return true
+    end
+    if head.val != (reverse head).val
+        return false
+    end
+    return true
+end
+
+func test
+    head := {val:1 next:{val:2 next:{val:2 next:{val:1 next:nil}}}}
+    assert true (isPalindrome head)
+    assert true (checkPalindrome head)
+    head = {val:1 next:{val:2 next:{val:3 next:{val:1 next:nil}}}}
+    assert false (isPalindrome head)
+    assert false (checkPalindrome head)
+end
+     
+
+test

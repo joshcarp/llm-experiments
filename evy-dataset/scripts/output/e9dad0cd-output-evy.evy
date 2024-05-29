@@ -1,0 +1,28 @@
+
+func paths:num graph:[][]num maxWeight:num
+    n := len graph
+    dp := [[0] * n * maxWeight * 2 * 2] * n
+    for i := range n
+        dp[i][0] = 1
+    end
+    for i := range n
+        for j := range n
+            for w := range maxWeight*2
+                dp[i][w + 1] = dp[i][w + 1] + dp[j][w]
+            end
+            for w := range maxWeight*2
+                dp[i][w + maxWeight + 1] = dp[i][w + maxWeight + 1] + dp[j][w + maxWeight]
+            end
+        end
+    end
+    return dp[n - 1][maxWeight]
+end
+
+func test
+    assert 1 (paths [[0 1 0] [1 0 1] [0 1 0]] 1)
+    assert 2 (paths [[0 1 0] [1 0 1] [0 1 0]] 2)
+    assert 4 (paths [[0 1 0] [1 0 1] [0 1 0]] 3)
+end
+     
+
+test

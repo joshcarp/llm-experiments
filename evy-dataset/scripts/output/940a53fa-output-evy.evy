@@ -1,0 +1,39 @@
+
+func topSort:array G:map[string][]string
+    visited:{}
+    stack:[]string
+    for node := range G
+        visited[node] = false
+    end
+    for node := range G
+        if !(visited[node])
+            dfs G visited stack node
+        end
+    end
+    return stack
+end
+
+func dfs G:map[string][]string visited:{} stack:[]string node:string
+    visited[node] = true
+    for neighbor := range G[node]
+        if !(visited[neighbor])
+            dfs G visited stack neighbor
+        end
+    end
+    stack = [node]+stack
+end
+
+func test
+    G := {
+        "A": ["B" "C"]
+        "B": ["D" "E"]
+        "C": ["F"]
+        "D": []
+        "E": ["F"]
+        "F": []
+    }
+    assert ["A" "C" "F" "B" "E" "D"] (topSort G)
+end
+     
+
+test

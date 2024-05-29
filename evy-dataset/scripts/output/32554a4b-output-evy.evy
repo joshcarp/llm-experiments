@@ -1,0 +1,17 @@
+
+func wordFreq:num words:string
+    freqs:{}num
+    for word := range words
+        if has freqs word
+            freqs[word] = freqs[word] + 1
+        else
+            freqs[word] = 1
+        end
+    end
+    return freqs
+end
+
+txt := "the quick brown fox jumped over the lazy dog"
+freqs := wordFreq txt
+print freqs
+     

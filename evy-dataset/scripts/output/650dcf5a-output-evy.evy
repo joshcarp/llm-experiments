@@ -1,0 +1,24 @@
+
+func pathsWithSumMaxElem:num root:node sum:num maxElem:num
+    if root == null
+        return 0
+    end
+    leftPaths := pathsWithSumMaxElem root.left sum maxElem
+    rightPaths := pathsWithSumMaxElem root.right sum maxElem
+    totalPaths := leftPaths + rightPaths
+    if root.val <= maxElem
+        totalPaths = totalPaths + 1
+    end
+    if root.val == sum and root.val <= maxElem
+        totalPaths = totalPaths + 1
+    end
+    return totalPaths
+end
+
+func test
+    root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+    assert 4 (pathsWithSumMaxElem root 7 5)
+end
+     
+
+test

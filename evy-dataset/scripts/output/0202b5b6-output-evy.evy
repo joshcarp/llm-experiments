@@ -1,0 +1,31 @@
+
+func sublists:num sum:num prod:num max:num min:num nums:[]num
+    result := 0
+    for i := range (len nums)
+        for j := range i+1 (len nums)+1
+            sublist := nums[i:j]
+            subsum := 0
+            subprod := 1
+            submax := -2147483648
+            submin := 2147483647
+            for k := range sublist
+                subsum = subsum + k
+                subprod = subprod * k
+                submax = max submax k
+                submin = min submin k
+            end
+            if subsum == sum and subprod == prod and submax == max and submin == min
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+nums := [1 2 3 4 5]
+sum := 6
+prod := 60
+max := 5
+min := 1
+print (sublists nums sum prod max min)
+     

@@ -1,0 +1,20 @@
+
+func substrings:num str:string product:num maxChar:string minChar:string
+    result := 0
+    for start := range (len str)-2 -1 -1
+        for end := range (len str)-start -1 -1
+            sub := str[start:end+1]
+            p := 1
+            for c := range sub
+                p = p * (ord c - ord "a" + 1)
+            end
+            if p == product and (sub[0] == maxChar or sub[-1] == maxChar) and (sub[0] == minChar or sub[-1] == minChar)
+                result = result + 1
+            end
+        end
+    end
+    return result
+end
+
+print (substrings "abcde" 120 "e" "a")
+     

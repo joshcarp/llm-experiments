@@ -1,0 +1,21 @@
+
+func countRepeating:num str:string
+    seen:{}
+    count := 0
+    for ch := range str
+        if has seen ch
+            count = count + 1
+        end
+        seen[ch] = true
+    end
+    return count
+end
+
+func test
+    assert 2 (countRepeating "aaabbb")
+    assert 1 (countRepeating "abcde")
+    assert 0 (countRepeating "xyxyxyxy")
+end
+     
+
+test

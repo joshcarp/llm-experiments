@@ -1,0 +1,25 @@
+
+func median:num root:node
+    leftSize := size root.left
+    rightSize := size root.right
+    if leftSize == rightSize
+        return root.val
+    else if leftSize > rightSize
+        return median root.left
+    else
+        return median root.right
+    end
+end
+
+func size:num root:node
+    if root == null
+        return 0
+    else
+        return 1 + (size root.left) + (size root.right)
+    end
+end
+
+root := {val:1 left:{val:2 left:null right:{val:3 left:null right:null}} right:{val:4 left:null right:{val:5 left:null right:null}}}
+print (median root) // Prints: 3
+
+     
