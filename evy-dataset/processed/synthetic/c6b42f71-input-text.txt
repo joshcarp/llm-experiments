@@ -1,0 +1,1 @@
+In evy, implement a linear search algorithm to find an element in an unsorted array using recursion.

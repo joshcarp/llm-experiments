@@ -1,0 +1,1 @@
+Write an evy function to determine the number of characters in a given string.

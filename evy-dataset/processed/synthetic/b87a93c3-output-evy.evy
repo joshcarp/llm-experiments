@@ -1,0 +1,15 @@
+
+func countLines:num str:string
+    lines := 1
+    for c := range str
+        if c == "\n"
+            lines = lines + 1
+        end
+    end
+    return lines
+end
+
+txt := "Hello\nWorld\nHow\nAre\nYou?"
+print (countLines txt) // Prints: 5
+
+     

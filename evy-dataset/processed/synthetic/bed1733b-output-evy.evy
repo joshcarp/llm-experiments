@@ -1,0 +1,13 @@
+
+func sumDiagonal:num m:[][]num
+    sum := 0
+    for i := range (len m)
+        sum = sum + m[i][i]
+    end
+    return sum
+end
+
+m := [[1 2 3] [4 5 6] [7 8 9]]
+print (sumDiagonal m) // Prints: 15
+
+     

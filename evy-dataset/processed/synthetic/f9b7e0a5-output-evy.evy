@@ -1,0 +1,23 @@
+
+func sortStrings:[]string arr:[]string
+    for endIdx := range (len arr)-1 0 -1
+        for i := range endIdx
+            if arr[i] > arr[i + 1]
+                tmp := arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = tmp
+            end
+        end
+    end
+    return arr
+end
+
+func test
+    assert ["apple" "banana" "cherry"] (sortStrings ["apple" "cherry" "banana"])
+    assert ["1" "2" "3"] (sortStrings ["3" "2" "1"])
+    assert [] (sortStrings [])
+    assert ["a" "b" "c"] (sortStrings ["c" "b" "a"])
+end
+     
+
+test

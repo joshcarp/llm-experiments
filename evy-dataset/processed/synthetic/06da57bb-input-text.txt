@@ -1,0 +1,1 @@
+Given a list of integers in evy, find the sum of all even numbers.

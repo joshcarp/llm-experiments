@@ -1,0 +1,21 @@
+
+func squareRoot:num x:num
+    low := 0
+    high := x
+    while (high - low) > 0.001
+        mid := (low + high) / 2
+        square := mid * mid
+        if square == x
+            return mid
+        else if square < x
+            low = mid
+        else
+            high = mid
+        end
+    end
+    return low
+end
+
+print (squareRoot 9) // Prints: 3.0000000000000004
+print (squareRoot 0.04) // Prints: 0.2
+     

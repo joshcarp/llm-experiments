@@ -1,0 +1,16 @@
+
+func maxElem:num nums:[]num
+    if (len nums) == 1
+        return nums[0]
+    else
+        m := maxElem nums[1:]
+        if nums[0] > m
+            return nums[0]
+        else
+            return m
+        end
+    end
+end
+
+print (maxElem [1 2 3 4 5])
+     

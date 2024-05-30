@@ -1,0 +1,16 @@
+
+func sumEven:num nums:[]num
+    sum := 0
+    for n := range nums
+        if n % 2 == 0
+            sum = sum + n
+        end
+    end
+    return sum
+end
+
+numbers := [1 2 3 4 5 6 7 8 9 10]
+sum := sumEven numbers
+print sum // Prints: 30
+
+     

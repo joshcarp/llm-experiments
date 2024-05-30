@@ -1,0 +1,21 @@
+
+func is_valid_phone_number:bool number:string
+    if (len number) != 10
+        return false
+    end
+    for c := range number
+        if c < "0" or c > "9"
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(is_valid_phone_number "1234567890")
+    assert false==(is_valid_phone_number "123456789")
+    assert false==(is_valid_phone_number "123456789a")
+end
+     
+
+test

@@ -1,0 +1,17 @@
+
+func bin2dec:num bin:string
+    if (len bin) == 1
+        return (str2num bin)
+    else
+        return (str2num bin[-1]) + (2 * (bin2dec bin[:-1]))
+    end
+end
+
+assert 1 (bin2dec "1")
+assert 2 (bin2dec "10")
+assert 3 (bin2dec "11")
+assert 4 (bin2dec "100")
+assert 5 (bin2dec "101")
+assert 10 (bin2dec "1010")
+assert 15 (bin2dec "1111")
+     

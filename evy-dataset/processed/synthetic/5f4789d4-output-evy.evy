@@ -1,0 +1,13 @@
+
+func maxDiff:num nums:[]num
+    result := 0
+    for i := range 1 (len nums)
+        result = max result (nums[i] - nums[i - 1])
+    end
+    return result
+end
+
+numbers := [2 7 3 5 4 6 1]
+print (maxDiff numbers) // Prints: 5
+
+     

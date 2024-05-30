@@ -1,0 +1,11 @@
+
+func sumEvens:num n:num
+    sum := 0
+    for i := range 2 n+1 2
+        sum = sum + i
+    end
+    return sum
+end
+
+print (sumEvens 10) // Prints: 30
+     

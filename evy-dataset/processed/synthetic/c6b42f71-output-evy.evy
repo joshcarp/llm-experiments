@@ -1,0 +1,24 @@
+
+func linearSearch:num arr:[]num target:num
+    length := len arr
+    if length == 0
+        return -1
+    end
+    if arr[0] == target
+        return 0
+    end
+    result := linearSearch arr[1:] target
+    if result == -1
+        return -1
+    end
+    return result + 1
+end
+
+func test
+    arr := [1 2 3 4 5]
+    assert 2 (linearSearch arr 3)
+    assert -1 (linearSearch arr 6)
+end
+     
+
+test

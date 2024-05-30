@@ -1,0 +1,8 @@
+
+func stringLength:num str:string
+    return (len str)
+end
+
+txt := "Hello, world!"
+print (stringLength txt) // Prints: 13
+     
