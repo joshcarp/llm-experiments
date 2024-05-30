@@ -1,0 +1,11 @@
+
+func sum_to_n:num n:num
+    sum := 0
+    for i := range n+1
+        sum = sum + i
+    end
+    return sum
+end
+
+print (sum_to_n 10) // Prints: 55
+     

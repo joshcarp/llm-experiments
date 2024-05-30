@@ -1,0 +1,1 @@
+Given an array in evy, find the missing number in a consecutive sequence.

@@ -1,0 +1,13 @@
+
+func reverseSentence:string sentence:string
+    words := split sentence " "
+    reversedWords:[]string
+    for i := range (len words)-1 -1 -1
+        reversedWords = reversedWords + [words[i]]
+    end
+    return join reversedWords " "
+end
+
+txt := "Hello world"
+print (reverseSentence txt) // Prints: world Hello
+     
