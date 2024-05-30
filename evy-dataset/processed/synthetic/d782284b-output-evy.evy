@@ -1,0 +1,7 @@
+
+func surfaceAreaCube:num side:num
+    return 6 * side * side
+end
+
+print (surfaceAreaCube 3) // Prints: 54
+     

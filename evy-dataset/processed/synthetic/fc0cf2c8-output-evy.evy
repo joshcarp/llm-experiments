@@ -1,0 +1,7 @@
+
+func squareArea:num side:num
+    return side * side
+end
+
+print (squareArea 5) // Prints the area of a square with side length 5
+     

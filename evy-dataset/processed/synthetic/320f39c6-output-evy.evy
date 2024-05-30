@@ -1,0 +1,7 @@
+
+func volumePyramid:num base:num height:num
+    return (base * base * height) / 3
+end
+
+print (volumePyramid 4 5) // Prints: 26.666666666666668
+     

@@ -1,0 +1,7 @@
+
+func perimeter:num a:num b:num
+    return 2 * (a + b)
+end
+
+print (perimeter 3 4) // Prints: 14
+     

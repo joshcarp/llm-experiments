@@ -1,0 +1,39 @@
+
+func mergeSort:[]num arr:[]num
+    if (len arr) <= 1
+        return arr
+    end
+    mid := floor (len arr)/2
+    left := mergeSort arr[0:mid]
+    right := mergeSort arr[mid:]
+    return merge left right
+end
+
+func merge:[]num left:[]num right:[]num
+    result:[]num
+    lIdx := 0
+    rIdx := 0
+    while lIdx < (len left) and rIdx < (len right)
+        if left[lIdx] <= right[rIdx]
+            result = result + [left[lIdx]]
+            lIdx = lIdx + 1
+        else
+            result = result + [right[rIdx]]
+            rIdx = rIdx + 1
+        end
+    end
+    while lIdx < (len left)
+        result = result + [left[lIdx]]
+        lIdx = lIdx + 1
+    end
+    while rIdx < (len right)
+        result = result + [right[rIdx]]
+        rIdx = rIdx + 1
+    end
+    return result
+end
+
+numbers := [5 2 8 3 1 9 4 7 6]
+numbers = mergeSort numbers
+print numbers // Prints: [1 2 3 4 5 6 7 8 9]
+     

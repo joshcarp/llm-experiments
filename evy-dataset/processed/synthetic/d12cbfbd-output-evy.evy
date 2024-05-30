@@ -1,0 +1,13 @@
+
+func numDivisors:num n:num
+    result := 0
+    for i := range 1 n+1
+        if n % i == 0
+            result = result + 1
+        end
+    end
+    return result
+end
+
+print (numDivisors 12) // Prints: 6
+     

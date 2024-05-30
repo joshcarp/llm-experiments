@@ -1,0 +1,22 @@
+
+func quicksort:[]num arr:[]num
+    if (len arr) <= 1
+        return arr
+    end
+    pivot := arr[0]
+    left:[]num
+    right:[]num
+    for i := range 1 (len arr)
+        if arr[i] < pivot
+            left = left + [arr[i]]
+        else
+            right = right + [arr[i]]
+        end
+    end
+    return (quicksort left) + [pivot] + (quicksort right)
+end
+
+numbers := [5 3 1 2 4]
+numbers = quicksort numbers
+print numbers // Prints: [1 2 3 4 5]
+     

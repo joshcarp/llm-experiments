@@ -1,0 +1,16 @@
+
+func productDivisors:num n:num
+    result := 1
+    for i := range 1 (sqrt n)+1
+        if n % i == 0
+            result = result * i
+            if i != n/i
+                result = result * (n/i)
+            end
+        end
+    end
+    return result
+end
+
+print (productDivisors 12) // Prints: 288
+     

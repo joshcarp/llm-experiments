@@ -1,0 +1,7 @@
+
+func trapezoid_perimeter:num a:num b:num c:num d:num
+    return a + b + c + d
+end
+
+print (trapezoid_perimeter 1 2 3 4)
+     

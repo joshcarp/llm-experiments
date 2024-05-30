@@ -1,0 +1,7 @@
+
+func perimeter:num a:num b:num c:num
+    return a + b + c
+end
+
+print (perimeter 3 4 5) // Prints the perimeter of a triangle with sides 3, 4, and 5
+     

@@ -1,0 +1,12 @@
+
+func gcd:num a:num b:num
+    while b != 0
+        tmp := a
+        a = b
+        b = tmp % b
+    end
+    return a
+end
+
+print (gcd 12 18) // Prints: 6
+     

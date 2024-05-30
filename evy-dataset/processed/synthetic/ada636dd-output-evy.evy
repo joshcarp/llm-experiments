@@ -1,0 +1,7 @@
+
+func square_perimeter:num side:num
+    return side * 4
+end
+
+print (square_perimeter 5) // Prints the perimeter of a square with side length 5
+     

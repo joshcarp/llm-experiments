@@ -1,0 +1,10 @@
+
+func surfaceArea:num base:num height:num slantHeight:num
+    return base * height + 2 * base * slantHeight + 2 * slantHeight * slantHeight
+end
+
+base := 10
+height := 5
+slantHeight := (base / 2) + (height * height / (base / 2) / (base / 2))
+print (surfaceArea base height slantHeight)
+     

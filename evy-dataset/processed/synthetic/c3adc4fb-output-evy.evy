@@ -1,0 +1,13 @@
+
+func sumDivisors:num n:num
+    sum := 0
+    for i := range 1 n+1
+        if n % i == 0
+            sum = sum + i
+        end
+    end
+    return sum
+end
+
+print (sumDivisors 12) // Prints: 28
+     

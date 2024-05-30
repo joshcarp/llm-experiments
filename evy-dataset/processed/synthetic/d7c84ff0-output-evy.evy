@@ -1,0 +1,7 @@
+
+func trapezoidArea:num a:num b:num h:num
+    return (a + b) * h / 2
+end
+
+print (trapezoidArea 1 3 2) // Prints: 4
+     

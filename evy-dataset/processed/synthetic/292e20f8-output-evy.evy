@@ -1,0 +1,7 @@
+
+func triangleArea:num base:num height:num
+    return (base * height) / 2
+end
+
+print (triangleArea 3 4) // Prints: 6
+     

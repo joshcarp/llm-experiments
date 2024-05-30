@@ -1,0 +1,7 @@
+
+func circumference:num radius:num
+    return 2 * 3.141592653589793 * radius
+end
+
+print (circumference 5) // Prints the circumference of a circle with radius 5
+     

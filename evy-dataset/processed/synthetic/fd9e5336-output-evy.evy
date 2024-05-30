@@ -1,0 +1,7 @@
+
+func parallelogramArea:num base:num height:num
+    return base * height
+end
+
+print (parallelogramArea 5 3) // Prints: 15
+     

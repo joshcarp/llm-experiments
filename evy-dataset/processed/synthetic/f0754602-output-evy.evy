@@ -1,0 +1,7 @@
+
+func area_rhombus:num p:num q:num
+    return p * q / 2
+end
+
+print (area_rhombus 4 5) // Prints: 10
+     

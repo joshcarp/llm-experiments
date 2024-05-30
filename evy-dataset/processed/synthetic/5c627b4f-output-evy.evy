@@ -1,0 +1,8 @@
+
+func surfaceAreaCylinder:num radius:num height:num
+    pi := 3.141592653589793
+    return 2 * pi * radius * (radius + height)
+end
+
+print (surfaceAreaCylinder 1 2) // Prints: 18.84955592153876
+     
