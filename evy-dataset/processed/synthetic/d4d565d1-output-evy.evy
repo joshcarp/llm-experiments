@@ -1,0 +1,25 @@
+
+func numPalindromes:num str:string
+    if (len str) == 0
+        return 1
+    end
+    result := 0
+    for i := range 1 (len str)
+        if isPalindrome str[:i]
+            result = result + (numPalindromes str[i:])
+        end
+    end
+    return result
+end
+
+func isPalindrome:bool str:string
+    for i := range (floor (len str)/2)
+        if str[i] != str[-i - 1]
+            return false
+        end
+    end
+    return true
+end
+
+print (numPalindromes "abccba")
+     

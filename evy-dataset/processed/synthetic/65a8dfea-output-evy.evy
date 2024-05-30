@@ -1,0 +1,18 @@
+
+func schedule:num jobs:[][]num
+    n := len jobs
+    dp := [0] * n
+    dp[0] = jobs[0][1]
+    for i := range 1 n
+        max_prev := 0
+        for j := range i
+            max_prev = max max_prev dp[j]
+        end
+        dp[i] = max_prev + jobs[i][1]
+    end
+    return dp[-1]
+end
+
+jobs := [[1 2] [2 5] [4 6] [5 4] [6 3]]
+print (schedule jobs)
+     

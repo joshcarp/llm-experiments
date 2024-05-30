@@ -1,0 +1,24 @@
+
+func gnomeSort:[]num arr:[]num
+    result:[]num
+    for i := range (len arr)
+        if i == 0 or arr[i] >= arr[i - 1]
+            result = result + [arr[i]]
+        else
+            tmp := arr[i]
+            j := i
+            while j > 0 and tmp < arr[j - 1]
+                arr[j] = arr[j - 1]
+                j = j - 1
+            end
+            arr[j] = tmp
+            result = result + [arr[i]]
+        end
+    end
+    return result
+end
+
+numbers := [5 3 1 2 4]
+numbers = gnomeSort numbers
+print numbers // Prints: [1 2 3 4 5]
+     

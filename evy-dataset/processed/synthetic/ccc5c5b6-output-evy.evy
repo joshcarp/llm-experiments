@@ -1,0 +1,25 @@
+
+func gnomeSort:[]num arr:[]num
+    n := len arr
+    i := 0
+    while i < n
+        if i == 0 or arr[i] >= arr[i - 1]
+            i = i + 1
+        else
+            tmp := arr[i]
+            arr[i] = arr[i - 1]
+            arr[i - 1] = tmp
+            i = i - 1
+        end
+    end
+    return arr
+end
+
+func test
+    assert [1 2 3 4 5] (gnomeSort [5 4 3 2 1])
+    assert [1 2 3 4 5] (gnomeSort [1 2 3 4 5])
+    assert [1 2 3 4 5] (gnomeSort [5 4 3 1 2])
+end
+     
+
+test

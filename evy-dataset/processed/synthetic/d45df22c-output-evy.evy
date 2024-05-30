@@ -1,0 +1,39 @@
+
+func prim:num G:[][]num
+    // G is the adjacency matrix of an undirected graph
+    // with non-negative edge weights
+    // Returns the total weight of the minimum spanning tree
+    n := len G
+    visited := [false] * n
+    visited[0] = true
+    tree_edges := 0
+    min_weight := 0
+    while tree_edges < n - 1
+        u := -1
+        v := -1
+        min_edge := -1
+        for i := range n
+            if visited[i]
+                for j := range n
+                    if G[i][j] > 0 and G[i][j] < min_edge and !(visited[i] and visited[j])
+                        min_edge = G[i][j]
+                        u = i
+                        v = j
+                    end
+                end
+            end
+        end
+        visited[v] = true
+        tree_edges = tree_edges + 1
+        min_weight = min_weight + min_edge
+    end
+    return min_weight
+end
+
+graph := [[0 2 0 6 0]
+         [2 0 3 8 5]
+         [0 3 0 0 7]
+         [6 8 0 0 9]
+         [0 5 7 9 0]]
+print (prim graph) // Prints: 32
+     

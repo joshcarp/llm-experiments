@@ -1,0 +1,25 @@
+
+func binarySearch:num arr:[]num target:num
+    left := 0
+    right := (len arr) - 1
+    while left <= right
+        mid := floor ((left + right) / 2)
+        guess := arr[mid]
+        if guess == target
+            return mid
+        else if guess < target
+            left = mid + 1
+        else
+            right = mid - 1
+        end
+    end
+    return -1
+end
+
+func test
+    assert 2 (binarySearch [1 2 3 4 5] 3)
+    assert -1 (binarySearch [1 2 3 4 5] 6)
+end
+     
+
+test
