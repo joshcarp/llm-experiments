@@ -1,0 +1,30 @@
+
+func firstMissingPositive:num nums:[]num
+    seen:{}bool
+    for n := range nums
+        ns := sprint n
+        seen[ns] = true
+    end
+    i := 1
+    while true
+        ns := sprint i
+        if !(has seen ns)
+            return i
+        end
+        i = i + 1
+    end
+    return -1
+end
+
+func test
+    assert 3 (firstMissingPositive [1 2 0])
+    assert 2 (firstMissingPositive [1 0])
+    assert 1 (firstMissingPositive [0])
+    assert 1 (firstMissingPositive [])
+    assert 2 (firstMissingPositive [1])
+    assert 3 (firstMissingPositive [1 2])
+    assert 1 (firstMissingPositive [2])
+end
+     
+
+test

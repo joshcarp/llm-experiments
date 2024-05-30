@@ -1,0 +1,31 @@
+
+func mostFrequentChar:string str:string
+    counts:{}num
+    for ch := range str
+        if has counts ch
+            counts[ch] = counts[ch] + 1
+        else
+            counts[ch] = 1
+        end
+    end
+    maxCount := 0
+    maxChar := ""
+    for key := range counts
+        if counts[key] > maxCount
+            maxCount = counts[key]
+            maxChar = key
+        end
+    end
+    return maxChar
+end
+
+func test
+    assert "a" (mostFrequentChar "aaabbb")
+    assert "b" (mostFrequentChar "bbbaaa")
+    assert "c" (mostFrequentChar "cccdde")
+    assert "d" (mostFrequentChar "dddccc")
+    assert "e" (mostFrequentChar "eeeeccc")
+end
+     
+
+test

@@ -1,0 +1,11 @@
+
+func dec2bin:string n:num
+    if n < 2
+        return (sprint n)
+    else
+        return (dec2bin (floor n/2)) + (sprint n%2)
+    end
+end
+
+print (dec2bin 10) // Prints: 1010
+     

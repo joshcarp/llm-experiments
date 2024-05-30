@@ -1,0 +1,11 @@
+
+func squareRoot:num x:num
+    guess := x / 2
+    while (guess * guess) > x + 0.001 or (guess * guess) < x - 0.001
+        guess = (guess + x / guess) / 2
+    end
+    return guess
+end
+
+print (squareRoot 2) // Prints: 1.4142135623730951
+     

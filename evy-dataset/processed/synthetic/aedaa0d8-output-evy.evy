@@ -1,0 +1,9 @@
+
+func wordCount:num str:string
+    words := split str " "
+    return len words
+end
+
+txt := "Hello world how are you"
+print (wordCount txt) // Prints: 5
+     
