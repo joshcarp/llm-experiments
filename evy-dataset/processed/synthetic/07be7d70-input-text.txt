@@ -1,0 +1,1 @@
+Implement a function in evy to calculate the square root of a number using a binary search approach with a loop using a nested loop.

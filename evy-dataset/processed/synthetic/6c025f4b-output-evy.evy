@@ -1,0 +1,21 @@
+
+func minElem:num root:{}any
+    if root == {}
+        return 9223372036854775807
+    end
+    m := root.val.(num)
+    left := minElem root.left.({}any)
+    right := minElem root.right.({}any)
+    if left < m
+        m = left
+    end
+    if right < m
+        m = right
+    end
+    return m
+end
+
+root := {val:1 left:{val:2 left:{} right:{val:3 left:{} right:{}}} right:{val:4 left:{} right:{val:5 left:{} right:{}}}}
+print (minElem root)
+
+     

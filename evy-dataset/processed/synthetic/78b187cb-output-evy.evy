@@ -1,0 +1,15 @@
+
+func factorial:num n:num
+    if n == 0
+        return 1
+    else
+        result := 1
+        for i := range n
+            result = result * (i + 1)
+        end
+        return result
+    end
+end
+
+print (factorial 5) // Prints: 120
+     

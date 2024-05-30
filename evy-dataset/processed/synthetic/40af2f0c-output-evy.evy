@@ -1,0 +1,9 @@
+
+func paragraphCount:num str:string
+    paragraphs := split str "\n\n"
+    return len paragraphs
+end
+
+txt := "This is a test.\n\nThis is another paragraph.\n\nAnd this is the third."
+print (paragraphCount txt) // Prints: 3
+     

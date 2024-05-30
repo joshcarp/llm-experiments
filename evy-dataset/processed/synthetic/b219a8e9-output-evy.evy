@@ -1,0 +1,16 @@
+
+func minElem:num nums:[]num
+    if (len nums) == 1
+        return nums[0]
+    else
+        m := minElem nums[1:]
+        if nums[0] < m
+            return nums[0]
+        else
+            return m
+        end
+    end
+end
+
+print (minElem [1 2 3 4 5])
+     

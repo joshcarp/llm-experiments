@@ -1,0 +1,27 @@
+
+func decimalToBinary:string n:num
+    if n == 0
+        return "0"
+    end
+    result := ""
+    while n > 0
+        if n % 2 == 0
+            result = "0" + result
+        else
+            result = "1" + result
+        end
+        n = floor n/2
+    end
+    return result
+end
+
+func test
+    assert "1011" (decimalToBinary 11)
+    assert "100" (decimalToBinary 4)
+    assert "0" (decimalToBinary 0)
+    assert "1" (decimalToBinary 1)
+    assert "1111" (decimalToBinary 15)
+end
+     
+
+test

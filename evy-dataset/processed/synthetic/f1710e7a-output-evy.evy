@@ -1,0 +1,21 @@
+
+func toUpper:string str:string
+    result:string
+    for i := range (len str)
+        ch := str[i]
+        if "a" <= ch and ch <= "z"
+            ch = (upper ch)
+        end
+        result = result + ch
+    end
+    return result
+end
+
+func test
+    assert "HELLO" (toUpper "hello")
+    assert "WORLD" (toUpper "world")
+    assert "HELLO WORLD" (toUpper "hello world")
+end
+     
+
+test

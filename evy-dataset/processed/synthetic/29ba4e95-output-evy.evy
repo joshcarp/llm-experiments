@@ -1,0 +1,17 @@
+
+func toUppercase:string str:string
+    result:string
+    for i := range (len str)
+        ch := str[i]
+        if "a" <= ch and ch <= "z"
+            ch = (upper ch)
+        end
+        result = result + ch
+    end
+    return result
+end
+
+txt := "hello, world"
+txt = toUppercase txt
+print txt // Prints: HELLO, WORLD
+     

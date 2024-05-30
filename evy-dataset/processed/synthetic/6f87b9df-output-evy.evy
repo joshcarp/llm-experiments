@@ -1,0 +1,13 @@
+
+func reverse_string:string str:string
+    result:string
+    length := len str
+    for i := range length-1 -1 -1
+        result = result + str[i]
+    end
+    return result
+end
+
+txt := "Evy"
+print (reverse_string txt) // Prints: yvE
+     

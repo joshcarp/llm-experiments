@@ -1,0 +1,38 @@
+
+func isAnagram:bool s:string t:string
+    if (len s) != (len t)
+        return false
+    end
+    sMap:{}num
+    tMap:{}num
+    for c := range s
+        if !(has sMap c)
+            sMap[c] = 0
+        end
+        sMap[c] = sMap[c] + 1
+    end
+    for c := range t
+        if !(has tMap c)
+            tMap[c] = 0
+        end
+        tMap[c] = tMap[c] + 1
+    end
+    for key := range sMap
+        if !(has tMap key) or sMap[key] != tMap[key]
+            return false
+        end
+    end
+    return true
+end
+
+func test
+    assert true==(isAnagram "anagram" "nagaram")
+    assert false==(isAnagram "rat" "car")
+    assert true==(isAnagram "a" "a")
+    assert false==(isAnagram "ab" "ac")
+    assert true==(isAnagram "aa" "aa")
+    assert false==(isAnagram "aa" "ab")
+end
+     
+
+test
